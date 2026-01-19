@@ -6,7 +6,7 @@
  *
  * @see     https://classiccommerce.cc/docs/installation-and-setup/template-structure/
  * @package ClassicCommerce/Templates
- * @version WC-3.5.0
+ * @version WC-7.8.0
  */
 
 defined( 'ABSPATH' ) || exit;
