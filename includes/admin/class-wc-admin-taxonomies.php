@@ -52,12 +52,12 @@ class WC_Admin_Taxonomies {
 
 		// Add form
 		add_action( 'product_cat_add_form_fields', array( $this, 'add_category_fields' ) );
-		add_action( 'product_caesc_html_edit_form_fields', array( $this, 'edit_category_fields' ), 10 );
+		add_action( 'product_cat_edit_form_fields', array( $this, 'edit_category_fields' ), 10 );
 		add_action( 'created_term', array( $this, 'save_category_fields' ), 10, 3 );
 		add_action( 'edit_term', array( $this, 'save_category_fields' ), 10, 3 );
 
 		// Add columns.
-		add_filter( 'managesc_html_edit-product_cat_columns', array( $this, 'product_cat_columns' ) );
+		add_filter( 'manage_edit-product_cat_columns', array( $this, 'product_cat_columns' ) );
 		add_filter( 'manage_product_cat_custom_column', array( $this, 'product_cat_column' ), 10, 3 );
 
 		// Add row actions.
