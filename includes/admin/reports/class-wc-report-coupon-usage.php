@@ -111,14 +111,14 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 
 		$legend[] = array(
 			/* translators: %s: discount amount */
-			'title'            => sprintf( __( '%s discounts in total', 'classic-commerce' ), '<strong>' . wc_price( $total_discount ) . '</strong>' ),
+			'title'            => sprintf( __( '%s discounts in total', 'classic-store'), '<strong>' . wc_price( $total_discount ) . '</strong>' ),
 			'color'            => $this->chart_colours['discount_amount'],
 			'highlight_series' => 1,
 		);
 
 		$legend[] = array(
 			/* translators: %s: coupons amount */
-			'title'            => sprintf( __( '%s coupons used in total', 'classic-commerce' ), '<strong>' . $total_coupons . '</strong>' ),
+			'title'            => sprintf( __( '%s coupons used in total', 'classic-store'), '<strong>' . $total_coupons . '</strong>' ),
 			'color'            => $this->chart_colours['coupon_count'],
 			'highlight_series' => 0,
 		);
@@ -132,10 +132,10 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 	public function output_report() {
 
 		$ranges = array(
-			'year'       => __( 'Year', 'classic-commerce' ),
-			'last_month' => __( 'Last month', 'classic-commerce' ),
-			'month'      => __( 'This month', 'classic-commerce' ),
-			'7day'       => __( 'Last 7 days', 'classic-commerce' ),
+			'year'       => __( 'Year', 'classic-store'),
+			'last_month' => __( 'Last month', 'classic-store'),
+			'month'      => __( 'This month', 'classic-store'),
+			'7day'       => __( 'Last 7 days', 'classic-store'),
 		);
 
 		$this->chart_colours = array(
@@ -176,7 +176,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 	 */
 	public function coupons_widget() {
 		?>
-		<h4 class="section_title"><span><?php esc_html_e( 'Filter by coupon', 'classic-commerce' ); ?></span></h4>
+		<h4 class="section_title"><span><?php esc_html_e( 'Filter by coupon', 'classic-store'); ?></span></h4>
 		<div class="section">
 			<form method="GET">
 				<div>
@@ -206,8 +206,8 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 
 					if ( ! empty( $used_coupons ) && is_array( $used_coupons ) ) :
 					?>
-						<select id="coupon_codes" name="coupon_codes" class="wc-enhanced-select" data-placeholder="<?php esc_attr_e( 'Choose coupons&hellip;', 'classic-commerce' ); ?>" style="width:100%;">
-							<option value=""><?php esc_html_e( 'All coupons', 'classic-commerce' ); ?></option>
+						<select id="coupon_codes" name="coupon_codes" class="wc-enhanced-select" data-placeholder="<?php esc_attr_e( 'Choose coupons&hellip;', 'classic-store'); ?>" style="width:100%;">
+							<option value=""><?php esc_html_e( 'All coupons', 'classic-store'); ?></option>
 							<?php
 							foreach ( $used_coupons as $coupon ) {
 								echo '<option value="' . esc_attr( $coupon ) . '"' . wc_selected( $coupon, $this->coupon_codes ) . '>' . esc_html( $coupon ) . '</option>';
@@ -215,7 +215,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 							?>
 						</select>
 						<?php // @codingStandardsIgnoreStart ?>
-						<button type="submit" class="submit button" value="<?php esc_attr_e( 'Show', 'classic-commerce' ); ?>"><?php esc_html_e( 'Show', 'classic-commerce' ); ?></button>
+						<button type="submit" class="submit button" value="<?php esc_attr_e( 'Show', 'classic-store'); ?>"><?php esc_html_e( 'Show', 'classic-store'); ?></button>
 						<input type="hidden" name="range" value="<?php echo ( ! empty( $_GET['range'] ) ) ? esc_attr( wp_unslash( $_GET['range'] ) ) : ''; ?>" />
 						<input type="hidden" name="start_date" value="<?php echo ( ! empty( $_GET['start_date'] ) ) ? esc_attr( wp_unslash( $_GET['start_date'] ) ) : ''; ?>" />
 						<input type="hidden" name="end_date" value="<?php echo ( ! empty( $_GET['end_date'] ) ) ? esc_attr( wp_unslash( $_GET['end_date'] ) ) : ''; ?>" />
@@ -224,12 +224,12 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 						<input type="hidden" name="report" value="<?php echo ( ! empty( $_GET['report'] ) ) ? esc_attr( wp_unslash( $_GET['report'] ) ) : ''; ?>" />
 						<?php // @codingStandardsIgnoreEnd ?>
 					<?php else : ?>
-						<span><?php esc_html_e( 'No used coupons found', 'classic-commerce' ); ?></span>
+						<span><?php esc_html_e( 'No used coupons found', 'classic-store'); ?></span>
 					<?php endif; ?>
 				</div>
 			</form>
 		</div>
-		<h4 class="section_title"><span><?php esc_html_e( 'Most popular', 'classic-commerce' ); ?></span></h4>
+		<h4 class="section_title"><span><?php esc_html_e( 'Most popular', 'classic-store'); ?></span></h4>
 		<div class="section">
 			<table cellspacing="0">
 				<?php
@@ -273,12 +273,12 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 						</tr>';
 					}
 				} else {
-					echo '<tr><td colspan="2">' . esc_html__( 'No coupons found in range', 'classic-commerce' ) . '</td></tr>';
+					echo '<tr><td colspan="2">' . esc_html__( 'No coupons found in range', 'classic-store') . '</td></tr>';
 				}
 				?>
 			</table>
 		</div>
-		<h4 class="section_title"><span><?php esc_html_e( 'Most discount', 'classic-commerce' ); ?></span></h4>
+		<h4 class="section_title"><span><?php esc_html_e( 'Most discount', 'classic-store'); ?></span></h4>
 		<div class="section">
 			<table cellspacing="0">
 				<?php
@@ -324,7 +324,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 						// @codingStandardsIgnoreEnd
 					}
 				} else {
-					echo '<tr><td colspan="3">' . esc_html__( 'No coupons found in range', 'classic-commerce' ) . '</td></tr>';
+					echo '<tr><td colspan="3">' . esc_html__( 'No coupons found in range', 'classic-store') . '</td></tr>';
 				}
 				?>
 			</table>
@@ -364,10 +364,10 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 			download="report-<?php echo esc_attr( $current_range ); ?>-<?php echo esc_attr( date_i18n( 'Y-m-d', current_time( 'timestamp' ) ) ); ?>.csv"
 			class="export_csv"
 			data-export="chart"
-			data-xaxes="<?php esc_attr_e( 'Date', 'classic-commerce' ); ?>"
+			data-xaxes="<?php esc_attr_e( 'Date', 'classic-store'); ?>"
 			data-groupby="<?php echo esc_attr( $this->chart_groupby ); ?>"
 		>
-			<?php esc_html_e( 'Export CSV', 'classic-commerce' ); ?>
+			<?php esc_html_e( 'Export CSV', 'classic-store'); ?>
 		</a>
 		<?php
 	}
@@ -474,7 +474,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 				var drawGraph = function( highlight ) {
 					var series = [
 						{
-							label: "<?php echo esc_js( __( 'Number of coupons used', 'classic-commerce' ) ); ?>",
+							label: "<?php echo esc_js( __( 'Number of coupons used', 'classic-store') ); ?>",
 							data: order_data.order_coupon_counts,
 							color: '<?php echo esc_js( $this->chart_colours['coupon_count'] ); ?>',
 							bars: { fillColor: '<?php echo esc_js( $this->chart_colours['coupon_count'] ); ?>', fill: true, show: true, lineWidth: 0, barWidth: <?php echo esc_js( $this->barwidth ); ?> * 0.5, align: 'center' },
@@ -482,7 +482,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 							hoverable: false
 						},
 						{
-							label: "<?php echo esc_js( __( 'Discount amount', 'classic-commerce' ) ); ?>",
+							label: "<?php echo esc_js( __( 'Discount amount', 'classic-store') ); ?>",
 							data: order_data.order_discount_amounts,
 							yaxis: 2,
 							color: '<?php echo esc_js( $this->chart_colours['discount_amount'] ); ?>',

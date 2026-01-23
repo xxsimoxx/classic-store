@@ -91,12 +91,12 @@ class WC_Shortcode_Checkout {
 
 				// Order or payment link is invalid.
 				if ( ! $order || $order->get_id() !== $order_id || ! hash_equals( $order->get_order_key(), $order_key ) ) {
-					throw new Exception( __( 'Sorry, this order is invalid and cannot be paid for.', 'classic-commerce' ) );
+					throw new Exception( __( 'Sorry, this order is invalid and cannot be paid for.', 'classic-store') );
 				}
 
 				// Logged out customer does not have permission to pay for this order.
 				if ( ! current_user_can( 'pay_for_order', $order_id ) && ! is_user_logged_in() ) {
-					wc_print_notice( esc_html__( 'Please log in to your account below to continue to the payment form.', 'classic-commerce' ), 'notice' );
+					wc_print_notice( esc_html__( 'Please log in to your account below to continue to the payment form.', 'classic-store'), 'notice' );
 					woocommerce_login_form(
 						array(
 							'redirect' => $order->get_checkout_payment_url(),
@@ -109,19 +109,19 @@ class WC_Shortcode_Checkout {
 				if ( ! $order->get_user_id() && is_user_logged_in() ) {
 					// If order has does not have same billing email then current logged in user then show warning.
 					if ( $order->get_billing_email() !== wp_get_current_user()->user_email ) {
-						wc_print_notice( __( 'You are paying for a guest order. Please continue with payment only if you recognize this order.', 'classic-commerce' ), 'error' );
+						wc_print_notice( __( 'You are paying for a guest order. Please continue with payment only if you recognize this order.', 'classic-store'), 'error' );
 					}
 				}
 
 				// Logged in customer trying to pay for someone else's order.
 				if ( ! current_user_can( 'pay_for_order', $order_id ) ) {
-					throw new Exception( __( 'This order cannot be paid for. Please contact us if you need assistance.', 'classic-commerce' ) );
+					throw new Exception( __( 'This order cannot be paid for. Please contact us if you need assistance.', 'classic-store') );
 				}
 
 				// Does not need payment.
 				if ( ! $order->needs_payment() ) {
 					/* translators: %s: order status */
-					throw new Exception( sprintf( __( 'This order&rsquo;s status is &ldquo;%s&rdquo;&mdash;it cannot be paid for. Please contact us if you need assistance.', 'classic-commerce' ), wc_get_order_status_name( $order->get_status() ) ) );
+					throw new Exception( sprintf( __( 'This order&rsquo;s status is &ldquo;%s&rdquo;&mdash;it cannot be paid for. Please contact us if you need assistance.', 'classic-store'), wc_get_order_status_name( $order->get_status() ) ) );
 				}
 
 				// Ensure order items are still stocked if paying for a failed order. Pending orders do not need this check because stock is held.
@@ -152,7 +152,7 @@ class WC_Shortcode_Checkout {
 
 								if ( ! apply_filters( 'woocommerce_pay_order_product_in_stock', $product->is_in_stock(), $product, $order ) ) {
 									/* translators: %s: product name */
-									throw new Exception( sprintf( __( 'Sorry, "%s" is no longer in stock so this order cannot be paid for. We apologize for any inconvenience caused.', 'classic-commerce' ), $product->get_name() ) );
+									throw new Exception( sprintf( __( 'Sorry, "%s" is no longer in stock so this order cannot be paid for. We apologize for any inconvenience caused.', 'classic-store'), $product->get_name() ) );
 								}
 
 								// We only need to check products managing stock, with a limited stock qty.
@@ -166,7 +166,7 @@ class WC_Shortcode_Checkout {
 
 								if ( ! apply_filters( 'woocommerce_pay_order_product_has_enough_stock', ( $product->get_stock_quantity() >= ( $held_stock + $required_stock ) ), $product, $order ) ) {
 									/* translators: 1: product name 2: quantity in stock */
-									throw new Exception( sprintf( __( 'Sorry, we do not have enough "%1$s" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused.', 'classic-commerce' ), $product->get_name(), wc_format_stock_quantity_for_display( $product->get_stock_quantity() - $held_stock, $product ) ) );
+									throw new Exception( sprintf( __( 'Sorry, we do not have enough "%1$s" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused.', 'classic-store' ), $product->get_name(), wc_format_stock_quantity_for_display( $product->get_stock_quantity() - $held_stock, $product ) ) );
 								}
 							}
 						}
@@ -207,7 +207,7 @@ class WC_Shortcode_Checkout {
 				 *
 				 * @since 3.0.2
 				 */
-				$order_button_text = apply_filters( 'woocommerce_pay_order_button_text', __( 'Pay for order', 'classic-commerce' ) );
+				$order_button_text = apply_filters( 'woocommerce_pay_order_button_text', __( 'Pay for order', 'classic-store') );
 
 				/**
 				 * Triggered right before the Pay for Order form, after validation of the order and customer.
@@ -246,13 +246,13 @@ class WC_Shortcode_Checkout {
 
 				} else {
 					/* translators: %s: order status */
-					wc_print_notice( sprintf( __( 'This order&rsquo;s status is &ldquo;%s&rdquo;&mdash;it cannot be paid for. Please contact us if you need assistance.', 'classic-commerce' ), wc_get_order_status_name( $order->get_status() ) ), 'error' );
+					wc_print_notice( sprintf( __( 'This order&rsquo;s status is &ldquo;%s&rdquo;&mdash;it cannot be paid for. Please contact us if you need assistance.', 'classic-store'), wc_get_order_status_name( $order->get_status() ) ), 'error' );
 				}
 			} else {
-				wc_print_notice( __( 'Sorry, this order is invalid and cannot be paid for.', 'classic-commerce' ), 'error' );
+				wc_print_notice( __( 'Sorry, this order is invalid and cannot be paid for.', 'classic-store'), 'error' );
 			}
 		} else {
-			wc_print_notice( __( 'Invalid order.', 'classic-commerce' ), 'error' );
+			wc_print_notice( __( 'Invalid order.', 'classic-store'), 'error' );
 		}
 
 		do_action( 'after_woocommerce_pay' );
@@ -313,7 +313,7 @@ class WC_Shortcode_Checkout {
 		// For non-guest orders, require the user to be logged in before showing this page.
 		if ( $verify_known_shoppers && $order_customer_id && get_current_user_id() !== $order_customer_id ) {
 			wc_get_template( 'checkout/order-received.php', array( 'order' => false ) );
-			wc_print_notice( esc_html__( 'Please log in to your account to view this order.', 'classic-commerce' ), 'notice' );
+			wc_print_notice( esc_html__( 'Please log in to your account to view this order.', 'classic-store'), 'notice' );
 			woocommerce_login_form( array( 'redirect' => $order->get_checkout_order_received_url() ) );
 			return;
 		}
@@ -366,7 +366,7 @@ class WC_Shortcode_Checkout {
 			$non_js_checkout = ! empty( $_POST['woocommerce_checkout_update_totals'] ); // WPCS: input var ok, CSRF ok.
 
 			if ( wc_notice_count( 'error' ) === 0 && $non_js_checkout ) {
-				wc_add_notice( __( 'The order totals have been updated. Please confirm your order by pressing the "Place order" button at the bottom of the page.', 'classic-commerce' ) );
+				wc_add_notice( __( 'The order totals have been updated. Please confirm your order by pressing the "Place order" button at the bottom of the page.', 'classic-store') );
 			}
 
 			wc_get_template( 'checkout/form-checkout.php', array( 'checkout' => $checkout ) );

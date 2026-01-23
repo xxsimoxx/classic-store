@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class WC_Gateway_COD extends WC_Payment_Gateway {
 
-    
+
 	/**
 	 * Gateway instructions that will be added to the thank you page and emails.
 	 *
@@ -75,8 +75,8 @@ class WC_Gateway_COD extends WC_Payment_Gateway {
 	protected function setup_properties() {
 		$this->id                 = 'cod';
 		$this->icon               = apply_filters( 'woocommerce_cod_icon', '' );
-		$this->method_title       = __( 'Cash on delivery', 'classic-commerce' );
-		$this->method_description = __( 'Have your customers pay with cash (or by other means) upon delivery.', 'classic-commerce' );
+		$this->method_title       = __( 'Cash on delivery', 'classic-store');
+		$this->method_description = __( 'Have your customers pay with cash (or by other means) upon delivery.', 'classic-store' );
 		$this->has_fields         = false;
 	}
 
@@ -86,49 +86,49 @@ class WC_Gateway_COD extends WC_Payment_Gateway {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'enabled'            => array(
-				'title'       => __( 'Enable/Disable', 'classic-commerce' ),
-				'label'       => __( 'Enable cash on delivery', 'classic-commerce' ),
+				'title'       => __( 'Enable/Disable', 'classic-store'),
+				'label'       => __( 'Enable cash on delivery', 'classic-store'),
 				'type'        => 'checkbox',
 				'description' => '',
 				'default'     => 'no',
 			),
 			'title'              => array(
-				'title'       => __( 'Title', 'classic-commerce' ),
+				'title'       => __( 'Title', 'classic-store'),
 				'type'        => 'text',
-				'description' => __( 'Payment method description that the customer will see on your checkout.', 'classic-commerce' ),
-				'default'     => __( 'Cash on delivery', 'classic-commerce' ),
+				'description' => __( 'Payment method description that the customer will see on your checkout.', 'classic-store'),
+				'default'     => __( 'Cash on delivery', 'classic-store'),
 				'desc_tip'    => true,
 			),
 			'description'        => array(
-				'title'       => __( 'Description', 'classic-commerce' ),
+				'title'       => __( 'Description', 'classic-store'),
 				'type'        => 'textarea',
-				'description' => __( 'Payment method description that the customer will see on your website.', 'classic-commerce' ),
-				'default'     => __( 'Pay with cash upon delivery.', 'classic-commerce' ),
+				'description' => __( 'Payment method description that the customer will see on your website.', 'classic-store'),
+				'default'     => __( 'Pay with cash upon delivery.', 'classic-store'),
 				'desc_tip'    => true,
 			),
 			'instructions'       => array(
-				'title'       => __( 'Instructions', 'classic-commerce' ),
+				'title'       => __( 'Instructions', 'classic-store'),
 				'type'        => 'textarea',
-				'description' => __( 'Instructions that will be added to the thank you page.', 'classic-commerce' ),
-				'default'     => __( 'Pay with cash upon delivery.', 'classic-commerce' ),
+				'description' => __( 'Instructions that will be added to the thank you page.', 'classic-store'),
+				'default'     => __( 'Pay with cash upon delivery.', 'classic-store'),
 				'desc_tip'    => true,
 			),
 			'enable_for_methods' => array(
-				'title'             => __( 'Enable for shipping methods', 'classic-commerce' ),
+				'title'             => __( 'Enable for shipping methods', 'classic-store'),
 				'type'              => 'multiselect',
 				'class'             => 'wc-enhanced-select',
 				'css'               => 'width: 400px;',
 				'default'           => '',
-				'description'       => __( 'If COD is only available for certain methods, set it up here. Leave blank to enable for all methods.', 'classic-commerce' ),
+				'description'       => __( 'If COD is only available for certain methods, set it up here. Leave blank to enable for all methods.', 'classic-store'),
 				'options'           => $this->load_shipping_method_options(),
 				'desc_tip'          => true,
 				'custom_attributes' => array(
-					'data-placeholder' => __( 'Select shipping methods', 'classic-commerce' ),
+					'data-placeholder' => __( 'Select shipping methods', 'classic-store'),
 				),
 			),
 			'enable_for_virtual' => array(
-				'title'   => __( 'Accept for virtual orders', 'classic-commerce' ),
-				'label'   => __( 'Accept COD if the order is virtual', 'classic-commerce' ),
+				'title'   => __( 'Accept for virtual orders', 'classic-store'),
+				'label'   => __( 'Accept COD if the order is virtual', 'classic-store'),
 				'type'    => 'checkbox',
 				'default' => 'yes',
 			),
@@ -247,7 +247,7 @@ class WC_Gateway_COD extends WC_Payment_Gateway {
 			$options[ $method->get_method_title() ] = array();
 
 			// Translators: %1$s shipping method name.
-			$options[ $method->get_method_title() ][ $method->id ] = sprintf( __( 'Any &quot;%1$s&quot; method', 'classic-commerce' ), $method->get_method_title() );
+			$options[ $method->get_method_title() ][ $method->id ] = sprintf( __( 'Any &quot;%1$s&quot; method', 'classic-store'), $method->get_method_title() );
 
 			foreach ( $zones as $zone ) {
 
@@ -262,10 +262,10 @@ class WC_Gateway_COD extends WC_Payment_Gateway {
 					$option_id = $shipping_method_instance->get_rate_id();
 
 					// Translators: %1$s shipping method title, %2$s shipping method id.
-					$option_instance_title = sprintf( __( '%1$s (#%2$s)', 'classic-commerce' ), $shipping_method_instance->get_title(), $shipping_method_instance_id );
+					$option_instance_title = sprintf( __( '%1$s (#%2$s)', 'classic-store' ), $shipping_method_instance->get_title(), $shipping_method_instance_id );
 
 					// Translators: %1$s zone name, %2$s shipping method instance name.
-					$option_title = sprintf( __( '%1$s &ndash; %2$s', 'classic-commerce' ), $zone->get_id() ? $zone->get_zone_name() : __( 'Other locations', 'classic-commerce' ), $option_instance_title );
+					$option_title = sprintf( __( '%1$s &ndash; %2$s', 'classic-store'), $zone->get_id() ? $zone->get_zone_name() : __( 'Other locations', 'classic-store'), $option_instance_title );
 
 					$options[ $method->get_method_title() ][ $option_id ] = $option_title;
 				}
@@ -343,7 +343,7 @@ class WC_Gateway_COD extends WC_Payment_Gateway {
 
 		if ( $order->get_total() > 0 ) {
 			// Mark as processing or on-hold (payment won't be taken until delivery).
-			$order->update_status( apply_filters( 'woocommerce_cod_process_payment_order_status', $order->has_downloadable_item() ? 'on-hold' : 'processing', $order ), __( 'Payment to be made upon delivery.', 'classic-commerce' ) );
+			$order->update_status( apply_filters( 'woocommerce_cod_process_payment_order_status', $order->has_downloadable_item() ? 'on-hold' : 'processing', $order ), __( 'Payment to be made upon delivery.', 'classic-store') );
 		} else {
 			$order->payment_complete();
 		}

@@ -60,7 +60,7 @@ class WC_REST_Data_Countries_Controller extends WC_REST_Data_Controller {
 					'permission_callback' => array( $this, 'get_items_permissions_check' ),
 					'args'                => array(
 						'location' => array(
-							'description' => __( 'ISO3166 alpha-2 country code.', 'classic-commerce' ),
+							'description' => __( 'ISO3166 alpha-2 country code.', 'classic-store'),
 							'type'        => 'string',
 						),
 					),
@@ -134,7 +134,7 @@ class WC_REST_Data_Countries_Controller extends WC_REST_Data_Controller {
 	public function get_item( $request ) {
 		$data = $this->get_country( strtoupper( $request['location'] ), $request );
 		if ( empty( $data ) ) {
-			return new WP_Error( 'woocommerce_rest_data_invalid_location', __( 'There are no locations matching these parameters.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_data_invalid_location', __( 'There are no locations matching these parameters.', 'classic-store'), array( 'status' => 404 ) );
 		}
 		return $this->prepare_item_for_response( $data, $request );
 	}
@@ -201,19 +201,19 @@ class WC_REST_Data_Countries_Controller extends WC_REST_Data_Controller {
 			'properties' => array(
 				'code'   => array(
 					'type'        => 'string',
-					'description' => __( 'ISO3166 alpha-2 country code.', 'classic-commerce' ),
+					'description' => __( 'ISO3166 alpha-2 country code.', 'classic-store'),
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'name'   => array(
 					'type'        => 'string',
-					'description' => __( 'Full name of country.', 'classic-commerce' ),
+					'description' => __( 'Full name of country.', 'classic-store'),
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'states' => array(
 					'type'        => 'array',
-					'description' => __( 'List of states in this country.', 'classic-commerce' ),
+					'description' => __( 'List of states in this country.', 'classic-store'),
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 					'items'       => array(
@@ -223,13 +223,13 @@ class WC_REST_Data_Countries_Controller extends WC_REST_Data_Controller {
 						'properties' => array(
 							'code' => array(
 								'type'        => 'string',
-								'description' => __( 'State code.', 'classic-commerce' ),
+								'description' => __( 'State code.', 'classic-store'),
 								'context'     => array( 'view' ),
 								'readonly'    => true,
 							),
 							'name' => array(
 								'type'        => 'string',
-								'description' => __( 'Full name of state.', 'classic-commerce' ),
+								'description' => __( 'Full name of state.', 'classic-store'),
 								'context'     => array( 'view' ),
 								'readonly'    => true,
 							),

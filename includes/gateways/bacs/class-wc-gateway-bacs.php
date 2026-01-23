@@ -50,8 +50,8 @@ class WC_Gateway_BACS extends WC_Payment_Gateway {
 		$this->id                 = 'bacs';
 		$this->icon               = apply_filters( 'woocommerce_bacs_icon', '' );
 		$this->has_fields         = false;
-		$this->method_title       = __( 'Direct bank transfer', 'classic-commerce' );
-		$this->method_description = __( 'Take payments in person via BACS. More commonly known as direct bank/wire transfer', 'classic-commerce' );
+		$this->method_title       = __( 'Direct bank transfer', 'classic-store');
+		$this->method_description = __( 'Take payments in person via BACS. More commonly known as direct bank/wire transfer', 'classic-store');
 
 		// Load the settings.
 		$this->init_form_fields();
@@ -93,29 +93,29 @@ class WC_Gateway_BACS extends WC_Payment_Gateway {
 
 		$this->form_fields = array(
 			'enabled'         => array(
-				'title'   => __( 'Enable/Disable', 'classic-commerce' ),
+				'title'   => __( 'Enable/Disable', 'classic-store'),
 				'type'    => 'checkbox',
-				'label'   => __( 'Enable bank transfer', 'classic-commerce' ),
+				'label'   => __( 'Enable bank transfer', 'classic-store'),
 				'default' => 'no',
 			),
 			'title'           => array(
-				'title'       => __( 'Title', 'classic-commerce' ),
+				'title'       => __( 'Title', 'classic-store'),
 				'type'        => 'text',
-				'description' => __( 'This controls the title which the user sees during checkout.', 'classic-commerce' ),
-				'default'     => __( 'Direct bank transfer', 'classic-commerce' ),
+				'description' => __( 'This controls the title which the user sees during checkout.', 'classic-store'),
+				'default'     => __( 'Direct bank transfer', 'classic-store'),
 				'desc_tip'    => true,
 			),
 			'description'     => array(
-				'title'       => __( 'Description', 'classic-commerce' ),
+				'title'       => __( 'Description', 'classic-store'),
 				'type'        => 'textarea',
-				'description' => __( 'Payment method description that the customer will see on your checkout.', 'classic-commerce' ),
-				'default'     => __( 'Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.', 'classic-commerce' ),
+				'description' => __( 'Payment method description that the customer will see on your checkout.', 'classic-store'),
+				'default'     => __( 'Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.', 'classic-store'),
 				'desc_tip'    => true,
 			),
 			'instructions'    => array(
-				'title'       => __( 'Instructions', 'classic-commerce' ),
+				'title'       => __( 'Instructions', 'classic-store'),
 				'type'        => 'textarea',
-				'description' => __( 'Instructions that will be added to the thank you page and emails.', 'classic-commerce' ),
+				'description' => __( 'Instructions that will be added to the thank you page and emails.', 'classic-store'),
 				'default'     => '',
 				'desc_tip'    => true,
 			),
@@ -139,14 +139,14 @@ class WC_Gateway_BACS extends WC_Payment_Gateway {
 		$locale  = $this->get_country_locale();
 
 		// Get sortcode label in the $locale array and use appropriate one.
-		$sortcode = isset( $locale[ $country ]['sortcode']['label'] ) ? $locale[ $country ]['sortcode']['label'] : __( 'Sort code', 'classic-commerce' );
+		$sortcode = isset( $locale[ $country ]['sortcode']['label'] ) ? $locale[ $country ]['sortcode']['label'] : __( 'Sort code', 'classic-store');
 
 		?>
 		<tr valign="top">
 			<th scope="row" class="titledesc">
 				<label>
-					<?php esc_html_e( 'Account details:', 'classic-commerce' ); ?>
-					<?php echo wp_kses_post( wc_help_tip( __( 'These account details will be displayed within the order thank you page and confirmation email.', 'classic-commerce' ) ) ); ?>
+					<?php esc_html_e( 'Account details:', 'classic-store'); ?>
+					<?php echo wp_kses_post( wc_help_tip( __( 'These account details will be displayed within the order thank you page and confirmation email.', 'classic-store') ) ); ?>
 				</label>
 			</th>
 			<td class="forminp" id="bacs_accounts">
@@ -155,12 +155,12 @@ class WC_Gateway_BACS extends WC_Payment_Gateway {
 						<thead>
 							<tr>
 								<th class="sort">&nbsp;</th>
-								<th><?php esc_html_e( 'Account name', 'classic-commerce' ); ?></th>
-								<th><?php esc_html_e( 'Account number', 'classic-commerce' ); ?></th>
-								<th><?php esc_html_e( 'Bank name', 'classic-commerce' ); ?></th>
+								<th><?php esc_html_e( 'Account name', 'classic-store'); ?></th>
+								<th><?php esc_html_e( 'Account number', 'classic-store'); ?></th>
+								<th><?php esc_html_e( 'Bank name', 'classic-store'); ?></th>
 								<th><?php echo esc_html( $sortcode ); ?></th>
-								<th><?php esc_html_e( 'IBAN', 'classic-commerce' ); ?></th>
-								<th><?php esc_html_e( 'BIC / Swift', 'classic-commerce' ); ?></th>
+								<th><?php esc_html_e( 'IBAN', 'classic-store'); ?></th>
+								<th><?php esc_html_e( 'BIC / Swift', 'classic-store'); ?></th>
 							</tr>
 						</thead>
 						<tbody class="accounts">
@@ -185,7 +185,7 @@ class WC_Gateway_BACS extends WC_Payment_Gateway {
 						</tbody>
 						<tfoot>
 							<tr>
-								<th colspan="7"><a href="#" class="add button"><?php esc_html_e( '+ Add account', 'classic-commerce' ); ?></a> <a href="#" class="remove_rows button"><?php esc_html_e( 'Remove selected account(s)', 'classic-commerce' ); ?></a></th>
+								<th colspan="7"><a href="#" class="add button"><?php esc_html_e( '+ Add account', 'classic-store'); ?></a> <a href="#" class="remove_rows button"><?php esc_html_e( 'Remove selected account(s)', 'classic-store' ); ?></a></th>
 							</tr>
 						</tfoot>
 					</table>
@@ -312,7 +312,7 @@ class WC_Gateway_BACS extends WC_Payment_Gateway {
 		$locale  = $this->get_country_locale();
 
 		// Get sortcode label in the $locale array and use appropriate one.
-		$sortcode = isset( $locale[ $country ]['sortcode']['label'] ) ? $locale[ $country ]['sortcode']['label'] : __( 'Sort code', 'classic-commerce' );
+		$sortcode = isset( $locale[ $country ]['sortcode']['label'] ) ? $locale[ $country ]['sortcode']['label'] : __( 'Sort code', 'classic-store');
 
 		$bacs_accounts = apply_filters( 'woocommerce_bacs_accounts', $this->account_details, $order_id );
 
@@ -333,11 +333,11 @@ class WC_Gateway_BACS extends WC_Payment_Gateway {
 				$account_fields = apply_filters(
 					'woocommerce_bacs_account_fields', array(
 						'bank_name'      => array(
-							'label' => __( 'Bank', 'classic-commerce' ),
+							'label' => __( 'Bank', 'classic-store'),
 							'value' => $bacs_account->bank_name,
 						),
 						'account_number' => array(
-							'label' => __( 'Account number', 'classic-commerce' ),
+							'label' => __( 'Account number', 'classic-store'),
 							'value' => $bacs_account->account_number,
 						),
 						'sort_code'      => array(
@@ -345,11 +345,11 @@ class WC_Gateway_BACS extends WC_Payment_Gateway {
 							'value' => $bacs_account->sort_code,
 						),
 						'iban'           => array(
-							'label' => __( 'IBAN', 'classic-commerce' ),
+							'label' => __( 'IBAN', 'classic-store'),
 							'value' => $bacs_account->iban,
 						),
 						'bic'            => array(
-							'label' => __( 'BIC', 'classic-commerce' ),
+							'label' => __( 'BIC', 'classic-store'),
 							'value' => $bacs_account->bic,
 						),
 					), $order_id
@@ -366,7 +366,7 @@ class WC_Gateway_BACS extends WC_Payment_Gateway {
 			}
 
 			if ( $has_details ) {
-				echo '<section class="woocommerce-bacs-bank-details"><h2 class="wc-bacs-bank-details-heading">' . esc_html__( 'Our bank details', 'classic-commerce' ) . '</h2>' . wp_kses_post( PHP_EOL . $account_html ) . '</section>';
+				echo '<section class="woocommerce-bacs-bank-details"><h2 class="wc-bacs-bank-details-heading">' . esc_html__( 'Our bank details', 'classic-store') . '</h2>' . wp_kses_post( PHP_EOL . $account_html ) . '</section>';
 			}
 		}
 
@@ -384,7 +384,7 @@ class WC_Gateway_BACS extends WC_Payment_Gateway {
 
 		if ( $order->get_total() > 0 ) {
 			// Mark as on-hold (we're awaiting the payment).
-			$order->update_status( apply_filters( 'woocommerce_bacs_process_payment_order_status', 'on-hold', $order ), __( 'Awaiting BACS payment', 'classic-commerce' ) );
+			$order->update_status( apply_filters( 'woocommerce_bacs_process_payment_order_status', 'on-hold', $order ), __( 'Awaiting BACS payment', 'classic-store') );
 		} else {
 			$order->payment_complete();
 		}
@@ -414,42 +414,42 @@ class WC_Gateway_BACS extends WC_Payment_Gateway {
 				'woocommerce_get_bacs_locale', array(
 					'AU' => array(
 						'sortcode' => array(
-							'label' => __( 'BSB', 'classic-commerce' ),
+							'label' => __( 'BSB', 'classic-store'),
 						),
 					),
 					'CA' => array(
 						'sortcode' => array(
-							'label' => __( 'Bank transit number', 'classic-commerce' ),
+							'label' => __( 'Bank transit number', 'classic-store'),
 						),
 					),
 					'IN' => array(
 						'sortcode' => array(
-							'label' => __( 'IFSC', 'classic-commerce' ),
+							'label' => __( 'IFSC', 'classic-store'),
 						),
 					),
 					'IT' => array(
 						'sortcode' => array(
-							'label' => __( 'Branch sort', 'classic-commerce' ),
+							'label' => __( 'Branch sort', 'classic-store'),
 						),
 					),
 					'NZ' => array(
 						'sortcode' => array(
-							'label' => __( 'Bank code', 'classic-commerce' ),
+							'label' => __( 'Bank code', 'classic-store'),
 						),
 					),
 					'SE' => array(
 						'sortcode' => array(
-							'label' => __( 'Bank code', 'classic-commerce' ),
+							'label' => __( 'Bank code', 'classic-store'),
 						),
 					),
 					'US' => array(
 						'sortcode' => array(
-							'label' => __( 'Routing number', 'classic-commerce' ),
+							'label' => __( 'Routing number', 'classic-store'),
 						),
 					),
 					'ZA' => array(
 						'sortcode' => array(
-							'label' => __( 'Branch code', 'classic-commerce' ),
+							'label' => __( 'Branch code', 'classic-store'),
 						),
 					),
 				)

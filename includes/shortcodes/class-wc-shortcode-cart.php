@@ -38,7 +38,7 @@ class WC_Shortcode_Cart {
 			$address = apply_filters( 'woocommerce_cart_calculate_shipping_address', $address );
 
 			if ( $address['postcode'] && ! WC_Validation::is_postcode( $address['postcode'], $address['country'] ) ) {
-				throw new Exception( __( 'Please enter a valid postcode / ZIP.', 'classic-commerce' ) );
+				throw new Exception( __( 'Please enter a valid postcode / ZIP.', 'classic-store') );
 			}
 
 			if ( $address['country'] ) {
@@ -54,7 +54,7 @@ class WC_Shortcode_Cart {
 			WC()->customer->set_calculated_shipping( true );
 			WC()->customer->save();
 
-			wc_add_notice( __( 'Shipping costs updated.', 'classic-commerce' ), 'notice' );
+			wc_add_notice( __( 'Shipping costs updated.', 'classic-store'), 'notice' );
 
 			do_action( 'woocommerce_calculated_shipping' );
 

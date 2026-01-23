@@ -25,23 +25,23 @@ defined( 'ABSPATH' ) || exit;
 					<abbr class="exact-date" title="<?php echo esc_attr( $note->date_created->date( 'Y-m-d H:i:s' ) ); ?>">
 						<?php
 						/* translators: %1$s: note date %2$s: note time */
-						echo esc_html( sprintf( __( '%1$s at %2$s', 'classic-commerce' ), $note->date_created->date_i18n( wc_date_format() ), $note->date_created->date_i18n( wc_time_format() ) ) );
+						echo esc_html( sprintf( __( '%1$s at %2$s', 'classic-store'), $note->date_created->date_i18n( wc_date_format() ), $note->date_created->date_i18n( wc_time_format() ) ) );
 						?>
 					</abbr>
 					<?php
 					if ( 'system' !== $note->added_by ) :
 						/* translators: %s: note author */
-						echo esc_html( sprintf( ' ' . __( 'by %s', 'classic-commerce' ), $note->added_by ) );
+						echo esc_html( sprintf( ' ' . __( 'by %s', 'classic-store'), $note->added_by ) );
 					endif;
 					?>
-					<a href="#" class="delete_note" role="button"><?php esc_html_e( 'Delete note', 'classic-commerce' ); ?></a>
+					<a href="#" class="delete_note" role="button"><?php esc_html_e( 'Delete note', 'classic-store'); ?></a>
 				</p>
 			</li>
 			<?php
 		}
 	} else {
 		?>
-		<li class="no-items"><?php esc_html_e( 'There are no notes yet.', 'classic-commerce' ); ?></li>
+		<li class="no-items"><?php esc_html_e( 'There are no notes yet.', 'classic-store'); ?></li>
 		<?php
 	}
 	?>

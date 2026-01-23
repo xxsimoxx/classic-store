@@ -41,11 +41,11 @@ class WC_REST_Order_Refunds_Controller extends WC_REST_Order_Refunds_V2_Controll
 		$order = wc_get_order( (int) $request['order_id'] );
 
 		if ( ! $order ) {
-			return new WP_Error( 'woocommerce_rest_invalid_order_id', __( 'Invalid order ID.', 'classic-commerce' ), 404 );
+			return new WP_Error( 'woocommerce_rest_invalid_order_id', __( 'Invalid order ID.', 'classic-store'), 404 );
 		}
 
 		if ( 0 > $request['amount'] ) {
-			return new WP_Error( 'woocommerce_rest_invalid_order_refund', __( 'Refund amount must be greater than zero.', 'classic-commerce' ), 400 );
+			return new WP_Error( 'woocommerce_rest_invalid_order_refund', __( 'Refund amount must be greater than zero.', 'classic-store'), 400 );
 		}
 
 		// Create the refund.
@@ -65,7 +65,7 @@ class WC_REST_Order_Refunds_Controller extends WC_REST_Order_Refunds_V2_Controll
 		}
 
 		if ( ! $refund ) {
-			return new WP_Error( 'woocommerce_rest_cannot_create_order_refund', __( 'Cannot create order refund, please try again.', 'classic-commerce' ), 500 );
+			return new WP_Error( 'woocommerce_rest_cannot_create_order_refund', __( 'Cannot create order refund, please try again.', 'classic-store'), 500 );
 		}
 
 		if ( ! empty( $request['meta_data'] ) && is_array( $request['meta_data'] ) ) {
@@ -97,21 +97,21 @@ class WC_REST_Order_Refunds_Controller extends WC_REST_Order_Refunds_V2_Controll
 		$schema = parent::get_item_schema();
 
 		$schema['properties']['line_items']['items']['properties']['refund_total'] = array(
-			'description' => __( 'Amount that will be refunded for this line item (excluding taxes).', 'classic-commerce' ),
+			'description' => __( 'Amount that will be refunded for this line item (excluding taxes).', 'classic-store' ),
 			'type'        => 'number',
 			'context'     => array( 'edit' ),
 			'readonly'    => true,
 		);
 
 		$schema['properties']['line_items']['items']['properties']['taxes']['items']['properties']['refund_total'] = array(
-			'description' => __( 'Amount that will be refunded for this tax.', 'classic-commerce' ),
+			'description' => __( 'Amount that will be refunded for this tax.', 'classic-store'),
 			'type'        => 'number',
 			'context'     => array( 'edit' ),
 			'readonly'    => true,
 		);
 
 		$schema['properties']['api_restock'] = array(
-			'description' => __( 'When true, refunded items are restocked.', 'classic-commerce' ),
+			'description' => __( 'When true, refunded items are restocked.', 'classic-store'),
 			'type'        => 'boolean',
 			'context'     => array( 'edit' ),
 			'default'     => true,

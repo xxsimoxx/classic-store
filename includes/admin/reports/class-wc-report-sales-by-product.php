@@ -118,14 +118,14 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 
 		$legend[] = array(
 			/* translators: %s: total items sold */
-			'title'            => sprintf( __( '%s sales for the selected items', 'classic-commerce' ), '<strong>' . wc_price( $total_sales ) . '</strong>' ),
+			'title'            => sprintf( __( '%s sales for the selected items', 'classic-store'), '<strong>' . wc_price( $total_sales ) . '</strong>' ),
 			'color'            => $this->chart_colours['sales_amount'],
 			'highlight_series' => 1,
 		);
 
 		$legend[] = array(
 			/* translators: %s: total items purchased */
-			'title'            => sprintf( __( '%s purchases for the selected items', 'classic-commerce' ), '<strong>' . ( $total_items ) . '</strong>' ),
+			'title'            => sprintf( __( '%s purchases for the selected items', 'classic-store'), '<strong>' . ( $total_items ) . '</strong>' ),
 			'color'            => $this->chart_colours['item_count'],
 			'highlight_series' => 0,
 		);
@@ -139,10 +139,10 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 	public function output_report() {
 
 		$ranges = array(
-			'year'       => __( 'Year', 'classic-commerce' ),
-			'last_month' => __( 'Last month', 'classic-commerce' ),
-			'month'      => __( 'This month', 'classic-commerce' ),
-			'7day'       => __( 'Last 7 days', 'classic-commerce' ),
+			'year'       => __( 'Year', 'classic-store'),
+			'last_month' => __( 'Last month', 'classic-store'),
+			'month'      => __( 'This month', 'classic-store'),
+			'7day'       => __( 'Last 7 days', 'classic-store'),
 		);
 
 		$this->chart_colours = array(
@@ -173,7 +173,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 
 		if ( ! empty( $this->product_ids ) ) {
 			$widgets[] = array(
-				'title'    => __( 'Showing reports for:', 'classic-commerce' ),
+				'title'    => __( 'Showing reports for:', 'classic-store'),
 				'callback' => array( $this, 'current_filters' ),
 			);
 		}
@@ -205,7 +205,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 		}
 
 		echo '<p><strong>' . wp_kses_post( implode( ', ', $this->product_ids_titles ) ) . '</strong></p>';
-		echo '<p><a class="button" href="' . esc_url( remove_query_arg( 'product_ids' ) ) . '">' . esc_html__( 'Reset', 'classic-commerce' ) . '</a></p>';
+		echo '<p><a class="button" href="' . esc_url( remove_query_arg( 'product_ids' ) ) . '">' . esc_html__( 'Reset', 'classic-store') . '</a></p>';
 	}
 
 	/**
@@ -213,13 +213,13 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 	 */
 	public function products_widget() {
 		?>
-		<h4 class="section_title"><span><?php esc_html_e( 'Product search', 'classic-commerce' ); ?></span></h4>
+		<h4 class="section_title"><span><?php esc_html_e( 'Product search', 'classic-store'); ?></span></h4>
 		<div class="section">
 			<form method="GET">
 				<div>
 					<?php // @codingStandardsIgnoreStart ?>
-					<select class="wc-product-search" style="width:203px;" multiple="multiple" id="product_ids" name="product_ids[]" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'classic-commerce' ); ?>" data-action="woocommerce_json_search_products_and_variations"></select>
-					<button type="submit" class="submit button" value="<?php esc_attr_e( 'Show', 'classic-commerce' ); ?>"><?php esc_html_e( 'Show', 'classic-commerce' ); ?></button>
+					<select class="wc-product-search" style="width:203px;" multiple="multiple" id="product_ids" name="product_ids[]" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'classic-store'); ?>" data-action="woocommerce_json_search_products_and_variations"></select>
+					<button type="submit" class="submit button" value="<?php esc_attr_e( 'Show', 'classic-store'); ?>"><?php esc_html_e( 'Show', 'classic-store'); ?></button>
 					<input type="hidden" name="range" value="<?php echo ( ! empty( $_GET['range'] ) ) ? esc_attr( $_GET['range'] ) : ''; ?>" />
 					<input type="hidden" name="start_date" value="<?php echo ( ! empty( $_GET['start_date'] ) ) ? esc_attr( $_GET['start_date'] ) : ''; ?>" />
 					<input type="hidden" name="end_date" value="<?php echo ( ! empty( $_GET['end_date'] ) ) ? esc_attr( $_GET['end_date'] ) : ''; ?>" />
@@ -231,7 +231,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 				</div>
 			</form>
 		</div>
-		<h4 class="section_title"><span><?php esc_html_e( 'Top sellers', 'classic-commerce' ); ?></span></h4>
+		<h4 class="section_title"><span><?php esc_html_e( 'Top sellers', 'classic-store'); ?></span></h4>
 		<div class="section">
 			<table cellspacing="0">
 				<?php
@@ -271,12 +271,12 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 					}
 					// @codingStandardsIgnoreEnd
 				} else {
-					echo '<tr><td colspan="3">' . esc_html__( 'No products found in range', 'classic-commerce' ) . '</td></tr>';
+					echo '<tr><td colspan="3">' . esc_html__( 'No products found in range', 'classic-store') . '</td></tr>';
 				}
 				?>
 			</table>
 		</div>
-		<h4 class="section_title"><span><?php esc_html_e( 'Top freebies', 'classic-commerce' ); ?></span></h4>
+		<h4 class="section_title"><span><?php esc_html_e( 'Top freebies', 'classic-store'); ?></span></h4>
 		<div class="section">
 			<table cellspacing="0">
 				<?php
@@ -323,12 +323,12 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 					}
 					// @codingStandardsIgnoreEnd
 				} else {
-					echo '<tr><td colspan="3">' . esc_html__( 'No products found in range', 'classic-commerce' ) . '</td></tr>';
+					echo '<tr><td colspan="3">' . esc_html__( 'No products found in range', 'classic-store') . '</td></tr>';
 				}
 				?>
 			</table>
 		</div>
-		<h4 class="section_title"><span><?php esc_html_e( 'Top earners', 'classic-commerce' ); ?></span></h4>
+		<h4 class="section_title"><span><?php esc_html_e( 'Top earners', 'classic-store'); ?></span></h4>
 		<div class="section">
 			<table cellspacing="0">
 				<?php
@@ -368,7 +368,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 					}
 					// @codingStandardsIgnoreEnd
 				} else {
-					echo '<tr><td colspan="3">' . esc_html__( 'No products found in range', 'classic-commerce' ) . '</td></tr>';
+					echo '<tr><td colspan="3">' . esc_html__( 'No products found in range', 'classic-store') . '</td></tr>';
 				}
 				?>
 			</table>
@@ -407,10 +407,10 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 			download="report-<?php echo esc_attr( $current_range ); ?>-<?php echo esc_html( date_i18n( 'Y-m-d', current_time( 'timestamp' ) ) ); ?>.csv"
 			class="export_csv"
 			data-export="chart"
-			data-xaxes="<?php esc_attr_e( 'Date', 'classic-commerce' ); ?>"
+			data-xaxes="<?php esc_attr_e( 'Date', 'classic-store'); ?>"
 			data-groupby="<?php echo $this->chart_groupby; ?>"<?php // @codingStandardsIgnoreLine ?>
 		>
-			<?php esc_html_e( 'Export CSV', 'classic-commerce' ); ?>
+			<?php esc_html_e( 'Export CSV', 'classic-store'); ?>
 		</a>
 		<?php
 	}
@@ -424,7 +424,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 		if ( empty( $this->product_ids ) ) {
 			?>
 			<div class="chart-container">
-				<p class="chart-prompt"><?php esc_html_e( 'Choose a product to view stats', 'classic-commerce' ); ?></p>
+				<p class="chart-prompt"><?php esc_html_e( 'Choose a product to view stats', 'classic-store'); ?></p>
 			</div>
 			<?php
 		} else {
@@ -531,7 +531,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 
 						var series = [
 							{
-								label: "<?php echo esc_js( __( 'Number of items sold', 'classic-commerce' ) ) ?>",
+								label: "<?php echo esc_js( __( 'Number of items sold', 'classic-store') ) ?>",
 								data: order_data.order_item_counts,
 								color: '<?php echo $this->chart_colours['item_count']; ?>',
 								bars: { fillColor: '<?php echo $this->chart_colours['item_count']; ?>', fill: true, show: true, lineWidth: 0, barWidth: <?php echo $this->barwidth; ?> * 0.5, align: 'center' },
@@ -539,7 +539,7 @@ class WC_Report_Sales_By_Product extends WC_Admin_Report {
 								hoverable: false
 							},
 							{
-								label: "<?php echo esc_js( __( 'Sales amount', 'classic-commerce' ) ) ?>",
+								label: "<?php echo esc_js( __( 'Sales amount', 'classic-store') ) ?>",
 								data: order_data.order_item_amounts,
 								yaxis: 2,
 								color: '<?php echo $this->chart_colours['sales_amount']; ?>',

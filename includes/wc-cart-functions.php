@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 function wc_protected_product_add_to_cart( $passed, $product_id ) {
 	if ( post_password_required( $product_id ) ) {
 		$passed = false;
-		wc_add_notice( __( 'This product is protected and cannot be purchased.', 'classic-commerce' ), 'error' );
+		wc_add_notice( __( 'This product is protected and cannot be purchased.', 'classic-store'), 'error' );
 	}
 	return $passed;
 }
@@ -107,20 +107,20 @@ function wc_add_to_cart_message( $products, $show_qty = false, $return = false )
 
 	foreach ( $products as $product_id => $qty ) {
 		/* translators: %s: product name */
-		$titles[] = apply_filters( 'woocommerce_add_to_cart_qty_html', ( $qty > 1 ? absint( $qty ) . ' &times; ' : '' ), $product_id ) . apply_filters( 'woocommerce_add_to_cart_item_name_in_quotes', sprintf( _x( '&ldquo;%s&rdquo;', 'Item name in quotes', 'classic-commerce' ), strip_tags( get_the_title( $product_id ) ) ), $product_id );
+		$titles[] = apply_filters( 'woocommerce_add_to_cart_qty_html', ( $qty > 1 ? absint( $qty ) . ' &times; ' : '' ), $product_id ) . apply_filters( 'woocommerce_add_to_cart_item_name_in_quotes', sprintf( _x( '&ldquo;%s&rdquo;', 'Item name in quotes', 'classic-store'), strip_tags( get_the_title( $product_id ) ) ), $product_id );
 		$count   += $qty;
 	}
 
 	$titles = array_filter( $titles );
 	/* translators: %s: product name */
-	$added_text = sprintf( _n( '%s has been added to your cart.', '%s have been added to your cart.', $count, 'classic-commerce' ), wc_format_list_of_items( $titles ) );
+	$added_text = sprintf( _n( '%s has been added to your cart.', '%s have been added to your cart.', $count, 'classic-store' ), wc_format_list_of_items( $titles ) );
 
 	// Output success messages.
 	if ( 'yes' === get_option( 'woocommerce_cart_redirect_after_add' ) ) {
 		$return_to = apply_filters( 'woocommerce_continue_shopping_redirect', wc_get_raw_referer() ? wp_validate_redirect( wc_get_raw_referer(), false ) : wc_get_page_permalink( 'shop' ) );
-		$message   = sprintf( '%s <a href="%s" class="button wc-forward">%s</a>', esc_html( $added_text ), esc_url( $return_to ), esc_html__( 'Continue shopping', 'classic-commerce' ) );
+		$message   = sprintf( '%s <a href="%s" class="button wc-forward">%s</a>', esc_html( $added_text ), esc_url( $return_to ), esc_html__( 'Continue shopping', 'classic-store') );
 	} else {
-		$message = sprintf( '%s <a href="%s" class="button wc-forward">%s</a>', esc_html( $added_text ), esc_url( wc_get_cart_url() ), esc_html__( 'View cart', 'classic-commerce' ) );
+		$message = sprintf( '%s <a href="%s" class="button wc-forward">%s</a>', esc_html( $added_text ), esc_url( wc_get_cart_url() ), esc_html__( 'View cart', 'classic-store') );
 	}
 
 	if ( has_filter( 'wc_add_to_cart_message' ) ) {
@@ -150,7 +150,7 @@ function wc_format_list_of_items( $items ) {
 		$item_string .= $item;
 
 		if ( count( $items ) === $key + 2 ) {
-			$item_string .= ' ' . __( 'and', 'classic-commerce' ) . ' ';
+			$item_string .= ' ' . __( 'and', 'classic-store') . ' ';
 		} elseif ( count( $items ) !== $key + 1 ) {
 			$item_string .= ', ';
 		}
@@ -248,7 +248,7 @@ function wc_cart_totals_shipping_html() {
 				'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $i, $package ),
 				'package_details'          => implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
-				'package_name'             => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'classic-commerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'classic-commerce' ), $i, $package ),
+				'package_name'             => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'classic-store'), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'classic-store'), $i, $package ),
 				'index'                    => $i,
 				'chosen_method'            => $chosen_method,
 				'formatted_destination'    => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
@@ -281,7 +281,7 @@ function wc_cart_totals_coupon_label( $coupon, $echo = true ) {
 	}
 
 	/* translators: %s: coupon code */
-	$label = apply_filters( 'woocommerce_cart_totals_coupon_label', sprintf( esc_html__( 'Coupon: %s', 'classic-commerce' ), $coupon->get_code() ), $coupon );
+	$label = apply_filters( 'woocommerce_cart_totals_coupon_label', sprintf( esc_html__( 'Coupon: %s', 'classic-store'), $coupon->get_code() ), $coupon );
 
 	if ( $echo ) {
 		echo $label; // WPCS: XSS ok.
@@ -304,11 +304,11 @@ function wc_cart_totals_coupon_html( $coupon ) {
 	$discount_amount_html = '-' . wc_price( $amount );
 
 	if ( $coupon->get_free_shipping() && empty( $amount ) ) {
-		$discount_amount_html = __( 'Free shipping coupon', 'classic-commerce' );
+		$discount_amount_html = __( 'Free shipping coupon', 'classic-store');
 	}
 
 	$discount_amount_html = apply_filters( 'woocommerce_coupon_discount_amount_html', $discount_amount_html, $coupon );
-	$coupon_html          = $discount_amount_html . ' <a href="' . esc_url( add_query_arg( 'remove_coupon', rawurlencode( $coupon->get_code() ), defined( 'WOOCOMMERCE_CHECKOUT' ) ? wc_get_checkout_url() : wc_get_cart_url() ) ) . '" class="woocommerce-remove-coupon" data-coupon="' . esc_attr( $coupon->get_code() ) . '">' . __( '[Remove]', 'classic-commerce' ) . '</a>';
+	$coupon_html          = $discount_amount_html . ' <a href="' . esc_url( add_query_arg( 'remove_coupon', rawurlencode( $coupon->get_code() ), defined( 'WOOCOMMERCE_CHECKOUT' ) ? wc_get_checkout_url() : wc_get_cart_url() ) ) . '" class="woocommerce-remove-coupon" data-coupon="' . esc_attr( $coupon->get_code() ) . '">' . __( '[Remove]', 'classic-store') . '</a>';
 
 	echo wp_kses( apply_filters( 'woocommerce_cart_totals_coupon_html', $coupon_html, $coupon, $discount_amount_html ), array_replace_recursive( wp_kses_allowed_html( 'post' ), array( 'a' => array( 'data-coupon' => true ) ) ) ); // phpcs:ignore PHPCompatibility.PHP.NewFunctions.array_replace_recursiveFound
 }
@@ -337,13 +337,13 @@ function wc_cart_totals_order_total_html() {
 			if ( WC()->customer->is_customer_outside_base() && ! WC()->customer->has_calculated_shipping() ) {
 				$country = WC()->countries->estimated_for_prefix( $taxable_address[0] ) . WC()->countries->countries[ $taxable_address[0] ];
 				/* translators: 1: tax amount 2: country name */
-				$tax_text = wp_kses_post( sprintf( __( '(includes %1$s estimated for %2$s)', 'classic-commerce' ), implode( ', ', $tax_string_array ), $country ) );
+				$tax_text = wp_kses_post( sprintf( __( '(includes %1$s estimated for %2$s)', 'classic-store' ), implode( ', ', $tax_string_array ), $country ) );
 			} else {
 				/* translators: %s: tax amount */
-				$tax_text = wp_kses_post( sprintf( __( '(includes %s)', 'classic-commerce' ), implode( ', ', $tax_string_array ) ) );
+				$tax_text = wp_kses_post( sprintf( __( '(includes %s)', 'classic-store' ), implode( ', ', $tax_string_array ) ) );
 			}
 
-			$value .= '<small class="includes_tax">' . $tax_text . '</small>'; 
+			$value .= '<small class="includes_tax">' . $tax_text . '</small>';
 		}
 	}
 
@@ -420,7 +420,7 @@ function wc_get_chosen_shipping_method_ids() {
 		$chosen_method = explode( ':', $chosen_method );
 		$method_ids[]  = current( $chosen_method );
 	}
-    
+
 	return $method_ids;
 }
 

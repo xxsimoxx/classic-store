@@ -53,8 +53,8 @@ class WC_Shipping_Free_Shipping extends WC_Shipping_Method {
 	public function __construct( $instance_id = 0 ) {
 		$this->id                 = 'free_shipping';
 		$this->instance_id        = absint( $instance_id );
-		$this->method_title       = __( 'Free shipping', 'classic-commerce' );
-		$this->method_description = __( 'Free shipping is a special method which can be triggered with coupons and minimum spends.', 'classic-commerce' );
+		$this->method_title       = __( 'Free shipping', 'classic-store');
+		$this->method_description = __( 'Free shipping is a special method which can be triggered with coupons and minimum spends.', 'classic-store');
 		$this->supports           = array(
 			'shipping-zones',
 			'instance-settings',
@@ -89,37 +89,37 @@ class WC_Shipping_Free_Shipping extends WC_Shipping_Method {
 	public function init_form_fields() {
 		$this->instance_form_fields = array(
 			'title'      => array(
-				'title'       => __( 'Title', 'classic-commerce' ),
+				'title'       => __( 'Title', 'classic-store'),
 				'type'        => 'text',
-				'description' => __( 'This controls the title which the user sees during checkout.', 'classic-commerce' ),
+				'description' => __( 'This controls the title which the user sees during checkout.', 'classic-store'),
 				'default'     => $this->method_title,
 				'desc_tip'    => true,
 			),
 			'requires'   => array(
-				'title'   => __( 'Free shipping requires...', 'classic-commerce' ),
+				'title'   => __( 'Free shipping requires...', 'classic-store'),
 				'type'    => 'select',
 				'class'   => 'wc-enhanced-select',
 				'default' => '',
 				'options' => array(
-					''           => __( 'N/A', 'classic-commerce' ),
-					'coupon'     => __( 'A valid free shipping coupon', 'classic-commerce' ),
-					'min_amount' => __( 'A minimum order amount', 'classic-commerce' ),
-					'either'     => __( 'A minimum order amount OR a coupon', 'classic-commerce' ),
-					'both'       => __( 'A minimum order amount AND a coupon', 'classic-commerce' ),
+					''           => __( 'N/A', 'classic-store'),
+					'coupon'     => __( 'A valid free shipping coupon', 'classic-store'),
+					'min_amount' => __( 'A minimum order amount', 'classic-store'),
+					'either'     => __( 'A minimum order amount OR a coupon', 'classic-store'),
+					'both'       => __( 'A minimum order amount AND a coupon', 'classic-store'),
 				),
 			),
 			'min_amount' => array(
-				'title'       => __( 'Minimum order amount', 'classic-commerce' ),
+				'title'       => __( 'Minimum order amount', 'classic-store'),
 				'type'        => 'price',
 				'placeholder' => wc_format_localized_price( 0 ),
-				'description' => __( 'Users will need to spend this amount to get free shipping (if enabled above).', 'classic-commerce' ),
+				'description' => __( 'Users will need to spend this amount to get free shipping (if enabled above).', 'classic-store' ),
 				'default'     => '0',
 				'desc_tip'    => true,
 			),
             'ignore_discounts' => array(
-				'title'       => __( 'Ignore coupons discounts', 'classic-commerce' ),
+				'title'       => __( 'Ignore coupons discounts', 'classic-store'),
 				'type'        => 'checkbox',
-				'description' => __( 'Discounts will not be applied to the minimum order amount.', 'woocommerce' ),
+				'description' => __( 'Discounts will not be applied to the minimum order amount.', 'classic-store'),
 				'default'     => 'no',
 				'desc_tip'    => true,
 			),

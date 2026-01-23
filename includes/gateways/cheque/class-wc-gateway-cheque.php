@@ -35,8 +35,8 @@ class WC_Gateway_Cheque extends WC_Payment_Gateway {
 		$this->id                 = 'cheque';
 		$this->icon               = apply_filters( 'woocommerce_cheque_icon', '' );
 		$this->has_fields         = false;
-		$this->method_title       = _x( 'Check payments', 'Check payment method', 'classic-commerce' );
-		$this->method_description = __( 'Take payments in person via checks. This offline gateway can also be useful to test purchases.', 'classic-commerce' );
+		$this->method_title       = _x( 'Check payments', 'Check payment method', 'classic-store');
+		$this->method_description = __( 'Take payments in person via checks. This offline gateway can also be useful to test purchases.', 'classic-store');
 
 		// Load the settings.
 		$this->init_form_fields();
@@ -62,29 +62,29 @@ class WC_Gateway_Cheque extends WC_Payment_Gateway {
 
 		$this->form_fields = array(
 			'enabled'      => array(
-				'title'   => __( 'Enable/Disable', 'classic-commerce' ),
+				'title'   => __( 'Enable/Disable', 'classic-store'),
 				'type'    => 'checkbox',
-				'label'   => __( 'Enable check payments', 'classic-commerce' ),
+				'label'   => __( 'Enable check payments', 'classic-store'),
 				'default' => 'no',
 			),
 			'title'        => array(
-				'title'       => __( 'Title', 'classic-commerce' ),
+				'title'       => __( 'Title', 'classic-store'),
 				'type'        => 'text',
-				'description' => __( 'This controls the title which the user sees during checkout.', 'classic-commerce' ),
-				'default'     => _x( 'Check payments', 'Check payment method', 'classic-commerce' ),
+				'description' => __( 'This controls the title which the user sees during checkout.', 'classic-store'),
+				'default'     => _x( 'Check payments', 'Check payment method', 'classic-store'),
 				'desc_tip'    => true,
 			),
 			'description'  => array(
-				'title'       => __( 'Description', 'classic-commerce' ),
+				'title'       => __( 'Description', 'classic-store'),
 				'type'        => 'textarea',
-				'description' => __( 'Payment method description that the customer will see on your checkout.', 'classic-commerce' ),
-				'default'     => __( 'Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.', 'classic-commerce' ),
+				'description' => __( 'Payment method description that the customer will see on your checkout.', 'classic-store'),
+				'default'     => __( 'Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.', 'classic-store'),
 				'desc_tip'    => true,
 			),
 			'instructions' => array(
-				'title'       => __( 'Instructions', 'classic-commerce' ),
+				'title'       => __( 'Instructions', 'classic-store'),
 				'type'        => 'textarea',
-				'description' => __( 'Instructions that will be added to the thank you page and emails.', 'classic-commerce' ),
+				'description' => __( 'Instructions that will be added to the thank you page and emails.', 'classic-store'),
 				'default'     => '',
 				'desc_tip'    => true,
 			),
@@ -133,7 +133,7 @@ class WC_Gateway_Cheque extends WC_Payment_Gateway {
 
 		if ( $order->get_total() > 0 ) {
 			// Mark as on-hold (we're awaiting the cheque).
-			$order->update_status( apply_filters( 'woocommerce_cheque_process_payment_order_status', 'on-hold', $order ), _x( 'Awaiting check payment', 'Check payment method', 'classic-commerce' ) );
+			$order->update_status( apply_filters( 'woocommerce_cheque_process_payment_order_status', 'on-hold', $order ), _x( 'Awaiting check payment', 'Check payment method', 'classic-store') );
 		} else {
 			$order->payment_complete();
 		}

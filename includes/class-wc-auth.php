@@ -69,9 +69,9 @@ class WC_Auth {
 	 */
 	protected function get_i18n_scope( $scope ) {
 		$permissions = array(
-			'read'       => __( 'Read', 'classic-commerce' ),
-			'write'      => __( 'Write', 'classic-commerce' ),
-			'read_write' => __( 'Read/Write', 'classic-commerce' ),
+			'read'       => __( 'Read', 'classic-store'),
+			'write'      => __( 'Write', 'classic-store'),
+			'read_write' => __( 'Read/Write', 'classic-store'),
 		);
 
 		return $permissions[ $scope ];
@@ -88,24 +88,24 @@ class WC_Auth {
 		$permissions = array();
 		switch ( $scope ) {
 			case 'read':
-				$permissions[] = __( 'View coupons', 'classic-commerce' );
-				$permissions[] = __( 'View customers', 'classic-commerce' );
-				$permissions[] = __( 'View orders and sales reports', 'classic-commerce' );
-				$permissions[] = __( 'View products', 'classic-commerce' );
+				$permissions[] = __( 'View coupons', 'classic-store');
+				$permissions[] = __( 'View customers', 'classic-store');
+				$permissions[] = __( 'View orders and sales reports', 'classic-store');
+				$permissions[] = __( 'View products', 'classic-store');
 				break;
 			case 'write':
-				$permissions[] = __( 'Create webhooks', 'classic-commerce' );
-				$permissions[] = __( 'Create coupons', 'classic-commerce' );
-				$permissions[] = __( 'Create customers', 'classic-commerce' );
-				$permissions[] = __( 'Create orders', 'classic-commerce' );
-				$permissions[] = __( 'Create products', 'classic-commerce' );
+				$permissions[] = __( 'Create webhooks', 'classic-store');
+				$permissions[] = __( 'Create coupons', 'classic-store');
+				$permissions[] = __( 'Create customers', 'classic-store');
+				$permissions[] = __( 'Create orders', 'classic-store');
+				$permissions[] = __( 'Create products', 'classic-store');
 				break;
 			case 'read_write':
-				$permissions[] = __( 'Create webhooks', 'classic-commerce' );
-				$permissions[] = __( 'View and manage coupons', 'classic-commerce' );
-				$permissions[] = __( 'View and manage customers', 'classic-commerce' );
-				$permissions[] = __( 'View and manage orders and sales reports', 'classic-commerce' );
-				$permissions[] = __( 'View and manage products', 'classic-commerce' );
+				$permissions[] = __( 'Create webhooks', 'classic-store');
+				$permissions[] = __( 'View and manage coupons', 'classic-store');
+				$permissions[] = __( 'View and manage customers', 'classic-store');
+				$permissions[] = __( 'View and manage orders and sales reports', 'classic-store');
+				$permissions[] = __( 'View and manage products', 'classic-store');
 				break;
 		}
 		return apply_filters( 'woocommerce_api_permissions_in_scope', $permissions, $scope );
@@ -169,7 +169,7 @@ class WC_Auth {
 		foreach ( $params as $param ) {
 			if ( empty( $_REQUEST[ $param ] ) ) { // WPCS: input var ok, CSRF ok.
 				/* translators: %s: parameter */
-				throw new Exception( sprintf( __( 'Missing parameter %s', 'classic-commerce' ), $param ) );
+				throw new Exception( sprintf( __( 'Missing parameter %s', 'classic-store'), $param ) );
 			}
 
 			$data[ $param ] = wp_unslash( $_REQUEST[ $param ] ); // WPCS: input var ok, CSRF ok, sanitization ok.
@@ -177,7 +177,7 @@ class WC_Auth {
 
 		if ( ! in_array( $data['scope'], array( 'read', 'write', 'read_write' ), true ) ) {
 			/* translators: %s: scope */
-			throw new Exception( sprintf( __( 'Invalid scope %s', 'classic-commerce' ), wc_clean( $data['scope'] ) ) );
+			throw new Exception( sprintf( __( 'Invalid scope %s', 'classic-store'), wc_clean( $data['scope'] ) ) );
 		}
 
 		foreach ( array( 'return_url', 'callback_url' ) as $param ) {
@@ -185,14 +185,14 @@ class WC_Auth {
 
 			if ( false === filter_var( $param, FILTER_VALIDATE_URL ) ) {
 				/* translators: %s: url */
-				throw new Exception( sprintf( __( 'The %s is not a valid URL', 'classic-commerce' ), $param ) );
+				throw new Exception( sprintf( __( 'The %s is not a valid URL', 'classic-store'), $param ) );
 			}
 		}
 
 		$callback_url = $this->get_formatted_url( $data['callback_url'] );
 
 		if ( 0 !== stripos( $callback_url, 'https://' ) ) {
-			throw new Exception( __( 'The callback_url needs to be over SSL', 'classic-commerce' ) );
+			throw new Exception( __( 'The callback_url needs to be over SSL', 'classic-store') );
 		}
 	}
 
@@ -275,7 +275,7 @@ class WC_Auth {
 		if ( is_wp_error( $response ) ) {
 			throw new Exception( $response->get_error_message() );
 		} elseif ( 200 !== intval( $response['response']['code'] ) ) {
-			throw new Exception( __( 'An error occurred in the request and at the time were unable to send the consumer data', 'classic-commerce' ) );
+			throw new Exception( __( 'An error occurred in the request and at the time were unable to send the consumer data', 'classic-store') );
 		}
 
 		return true;
@@ -374,7 +374,7 @@ class WC_Auth {
 			} elseif ( 'access_granted' === $route && current_user_can( 'manage_woocommerce' ) ) {
 				// Granted access endpoint.
 				if ( ! isset( $_GET['wc_auth_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_GET['wc_auth_nonce'] ) ), 'wc_auth_grant_access' ) ) { // WPCS: input var ok.
-					throw new Exception( __( 'Invalid nonce verification', 'classic-commerce' ) );
+					throw new Exception( __( 'Invalid nonce verification', 'classic-store') );
 				}
 
 				$consumer_data = $this->create_keys( $data['app_name'], $data['user_id'], $data['scope'] );
@@ -395,13 +395,13 @@ class WC_Auth {
 					exit;
 				}
 			} else {
-				throw new Exception( __( 'You do not have permission to access this page', 'classic-commerce' ) );
+				throw new Exception( __( 'You do not have permission to access this page', 'classic-store') );
 			}
 		} catch ( Exception $e ) {
 			$this->maybe_delete_key( $consumer_data );
 
 			/* translators: %s: error message */
-			wp_die( sprintf( esc_html__( 'Error: %s.', 'classic-commerce' ), esc_html( $e->getMessage() ) ), esc_html__( 'Access denied', 'classic-commerce' ), array( 'response' => 401 ) );
+			wp_die( sprintf( esc_html__( 'Error: %s.', 'classic-store'), esc_html( $e->getMessage() ) ), esc_html__( 'Access denied', 'classic-store'), array( 'response' => 401 ) );
 		}
 	}
 

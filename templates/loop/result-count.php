@@ -20,15 +20,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php
 	// phpcs:disable WordPress.Security
 	if ( 1 === intval( $total ) ) {
-		_e( 'Showing the single result', 'classic-commerce' );
+		_e( 'Showing the single result', 'classic-store');
 	} elseif ( $total <= $per_page || -1 === $per_page ) {
 		/* translators: %d: total results */
-		printf( _n( 'Showing the all %d result', 'Showing all %d results', $total, 'classic-commerce' ), $total );
+		printf( _n( 'Showing the all %d result', 'Showing all %d results', $total, 'classic-store' ), $total );
 	} else {
 		$first = ( $per_page * $current ) - $per_page + 1;
 		$last  = min( $total, $per_page * $current );
 		/* translators: 1: first result 2: last result 3: total results */
-		printf( _nx( 'Showing %1$d&ndash;%2$d of %3$d result', 'Showing %1$d&ndash;%2$d of %3$d results', $total, 'with first and last result', 'classic-commerce' ), $first, $last, $total );
+		printf( _nx( 'Showing %1$d&ndash;%2$d of %3$d result', 'Showing %1$d&ndash;%2$d of %3$d results', $total, 'with first and last result', 'classic-store'), $first, $last, $total );
 	}
     // phpcs:enable WordPress.Security
 	?>

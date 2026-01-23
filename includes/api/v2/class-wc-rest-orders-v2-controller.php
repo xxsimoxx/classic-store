@@ -86,7 +86,7 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 			array(
 				'args'   => array(
 					'id' => array(
-						'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+						'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 						'type'        => 'integer',
 					),
 				),
@@ -112,7 +112,7 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 						'force' => array(
 							'default'     => false,
 							'type'        => 'boolean',
-							'description' => __( 'Whether to bypass trash and force deletion.', 'classic-commerce' ),
+							'description' => __( 'Whether to bypass trash and force deletion.', 'classic-store'),
 						),
 					),
 				),
@@ -682,7 +682,7 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 			if ( ! is_null( $request['customer_id'] ) && 0 !== $request['customer_id'] ) {
 				// Make sure customer exists.
 				if ( false === get_user_by( 'id', $request['customer_id'] ) ) {
-					throw new WC_REST_Exception( 'woocommerce_rest_invalid_customer_id', __( 'Customer ID is invalid.', 'classic-commerce' ), 400 );
+					throw new WC_REST_Exception( 'woocommerce_rest_invalid_customer_id', __( 'Customer ID is invalid.', 'classic-store'), 400 );
 				}
 
 				// Make sure customer is part of blog.
@@ -758,7 +758,7 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 		} elseif ( 'update' === $action ) {
 			$product_id = 0;
 		} else {
-			throw new WC_REST_Exception( 'woocommerce_rest_required_product_reference', __( 'Product ID or SKU is required.', 'classic-commerce' ), 400 );
+			throw new WC_REST_Exception( 'woocommerce_rest_required_product_reference', __( 'Product ID or SKU is required.', 'classic-store'), 400 );
 		}
 		return $product_id;
 	}
@@ -855,7 +855,7 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 
 		if ( 'create' === $action ) {
 			if ( empty( $posted['method_id'] ) ) {
-				throw new WC_REST_Exception( 'woocommerce_rest_invalid_shipping_item', __( 'Shipping method ID is required.', 'classic-commerce' ), 400 );
+				throw new WC_REST_Exception( 'woocommerce_rest_invalid_shipping_item', __( 'Shipping method ID is required.', 'classic-store'), 400 );
 			}
 		}
 
@@ -879,7 +879,7 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 
 		if ( 'create' === $action ) {
 			if ( empty( $posted['name'] ) ) {
-				throw new WC_REST_Exception( 'woocommerce_rest_invalid_fee_item', __( 'Fee name is required.', 'classic-commerce' ), 400 );
+				throw new WC_REST_Exception( 'woocommerce_rest_invalid_fee_item', __( 'Fee name is required.', 'classic-store'), 400 );
 			}
 		}
 
@@ -904,7 +904,7 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 		if ( 'create' === $action ) {
 			$coupon_code = ArrayUtil::get_value_or_default( $posted, 'code' );
 			if ( StringUtil::is_null_or_whitespace( $coupon_code ) ) {
-				throw new WC_REST_Exception( 'woocommerce_rest_invalid_coupon_coupon', __( 'Coupon code is required.', 'classic-commerce' ), 400 );
+				throw new WC_REST_Exception( 'woocommerce_rest_invalid_coupon_coupon', __( 'Coupon code is required.', 'classic-store'), 400 );
 			}
 		}
 
@@ -941,7 +941,7 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 			$item = $order->get_item( absint( $posted['id'] ), false );
 
 			if ( ! $item ) {
-				throw new WC_REST_Exception( 'woocommerce_rest_invalid_item_id', __( 'Order item ID provided is not associated with order.', 'classic-commerce' ), 400 );
+				throw new WC_REST_Exception( 'woocommerce_rest_invalid_item_id', __( 'Order item ID provided is not associated with order.', 'classic-store'), 400 );
 			}
 		}
 
@@ -1004,271 +1004,271 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'id'                   => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'parent_id'            => array(
-					'description' => __( 'Parent order ID.', 'classic-commerce' ),
+					'description' => __( 'Parent order ID.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'number'               => array(
-					'description' => __( 'Order number.', 'classic-commerce' ),
+					'description' => __( 'Order number.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'order_key'            => array(
-					'description' => __( 'Order key.', 'classic-commerce' ),
+					'description' => __( 'Order key.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'created_via'          => array(
-					'description' => __( 'Shows where the order was created.', 'classic-commerce' ),
+					'description' => __( 'Shows where the order was created.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'version'              => array(
-					'description' => __( 'Version of Classic Commerce which last updated the order.', 'classic-commerce' ),
+					'description' => __( 'Version of Classic Commerce which last updated the order.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'status'               => array(
-					'description' => __( 'Order status.', 'classic-commerce' ),
+					'description' => __( 'Order status.', 'classic-store'),
 					'type'        => 'string',
 					'default'     => 'pending',
 					'enum'        => $this->get_order_statuses(),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'currency'             => array(
-					'description' => __( 'Currency the order was created with, in ISO format.', 'classic-commerce' ),
+					'description' => __( 'Currency the order was created with, in ISO format.', 'classic-store'),
 					'type'        => 'string',
 					'default'     => get_woocommerce_currency(),
 					'enum'        => array_keys( get_woocommerce_currencies() ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'date_created'         => array(
-					'description' => __( "The date the order was created, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the order was created, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_created_gmt'     => array(
-					'description' => __( 'The date the order was created, as GMT.', 'classic-commerce' ),
+					'description' => __( 'The date the order was created, as GMT.', 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_modified'        => array(
-					'description' => __( "The date the order was last modified, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the order was last modified, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_modified_gmt'    => array(
-					'description' => __( 'The date the order was last modified, as GMT.', 'classic-commerce' ),
+					'description' => __( 'The date the order was last modified, as GMT.', 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'discount_total'       => array(
-					'description' => __( 'Total discount amount for the order.', 'classic-commerce' ),
+					'description' => __( 'Total discount amount for the order.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'discount_tax'         => array(
-					'description' => __( 'Total discount tax amount for the order.', 'classic-commerce' ),
+					'description' => __( 'Total discount tax amount for the order.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'shipping_total'       => array(
-					'description' => __( 'Total shipping amount for the order.', 'classic-commerce' ),
+					'description' => __( 'Total shipping amount for the order.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'shipping_tax'         => array(
-					'description' => __( 'Total shipping tax amount for the order.', 'classic-commerce' ),
+					'description' => __( 'Total shipping tax amount for the order.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'cart_tax'             => array(
-					'description' => __( 'Sum of line item taxes only.', 'classic-commerce' ),
+					'description' => __( 'Sum of line item taxes only.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'total'                => array(
-					'description' => __( 'Grand total.', 'classic-commerce' ),
+					'description' => __( 'Grand total.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'total_tax'            => array(
-					'description' => __( 'Sum of all taxes.', 'classic-commerce' ),
+					'description' => __( 'Sum of all taxes.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'prices_include_tax'   => array(
-					'description' => __( 'True the prices included tax during checkout.', 'classic-commerce' ),
+					'description' => __( 'True the prices included tax during checkout.', 'classic-store'),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'customer_id'          => array(
-					'description' => __( 'User ID who owns the order. 0 for guests.', 'classic-commerce' ),
+					'description' => __( 'User ID who owns the order. 0 for guests.', 'classic-store'),
 					'type'        => 'integer',
 					'default'     => 0,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'customer_ip_address'  => array(
-					'description' => __( "Customer's IP address.", 'classic-commerce' ),
+					'description' => __( "Customer's IP address.", 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'customer_user_agent'  => array(
-					'description' => __( 'User agent of the customer.', 'classic-commerce' ),
+					'description' => __( 'User agent of the customer.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'customer_note'        => array(
-					'description' => __( 'Note left by customer during checkout.', 'classic-commerce' ),
+					'description' => __( 'Note left by customer during checkout.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'billing'              => array(
-					'description' => __( 'Billing address.', 'classic-commerce' ),
+					'description' => __( 'Billing address.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view', 'edit' ),
 					'properties'  => array(
 						'first_name' => array(
-							'description' => __( 'First name.', 'classic-commerce' ),
+							'description' => __( 'First name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'last_name'  => array(
-							'description' => __( 'Last name.', 'classic-commerce' ),
+							'description' => __( 'Last name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'company'    => array(
-							'description' => __( 'Company name.', 'classic-commerce' ),
+							'description' => __( 'Company name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'address_1'  => array(
-							'description' => __( 'Address line 1', 'classic-commerce' ),
+							'description' => __( 'Address line 1', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'address_2'  => array(
-							'description' => __( 'Address line 2', 'classic-commerce' ),
+							'description' => __( 'Address line 2', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'city'       => array(
-							'description' => __( 'City name.', 'classic-commerce' ),
+							'description' => __( 'City name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'state'      => array(
-							'description' => __( 'ISO code or name of the state, province or district.', 'classic-commerce' ),
+							'description' => __( 'ISO code or name of the state, province or district.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'postcode'   => array(
-							'description' => __( 'Postal code.', 'classic-commerce' ),
+							'description' => __( 'Postal code.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'country'    => array(
-							'description' => __( 'Country code in ISO 3166-1 alpha-2 format.', 'classic-commerce' ),
+							'description' => __( 'Country code in ISO 3166-1 alpha-2 format.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'email'      => array(
-							'description' => __( 'Email address.', 'classic-commerce' ),
+							'description' => __( 'Email address.', 'classic-store'),
 							'type'        => array( 'string', 'null' ),
 							'format'      => 'email',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'phone'      => array(
-							'description' => __( 'Phone number.', 'classic-commerce' ),
+							'description' => __( 'Phone number.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 					),
 				),
 				'shipping'             => array(
-					'description' => __( 'Shipping address.', 'classic-commerce' ),
+					'description' => __( 'Shipping address.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view', 'edit' ),
 					'properties'  => array(
 						'first_name' => array(
-							'description' => __( 'First name.', 'classic-commerce' ),
+							'description' => __( 'First name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'last_name'  => array(
-							'description' => __( 'Last name.', 'classic-commerce' ),
+							'description' => __( 'Last name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'company'    => array(
-							'description' => __( 'Company name.', 'classic-commerce' ),
+							'description' => __( 'Company name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'address_1'  => array(
-							'description' => __( 'Address line 1', 'classic-commerce' ),
+							'description' => __( 'Address line 1', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'address_2'  => array(
-							'description' => __( 'Address line 2', 'classic-commerce' ),
+							'description' => __( 'Address line 2', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'city'       => array(
-							'description' => __( 'City name.', 'classic-commerce' ),
+							'description' => __( 'City name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'state'      => array(
-							'description' => __( 'ISO code or name of the state, province or district.', 'classic-commerce' ),
+							'description' => __( 'ISO code or name of the state, province or district.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'postcode'   => array(
-							'description' => __( 'Postal code.', 'classic-commerce' ),
+							'description' => __( 'Postal code.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'country'    => array(
-							'description' => __( 'Country code in ISO 3166-1 alpha-2 format.', 'classic-commerce' ),
+							'description' => __( 'Country code in ISO 3166-1 alpha-2 format.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 					),
 				),
 				'payment_method'       => array(
-					'description' => __( 'Payment method ID.', 'classic-commerce' ),
+					'description' => __( 'Payment method ID.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'payment_method_title' => array(
-					'description' => __( 'Payment method title.', 'classic-commerce' ),
+					'description' => __( 'Payment method title.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -1276,60 +1276,60 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 					),
 				),
 				'transaction_id'       => array(
-					'description' => __( 'Unique transaction ID.', 'classic-commerce' ),
+					'description' => __( 'Unique transaction ID.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'date_paid'            => array(
-					'description' => __( "The date the order was paid, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the order was paid, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_paid_gmt'        => array(
-					'description' => __( 'The date the order was paid, as GMT.', 'classic-commerce' ),
+					'description' => __( 'The date the order was paid, as GMT.', 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_completed'       => array(
-					'description' => __( "The date the order was completed, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the order was completed, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_completed_gmt'   => array(
-					'description' => __( 'The date the order was completed, as GMT.', 'classic-commerce' ),
+					'description' => __( 'The date the order was completed, as GMT.', 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'cart_hash'            => array(
-					'description' => __( 'MD5 hash of cart items to ensure orders are not modified.', 'classic-commerce' ),
+					'description' => __( 'MD5 hash of cart items to ensure orders are not modified.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'meta_data'            => array(
-					'description' => __( 'Meta data.', 'classic-commerce' ),
+					'description' => __( 'Meta data.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id'    => array(
-								'description' => __( 'Meta ID.', 'classic-commerce' ),
+								'description' => __( 'Meta ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'key'   => array(
-								'description' => __( 'Meta key.', 'classic-commerce' ),
+								'description' => __( 'Meta key.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'value' => array(
-								'description' => __( 'Meta value.', 'classic-commerce' ),
+								'description' => __( 'Meta value.', 'classic-store'),
 								'type'        => 'mixed',
 								'context'     => array( 'view', 'edit' ),
 							),
@@ -1337,72 +1337,72 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 					),
 				),
 				'line_items'           => array(
-					'description' => __( 'Line items data.', 'classic-commerce' ),
+					'description' => __( 'Line items data.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id'           => array(
-								'description' => __( 'Item ID.', 'classic-commerce' ),
+								'description' => __( 'Item ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'name'         => array(
-								'description' => __( 'Product name.', 'classic-commerce' ),
+								'description' => __( 'Product name.', 'classic-store'),
 								'type'        => 'mixed',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'parent_name'  => array(
-								'description' => __( 'Parent product name if the product is a variation.', 'classic-commerce' ),
+								'description' => __( 'Parent product name if the product is a variation.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'product_id'   => array(
-								'description' => __( 'Product ID.', 'classic-commerce' ),
+								'description' => __( 'Product ID.', 'classic-store'),
 								'type'        => 'mixed',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'variation_id' => array(
-								'description' => __( 'Variation ID, if applicable.', 'classic-commerce' ),
+								'description' => __( 'Variation ID, if applicable.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'quantity'     => array(
-								'description' => __( 'Quantity ordered.', 'classic-commerce' ),
+								'description' => __( 'Quantity ordered.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'tax_class'    => array(
-								'description' => __( 'Tax class of product.', 'classic-commerce' ),
+								'description' => __( 'Tax class of product.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'subtotal'     => array(
-								'description' => __( 'Line subtotal (before discounts).', 'classic-commerce' ),
+								'description' => __( 'Line subtotal (before discounts).', 'classic-store' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'subtotal_tax' => array(
-								'description' => __( 'Line subtotal tax (before discounts).', 'classic-commerce' ),
+								'description' => __( 'Line subtotal tax (before discounts).', 'classic-store' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'total'        => array(
-								'description' => __( 'Line total (after discounts).', 'classic-commerce' ),
+								'description' => __( 'Line total (after discounts).', 'classic-store' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'total_tax'    => array(
-								'description' => __( 'Line total tax (after discounts).', 'classic-commerce' ),
+								'description' => __( 'Line total tax (after discounts).', 'classic-store' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'taxes'        => array(
-								'description' => __( 'Line taxes.', 'classic-commerce' ),
+								'description' => __( 'Line taxes.', 'classic-store'),
 								'type'        => 'array',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
@@ -1410,17 +1410,17 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 									'type'       => 'object',
 									'properties' => array(
 										'id'       => array(
-											'description' => __( 'Tax rate ID.', 'classic-commerce' ),
+											'description' => __( 'Tax rate ID.', 'classic-store'),
 											'type'        => 'integer',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'total'    => array(
-											'description' => __( 'Tax total.', 'classic-commerce' ),
+											'description' => __( 'Tax total.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'subtotal' => array(
-											'description' => __( 'Tax subtotal.', 'classic-commerce' ),
+											'description' => __( 'Tax subtotal.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
@@ -1428,35 +1428,35 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 								),
 							),
 							'meta_data'    => array(
-								'description' => __( 'Meta data.', 'classic-commerce' ),
+								'description' => __( 'Meta data.', 'classic-store'),
 								'type'        => 'array',
 								'context'     => array( 'view', 'edit' ),
 								'items'       => array(
 									'type'       => 'object',
 									'properties' => array(
 										'id'            => array(
-											'description' => __( 'Meta ID.', 'classic-commerce' ),
+											'description' => __( 'Meta ID.', 'classic-store'),
 											'type'        => 'integer',
 											'context'     => array( 'view', 'edit' ),
 											'readonly'    => true,
 										),
 										'key'           => array(
-											'description' => __( 'Meta key.', 'classic-commerce' ),
+											'description' => __( 'Meta key.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'value'         => array(
-											'description' => __( 'Meta value.', 'classic-commerce' ),
+											'description' => __( 'Meta value.', 'classic-store'),
 											'type'        => 'mixed',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'display_key'   => array(
-											'description' => __( 'Meta key for UI display.', 'classic-commerce' ),
+											'description' => __( 'Meta key for UI display.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'display_value' => array(
-											'description' => __( 'Meta value for UI display.', 'classic-commerce' ),
+											'description' => __( 'Meta value for UI display.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
@@ -1464,30 +1464,30 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 								),
 							),
 							'sku'          => array(
-								'description' => __( 'Product SKU.', 'classic-commerce' ),
+								'description' => __( 'Product SKU.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'price'        => array(
-								'description' => __( 'Product price.', 'classic-commerce' ),
+								'description' => __( 'Product price.', 'classic-store'),
 								'type'        => 'number',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
                             'image'        => array(
-								'description' => __( 'Properties of the main product image.', 'classic-commerce' ),
+								'description' => __( 'Properties of the main product image.', 'classic-store'),
 								'type'        => 'object',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 								'properties'  => array(
                                         'id'  => array(
-										'description' => __( 'Image ID.', 'classic-commerce' ),
+										'description' => __( 'Image ID.', 'classic-store'),
 										'type'        => 'integer',
 										'context'     => array( 'view', 'edit' ),
 									),
 									'src' => array(
-										'description' => __( 'Image URL.', 'classic-commerce' ),
+										'description' => __( 'Image URL.', 'classic-store'),
 										'type'        => 'string',
 										'format'      => 'uri',
 										'context'     => array( 'view', 'edit' ),
@@ -1498,7 +1498,7 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 					),
 				),
 				'tax_lines'            => array(
-					'description' => __( 'Tax lines data.', 'classic-commerce' ),
+					'description' => __( 'Tax lines data.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
@@ -1506,67 +1506,67 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 						'type'       => 'object',
 						'properties' => array(
 							'id'                 => array(
-								'description' => __( 'Item ID.', 'classic-commerce' ),
+								'description' => __( 'Item ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'rate_code'          => array(
-								'description' => __( 'Tax rate code.', 'classic-commerce' ),
+								'description' => __( 'Tax rate code.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'rate_id'            => array(
-								'description' => __( 'Tax rate ID.', 'classic-commerce' ),
+								'description' => __( 'Tax rate ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'label'              => array(
-								'description' => __( 'Tax rate label.', 'classic-commerce' ),
+								'description' => __( 'Tax rate label.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'compound'           => array(
-								'description' => __( 'Show if is a compound tax rate.', 'classic-commerce' ),
+								'description' => __( 'Show if is a compound tax rate.', 'classic-store'),
 								'type'        => 'boolean',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'tax_total'          => array(
-								'description' => __( 'Tax total (not including shipping taxes).', 'classic-commerce' ),
+								'description' => __( 'Tax total (not including shipping taxes).', 'classic-store' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'shipping_tax_total' => array(
-								'description' => __( 'Shipping tax total.', 'classic-commerce' ),
+								'description' => __( 'Shipping tax total.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'meta_data'          => array(
-								'description' => __( 'Meta data.', 'classic-commerce' ),
+								'description' => __( 'Meta data.', 'classic-store'),
 								'type'        => 'array',
 								'context'     => array( 'view', 'edit' ),
 								'items'       => array(
 									'type'       => 'object',
 									'properties' => array(
 										'id'    => array(
-											'description' => __( 'Meta ID.', 'classic-commerce' ),
+											'description' => __( 'Meta ID.', 'classic-store'),
 											'type'        => 'integer',
 											'context'     => array( 'view', 'edit' ),
 											'readonly'    => true,
 										),
 										'key'   => array(
-											'description' => __( 'Meta key.', 'classic-commerce' ),
+											'description' => __( 'Meta key.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'value' => array(
-											'description' => __( 'Meta value.', 'classic-commerce' ),
+											'description' => __( 'Meta value.', 'classic-store'),
 											'type'        => 'mixed',
 											'context'     => array( 'view', 'edit' ),
 										),
@@ -1577,46 +1577,46 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 					),
 				),
 				'shipping_lines'       => array(
-					'description' => __( 'Shipping lines data.', 'classic-commerce' ),
+					'description' => __( 'Shipping lines data.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id'           => array(
-								'description' => __( 'Item ID.', 'classic-commerce' ),
+								'description' => __( 'Item ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'method_title' => array(
-								'description' => __( 'Shipping method name.', 'classic-commerce' ),
+								'description' => __( 'Shipping method name.', 'classic-store'),
 								'type'        => 'mixed',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'method_id'    => array(
-								'description' => __( 'Shipping method ID.', 'classic-commerce' ),
+								'description' => __( 'Shipping method ID.', 'classic-store'),
 								'type'        => 'mixed',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'instance_id'  => array(
-								'description' => __( 'Shipping instance ID.', 'classic-commerce' ),
+								'description' => __( 'Shipping instance ID.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'total'        => array(
-								'description' => __( 'Line total (after discounts).', 'classic-commerce' ),
+								'description' => __( 'Line total (after discounts).', 'classic-store' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'total_tax'    => array(
-								'description' => __( 'Line total tax (after discounts).', 'classic-commerce' ),
+								'description' => __( 'Line total tax (after discounts).', 'classic-store' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'taxes'        => array(
-								'description' => __( 'Line taxes.', 'classic-commerce' ),
+								'description' => __( 'Line taxes.', 'classic-store'),
 								'type'        => 'array',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
@@ -1624,13 +1624,13 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 									'type'       => 'object',
 									'properties' => array(
 										'id'    => array(
-											'description' => __( 'Tax rate ID.', 'classic-commerce' ),
+											'description' => __( 'Tax rate ID.', 'classic-store'),
 											'type'        => 'integer',
 											'context'     => array( 'view', 'edit' ),
 											'readonly'    => true,
 										),
 										'total' => array(
-											'description' => __( 'Tax total.', 'classic-commerce' ),
+											'description' => __( 'Tax total.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 											'readonly'    => true,
@@ -1639,25 +1639,25 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 								),
 							),
 							'meta_data'    => array(
-								'description' => __( 'Meta data.', 'classic-commerce' ),
+								'description' => __( 'Meta data.', 'classic-store'),
 								'type'        => 'array',
 								'context'     => array( 'view', 'edit' ),
 								'items'       => array(
 									'type'       => 'object',
 									'properties' => array(
 										'id'    => array(
-											'description' => __( 'Meta ID.', 'classic-commerce' ),
+											'description' => __( 'Meta ID.', 'classic-store'),
 											'type'        => 'integer',
 											'context'     => array( 'view', 'edit' ),
 											'readonly'    => true,
 										),
 										'key'   => array(
-											'description' => __( 'Meta key.', 'classic-commerce' ),
+											'description' => __( 'Meta key.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'value' => array(
-											'description' => __( 'Meta value.', 'classic-commerce' ),
+											'description' => __( 'Meta value.', 'classic-store'),
 											'type'        => 'mixed',
 											'context'     => array( 'view', 'edit' ),
 										),
@@ -1668,47 +1668,47 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 					),
 				),
 				'fee_lines'            => array(
-					'description' => __( 'Fee lines data.', 'classic-commerce' ),
+					'description' => __( 'Fee lines data.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id'         => array(
-								'description' => __( 'Item ID.', 'classic-commerce' ),
+								'description' => __( 'Item ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'name'       => array(
-								'description' => __( 'Fee name.', 'classic-commerce' ),
+								'description' => __( 'Fee name.', 'classic-store'),
 								'type'        => 'mixed',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'tax_class'  => array(
-								'description' => __( 'Tax class of fee.', 'classic-commerce' ),
+								'description' => __( 'Tax class of fee.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'tax_status' => array(
-								'description' => __( 'Tax status of fee.', 'classic-commerce' ),
+								'description' => __( 'Tax status of fee.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'enum'        => array( 'taxable', 'none' ),
 							),
 							'total'      => array(
-								'description' => __( 'Line total (after discounts).', 'classic-commerce' ),
+								'description' => __( 'Line total (after discounts).', 'classic-store' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'total_tax'  => array(
-								'description' => __( 'Line total tax (after discounts).', 'classic-commerce' ),
+								'description' => __( 'Line total tax (after discounts).', 'classic-store' ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'taxes'      => array(
-								'description' => __( 'Line taxes.', 'classic-commerce' ),
+								'description' => __( 'Line taxes.', 'classic-store'),
 								'type'        => 'array',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
@@ -1716,19 +1716,19 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 									'type'       => 'object',
 									'properties' => array(
 										'id'       => array(
-											'description' => __( 'Tax rate ID.', 'classic-commerce' ),
+											'description' => __( 'Tax rate ID.', 'classic-store'),
 											'type'        => 'integer',
 											'context'     => array( 'view', 'edit' ),
 											'readonly'    => true,
 										),
 										'total'    => array(
-											'description' => __( 'Tax total.', 'classic-commerce' ),
+											'description' => __( 'Tax total.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 											'readonly'    => true,
 										),
 										'subtotal' => array(
-											'description' => __( 'Tax subtotal.', 'classic-commerce' ),
+											'description' => __( 'Tax subtotal.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 											'readonly'    => true,
@@ -1737,25 +1737,25 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 								),
 							),
 							'meta_data'  => array(
-								'description' => __( 'Meta data.', 'classic-commerce' ),
+								'description' => __( 'Meta data.', 'classic-store'),
 								'type'        => 'array',
 								'context'     => array( 'view', 'edit' ),
 								'items'       => array(
 									'type'       => 'object',
 									'properties' => array(
 										'id'    => array(
-											'description' => __( 'Meta ID.', 'classic-commerce' ),
+											'description' => __( 'Meta ID.', 'classic-store'),
 											'type'        => 'integer',
 											'context'     => array( 'view', 'edit' ),
 											'readonly'    => true,
 										),
 										'key'   => array(
-											'description' => __( 'Meta key.', 'classic-commerce' ),
+											'description' => __( 'Meta key.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'value' => array(
-											'description' => __( 'Meta value.', 'classic-commerce' ),
+											'description' => __( 'Meta value.', 'classic-store'),
 											'type'        => 'mixed',
 											'context'     => array( 'view', 'edit' ),
 										),
@@ -1766,54 +1766,54 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 					),
 				),
 				'coupon_lines'         => array(
-					'description' => __( 'Coupons line data.', 'classic-commerce' ),
+					'description' => __( 'Coupons line data.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id'           => array(
-								'description' => __( 'Item ID.', 'classic-commerce' ),
+								'description' => __( 'Item ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'code'         => array(
-								'description' => __( 'Coupon code.', 'classic-commerce' ),
+								'description' => __( 'Coupon code.', 'classic-store'),
 								'type'        => 'mixed',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'discount'     => array(
-								'description' => __( 'Discount total.', 'classic-commerce' ),
+								'description' => __( 'Discount total.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'discount_tax' => array(
-								'description' => __( 'Discount total tax.', 'classic-commerce' ),
+								'description' => __( 'Discount total tax.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'meta_data'    => array(
-								'description' => __( 'Meta data.', 'classic-commerce' ),
+								'description' => __( 'Meta data.', 'classic-store'),
 								'type'        => 'array',
 								'context'     => array( 'view', 'edit' ),
 								'items'       => array(
 									'type'       => 'object',
 									'properties' => array(
 										'id'    => array(
-											'description' => __( 'Meta ID.', 'classic-commerce' ),
+											'description' => __( 'Meta ID.', 'classic-store'),
 											'type'        => 'integer',
 											'context'     => array( 'view', 'edit' ),
 											'readonly'    => true,
 										),
 										'key'   => array(
-											'description' => __( 'Meta key.', 'classic-commerce' ),
+											'description' => __( 'Meta key.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'value' => array(
-											'description' => __( 'Meta value.', 'classic-commerce' ),
+											'description' => __( 'Meta value.', 'classic-store'),
 											'type'        => 'mixed',
 											'context'     => array( 'view', 'edit' ),
 										),
@@ -1824,7 +1824,7 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 					),
 				),
 				'refunds'              => array(
-					'description' => __( 'List of refunds.', 'classic-commerce' ),
+					'description' => __( 'List of refunds.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
@@ -1832,19 +1832,19 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 						'type'       => 'object',
 						'properties' => array(
 							'id'     => array(
-								'description' => __( 'Refund ID.', 'classic-commerce' ),
+								'description' => __( 'Refund ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'reason' => array(
-								'description' => __( 'Refund reason.', 'classic-commerce' ),
+								'description' => __( 'Refund reason.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'total'  => array(
-								'description' => __( 'Refund total.', 'classic-commerce' ),
+								'description' => __( 'Refund total.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
@@ -1853,13 +1853,13 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 					),
 				),
                 'payment_url' => array(
-					'description' => __( 'Order payment URL.', 'woocommerce' ),
+					'description' => __( 'Order payment URL.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'set_paid'             => array(
-					'description' => __( 'Define if the order is paid. It will set the status to processing and reduce stock items.', 'classic-commerce' ),
+					'description' => __( 'Define if the order is paid. It will set the status to processing and reduce stock items.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'edit' ),
@@ -1880,34 +1880,34 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 
 		$params['status']   = array(
 			'default'           => 'any',
-			'description'       => __( 'Limit result set to orders assigned a specific status.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to orders assigned a specific status.', 'classic-store'),
 			'type'              => 'string',
 			'enum'              => array_merge( array( 'any', 'trash' ), $this->get_order_statuses() ),
 			'sanitize_callback' => 'sanitize_key',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['customer'] = array(
-			'description'       => __( 'Limit result set to orders assigned a specific customer.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to orders assigned a specific customer.', 'classic-store'),
 			'type'              => 'integer',
 			'sanitize_callback' => 'absint',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['product']  = array(
-			'description'       => __( 'Limit result set to orders assigned a specific product.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to orders assigned a specific product.', 'classic-store'),
 			'type'              => 'integer',
 			'sanitize_callback' => 'absint',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['dp']       = array(
 			'default'           => wc_get_price_decimals(),
-			'description'       => __( 'Number of decimal points to use in each resource.', 'classic-commerce' ),
+			'description'       => __( 'Number of decimal points to use in each resource.', 'classic-store'),
 			'type'              => 'integer',
 			'sanitize_callback' => 'absint',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
         $params['include_meta']            = array(
 			'default'           => array(),
-			'description'       => __( 'Limit meta_data to specific keys.', 'classic-commerce' ),
+			'description'       => __( 'Limit meta_data to specific keys.', 'classic-store'),
 			'type'              => 'array',
 			'items'             => array(
 				'type' => 'string',
@@ -1916,7 +1916,7 @@ class WC_REST_Orders_V2_Controller extends WC_REST_CRUD_Controller {
 		);
 		$params['exclude_meta']            = array(
 			'default'           => array(),
-			'description'       => __( 'Ensure meta_data excludes specific keys.', 'classic-commerce' ),
+			'description'       => __( 'Ensure meta_data excludes specific keys.', 'classic-store'),
 			'type'              => 'array',
 			'items'             => array(
 				'type' => 'string',

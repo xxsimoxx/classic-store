@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 <h1>
 	<?php
 	/* Translators: %s App name. */
-	printf( esc_html__( '%s would like to connect to your store', 'classic-commerce' ), esc_html( $app_name ) );
+	printf( esc_html__( '%s would like to connect to your store', 'classic-store'), esc_html( $app_name ) );
 	?>
 </h1>
 
@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 <p>
 	<?php
 	/* Translators: %1$s App name, %2$s scope. */
-	printf( esc_html__( 'This will give "%1$s" %2$s access which will allow it to:', 'classic-commerce' ), '<strong>' . esc_html( $app_name ) . '</strong>', '<strong>' . esc_html( $scope ) . '</strong>' );
+	printf( esc_html__( 'This will give "%1$s" %2$s access which will allow it to:', 'classic-store'), '<strong>' . esc_html( $app_name ) . '</strong>', '<strong>' . esc_html( $scope ) . '</strong>' );
 	?>
 </p>
 
@@ -41,15 +41,15 @@ defined( 'ABSPATH' ) || exit;
 	<p>
 		<?php
 		/* Translators: %s display name. */
-		printf( esc_html__( 'Logged in as %s', 'classic-commerce' ), esc_html( $user->display_name ) );
+		printf( esc_html__( 'Logged in as %s', 'classic-store'), esc_html( $user->display_name ) );
 		?>
-		<a href="<?php echo esc_url( $logout_url ); ?>" class="wc-auth-logout"><?php esc_html_e( 'Logout', 'classic-commerce' ); ?></a>
+		<a href="<?php echo esc_url( $logout_url ); ?>" class="wc-auth-logout"><?php esc_html_e( 'Logout', 'classic-store'); ?></a>
     </p>
 </div>
 
 <p class="wc-auth-actions">
-	<a href="<?php echo esc_url( $granted_url ); ?>" class="button button-primary wc-auth-approve"><?php esc_html_e( 'Approve', 'classic-commerce' ); ?></a>
-	<a href="<?php echo esc_url( $return_url ); ?>" class="button wc-auth-deny"><?php esc_html_e( 'Deny', 'classic-commerce' ); ?></a>
+	<a href="<?php echo esc_url( $granted_url ); ?>" class="button button-primary wc-auth-approve"><?php esc_html_e( 'Approve', 'classic-store'); ?></a>
+	<a href="<?php echo esc_url( $return_url ); ?>" class="button wc-auth-deny"><?php esc_html_e( 'Deny', 'classic-store'); ?></a>
 </p>
 
 <?php do_action( 'woocommerce_auth_page_footer' ); ?>

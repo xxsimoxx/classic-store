@@ -461,7 +461,7 @@ class WC_Countries {
 	public function shipping_to_prefix( $country_code = '' ) {
 		$country_code = $country_code ? $country_code : WC()->customer->get_shipping_country();
 		$countries    = array( 'AE', 'CZ', 'DO', 'GB', 'NL', 'PH', 'US', 'USAF' );
-		$return       = in_array( $country_code, $countries, true ) ? _x( 'to the', 'shipping country prefix', 'classic-commerce' ) : _x( 'to', 'shipping country prefix', 'classic-commerce' );
+		$return       = in_array( $country_code, $countries, true ) ? _x( 'to the', 'shipping country prefix', 'classic-store') : _x( 'to', 'shipping country prefix', 'classic-store');
 
 		return apply_filters( 'woocommerce_countries_shipping_to_prefix', $return, $country_code );
 	}
@@ -475,7 +475,7 @@ class WC_Countries {
 	public function estimated_for_prefix( $country_code = '' ) {
 		$country_code = $country_code ? $country_code : $this->get_base_country();
 		$countries    = array( 'AE', 'CZ', 'DO', 'GB', 'NL', 'PH', 'US', 'USAF' );
-		$return       = in_array( $country_code, $countries, true ) ? __( 'the', 'classic-commerce' ) . ' ' : '';
+		$return       = in_array( $country_code, $countries, true ) ? __( 'the', 'classic-store') . ' ' : '';
 
 		return apply_filters( 'woocommerce_countries_estimated_for_prefix', $return, $country_code );
 	}
@@ -486,7 +486,7 @@ class WC_Countries {
 	 * @return string
 	 */
 	public function tax_or_vat() {
-		$return = in_array( $this->get_base_country(), $this->get_vat_countries(), true ) ? __( 'VAT', 'classic-commerce' ) : __( 'Tax', 'classic-commerce' );
+		$return = in_array( $this->get_base_country(), $this->get_vat_countries(), true ) ? __( 'VAT', 'classic-store') : __( 'Tax', 'classic-store');
 
 		return apply_filters( 'woocommerce_countries_tax_or_vat', $return );
 	}
@@ -497,7 +497,7 @@ class WC_Countries {
 	 * @return string
 	 */
 	public function inc_tax_or_vat() {
-		$return = in_array( $this->get_base_country(), $this->get_vat_countries(), true ) ? __( '(incl. VAT)', 'classic-commerce' ) : __( '(incl. tax)', 'classic-commerce' );
+		$return = in_array( $this->get_base_country(), $this->get_vat_countries(), true ) ? __( '(incl. VAT)', 'classic-store' ) : __( '(incl. tax)', 'classic-store' );
 
 		return apply_filters( 'woocommerce_countries_inc_tax_or_vat', $return );
 	}
@@ -508,7 +508,7 @@ class WC_Countries {
 	 * @return string
 	 */
 	public function ex_tax_or_vat() {
-		$return = in_array( $this->get_base_country(), $this->get_vat_countries(), true ) ? __( '(ex. VAT)', 'classic-commerce' ) : __( '(ex. tax)', 'classic-commerce' );
+		$return = in_array( $this->get_base_country(), $this->get_vat_countries(), true ) ? __( '(ex. VAT)', 'classic-store' ) : __( '(ex. tax)', 'classic-store' );
 
 		return apply_filters( 'woocommerce_countries_ex_tax_or_vat', $return );
 	}
@@ -660,7 +660,7 @@ class WC_Countries {
 					'{last_name}'        => $args['last_name'],
 					'{name}'             => sprintf(
 						/* translators: 1: first name 2: last name */
-						_x( '%1$s %2$s', 'full name', 'classic-commerce' ),
+						_x( '%1$s %2$s', 'full name', 'classic-store'),
 						$args['first_name'],
 						$args['last_name']
 					),
@@ -676,7 +676,7 @@ class WC_Countries {
 					'{name_upper}'       => wc_strtoupper(
 						sprintf(
 							/* translators: 1: first name 2: last name */
-							_x( '%1$s %2$s', 'full name', 'classic-commerce' ),
+							_x( '%1$s %2$s', 'full name', 'classic-store'),
 							$args['first_name'],
 							$args['last_name']
 						)
@@ -726,33 +726,33 @@ class WC_Countries {
 	 * @return array
 	 */
 	public function get_default_address_fields() {
-		$address_2_label = __( 'Apartment, suite, unit, etc.', 'classic-commerce' );
+		$address_2_label = __( 'Apartment, suite, unit, etc.', 'classic-store');
 
 		// If necessary, append '(optional)' to the placeholder: we don't need to worry about the
 		// label, though, as woocommerce_form_field() takes care of that.
 		if ( 'optional' === get_option( 'woocommerce_checkout_address_2_field', 'optional' ) ) {
-			$address_2_placeholder = __( 'Apartment, suite, unit, etc. (optional)', 'classic-commerce' );
+			$address_2_placeholder = __( 'Apartment, suite, unit, etc. (optional)', 'classic-store' );
 		} else {
 			$address_2_placeholder = $address_2_label;
 		}
 
 		$fields = array(
 			'first_name' => array(
-				'label'        => __( 'First name', 'classic-commerce' ),
+				'label'        => __( 'First name', 'classic-store'),
 				'required'     => true,
 				'class'        => array( 'form-row-first' ),
 				'autocomplete' => 'given-name',
 				'priority'     => 10,
 			),
 			'last_name'  => array(
-				'label'        => __( 'Last name', 'classic-commerce' ),
+				'label'        => __( 'Last name', 'classic-store'),
 				'required'     => true,
 				'class'        => array( 'form-row-last' ),
 				'autocomplete' => 'family-name',
 				'priority'     => 20,
 			),
 			'company'    => array(
-				'label'        => __( 'Company name', 'classic-commerce' ),
+				'label'        => __( 'Company name', 'classic-store'),
 				'class'        => array( 'form-row-wide' ),
 				'autocomplete' => 'organization',
 				'priority'     => 30,
@@ -760,16 +760,16 @@ class WC_Countries {
 			),
 			'country'    => array(
 				'type'         => 'country',
-				'label'        => __( 'Country / Region', 'classic-commerce' ),
+				'label'        => __( 'Country / Region', 'classic-store'),
 				'required'     => true,
 				'class'        => array( 'form-row-wide', 'address-field', 'update_totals_on_change' ),
 				'autocomplete' => 'country',
 				'priority'     => 40,
 			),
 			'address_1'  => array(
-				'label'        => __( 'Street address', 'classic-commerce' ),
+				'label'        => __( 'Street address', 'classic-store'),
 				/* translators: use local order of street name and house number. */
-				'placeholder'  => esc_attr__( 'House number and street name', 'classic-commerce' ),
+				'placeholder'  => esc_attr__( 'House number and street name', 'classic-store'),
 				'required'     => true,
 				'class'        => array( 'form-row-wide', 'address-field' ),
 				'autocomplete' => 'address-line1',
@@ -785,7 +785,7 @@ class WC_Countries {
 				'required'     => 'required' === get_option( 'woocommerce_checkout_address_2_field', 'optional' ),
 			),
 			'city'       => array(
-				'label'        => __( 'Town / City', 'classic-commerce' ),
+				'label'        => __( 'Town / City', 'classic-store'),
 				'required'     => true,
 				'class'        => array( 'form-row-wide', 'address-field' ),
 				'autocomplete' => 'address-level2',
@@ -793,7 +793,7 @@ class WC_Countries {
 			),
 			'state'      => array(
 				'type'         => 'state',
-				'label'        => __( 'State / County', 'classic-commerce' ),
+				'label'        => __( 'State / County', 'classic-store'),
 				'required'     => true,
 				'class'        => array( 'form-row-wide', 'address-field' ),
 				'validate'     => array( 'state' ),
@@ -801,7 +801,7 @@ class WC_Countries {
 				'priority'     => 80,
 			),
 			'postcode'   => array(
-				'label'        => __( 'Postcode / ZIP', 'classic-commerce' ),
+				'label'        => __( 'Postcode / ZIP', 'classic-store'),
 				'required'     => true,
 				'class'        => array( 'form-row-wide', 'address-field' ),
 				'validate'     => array( 'postcode' ),
@@ -870,7 +870,7 @@ class WC_Countries {
 					),
 					'AL' => array(
 						'state' => array(
-							'label' => __( 'County', 'classic-commerce' ),
+							'label' => __( 'County', 'classic-store'),
 						),
 					),
 					'AO' => array(
@@ -879,7 +879,7 @@ class WC_Countries {
 							'hidden'   => true,
 						),
 						'state'    => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'AT' => array(
@@ -893,13 +893,13 @@ class WC_Countries {
 					),
 					'AU' => array(
 						'city'     => array(
-							'label' => __( 'Suburb', 'classic-commerce' ),
+							'label' => __( 'Suburb', 'classic-store'),
 						),
 						'postcode' => array(
-							'label' => __( 'Postcode', 'classic-commerce' ),
+							'label' => __( 'Postcode', 'classic-store'),
 						),
 						'state'    => array(
-							'label' => __( 'State', 'classic-commerce' ),
+							'label' => __( 'State', 'classic-store'),
 						),
 					),
 					'AX' => array(
@@ -916,7 +916,7 @@ class WC_Countries {
 							'priority' => 65,
 						),
 						'state'    => array(
-							'label'    => __( 'Canton', 'classic-commerce' ),
+							'label'    => __( 'Canton', 'classic-store'),
 							'required' => false,
 							'hidden'   => true,
 						),
@@ -926,7 +926,7 @@ class WC_Countries {
 							'required' => false,
 						),
 						'state'    => array(
-							'label' => __( 'District', 'classic-commerce' ),
+							'label' => __( 'District', 'classic-store'),
 						),
 					),
 					'BE' => array(
@@ -964,7 +964,7 @@ class WC_Countries {
 							'hidden'   => true,
 						),
 						'state'    => array(
-							'label' => __( 'Department', 'classic-commerce' ),
+							'label' => __( 'Department', 'classic-store'),
 						),
 					),
 					'BS' => array(
@@ -984,10 +984,10 @@ class WC_Countries {
 					),
 					'CA' => array(
 						'postcode' => array(
-							'label' => __( 'Postal code', 'classic-commerce' ),
+							'label' => __( 'Postal code', 'classic-store'),
 						),
 						'state'    => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'CH' => array(
@@ -995,7 +995,7 @@ class WC_Countries {
 							'priority' => 65,
 						),
 						'state'    => array(
-							'label'    => __( 'Canton', 'classic-commerce' ),
+							'label'    => __( 'Canton', 'classic-store'),
 							'required' => false,
 						),
 					),
@@ -1009,12 +1009,12 @@ class WC_Countries {
 							'hidden'   => 'CL' === $this->get_base_country(),
 						),
 						'state'    => array(
-							'label' => __( 'Region', 'classic-commerce' ),
+							'label' => __( 'Region', 'classic-store'),
 						),
 					),
 					'CN' => array(
 						'state' => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'CO' => array(
@@ -1022,12 +1022,12 @@ class WC_Countries {
 							'required' => false,
 						),
 						'state'    => array(
-							'label' => __( 'Department', 'classic-commerce' ),
+							'label' => __( 'Department', 'classic-store'),
 						),
 					),
 					'CR' => array(
 						'state' => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'CW' => array(
@@ -1065,12 +1065,12 @@ class WC_Countries {
 					),
 					'DO' => array(
 						'state' => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'EC' => array(
 						'state' => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'EE' => array(
@@ -1109,7 +1109,7 @@ class WC_Countries {
 					'GG' => array(
 						'state' => array(
 							'required' => false,
-							'label'    => __( 'Parish', 'classic-commerce' ),
+							'label'    => __( 'Parish', 'classic-store'),
 						),
 					),
 					'GH' => array(
@@ -1117,7 +1117,7 @@ class WC_Countries {
 							'required' => false,
 						),
 						'state'    => array(
-							'label' => __( 'Region', 'classic-commerce' ),
+							'label' => __( 'Region', 'classic-store'),
 						),
 					),
 					'GP' => array(
@@ -1142,7 +1142,7 @@ class WC_Countries {
 							'required' => false,
 						),
 						'state'    => array(
-							'label' => __( 'Department', 'classic-commerce' ),
+							'label' => __( 'Department', 'classic-store'),
 						),
 					),
 					'HK' => array(
@@ -1150,15 +1150,15 @@ class WC_Countries {
 							'required' => false,
 						),
 						'city'     => array(
-							'label' => __( 'Town / District', 'classic-commerce' ),
+							'label' => __( 'Town / District', 'classic-store'),
 						),
 						'state'    => array(
-							'label' => __( 'Region', 'classic-commerce' ),
+							'label' => __( 'Region', 'classic-store'),
 						),
 					),
 					'HN' => array(
 						'state' => array(
-							'label' => __( 'Department', 'classic-commerce' ),
+							'label' => __( 'Department', 'classic-store'),
 						),
 					),
 					'HU' => array(
@@ -1184,22 +1184,22 @@ class WC_Countries {
 							'priority' => 72,
 						),
 						'state'      => array(
-							'label'    => __( 'County', 'classic-commerce' ),
+							'label'    => __( 'County', 'classic-store'),
 							'required' => false,
 						),
 					),
 					'ID' => array(
 						'state' => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'IE' => array(
 						'postcode' => array(
 							'required' => false,
-							'label'    => __( 'Eircode', 'classic-commerce' ),
+							'label'    => __( 'Eircode', 'classic-store'),
 						),
 						'state'    => array(
-							'label' => __( 'County', 'classic-commerce' ),
+							'label' => __( 'County', 'classic-store'),
 						),
 					),
 					'IS' => array(
@@ -1228,10 +1228,10 @@ class WC_Countries {
 					),
 					'IN' => array(
 						'postcode' => array(
-							'label' => __( 'PIN Code', 'classic-commerce' ),
+							'label' => __( 'PIN Code', 'classic-store'),
 						),
 						'state'    => array(
-							'label' => __( 'State', 'classic-commerce' ),
+							'label' => __( 'State', 'classic-store'),
 						),
 					),
 					'IR' => array(
@@ -1254,20 +1254,20 @@ class WC_Countries {
 						),
 						'state'    => array(
 							'required' => true,
-							'label'    => __( 'Province', 'classic-commerce' ),
+							'label'    => __( 'Province', 'classic-store'),
 						),
 					),
 					'JM' => array(
 						'city'     => array(
-							'label' => __( 'Town / City / Post Office', 'classic-commerce' ),
+							'label' => __( 'Town / City / Post Office', 'classic-store'),
 						),
 						'postcode' => array(
 							'required' => false,
-							'label'    => __( 'Postal Code', 'classic-commerce' ),
+							'label'    => __( 'Postal Code', 'classic-store'),
 						),
 						'state'    => array(
 							'required' => true,
-							'label'    => __( 'Parish', 'classic-commerce' ),
+							'label'    => __( 'Parish', 'classic-store'),
 						),
 					),
 					'JP' => array(
@@ -1284,7 +1284,7 @@ class WC_Countries {
 							'priority' => 65,
 						),
 						'state'      => array(
-							'label'    => __( 'Prefecture', 'classic-commerce' ),
+							'label'    => __( 'Prefecture', 'classic-store'),
 							'class'    => array( 'form-row-last', 'address-field' ),
 							'priority' => 66,
 						),
@@ -1301,11 +1301,11 @@ class WC_Countries {
 					'KN' => array(
 						'postcode' => array(
 							'required' => false,
-							'label'    => __( 'Postal code', 'classic-commerce' ),
+							'label'    => __( 'Postal code', 'classic-store'),
 						),
 						'state'    => array(
 							'required' => true,
-							'label'    => __( 'Parish', 'classic-commerce' ),
+							'label'    => __( 'Parish', 'classic-store'),
 						),
 					),
 					'KR' => array(
@@ -1322,7 +1322,7 @@ class WC_Countries {
 					),
 					'LV' => array(
 						'state' => array(
-							'label'    => __( 'Municipality', 'classic-commerce' ),
+							'label'    => __( 'Municipality', 'classic-store'),
 							'required' => false,
 						),
 					),
@@ -1356,12 +1356,12 @@ class WC_Countries {
 							'hidden'   => true,
 						),
 						'state'    => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'NI' => array(
 						'state' => array(
-							'label' => __( 'Department', 'classic-commerce' ),
+							'label' => __( 'Department', 'classic-store'),
 						),
 					),
 					'NL' => array(
@@ -1375,21 +1375,21 @@ class WC_Countries {
 					),
 					'NG' => array(
 						'postcode' => array(
-							'label'    => __( 'Postcode', 'classic-commerce' ),
+							'label'    => __( 'Postcode', 'classic-store'),
 							'required' => false,
 							'hidden'   => true,
 						),
 						'state'    => array(
-							'label' => __( 'State', 'classic-commerce' ),
+							'label' => __( 'State', 'classic-store'),
 						),
 					),
 					'NZ' => array(
 						'postcode' => array(
-							'label' => __( 'Postcode', 'classic-commerce' ),
+							'label' => __( 'Postcode', 'classic-store'),
 						),
 						'state'    => array(
 							'required' => false,
-							'label'    => __( 'Region', 'classic-commerce' ),
+							'label'    => __( 'Region', 'classic-store'),
 						),
 					),
 					'NO' => array(
@@ -1403,7 +1403,7 @@ class WC_Countries {
 					),
 					'NP' => array(
 						'state'    => array(
-							'label' => __( 'State / Zone', 'classic-commerce' ),
+							'label' => __( 'State / Zone', 'classic-store'),
 						),
 						'postcode' => array(
 							'required' => false,
@@ -1411,7 +1411,7 @@ class WC_Countries {
 					),
 					'PA' => array(
 						'state' => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'PL' => array(
@@ -1425,7 +1425,7 @@ class WC_Countries {
 					),
 					'PR' => array(
 						'city'  => array(
-							'label' => __( 'Municipality', 'classic-commerce' ),
+							'label' => __( 'Municipality', 'classic-store'),
 						),
 						'state' => array(
 							'required' => false,
@@ -1440,7 +1440,7 @@ class WC_Countries {
 					),
 					'PY' => array(
 						'state' => array(
-							'label' => __( 'Department', 'classic-commerce' ),
+							'label' => __( 'Department', 'classic-store'),
 						),
 					),
 					'RE' => array(
@@ -1451,7 +1451,7 @@ class WC_Countries {
 					),
 					'RO' => array(
 						'state' => array(
-							'label'    => __( 'County', 'classic-commerce' ),
+							'label'    => __( 'County', 'classic-store'),
 							'required' => true,
 						),
 					),
@@ -1463,7 +1463,7 @@ class WC_Countries {
 							'required' => true,
 						),
 						'state'    => array(
-							'label'    => __( 'District', 'classic-commerce' ),
+							'label'    => __( 'District', 'classic-store'),
 							'required' => false,
 						),
 					),
@@ -1508,7 +1508,7 @@ class WC_Countries {
 					),
 					'SV' => array(
 						'state' => array(
-							'label' => __( 'Department', 'classic-commerce' ),
+							'label' => __( 'Department', 'classic-store'),
 						),
 					),
 					'ES' => array(
@@ -1516,7 +1516,7 @@ class WC_Countries {
 							'priority' => 65,
 						),
 						'state'    => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'LI' => array(
@@ -1542,7 +1542,7 @@ class WC_Countries {
 					),
 					'MD' => array(
 						'state' => array(
-							'label' => __( 'Municipality / District', 'classic-commerce' ),
+							'label' => __( 'Municipality / District', 'classic-store'),
 						),
 					),
 					'SE' => array(
@@ -1559,7 +1559,7 @@ class WC_Countries {
 							'priority' => 65,
 						),
 						'state'    => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'UG' => array(
@@ -1568,33 +1568,33 @@ class WC_Countries {
 							'hidden'   => true,
 						),
 						'city'     => array(
-							'label'    => __( 'Town / Village', 'classic-commerce' ),
+							'label'    => __( 'Town / Village', 'classic-store'),
 							'required' => true,
 						),
 						'state'    => array(
-							'label'    => __( 'District', 'classic-commerce' ),
+							'label'    => __( 'District', 'classic-store'),
 							'required' => true,
 						),
 					),
 					'US' => array(
 						'postcode' => array(
-							'label' => __( 'ZIP Code', 'classic-commerce' ),
+							'label' => __( 'ZIP Code', 'classic-store'),
 						),
 						'state'    => array(
-							'label' => __( 'State', 'classic-commerce' ),
+							'label' => __( 'State', 'classic-store'),
 						),
 					),
 					'UY' => array(
 						'state' => array(
-							'label' => __( 'Department', 'classic-commerce' ),
+							'label' => __( 'Department', 'classic-store'),
 						),
 					),
 					'GB' => array(
 						'postcode' => array(
-							'label' => __( 'Postcode', 'classic-commerce' ),
+							'label' => __( 'Postcode', 'classic-store'),
 						),
 						'state'    => array(
-							'label'    => __( 'County', 'classic-commerce' ),
+							'label'    => __( 'County', 'classic-store'),
 							'required' => false,
 						),
 					),
@@ -1604,7 +1604,7 @@ class WC_Countries {
 							'hidden'   => true,
 						),
 						'state'    => array(
-							'label' => __( 'District', 'classic-commerce' ),
+							'label' => __( 'District', 'classic-store'),
 						),
 					),
 					'VN' => array(
@@ -1636,7 +1636,7 @@ class WC_Countries {
 					),
 					'ZA' => array(
 						'state' => array(
-							'label' => __( 'Province', 'classic-commerce' ),
+							'label' => __( 'Province', 'classic-store'),
 						),
 					),
 					'ZW' => array(
@@ -1702,7 +1702,7 @@ class WC_Countries {
 
 			if ( 'hidden' !== $show_phone_field ) {
 				$address_fields[ $type . 'phone' ] = array(
-					'label'        => __( 'Phone', 'classic-commerce' ),
+					'label'        => __( 'Phone', 'classic-store'),
 					'required'     => 'required' === $show_phone_field,
 					'type'         => 'tel',
 					'class'        => array( 'form-row-wide' ),
@@ -1714,7 +1714,7 @@ class WC_Countries {
 			// Add email to billing address form.
 			if ( 'billing_' === $type ) {
 				$address_fields['billing_email'] = array(
-					'label'        => __( 'Email address', 'classic-commerce' ),
+					'label'        => __( 'Email address', 'classic-store'),
 					'required'     => true,
 					'type'         => 'email',
 					'class'        => array( 'form-row-wide' ),

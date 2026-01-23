@@ -163,14 +163,14 @@ if ( ! class_exists( 'WC_Settings_Page', false ) ) :
 		 *
 		 * Example:
 		 * return array(
-		 *   ''        => __( 'General', 'classic-commerce' ),
-		 *   'foobars' => __( 'Foos & Bars', 'classic-commerce' ),
+		 *   ''        => __( 'General', 'classic-store'),
+		 *   'foobars' => __( 'Foos & Bars', 'classic-store'),
 		 * );
 		 *
 		 * @return array An associative array where keys are section identifiers and the values are translated section names.
 		 */
 		protected function get_own_sections() {
-			return array( '' => __( 'General', 'classic-commerce' ) );
+			return array( '' => __( 'General', 'classic-store') );
 		}
 
 		/**

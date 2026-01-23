@@ -293,7 +293,7 @@ function wc_format_decimal( $number, $dp = false, $trim_zeros = false ) {
 	// Remove locale from string.
 	if ( ! is_float( $number ) ) {
 		$number = str_replace( $decimals, '.', $number );
-		
+
         // Convert multiple dots to just one.
 		$number = preg_replace( '/\.(?![^.]+$)|[^0-9.-]/', '', wc_clean( $number ) );
 	}
@@ -1200,24 +1200,24 @@ if ( ! function_exists( 'wc_make_numeric_postcode' ) ) {
  * @return string
  */
 function wc_format_stock_for_display( $product ) {
-	$display      = __( 'In stock', 'classic-commerce' );
+	$display      = __( 'In stock', 'classic-store');
 	$stock_amount = $product->get_stock_quantity();
 
 	switch ( get_option( 'woocommerce_stock_format' ) ) {
 		case 'low_amount':
 			if ( $stock_amount <= wc_get_low_stock_amount( $product ) ) {
 				/* translators: %s: stock amount */
-				$display = sprintf( __( 'Only %s left in stock', 'classic-commerce' ), wc_format_stock_quantity_for_display( $stock_amount, $product ) );
+				$display = sprintf( __( 'Only %s left in stock', 'classic-store'), wc_format_stock_quantity_for_display( $stock_amount, $product ) );
 			}
 			break;
 		case '':
 			/* translators: %s: stock amount */
-			$display = sprintf( __( '%s in stock', 'classic-commerce' ), wc_format_stock_quantity_for_display( $stock_amount, $product ) );
+			$display = sprintf( __( '%s in stock', 'classic-store'), wc_format_stock_quantity_for_display( $stock_amount, $product ) );
 			break;
 	}
 
 	if ( $product->backorders_allowed() && $product->backorders_require_notification() ) {
-		$display .= ' ' . __( '(can be backordered)', 'classic-commerce' );
+		$display .= ' ' . __( '(can be backordered)', 'classic-store' );
 	}
 
 	return $display;
@@ -1254,7 +1254,7 @@ function wc_format_sale_price( $regular_price, $sale_price ) {
 	// For accessibility (a11y) we'll also display that information to screen readers.
 	$price .= '<span class="screen-reader-text">';
 	// translators: %s is a product's regular price.
-	$price .= esc_html( sprintf( __( 'Original price was: %s.', 'classic-commerce' ), wp_strip_all_tags( $formatted_regular_price ) ) );
+	$price .= esc_html( sprintf( __( 'Original price was: %s.', 'classic-store'), wp_strip_all_tags( $formatted_regular_price ) ) );
 	$price .= '</span>';
 
 	// Add the sale price.
@@ -1263,7 +1263,7 @@ function wc_format_sale_price( $regular_price, $sale_price ) {
 	// For accessibility (a11y) we'll also display that information to screen readers.
 	$price .= '<span class="screen-reader-text">';
 	// translators: %s is a product's current (sale) price.
-	$price .= esc_html( sprintf( __( 'Current price is: %s.', 'classic-commerce' ), wp_strip_all_tags( $formatted_sale_price ) ) );
+	$price .= esc_html( sprintf( __( 'Current price is: %s.', 'classic-store'), wp_strip_all_tags( $formatted_sale_price ) ) );
 	$price .= '</span>';
 
 	return apply_filters( 'woocommerce_format_sale_price', $price, $regular_price, $sale_price );
@@ -1278,7 +1278,7 @@ function wc_format_sale_price( $regular_price, $sale_price ) {
  */
 function wc_format_price_range( $from, $to ) {
 	/* translators: 1: price from 2: price to */
-	$price = sprintf( _x( '%1$s &ndash; %2$s', 'Price range: from-to', 'classic-commerce' ), is_numeric( $from ) ? wc_price( $from ) : $from, is_numeric( $to ) ? wc_price( $to ) : $to );
+	$price = sprintf( _x( '%1$s &ndash; %2$s', 'Price range: from-to', 'classic-store'), is_numeric( $from ) ? wc_price( $from ) : $from, is_numeric( $to ) ? wc_price( $to ) : $to );
 	return apply_filters( 'woocommerce_format_price_range', $price, $from, $to );
 }
 
@@ -1295,7 +1295,7 @@ function wc_format_weight( $weight ) {
 	if ( ! empty( $weight_string ) ) {
 		$weight_string .= ' ' . get_option( 'woocommerce_weight_unit' );
 	} else {
-		$weight_string = __( 'N/A', 'classic-commerce' );
+		$weight_string = __( 'N/A', 'classic-store');
 	}
 
 	return apply_filters( 'woocommerce_format_weight', $weight_string, $weight );
@@ -1314,7 +1314,7 @@ function wc_format_dimensions( $dimensions ) {
 	if ( ! empty( $dimension_string ) ) {
 		$dimension_string .= ' ' . get_option( 'woocommerce_dimension_unit' );
 	} else {
-		$dimension_string = __( 'N/A', 'classic-commerce' );
+		$dimension_string = __( 'N/A', 'classic-store');
 	}
 
 	return apply_filters( 'woocommerce_format_dimensions', $dimension_string, $dimensions );
@@ -1468,10 +1468,10 @@ function wc_esc_json( $json, $html = false ) {
  */
 function wc_parse_relative_date_option( $raw_value ) {
 	$periods = array(
-		'days'   => __( 'Day(s)', 'classic-commerce' ),
-		'weeks'  => __( 'Week(s)', 'classic-commerce' ),
-		'months' => __( 'Month(s)', 'classic-commerce' ),
-		'years'  => __( 'Year(s)', 'classic-commerce' ),
+		'days'   => __( 'Day(s)', 'classic-store' ),
+		'weeks'  => __( 'Week(s)', 'classic-store' ),
+		'months' => __( 'Month(s)', 'classic-store' ),
+		'years'  => __( 'Year(s)', 'classic-store' ),
 	);
 
 	$value = wp_parse_args( (array) $raw_value, array(

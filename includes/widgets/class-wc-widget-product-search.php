@@ -18,14 +18,14 @@ class WC_Widget_Product_Search extends WC_Widget {
 	 */
 	public function __construct() {
 		$this->widget_cssclass    = 'woocommerce widget_product_search';
-		$this->widget_description = __( 'A search form for your store.', 'classic-commerce' );
+		$this->widget_description = __( 'A search form for your store.', 'classic-store');
 		$this->widget_id          = 'woocommerce_product_search';
-		$this->widget_name        = __( 'Product Search', 'classic-commerce' );
+		$this->widget_name        = __( 'Product Search', 'classic-store');
 		$this->settings           = array(
 			'title' => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Title', 'classic-commerce' ),
+				'label' => __( 'Title', 'classic-store'),
 			),
 		);
 

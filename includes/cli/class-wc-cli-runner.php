@@ -76,7 +76,7 @@ class WC_CLI_Runner {
 			// Only register endpoints with schemas.
 			if ( empty( $route_data['schema']['title'] ) ) {
 				/* translators: %s: Route to a given WC-API endpoint */
-				WP_CLI::debug( sprintf( __( 'No schema title found for %s, skipping REST command registration.', 'classic-commerce' ), $route ), 'wc' );
+				WP_CLI::debug( sprintf( __( 'No schema title found for %s, skipping REST command registration.', 'classic-store'), $route ), 'wc' );
 				continue;
 			}
 			// Ignore batch endpoints.
@@ -107,15 +107,15 @@ class WC_CLI_Runner {
 		// Define IDs that we are looking for in the routes (in addition to id)
 		// so that we can pass it to the rest command, and use it here to generate documentation.
 		$supported_ids = array(
-			'product_id'   => __( 'Product ID.', 'classic-commerce' ),
-			'customer_id'  => __( 'Customer ID.', 'classic-commerce' ),
-			'order_id'     => __( 'Order ID.', 'classic-commerce' ),
-			'refund_id'    => __( 'Refund ID.', 'classic-commerce' ),
-			'attribute_id' => __( 'Attribute ID.', 'classic-commerce' ),
-			'zone_id'      => __( 'Zone ID.', 'classic-commerce' ),
-			'instance_id'  => __( 'Instance ID.', 'classic-commerce' ),
-			'id'           => __( 'The ID for the resource.', 'classic-commerce' ),
-            'slug'         => __( 'The slug for the resource.', 'classic-commerce' ),
+			'product_id'   => __( 'Product ID.', 'classic-store'),
+			'customer_id'  => __( 'Customer ID.', 'classic-store'),
+			'order_id'     => __( 'Order ID.', 'classic-store'),
+			'refund_id'    => __( 'Refund ID.', 'classic-store'),
+			'attribute_id' => __( 'Attribute ID.', 'classic-store'),
+			'zone_id'      => __( 'Zone ID.', 'classic-store'),
+			'instance_id'  => __( 'Instance ID.', 'classic-store'),
+			'id'           => __( 'The ID for the resource.', 'classic-store'),
+            'slug'         => __( 'The slug for the resource.', 'classic-store'),
 		);
 		$rest_command->set_supported_ids( $supported_ids );
 		$positional_args = array_keys( $supported_ids );
@@ -187,19 +187,19 @@ class WC_CLI_Runner {
 				$synopsis[] = array(
 					'name'        => 'fields',
 					'type'        => 'assoc',
-					'description' => __( 'Limit response to specific fields. Defaults to all fields.', 'classic-commerce' ),
+					'description' => __( 'Limit response to specific fields. Defaults to all fields.', 'classic-store'),
 					'optional'    => true,
 				);
 				$synopsis[] = array(
 					'name'        => 'field',
 					'type'        => 'assoc',
-					'description' => __( 'Get the value of an individual field.', 'classic-commerce' ),
+					'description' => __( 'Get the value of an individual field.', 'classic-store'),
 					'optional'    => true,
 				);
 				$synopsis[] = array(
 					'name'        => 'format',
 					'type'        => 'assoc',
-					'description' => __( 'Render response in a particular format.', 'classic-commerce' ),
+					'description' => __( 'Render response in a particular format.', 'classic-store'),
 					'optional'    => true,
 					'default'     => 'table',
 					'options'     => array(
@@ -220,7 +220,7 @@ class WC_CLI_Runner {
 				$synopsis[] = array(
 					'name'        => 'porcelain',
 					'type'        => 'flag',
-					'description' => __( 'Output just the id when the operation is successful.', 'classic-commerce' ),
+					'description' => __( 'Output just the id when the operation is successful.', 'classic-store'),
 					'optional'    => true,
 				);
 			}

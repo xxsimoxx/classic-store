@@ -154,9 +154,9 @@ class WC_CLI_REST_Command {
 			WP_CLI::line( $object_id );
 		} else {
 			if ( empty( $assoc_args['force'] ) ) {
-				WP_CLI::success( __( 'Trashed', 'classic-commerce' ) . " {$this->name} {$object_id}" );
+				WP_CLI::success( __( 'Trashed', 'classic-store') . " {$this->name} {$object_id}" );
 			} else {
-				WP_CLI::success( __( 'Deleted', 'classic-commerce' ) . " {$this->name} {$object_id}." );
+				WP_CLI::success( __( 'Deleted', 'classic-store') . " {$this->name} {$object_id}." );
 			}
 		}
 	}
@@ -270,7 +270,7 @@ class WC_CLI_REST_Command {
 		if ( \WP_CLI\Utils\get_flag_value( $assoc_args, 'porcelain' ) ) {
 			WP_CLI::line( $body['id'] );
 		} else {
-			WP_CLI::success( __( 'Updated', 'classic-commerce' ) . " {$this->name} {$body['id']}." );
+			WP_CLI::success( __( 'Updated', 'classic-store') . " {$this->name} {$body['id']}." );
 		}
 	}
 
@@ -350,7 +350,7 @@ EOT;
 			// WP_CLI::error will only return the first message from WP_Error, so we will pass a string containing both instead.
 			if ( 401 === $response->get_status() ) {
 				$errors   = $error->get_error_messages();
-				$errors[] = __( 'Make sure to include the --user flag with an account that has permissions for this action.', 'classic-commerce' ) . ' {"status":401}';
+				$errors[] = __( 'Make sure to include the --user flag with an account that has permissions for this action.', 'classic-store') . ' {"status":401}';
 				$error    = implode( "\n", $errors );
 			}
 			WP_CLI::error( $error );

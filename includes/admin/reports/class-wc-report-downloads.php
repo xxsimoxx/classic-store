@@ -72,21 +72,21 @@ class WC_Report_Downloads extends WP_List_Table {
 				$permission = new WC_Customer_Download( $permission_id );
 				$product    = wc_get_product( $permission->product_id );
 			} catch ( Exception $e ) {
-				wp_die( sprintf( esc_html__( 'Permission #%d not found.', 'classic-commerce' ), esc_html( $permission_id ) ) );
+				wp_die( sprintf( esc_html__( 'Permission #%d not found.', 'classic-store'), esc_html( $permission_id ) ) );
 			}
 		}
 
-		echo '<h1>' . esc_html__( 'Customer downloads', 'classic-commerce' );
+		echo '<h1>' . esc_html__( 'Customer downloads', 'classic-store');
 
 		$filters      = $this->get_filter_vars();
 		$filter_list  = array();
 		$filter_names = array(
-			'product_id'      => __( 'Product', 'classic-commerce' ),
-			'download_id'     => __( 'File ID', 'classic-commerce' ),
-			'permission_id'   => __( 'Permission ID', 'classic-commerce' ),
-			'order_id'        => __( 'Order', 'classic-commerce' ),
-			'user_id'         => __( 'User', 'classic-commerce' ),
-			'user_ip_address' => __( 'IP address', 'classic-commerce' ),
+			'product_id'      => __( 'Product', 'classic-store'),
+			'download_id'     => __( 'File ID', 'classic-store'),
+			'permission_id'   => __( 'Permission ID', 'classic-store'),
+			'order_id'        => __( 'Order', 'classic-store'),
+			'user_id'         => __( 'User', 'classic-store'),
+			'user_ip_address' => __( 'IP address', 'classic-store'),
 		);
 
 		foreach ( $filters as $key => $value ) {
@@ -97,7 +97,7 @@ class WC_Report_Downloads extends WP_List_Table {
 				case 'order_id':
 					$order = wc_get_order( $value );
 					if ( $order ) {
-						$display_value = _x( '#', 'hash before order number', 'classic-commerce' ) . $order->get_order_number();
+						$display_value = _x( '#', 'hash before order number', 'classic-store') . $order->get_order_number();
 					} else {
 						break 2;
 					}
@@ -120,7 +120,7 @@ class WC_Report_Downloads extends WP_List_Table {
 		echo '</h1>';
 
 		echo '<div id="active-filters" class="woocommerce-reports-wide"><h2>';
-		echo esc_html__( 'Active filters', 'classic-commerce' ) . ': ';
+		echo esc_html__( 'Active filters', 'classic-store') . ': ';
 		echo $filter_list ? wp_kses_post( implode( ', ', $filter_list ) ) : '';
 		echo '</h2></div>';
 
@@ -155,7 +155,7 @@ class WC_Report_Downloads extends WP_List_Table {
 					edit_post_link( esc_html( $product->get_formatted_name() ), '', '', $product->get_id(), 'view-link' );
 
 					echo '<div class="row-actions">';
-					echo '<a href="' . esc_url( add_query_arg( 'product_id', $product->get_id() ) ) . '">' . esc_html__( 'Filter by product', 'classic-commerce' ) . '</a>';
+					echo '<a href="' . esc_url( add_query_arg( 'product_id', $product->get_id() ) ) . '">' . esc_html__( 'Filter by product', 'classic-store') . '</a>';
 					echo '</div>';
 				}
 				break;
@@ -165,22 +165,22 @@ class WC_Report_Downloads extends WP_List_Table {
 					$file = $product->get_file( $permission->get_download_id() );
 
 					if ( false === $file ) {
-						echo esc_html__( 'File does not exist', 'classic-commerce' );
+						echo esc_html__( 'File does not exist', 'classic-store');
 					} else {
 						echo esc_html( $file->get_name() . ' - ' . basename( $file->get_file() ) );
 
                         echo '<div class="row-actions">';
-						echo '<a href="' . esc_url( add_query_arg( 'download_id', $permission->get_download_id() ) ) . '">' . esc_html__( 'Filter by file', 'classic-commerce' ) . '</a>';
+						echo '<a href="' . esc_url( add_query_arg( 'download_id', $permission->get_download_id() ) ) . '">' . esc_html__( 'Filter by file', 'classic-store') . '</a>';
 						echo '</div>';
 					}
 				}
 				break;
 			case 'order':
 				if ( ! empty( $permission ) && ( $order = wc_get_order( $permission->order_id ) ) ) {
-					edit_post_link( esc_html( _x( '#', 'hash before order number', 'classic-commerce' ) . $order->get_order_number() ), '', '', $permission->order_id, 'view-link' );
+					edit_post_link( esc_html( _x( '#', 'hash before order number', 'classic-store') . $order->get_order_number() ), '', '', $permission->order_id, 'view-link' );
 
 					echo '<div class="row-actions">';
-					echo '<a href="' . esc_url( add_query_arg( 'order_id', $order->get_id() ) ) . '">' . esc_html__( 'Filter by order', 'classic-commerce' ) . '</a>';
+					echo '<a href="' . esc_url( add_query_arg( 'order_id', $order->get_id() ) ) . '">' . esc_html__( 'Filter by order', 'classic-store') . '</a>';
 					echo '</div>';
 				}
 				break;
@@ -191,18 +191,18 @@ class WC_Report_Downloads extends WP_List_Table {
 					if ( ! empty( $user ) ) {
 						echo '<a href="' . esc_url( get_edit_user_link( $item->user_id ) ) . '">' . esc_html( $user->display_name ) . '</a>';
 						echo '<div class="row-actions">';
-						echo '<a href="' . esc_url( add_query_arg( 'user_id', $item->user_id ) ) . '">' . esc_html__( 'Filter by user', 'classic-commerce' ) . '</a>';
+						echo '<a href="' . esc_url( add_query_arg( 'user_id', $item->user_id ) ) . '">' . esc_html__( 'Filter by user', 'classic-store') . '</a>';
 						echo '</div>';
 					}
 				} else {
-					esc_html_e( 'Guest', 'classic-commerce' );
+					esc_html_e( 'Guest', 'classic-store');
 				}
 				break;
 			case 'user_ip_address':
 				echo esc_html( $item->user_ip_address );
 
 				echo '<div class="row-actions">';
-				echo '<a href="' . esc_url( add_query_arg( 'user_ip_address', $item->user_ip_address ) ) . '">' . esc_html__( 'Filter by IP address', 'classic-commerce' ) . '</a>';
+				echo '<a href="' . esc_url( add_query_arg( 'user_ip_address', $item->user_ip_address ) ) . '">' . esc_html__( 'Filter by IP address', 'classic-store') . '</a>';
 				echo '</div>';
 				break;
 		}
@@ -215,12 +215,12 @@ class WC_Report_Downloads extends WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'timestamp'       => __( 'Timestamp', 'classic-commerce' ),
-			'product'         => __( 'Product', 'classic-commerce' ),
-			'file'            => __( 'File', 'classic-commerce' ),
-			'order'           => __( 'Order', 'classic-commerce' ),
-			'user'            => __( 'User', 'classic-commerce' ),
-			'user_ip_address' => __( 'IP address', 'classic-commerce' ),
+			'timestamp'       => __( 'Timestamp', 'classic-store'),
+			'product'         => __( 'Product', 'classic-store'),
+			'file'            => __( 'File', 'classic-store'),
+			'order'           => __( 'Order', 'classic-store'),
+			'user'            => __( 'User', 'classic-store'),
+			'user_ip_address' => __( 'IP address', 'classic-store'),
 		);
 
 		return $columns;
@@ -254,7 +254,7 @@ class WC_Report_Downloads extends WP_List_Table {
 	 * No items found text.
 	 */
 	public function no_items() {
-		esc_html_e( 'No customer downloads found.', 'classic-commerce' );
+		esc_html_e( 'No customer downloads found.', 'classic-store');
 	}
 
 	/**

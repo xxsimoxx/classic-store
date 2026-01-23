@@ -18,8 +18,8 @@ if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) {
 	$get_addresses = apply_filters(
 		'woocommerce_my_account_get_addresses',
 		array(
-			'billing'  => __( 'Billing address', 'classic-commerce' ),
-			'shipping' => __( 'Shipping address', 'classic-commerce' ),
+			'billing'  => __( 'Billing address', 'classic-store'),
+			'shipping' => __( 'Shipping address', 'classic-store'),
 		),
 		$customer_id
 	);
@@ -27,7 +27,7 @@ if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) {
 	$get_addresses = apply_filters(
 		'woocommerce_my_account_get_addresses',
 		array(
-			'billing' => __( 'Billing address', 'classic-commerce' ),
+			'billing' => __( 'Billing address', 'classic-store'),
 		),
 		$customer_id
 	);
@@ -38,7 +38,7 @@ $col    = 1;
 ?>
 
 <p>
-	<?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'The following addresses will be used on the checkout page by default.', 'classic-commerce' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<?php echo apply_filters( 'woocommerce_my_account_my_address_description', esc_html__( 'The following addresses will be used on the checkout page by default.', 'classic-store') ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 </p>
 
 <?php if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) : ?>
@@ -59,7 +59,7 @@ $col    = 1;
 				<?php
 					printf(
 						/* translators: %s: Address title */
-						$address ? esc_html__( 'Edit %s', 'classic-commerce' ) : esc_html__( 'Add %s', 'classic-commerce' ),
+						$address ? esc_html__( 'Edit %s', 'classic-store') : esc_html__( 'Add %s', 'classic-store'),
 						esc_html( $address_title )
 					);
 				?>
@@ -67,7 +67,7 @@ $col    = 1;
 		</header>
 		<address>
 			<?php
-				echo $address ? wp_kses_post( $address ) : esc_html_e( 'You have not set up this type of address yet.', 'classic-commerce' );
+				echo $address ? wp_kses_post( $address ) : esc_html_e( 'You have not set up this type of address yet.', 'classic-store');
 			?>
 		</address>
 	</div>

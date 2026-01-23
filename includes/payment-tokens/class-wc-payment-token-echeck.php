@@ -47,7 +47,7 @@ class WC_Payment_Token_ECheck extends WC_Payment_Token {
 	public function get_display_name( $deprecated = '' ) {
 		$display = sprintf(
 			/* translators: 1: last 4 digits */
-			__( 'eCheck ending in %1$s', 'classic-commerce' ),
+			__( 'eCheck ending in %1$s', 'classic-store'),
 			$this->get_last4()
 		);
 		return $display;

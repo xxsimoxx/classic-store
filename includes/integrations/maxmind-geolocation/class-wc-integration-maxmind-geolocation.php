@@ -29,8 +29,8 @@ class WC_Integration_MaxMind_Geolocation extends WC_Integration {
 	 */
 	public function __construct() {
 		$this->id                 = 'maxmind_geolocation';
-		$this->method_title       = __( 'MaxMind Geolocation', 'classic-commerce' );
-		$this->method_description = __( 'An integration for utilizing MaxMind to do Geolocation lookups. Please note that this integration will only do country lookups.', 'woocommerce' );
+		$this->method_title       = __( 'MaxMind Geolocation', 'classic-store');
+		$this->method_description = __( 'An integration for utilizing MaxMind to do Geolocation lookups. Please note that this integration will only do country lookups.', 'classic-store');
 
         /**
 		 * Supports overriding the database service to be used.
@@ -98,11 +98,11 @@ class WC_Integration_MaxMind_Geolocation extends WC_Integration {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'license_key' => array(
-				'title'       => __( 'MaxMind License Key', 'classic-commerce' ),
+				'title'       => __( 'MaxMind License Key', 'classic-store'),
 				'type'        => 'password',
 				'description' => sprintf(
 					/* translators: %1$s: Documentation URL */
-					__( 'The key that will be used when dealing with MaxMind Geolocation services. You can read how to generate one in <a href="%1$s">MaxMind\'s License Key Documentation</a>.', 'classic-commerce' ),
+					__( 'The key that will be used when dealing with MaxMind Geolocation services. You can read how to generate one in <a href="%1$s">MaxMind\'s License Key Documentation</a>.', 'classic-store'),
 					'https://support.maxmind.com/account-faq/account-related/how-do-i-generate-a-license-key/'
 				),
                 'desc_tip'    => false,
@@ -166,7 +166,7 @@ class WC_Integration_MaxMind_Geolocation extends WC_Integration {
 		// Allow us to easily interact with the filesystem.
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 		if ( ! WP_Filesystem() ) {
-			wc_get_logger()->warning( __( 'Failed to initialise WC_Filesystem API while trying to update the MaxMind Geolocation database.', 'classic-commerce' ) );
+			wc_get_logger()->warning( __( 'Failed to initialise WC_Filesystem API while trying to update the MaxMind Geolocation database.', 'classic-store') );
 			return;
 		}
 		global $wp_filesystem;

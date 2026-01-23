@@ -14,9 +14,9 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="woocommerce_variation wc-metabox closed">
 	<h3>
-		<a href="javascript:void(0)" class="edit_variation edit"><?php esc_html_e( 'Edit', 'classic-commerce' ); ?></a>
-		<a href="#" class="remove_variation delete" rel="<?php echo esc_attr( $variation_id ); ?>"><?php esc_html_e( 'Remove', 'classic-commerce' ); ?></a>
-		<div class="tips sort" data-tip="<?php esc_attr_e( 'Drag and drop, or click to set admin variation order', 'classic-commerce' ); ?>"></div>
+		<a href="javascript:void(0)" class="edit_variation edit"><?php esc_html_e( 'Edit', 'classic-store'); ?></a>
+		<a href="#" class="remove_variation delete" rel="<?php echo esc_attr( $variation_id ); ?>"><?php esc_html_e( 'Remove', 'classic-store'); ?></a>
+		<div class="tips sort" data-tip="<?php esc_attr_e( 'Drag and drop, or click to set admin variation order', 'classic-store'); ?>"></div>
 		<strong>#<?php echo esc_html( $variation_id ); ?> </strong>
 		<?php
 		$attribute_values = $variation_object->get_attributes( 'edit' );
@@ -31,7 +31,7 @@ defined( 'ABSPATH' ) || exit;
 				<option value="">
 					<?php
 					/* translators: %s: attribute label */
-					printf( esc_html__( 'Any %s&hellip;', 'classic-commerce' ), wc_attribute_label( $attribute->get_name() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					printf( esc_html__( 'Any %s&hellip;', 'classic-store'), wc_attribute_label( $attribute->get_name() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 				</option>
 				<?php if ( $attribute->is_taxonomy() ) : ?>
@@ -69,7 +69,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="woocommerce_variable_attributes wc-metabox-content" style="display: none;">
 		<div class="data">
 			<p class="form-row form-row-first upload_image">
-				<a href="#" class="upload_image_button tips <?php echo $variation_object->get_image_id( 'edit' ) ? 'remove' : ''; ?>" data-tip="<?php echo $variation_object->get_image_id( 'edit' ) ? esc_attr__( 'Remove this image', 'classic-commerce' ) : esc_attr__( 'Upload an image', 'classic-commerce' ); ?>" rel="<?php echo esc_attr( $variation_id ); ?>">
+				<a href="#" class="upload_image_button tips <?php echo $variation_object->get_image_id( 'edit' ) ? 'remove' : ''; ?>" data-tip="<?php echo $variation_object->get_image_id( 'edit' ) ? esc_attr__( 'Remove this image', 'classic-store') : esc_attr__( 'Upload an image', 'classic-store'); ?>" rel="<?php echo esc_attr( $variation_id ); ?>">
 					<img src="<?php echo $variation_object->get_image_id( 'edit' ) ? esc_url( wp_get_attachment_thumb_url( $variation_object->get_image_id( 'edit' ) ) ) : esc_url( wc_placeholder_img_src() ); ?>" /><input type="hidden" name="upload_image_id[<?php echo esc_attr( $loop ); ?>]" class="upload_image_id" value="<?php echo esc_attr( $variation_object->get_image_id( 'edit' ) ); ?>" />
 				</a>
 			</p>
@@ -81,9 +81,9 @@ defined( 'ABSPATH' ) || exit;
 						'name'          => "variable_sku[{$loop}]",
 						'value'         => $variation_object->get_sku( 'edit' ),
 						'placeholder'   => $variation_object->get_sku(),
-						'label'         => '<abbr title="' . esc_attr__( 'Stock Keeping Unit', 'classic-commerce' ) . '">' . esc_html__( 'SKU', 'classic-commerce' ) . '</abbr>',
+						'label'         => '<abbr title="' . esc_attr__( 'Stock Keeping Unit', 'classic-store') . '">' . esc_html__( 'SKU', 'classic-store') . '</abbr>',
 						'desc_tip'      => true,
-						'description'   => __( 'SKU refers to a Stock-keeping unit, a unique identifier for each distinct product and service that can be purchased.', 'classic-commerce' ),
+						'description'   => __( 'SKU refers to a Stock-keeping unit, a unique identifier for each distinct product and service that can be purchased.', 'classic-store'),
 						'wrapper_class' => 'form-row form-row-last',
 					)
 				);
@@ -91,21 +91,21 @@ defined( 'ABSPATH' ) || exit;
 			?>
 			<p class="form-row form-row-full options">
 				<label>
-					<?php esc_html_e( 'Enabled', 'classic-commerce' ); ?>
+					<?php esc_html_e( 'Enabled', 'classic-store'); ?>
 					<input type="checkbox" class="checkbox" name="variable_enabled[<?php echo esc_attr( $loop ); ?>]" <?php checked( in_array( $variation_object->get_status( 'edit' ), array( 'publish', false ), true ), true ); ?> />
 				</label>
-				<label class="tips" data-tip="<?php esc_attr_e( 'Enable this option if access is given to a downloadable file upon purchase of a product', 'classic-commerce' ); ?>">
-					<?php esc_html_e( 'Downloadable', 'classic-commerce' ); ?>
+				<label class="tips" data-tip="<?php esc_attr_e( 'Enable this option if access is given to a downloadable file upon purchase of a product', 'classic-store'); ?>">
+					<?php esc_html_e( 'Downloadable', 'classic-store'); ?>
 					<input type="checkbox" class="checkbox variable_is_downloadable" name="variable_is_downloadable[<?php echo esc_attr( $loop ); ?>]" <?php checked( $variation_object->get_downloadable( 'edit' ), true ); ?> />
 				</label>
-				<label class="tips" data-tip="<?php esc_attr_e( 'Enable this option if a product is not shipped or there is no shipping cost', 'classic-commerce' ); ?>">
-					<?php esc_html_e( 'Virtual', 'classic-commerce' ); ?>
+				<label class="tips" data-tip="<?php esc_attr_e( 'Enable this option if a product is not shipped or there is no shipping cost', 'classic-store'); ?>">
+					<?php esc_html_e( 'Virtual', 'classic-store'); ?>
 					<input type="checkbox" class="checkbox variable_is_virtual" name="variable_is_virtual[<?php echo esc_attr( $loop ); ?>]" <?php checked( $variation_object->get_virtual( 'edit' ), true ); ?> />
 				</label>
 
 				<?php if ( 'yes' === get_option( 'woocommerce_manage_stock' ) ) : ?>
-					<label class="tips" data-tip="<?php esc_attr_e( 'Enable this option to enable stock management at variation level', 'classic-commerce' ); ?>">
-						<?php esc_html_e( 'Manage stock?', 'classic-commerce' ); ?>
+					<label class="tips" data-tip="<?php esc_attr_e( 'Enable this option to enable stock management at variation level', 'classic-store'); ?>">
+						<?php esc_html_e( 'Manage stock?', 'classic-store'); ?>
 						<input type="checkbox" class="checkbox variable_manage_stock" name="variable_manage_stock[<?php echo esc_attr( $loop ); ?>]" <?php checked( $variation_object->get_manage_stock(), true ); // Use view context so 'parent' is considered. ?> />
 					</label>
 				<?php endif; ?>
@@ -119,7 +119,7 @@ defined( 'ABSPATH' ) || exit;
 				<?php
 				$label = sprintf(
 					/* translators: %s: currency symbol */
-					__( 'Regular price (%s)', 'classic-commerce' ),
+					__( 'Regular price (%s)', 'classic-store' ),
 					get_woocommerce_currency_symbol()
 				);
 
@@ -131,13 +131,13 @@ defined( 'ABSPATH' ) || exit;
 						'label'         => $label,
 						'data_type'     => 'price',
 						'wrapper_class' => 'form-row form-row-first',
-						'placeholder'   => __( 'Variation price (required)', 'classic-commerce' ),
+						'placeholder'   => __( 'Variation price (required)', 'classic-store' ),
 					)
 				);
 
 				$label = sprintf(
 					/* translators: %s: currency symbol */
-					__( 'Sale price (%s)', 'classic-commerce' ),
+					__( 'Sale price (%s)', 'classic-store' ),
 					get_woocommerce_currency_symbol()
 				);
 
@@ -147,7 +147,7 @@ defined( 'ABSPATH' ) || exit;
 						'name'          => "variable_sale_price[{$loop}]",
 						'value'         => wc_format_localized_price( $variation_object->get_sale_price( 'edit' ) ),
 						'data_type'     => 'price',
-						'label'         => $label . ' <a href="#" class="sale_schedule">' . esc_html__( 'Schedule', 'classic-commerce' ) . '</a><a href="#" class="cancel_sale_schedule hidden">' . esc_html__( 'Cancel schedule', 'classic-commerce' ) . '</a>',
+						'label'         => $label . ' <a href="#" class="sale_schedule">' . esc_html__( 'Schedule', 'classic-store') . '</a><a href="#" class="cancel_sale_schedule hidden">' . esc_html__( 'Cancel schedule', 'classic-store') . '</a>',
 						'wrapper_class' => 'form-row form-row-last',
 					)
 				);
@@ -161,12 +161,12 @@ defined( 'ABSPATH' ) || exit;
 				/* phpcs:disable Classic Commerce.Commenting.CommentHooks.MissingHookComment */
 				echo '<div class="form-field sale_price_dates_fields hidden">
 					<p class="form-row form-row-first">
-						<label>' . esc_html__( 'Sale start date', 'classic-commerce' ) . '</label>
-						<input type="text" class="sale_price_dates_from" name="variable_sale_price_dates_from[' . esc_attr( $loop ) . ']" value="' . esc_attr( $sale_price_dates_from ) . '" placeholder="' . esc_attr_x( 'From&hellip;', 'placeholder', 'classic-commerce' ) . ' YYYY-MM-DD" maxlength="10" pattern="' . esc_attr( apply_filters( 'woocommerce_date_input_html_pattern', '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])' ) ) . '" />
+						<label>' . esc_html__( 'Sale start date', 'classic-store') . '</label>
+						<input type="text" class="sale_price_dates_from" name="variable_sale_price_dates_from[' . esc_attr( $loop ) . ']" value="' . esc_attr( $sale_price_dates_from ) . '" placeholder="' . esc_attr_x( 'From&hellip;', 'placeholder', 'classic-store') . ' YYYY-MM-DD" maxlength="10" pattern="' . esc_attr( apply_filters( 'woocommerce_date_input_html_pattern', '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])' ) ) . '" />
 					</p>
 					<p class="form-row form-row-last">
-						<label>' . esc_html__( 'Sale end date', 'classic-commerce' ) . '</label>
-						<input type="text" class="sale_price_dates_to" name="variable_sale_price_dates_to[' . esc_attr( $loop ) . ']" value="' . esc_attr( $sale_price_dates_to ) . '" placeholder="' . esc_attr_x( 'To&hellip;', 'placeholder', 'classic-commerce' ) . '  YYYY-MM-DD" maxlength="10" pattern="' . esc_attr( apply_filters( 'woocommerce_date_input_html_pattern', '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])' ) ) . '" />
+						<label>' . esc_html__( 'Sale end date', 'classic-store') . '</label>
+						<input type="text" class="sale_price_dates_to" name="variable_sale_price_dates_to[' . esc_attr( $loop ) . ']" value="' . esc_attr( $sale_price_dates_to ) . '" placeholder="' . esc_attr_x( 'To&hellip;', 'placeholder', 'classic-store') . '  YYYY-MM-DD" maxlength="10" pattern="' . esc_attr( apply_filters( 'woocommerce_date_input_html_pattern', '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])' ) ) . '" />
 					</p>
 				</div>';
 				/* phpcs: enable */
@@ -192,9 +192,9 @@ defined( 'ABSPATH' ) || exit;
 							'id'                => "variable_stock{$loop}",
 							'name'              => "variable_stock[{$loop}]",
 							'value'             => wc_stock_amount( $variation_object->get_stock_quantity( 'edit' ) ),
-							'label'             => __( 'Stock quantity', 'classic-commerce' ),
+							'label'             => __( 'Stock quantity', 'classic-store'),
 							'desc_tip'          => true,
-							'description'       => __( "Enter a number to set stock quantity at the variation level. Use a variation's 'Manage stock?' check box above to enable/disable stock management at the variation level.", 'classic-commerce' ),
+							'description'       => __( "Enter a number to set stock quantity at the variation level. Use a variation's 'Manage stock?' check box above to enable/disable stock management at the variation level.", 'classic-store'),
 							'type'              => 'number',
 							'custom_attributes' => array(
 								'step' => 'any',
@@ -211,10 +211,10 @@ defined( 'ABSPATH' ) || exit;
 							'id'            => "variable_backorders{$loop}",
 							'name'          => "variable_backorders[{$loop}]",
 							'value'         => $variation_object->get_backorders( 'edit' ),
-							'label'         => __( 'Allow backorders?', 'classic-commerce' ),
+							'label'         => __( 'Allow backorders?', 'classic-store'),
 							'options'       => wc_get_product_backorder_options(),
 							'desc_tip'      => true,
-							'description'   => __( 'If managing stock, this controls whether or not backorders are allowed. If enabled, stock quantity can go below 0.', 'classic-commerce' ),
+							'description'   => __( 'If managing stock, this controls whether or not backorders are allowed. If enabled, stock quantity can go below 0.', 'classic-store'),
 							'wrapper_class' => 'form-row form-row-last',
 						)
 					);
@@ -222,12 +222,12 @@ defined( 'ABSPATH' ) || exit;
 					$low_stock_placeholder = ( $product_object->get_manage_stock() && '' !== $product_object->get_low_stock_amount() )
 						? sprintf(
 							/* translators: %d: Amount of stock left */
-							esc_attr__( 'Parent product\'s threshold (%d)', 'classic-commerce' ),
+							esc_attr__( 'Parent product\'s threshold (%d)', 'classic-store' ),
 							esc_attr( $product_object->get_low_stock_amount() )
 						)
 						: sprintf(
 							/* translators: %d: Amount of stock left */
-							esc_attr__( 'Store-wide threshold (%d)', 'classic-commerce' ),
+							esc_attr__( 'Store-wide threshold (%d)', 'classic-store' ),
 							esc_attr( get_option( 'woocommerce_notify_low_stock_amount' ) )
 						);
 
@@ -237,9 +237,9 @@ defined( 'ABSPATH' ) || exit;
 							'name'              => "variable_low_stock_amount[{$loop}]",
 							'value'             => $variation_object->get_low_stock_amount( 'edit' ),
 							'placeholder'       => $low_stock_placeholder,
-							'label'             => __( 'Low stock threshold', 'classic-commerce' ),
+							'label'             => __( 'Low stock threshold', 'classic-store'),
 							'desc_tip'          => true,
-							'description'       => __( 'When variation stock reaches this amount you will be notified by email. The default value for all variations can be set in the product Inventory tab. The shop default value can be set in Settings > Products > Inventory.', 'classic-commerce' ),
+							'description'       => __( 'When variation stock reaches this amount you will be notified by email. The default value for all variations can be set in the product Inventory tab. The shop default value can be set in Settings > Products > Inventory.', 'classic-store'),
 							'type'              => 'number',
 							'custom_attributes' => array(
 								'step' => 'any',
@@ -269,10 +269,10 @@ defined( 'ABSPATH' ) || exit;
 						'id'            => "variable_stock_status{$loop}",
 						'name'          => "variable_stock_status[{$loop}]",
 						'value'         => $variation_object->get_stock_status( 'edit' ),
-						'label'         => __( 'Stock status', 'classic-commerce' ),
+						'label'         => __( 'Stock status', 'classic-store'),
 						'options'       => wc_get_product_stock_status_options(),
 						'desc_tip'      => true,
-						'description'   => __( 'Controls whether or not the product is listed as "in stock" or "out of stock" on the frontend.', 'classic-commerce' ),
+						'description'   => __( 'Controls whether or not the product is listed as "in stock" or "out of stock" on the frontend.', 'classic-store'),
 						'wrapper_class' => 'form-row form-row-full variable_stock_status',
 					)
 				);
@@ -280,7 +280,7 @@ defined( 'ABSPATH' ) || exit;
 				if ( wc_product_weight_enabled() ) {
 					$label = sprintf(
 						/* translators: %s: Weight unit */
-						__( 'Weight (%s)', 'classic-commerce' ),
+						__( 'Weight (%s)', 'classic-store' ),
 						get_option( 'woocommerce_weight_unit', 'kg' )
 					);
 
@@ -292,7 +292,7 @@ defined( 'ABSPATH' ) || exit;
 							'placeholder'   => wc_format_localized_decimal( $product_object->get_weight() ),
 							'label'         => $label,
 							'desc_tip'      => true,
-							'description'   => __( 'Weight in decimal form', 'classic-commerce' ),
+							'description'   => __( 'Weight in decimal form', 'classic-store'),
 							'type'          => 'text',
 							'data_type'     => 'decimal',
 							'wrapper_class' => 'form-row form-row-first hide_if_variation_virtual',
@@ -311,16 +311,16 @@ defined( 'ABSPATH' ) || exit;
 							<?php
 							printf(
 								/* translators: %s dimension unit */
-								esc_html__( 'Dimensions (L&times;W&times;H) (%s)', 'classic-commerce' ),
+								esc_html__( 'Dimensions (L&times;W&times;H) (%s)', 'classic-store' ),
 								get_option( 'woocommerce_dimension_unit' )
 							);
 							?>
 						</label>
-						<?php echo wc_help_tip( __( 'Length x width x height in decimal form', 'classic-commerce' ) ); ?>
+						<?php echo wc_help_tip( __( 'Length x width x height in decimal form', 'classic-store') ); ?>
 						<span class="wrap">
-							<input id="product_length" placeholder="<?php echo $parent_length ? esc_attr( $parent_length ) : esc_attr__( 'Length', 'classic-commerce' ); ?>" class="input-text wc_input_decimal" size="6" type="text" name="variable_length[<?php echo esc_attr( $loop ); ?>]" value="<?php echo esc_attr( wc_format_localized_decimal( $variation_object->get_length( 'edit' ) ) ); ?>" />
-							<input placeholder="<?php echo $parent_width ? esc_attr( $parent_width ) : esc_attr__( 'Width', 'classic-commerce' ); ?>" class="input-text wc_input_decimal" size="6" type="text" name="variable_width[<?php echo esc_attr( $loop ); ?>]" value="<?php echo esc_attr( wc_format_localized_decimal( $variation_object->get_width( 'edit' ) ) ); ?>" />
-							<input placeholder="<?php echo $parent_height ? esc_attr( $parent_height ) : esc_attr__( 'Height', 'classic-commerce' ); ?>" class="input-text wc_input_decimal last" size="6" type="text" name="variable_height[<?php echo esc_attr( $loop ); ?>]" value="<?php echo esc_attr( wc_format_localized_decimal( $variation_object->get_height( 'edit' ) ) ); ?>" />
+							<input id="product_length" placeholder="<?php echo $parent_length ? esc_attr( $parent_length ) : esc_attr__( 'Length', 'classic-store'); ?>" class="input-text wc_input_decimal" size="6" type="text" name="variable_length[<?php echo esc_attr( $loop ); ?>]" value="<?php echo esc_attr( wc_format_localized_decimal( $variation_object->get_length( 'edit' ) ) ); ?>" />
+							<input placeholder="<?php echo $parent_width ? esc_attr( $parent_width ) : esc_attr__( 'Width', 'classic-store'); ?>" class="input-text wc_input_decimal" size="6" type="text" name="variable_width[<?php echo esc_attr( $loop ); ?>]" value="<?php echo esc_attr( wc_format_localized_decimal( $variation_object->get_width( 'edit' ) ) ); ?>" />
+							<input placeholder="<?php echo $parent_height ? esc_attr( $parent_height ) : esc_attr__( 'Height', 'classic-store'); ?>" class="input-text wc_input_decimal last" size="6" type="text" name="variable_height[<?php echo esc_attr( $loop ); ?>]" value="<?php echo esc_attr( wc_format_localized_decimal( $variation_object->get_height( 'edit' ) ) ); ?>" />
 						</span>
 					</p>
 					<?php
@@ -341,13 +341,13 @@ defined( 'ABSPATH' ) || exit;
 
 			<div>
 				<p class="form-row hide_if_variation_virtual form-row-full">
-					<label><?php esc_html_e( 'Shipping class', 'classic-commerce' ); ?></label>
+					<label><?php esc_html_e( 'Shipping class', 'classic-store'); ?></label>
 					<?php
 					wp_dropdown_categories(
 						array(
 							'taxonomy'         => 'product_shipping_class',
 							'hide_empty'       => 0,
-							'show_option_none' => __( 'Same as parent', 'classic-commerce' ),
+							'show_option_none' => __( 'Same as parent', 'classic-store'),
 							'name'             => 'variable_shipping_class[' . $loop . ']',
 							'id'               => '',
 							'selected'         => $variation_object->get_shipping_class_id( 'edit' ),
@@ -363,10 +363,10 @@ defined( 'ABSPATH' ) || exit;
 							'id'            => "variable_tax_class{$loop}",
 							'name'          => "variable_tax_class[{$loop}]",
 							'value'         => $variation_object->get_tax_class( 'edit' ),
-							'label'         => __( 'Tax class', 'classic-commerce' ),
-							'options'       => array( 'parent' => __( 'Same as parent', 'classic-commerce' ) ) + wc_get_product_tax_class_options(),
+							'label'         => __( 'Tax class', 'classic-store'),
+							'options'       => array( 'parent' => __( 'Same as parent', 'classic-store') ) + wc_get_product_tax_class_options(),
 							'desc_tip'      => 'true',
-							'description'   => __( 'Choose a tax class for this product. Tax classes are used to apply different tax rates specific to certain types of product.', 'classic-commerce' ),
+							'description'   => __( 'Choose a tax class for this product. Tax classes are used to apply different tax rates specific to certain types of product.', 'classic-store'),
 							'wrapper_class' => 'form-row form-row-full',
 						)
 					);
@@ -391,9 +391,9 @@ defined( 'ABSPATH' ) || exit;
 						'id'            => "variable_description{$loop}",
 						'name'          => "variable_description[{$loop}]",
 						'value'         => $variation_object->get_description( 'edit' ),
-						'label'         => __( 'Description', 'classic-commerce' ),
+						'label'         => __( 'Description', 'classic-store'),
 						'desc_tip'      => true,
-						'description'   => __( 'Enter an optional description for this variation.', 'classic-commerce' ),
+						'description'   => __( 'Enter an optional description for this variation.', 'classic-store'),
 						'wrapper_class' => 'form-row form-row-full',
 					)
 				);
@@ -401,12 +401,12 @@ defined( 'ABSPATH' ) || exit;
 			</div>
 			<div class="show_if_variation_downloadable" style="display: none;">
 				<div class="form-row form-row-full downloadable_files">
-					<label><?php esc_html_e( 'Downloadable files', 'classic-commerce' ); ?></label>
+					<label><?php esc_html_e( 'Downloadable files', 'classic-store'); ?></label>
 					<table class="widefat">
 						<thead>
 							<div>
-								<th><?php esc_html_e( 'Name', 'classic-commerce' ); ?> <?php echo wc_help_tip( __( 'This is the name of the download shown to the customer.', 'classic-commerce' ) ); ?></th>
-								<th colspan="2"><?php esc_html_e( 'File URL', 'classic-commerce' ); ?> <?php echo wc_help_tip( __( 'This is the URL or absolute path to the file which customers will get access to. URLs entered here should already be encoded.', 'classic-commerce' ) ); ?></th>
+								<th><?php esc_html_e( 'Name', 'classic-store'); ?> <?php echo wc_help_tip( __( 'This is the name of the download shown to the customer.', 'classic-store') ); ?></th>
+								<th colspan="2"><?php esc_html_e( 'File URL', 'classic-store'); ?> <?php echo wc_help_tip( __( 'This is the URL or absolute path to the file which customers will get access to. URLs entered here should already be encoded.', 'classic-store') ); ?></th>
 								<th>&nbsp;</th>
 							</div>
 						</thead>
@@ -439,7 +439,7 @@ defined( 'ABSPATH' ) || exit;
 									require __DIR__ . '/html-product-variation-download.php';
 									echo esc_attr( ob_get_clean() );
 									?>
-									"><?php esc_html_e( 'Add file', 'classic-commerce' ); ?></a>
+									"><?php esc_html_e( 'Add file', 'classic-store'); ?></a>
 								</th>
 								<th colspan="3">
 									<?php if ( $disabled_downloads_count ) : ?>
@@ -447,7 +447,7 @@ defined( 'ABSPATH' ) || exit;
 										<?php
 										printf(
 											/* translators: 1: opening link tag, 2: closing link tag. */
-											esc_html__( 'The indicated downloads have been disabled (invalid location or filetype&mdash;%1$slearn more%2$s).', 'classic-commerce' ),
+											esc_html__( 'The indicated downloads have been disabled (invalid location or filetype&mdash;%1$slearn more%2$s).', 'classic-store' ),
 											'<a href="https://woocommerce.com/document/approved-download-directories" target="_blank">',
 											'</a>'
 										);
@@ -466,9 +466,9 @@ defined( 'ABSPATH' ) || exit;
 						'id'                => "variable_download_limit{$loop}",
 						'name'              => "variable_download_limit[{$loop}]",
 						'value'             => $variation_object->get_download_limit( 'edit' ) < 0 ? '' : $variation_object->get_download_limit( 'edit' ),
-						'label'             => __( 'Download limit', 'classic-commerce' ),
-						'placeholder'       => __( 'Unlimited', 'classic-commerce' ),
-						'description'       => __( 'Leave blank for unlimited re-downloads.', 'classic-commerce' ),
+						'label'             => __( 'Download limit', 'classic-store'),
+						'placeholder'       => __( 'Unlimited', 'classic-store'),
+						'description'       => __( 'Leave blank for unlimited re-downloads.', 'classic-store'),
 						'type'              => 'number',
 						'desc_tip'          => true,
 						'custom_attributes' => array(
@@ -484,9 +484,9 @@ defined( 'ABSPATH' ) || exit;
 						'id'                => "variable_download_expiry{$loop}",
 						'name'              => "variable_download_expiry[{$loop}]",
 						'value'             => $variation_object->get_download_expiry( 'edit' ) < 0 ? '' : $variation_object->get_download_expiry( 'edit' ),
-						'label'             => __( 'Download expiry', 'classic-commerce' ),
-						'placeholder'       => __( 'Never', 'classic-commerce' ),
-						'description'       => __( 'Enter the number of days before a download link expires, or leave blank.', 'classic-commerce' ),
+						'label'             => __( 'Download expiry', 'classic-store'),
+						'placeholder'       => __( 'Never', 'classic-store'),
+						'description'       => __( 'Enter the number of days before a download link expires, or leave blank.', 'classic-store'),
 						'type'              => 'number',
 						'desc_tip'          => true,
 						'custom_attributes' => array(

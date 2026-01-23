@@ -36,7 +36,7 @@ class WC_Report_Customer_List extends WP_List_Table {
 	 * No items found text.
 	 */
 	public function no_items() {
-		_e( 'No customers found.', 'classic-commerce' );
+		_e( 'No customers found.', 'classic-store');
 	}
 
 	/**
@@ -50,7 +50,7 @@ class WC_Report_Customer_List extends WP_List_Table {
 		if ( ! empty( $_GET['link_orders'] ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'link_orders' ) ) {
 			$linked = wc_update_new_customer_past_orders( absint( $_GET['link_orders'] ) );
 
-			echo '<div class="updated"><p>' . esc_html( sprintf( _n( '%s previous order linked', '%s previous orders linked', $linked, 'classic-commerce' ), $linked ) ) . '</p></div>';
+			echo '<div class="updated"><p>' . esc_html( sprintf( _n( '%s previous order linked', '%s previous orders linked', $linked, 'classic-store' ), $linked ) ) . '</p></div>';
 		}
 
 		if ( ! empty( $_GET['refresh'] ) && wp_verify_nonce( $_REQUEST['_wpnonce'], 'refresh' ) ) {
@@ -61,12 +61,12 @@ class WC_Report_Customer_List extends WP_List_Table {
 			delete_user_meta( $user_id, '_order_count' );
             delete_user_meta( $user_id, '_last_order' );
 
-			echo '<div class="updated"><p>' . sprintf( __( 'Refreshed stats for %s', 'classic-commerce' ), $user->display_name ) . '</p></div>';
+			echo '<div class="updated"><p>' . sprintf( __( 'Refreshed stats for %s', 'classic-store'), $user->display_name ) . '</p></div>';
 		}
 
 		echo '<form method="post" id="woocommerce_customers">';
 
-		$this->search_box( __( 'Search customers', 'classic-commerce' ), 'customer_search' );
+		$this->search_box( __( 'Search customers', 'classic-store'), 'customer_search' );
 		$this->display();
 
 		echo '</form>';
@@ -134,7 +134,7 @@ class WC_Report_Customer_List extends WP_List_Table {
 
 				if ( ! empty( $orders ) ) {
 					$order = $orders[0];
-					return '<a href="' . admin_url( 'post.php?post=' . $order->get_id() . '&action=edit' ) . '">' . _x( '#', 'hash before order number', 'classic-commerce' ) . $order->get_order_number() . '</a> &ndash; ' . wc_format_datetime( $order->get_date_created() );
+					return '<a href="' . admin_url( 'post.php?post=' . $order->get_id() . '&action=edit' ) . '">' . _x( '#', 'hash before order number', 'classic-store') . $order->get_order_number() . '</a> &ndash; ' . wc_format_datetime( $order->get_date_created() );
 				} else {
 					return '-';
 				}
@@ -151,19 +151,19 @@ class WC_Report_Customer_List extends WP_List_Table {
 
 					$actions['refresh'] = array(
 						'url'    => wp_nonce_url( add_query_arg( 'refresh', $user->ID ), 'refresh' ),
-						'name'   => __( 'Refresh stats', 'classic-commerce' ),
+						'name'   => __( 'Refresh stats', 'classic-store'),
 						'action' => 'refresh',
 					);
 
 					$actions['edit'] = array(
 						'url'    => admin_url( 'user-edit.php?user_id=' . $user->ID ),
-						'name'   => __( 'Edit', 'classic-commerce' ),
+						'name'   => __( 'Edit', 'classic-store'),
 						'action' => 'edit',
 					);
 
 					$actions['view'] = array(
 						'url'    => admin_url( 'edit.php?post_type=shop_order&_customer_user=' . $user->ID ),
-						'name'   => __( 'View orders', 'classic-commerce' ),
+						'name'   => __( 'View orders', 'classic-store'),
 						'action' => 'view',
 					);
 
@@ -178,7 +178,7 @@ class WC_Report_Customer_List extends WP_List_Table {
 					if ( $orders ) {
 						$actions['link'] = array(
 							'url'    => wp_nonce_url( add_query_arg( 'link_orders', $user->ID ), 'link_orders' ),
-							'name'   => __( 'Link previous orders', 'classic-commerce' ),
+							'name'   => __( 'Link previous orders', 'classic-store'),
 							'action' => 'link',
 						);
 					}
@@ -209,14 +209,14 @@ class WC_Report_Customer_List extends WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'customer_name' => __( 'Name (Last, First)', 'classic-commerce' ),
-			'username'      => __( 'Username', 'classic-commerce' ),
-			'email'         => __( 'Email', 'classic-commerce' ),
-			'location'      => __( 'Location', 'classic-commerce' ),
-			'orders'        => __( 'Orders', 'classic-commerce' ),
-			'spent'         => __( 'Money spent', 'classic-commerce' ),
-			'last_order'    => __( 'Last order', 'classic-commerce' ),
-			'wc_actions'    => __( 'Actions', 'classic-commerce' ),
+			'customer_name' => __( 'Name (Last, First)', 'classic-store' ),
+			'username'      => __( 'Username', 'classic-store'),
+			'email'         => __( 'Email', 'classic-store'),
+			'location'      => __( 'Location', 'classic-store'),
+			'orders'        => __( 'Orders', 'classic-store'),
+			'spent'         => __( 'Money spent', 'classic-store'),
+			'last_order'    => __( 'Last order', 'classic-store'),
+			'wc_actions'    => __( 'Actions', 'classic-store'),
 		);
 
 		return $columns;

@@ -191,14 +191,14 @@ class WC_Checkout {
 	 * Cloning is forbidden.
 	 */
 	public function __clone() {
-		wc_doing_it_wrong( __FUNCTION__, __( 'Cloning is forbidden.', 'classic-commerce' ), '2.1' );
+		wc_doing_it_wrong( __FUNCTION__, __( 'Cloning is forbidden.', 'classic-store'), '2.1' );
 	}
 
 	/**
 	 * Unserializing instances of this class is forbidden.
 	 */
 	public function __wakeup() {
-		wc_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'classic-commerce' ), '2.1' );
+		wc_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'classic-store'), '2.1' );
 	}
 
 	/**
@@ -277,11 +277,9 @@ class WC_Checkout {
 				'order_comments' => array(
 					'type'        => 'textarea',
 					'class'       => array( 'notes' ),
-					'label'       => __( 'Order notes', 'classic-commerce' ),
+					'label'       => __( 'Order notes', 'classic-store'),
 					'placeholder' => esc_attr__(
-						'Notes about your order, e.g. special notes for delivery.',
-						'woocommerce'
-					),
+						'Notes about your order, e.g. special notes for delivery.', 'classic-store'),
 				),
 			),
 		);
@@ -289,9 +287,9 @@ class WC_Checkout {
 		if ( 'no' === get_option( 'woocommerce_registration_generate_username' ) ) {
 			$this->fields['account']['account_username'] = array(
 				'type'         => 'text',
-				'label'        => __( 'Account username', 'classic-commerce' ),
+				'label'        => __( 'Account username', 'classic-store'),
 				'required'     => true,
-				'placeholder'  => esc_attr__( 'Username', 'classic-commerce' ),
+				'placeholder'  => esc_attr__( 'Username', 'classic-store'),
 				'autocomplete' => 'username',
 			);
 		}
@@ -299,9 +297,9 @@ class WC_Checkout {
 		if ( 'no' === get_option( 'woocommerce_registration_generate_password' ) ) {
 			$this->fields['account']['account_password'] = array(
                 'type'         => 'password',
-				'label'        => __( 'Create account password', 'classic-commerce' ),
+				'label'        => __( 'Create account password', 'classic-store'),
 				'required'     => true,
-				'placeholder'  => esc_attr__( 'Password', 'classic-commerce' ),
+				'placeholder'  => esc_attr__( 'Password', 'classic-store'),
 				'autocomplete' => 'new-password',
 			);
 		}
@@ -849,17 +847,17 @@ class WC_Checkout {
 					( isset( $field['type'] ) && 'country' === $field['type'] && '' !== $data[ $key ] ) &&
 					! WC()->countries->country_exists( $data[ $key ] ) ) {
 						/* translators: ISO 3166-1 alpha-2 country code */
-						$errors->add( $key . '_validation', sprintf( __( "'%s' is not a valid country code.", 'classic-commerce' ), $data[ $key ] ) );
+						$errors->add( $key . '_validation', sprintf( __( "'%s' is not a valid country code.", 'classic-store'), $data[ $key ] ) );
 				}
 
 				switch ( $fieldset_key ) {
 					case 'shipping':
 						/* translators: %s: field name */
-						$field_label = sprintf( _x( 'Shipping %s', 'checkout-validation', 'classic-commerce' ), $field_label );
+						$field_label = sprintf( _x( 'Shipping %s', 'checkout-validation', 'classic-store'), $field_label );
 						break;
 					case 'billing':
 						/* translators: %s: field name */
-						$field_label = sprintf( _x( 'Billing %s', 'checkout-validation', 'classic-commerce' ), $field_label );
+						$field_label = sprintf( _x( 'Billing %s', 'checkout-validation', 'classic-store'), $field_label );
 						break;
 				}
 
@@ -871,11 +869,11 @@ class WC_Checkout {
 						switch ( $country ) {
 							case 'IE':
 								/* translators: %1$s: field name, %2$s finder.eircode.ie URL */
-								$postcode_validation_notice = sprintf( __( '%1$s is not valid. You can look up the correct Eircode <a target="_blank" href="%2$s">here</a>.', 'classic-commerce' ), '<strong>' . esc_html( $field_label ) . '</strong>', 'https://finder.eircode.ie' );
+								$postcode_validation_notice = sprintf( __( '%1$s is not valid. You can look up the correct Eircode <a target="_blank" href="%2$s">here</a>.', 'classic-store'), '<strong>' . esc_html( $field_label ) . '</strong>', 'https://finder.eircode.ie' );
 								break;
 							default:
 								/* translators: %s: field name */
-								$postcode_validation_notice = sprintf( __( '%s is not a valid postcode / ZIP.', 'classic-commerce' ), '<strong>' . esc_html( $field_label ) . '</strong>' );
+								$postcode_validation_notice = sprintf( __( '%s is not a valid postcode / ZIP.', 'classic-store'), '<strong>' . esc_html( $field_label ) . '</strong>' );
 						}
 						$errors->add( $key . '_validation', apply_filters( 'woocommerce_checkout_postcode_validation_notice', $postcode_validation_notice, $country, $data[ $key ] ), array( 'id' => $key ) );
 					}
@@ -884,7 +882,7 @@ class WC_Checkout {
 				if ( in_array( 'phone', $format, true ) ) {
 					if ( $validate_fieldset && '' !== $data[ $key ] && ! WC_Validation::is_phone( $data[ $key ] ) ) {
 						/* translators: %s: phone number */
-						$errors->add( $key . '_validation', sprintf( __( '%s is not a valid phone number.', 'classic-commerce' ), '<strong>' . esc_html( $field_label ) . '</strong>' ), array( 'id' => $key ) );
+						$errors->add( $key . '_validation', sprintf( __( '%s is not a valid phone number.', 'classic-store'), '<strong>' . esc_html( $field_label ) . '</strong>' ), array( 'id' => $key ) );
 					}
 				}
 
@@ -894,7 +892,7 @@ class WC_Checkout {
 
 					if ( $validate_fieldset && ! $email_is_valid ) {
 						/* translators: %s: email address */
-						$errors->add( $key . '_validation', sprintf( __( '%s is not a valid email address.', 'classic-commerce' ), '<strong>' . esc_html( $field_label ) . '</strong>' ), array( 'id' => $key ) );
+						$errors->add( $key . '_validation', sprintf( __( '%s is not a valid email address.', 'classic-store'), '<strong>' . esc_html( $field_label ) . '</strong>' ), array( 'id' => $key ) );
 						continue;
 					}
 				}
@@ -914,14 +912,14 @@ class WC_Checkout {
 
 						if ( $validate_fieldset && ! in_array( $data[ $key ], $valid_state_values, true ) ) {
 							/* translators: 1: state field 2: valid states */
-							$errors->add( $key . '_validation', sprintf( __( '%1$s is not valid. Please enter one of the following: %2$s', 'classic-commerce' ), '<strong>' . esc_html( $field_label ) . '</strong>', implode( ', ', $valid_states ) ), array( 'id' => $key ) );
+							$errors->add( $key . '_validation', sprintf( __( '%1$s is not valid. Please enter one of the following: %2$s', 'classic-store'), '<strong>' . esc_html( $field_label ) . '</strong>', implode( ', ', $valid_states ) ), array( 'id' => $key ) );
 						}
 					}
 				}
 
 				if ( $validate_fieldset && $required && '' === $data[ $key ] ) {
 					/* translators: %s: field name */
-					$errors->add( $key . '_required', apply_filters( 'woocommerce_checkout_required_field_notice', sprintf( __( '%s is a required field.', 'classic-commerce' ), '<strong>' . esc_html( $field_label ) . '</strong>' ), $field_label, $key ), array( 'id' => $key ) );
+					$errors->add( $key . '_required', apply_filters( 'woocommerce_checkout_required_field_notice', sprintf( __( '%s is a required field.', 'classic-store'), '<strong>' . esc_html( $field_label ) . '</strong>' ), $field_label, $key ), array( 'id' => $key ) );
 				}
 			}
 		}
@@ -940,25 +938,25 @@ class WC_Checkout {
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing
 		if ( empty( $data['woocommerce_checkout_update_totals'] ) && empty( $data['terms'] ) && ! empty( $data['terms-field'] ) ) {
-			$errors->add( 'terms', __( 'Please read and accept the terms and conditions to proceed with your order.', 'classic-commerce' ) );
+			$errors->add( 'terms', __( 'Please read and accept the terms and conditions to proceed with your order.', 'classic-store') );
 		}
 
 		if ( WC()->cart->needs_shipping() ) {
 			$shipping_country = isset( $data['shipping_country'] ) ? $data['shipping_country'] : WC()->customer->get_shipping_country();
 
 			if ( empty( $shipping_country ) ) {
-				$errors->add( 'shipping', __( 'Please enter an address to continue.', 'classic-commerce' ) );
+				$errors->add( 'shipping', __( 'Please enter an address to continue.', 'classic-store') );
 			} elseif ( ! in_array( $shipping_country, array_keys( WC()->countries->get_shipping_countries() ), true ) ) {
 				if ( WC()->countries->country_exists( $shipping_country ) ) {
 					/* translators: %s: shipping location (prefix e.g. 'to' + ISO 3166-1 alpha-2 country code) */
-					$errors->add( 'shipping', sprintf( __( 'Unfortunately <strong>we do not ship %s</strong>. Please enter an alternative shipping address.', 'classic-commerce' ), WC()->countries->shipping_to_prefix() . ' ' . $shipping_country ) );
+					$errors->add( 'shipping', sprintf( __( 'Unfortunately <strong>we do not ship %s</strong>. Please enter an alternative shipping address.', 'classic-store'), WC()->countries->shipping_to_prefix() . ' ' . $shipping_country ) );
 				}
 			} else {
 				$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
 
 				foreach ( WC()->shipping()->get_packages() as $i => $package ) {
 					if ( ! isset( $chosen_shipping_methods[ $i ], $package['rates'][ $chosen_shipping_methods[ $i ] ] ) ) {
-						$errors->add( 'shipping', __( 'No shipping method has been selected. Please double check your address, or contact us if you need any help.', 'classic-commerce' ) );
+						$errors->add( 'shipping', __( 'No shipping method has been selected. Please double check your address, or contact us if you need any help.', 'classic-store') );
 					}
 				}
 			}
@@ -968,7 +966,7 @@ class WC_Checkout {
 			$available_gateways = WC()->payment_gateways->get_available_payment_gateways();
 
 			if ( ! isset( $available_gateways[ $data['payment_method'] ] ) ) {
-				$errors->add( 'payment', __( 'Invalid payment method.', 'classic-commerce' ) );
+				$errors->add( 'payment', __( 'Invalid payment method.', 'classic-store') );
 			} else {
 				$available_gateways[ $data['payment_method'] ]->validate_fields();
 			}
@@ -1239,7 +1237,7 @@ class WC_Checkout {
 
 			if ( empty( $nonce_value ) || ! wp_verify_nonce( $nonce_value, 'woocommerce-process_checkout' ) ) {
 				WC()->session->set( 'refresh_totals', true );
-				throw new Exception( __( 'We were unable to process your order, please try again.', 'classic-commerce' ) );
+				throw new Exception( __( 'We were unable to process your order, please try again.', 'classic-store') );
 			}
 
 			wc_maybe_define_constant( 'WOOCOMMERCE_CHECKOUT', true );
@@ -1249,7 +1247,7 @@ class WC_Checkout {
 
 			if ( WC()->cart->is_empty() ) {
 				/* translators: %s: shop cart url */
-				throw new Exception( sprintf( __( 'Sorry, your session has expired. <a href="%s" class="wc-backward">Return to shop</a>', 'classic-commerce' ), esc_url( wc_get_page_permalink( 'shop' ) ) ) );
+				throw new Exception( sprintf( __( 'Sorry, your session has expired. <a href="%s" class="wc-backward">Return to shop</a>', 'classic-store'), esc_url( wc_get_page_permalink( 'shop' ) ) ) );
 			}
 
 			do_action( 'woocommerce_checkout_process' );
@@ -1280,7 +1278,7 @@ class WC_Checkout {
 				}
 
 				if ( ! $order ) {
-					throw new Exception( __( 'Unable to create order.', 'classic-commerce' ) );
+					throw new Exception( __( 'Unable to create order.', 'classic-store') );
 				}
 
 				do_action( 'woocommerce_checkout_order_processed', $order_id, $posted_data, $order );

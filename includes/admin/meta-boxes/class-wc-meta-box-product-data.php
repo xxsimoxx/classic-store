@@ -72,43 +72,43 @@ class WC_Meta_Box_Product_Data {
 			'woocommerce_product_data_tabs',
 			array(
 				'general'        => array(
-					'label'    => __( 'General', 'classic-commerce' ),
+					'label'    => __( 'General', 'classic-store'),
 					'target'   => 'general_product_data',
 					'class'    => array( 'hide_if_grouped' ),
 					'priority' => 10,
 				),
 				'inventory'      => array(
-					'label'    => __( 'Inventory', 'classic-commerce' ),
+					'label'    => __( 'Inventory', 'classic-store'),
 					'target'   => 'inventory_product_data',
 					'class'    => array( 'show_if_simple', 'show_if_variable', 'show_if_grouped', 'show_if_external' ),
 					'priority' => 20,
 				),
 				'shipping'       => array(
-					'label'    => __( 'Shipping', 'classic-commerce' ),
+					'label'    => __( 'Shipping', 'classic-store'),
 					'target'   => 'shipping_product_data',
 					'class'    => array( 'hide_if_virtual', 'hide_if_grouped', 'hide_if_external' ),
 					'priority' => 30,
 				),
 				'linked_product' => array(
-					'label'    => __( 'Linked Products', 'classic-commerce' ),
+					'label'    => __( 'Linked Products', 'classic-store'),
 					'target'   => 'linked_product_data',
 					'class'    => array(),
 					'priority' => 40,
 				),
 				'attribute'      => array(
-					'label'    => __( 'Attributes', 'classic-commerce' ),
+					'label'    => __( 'Attributes', 'classic-store'),
 					'target'   => 'product_attributes',
 					'class'    => array(),
 					'priority' => 50,
 				),
 				'variations'     => array(
-					'label'    => __( 'Variations', 'classic-commerce' ),
+					'label'    => __( 'Variations', 'classic-store'),
 					'target'   => 'variable_product_options',
 					'class'    => array( 'show_if_variable' ),
 					'priority' => 60,
 				),
 				'advanced'       => array(
-					'label'    => __( 'Advanced', 'classic-commerce' ),
+					'label'    => __( 'Advanced', 'classic-store'),
 					'target'   => 'advanced_product_data',
 					'class'    => array(),
 					'priority' => 70,
@@ -176,7 +176,7 @@ class WC_Meta_Box_Product_Data {
 		$variations_count       = absint( apply_filters( 'woocommerce_admin_meta_boxes_variations_count', $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(ID) FROM $wpdb->posts WHERE post_parent = %d AND post_type = 'product_variation' AND post_status IN ('publish', 'private')", $post->ID ) ), $post->ID ) );
 		$variations_per_page    = absint( apply_filters( 'woocommerce_admin_meta_boxes_variations_per_page', 15 ) );
 		$variations_total_pages = ceil( $variations_count / $variations_per_page );
-		$modal_title            = get_bloginfo( 'name' ) . __( ' says', 'classic-commerce' );
+		$modal_title            = get_bloginfo( 'name' ) . __( ' says', 'classic-store');
 		/* phpcs: enable */
 
 		include __DIR__ . '/views/html-product-data-variations.php';
@@ -338,7 +338,7 @@ class WC_Meta_Box_Product_Data {
 		if ( isset( $_POST['_stock'] ) ) {
 			if ( isset( $_POST['_original_stock'] ) && wc_stock_amount( $product->get_stock_quantity( 'edit' ) ) !== wc_stock_amount( wp_unslash( $_POST['_original_stock'] ) ) ) {
 				/* translators: 1: product ID 2: quantity in stock */
-				WC_Admin_Meta_Boxes::add_error( sprintf( __( 'The stock has not been updated because the value has changed since editing. Product %1$d has %2$d units in stock.', 'classic-commerce' ), $product->get_id(), $product->get_stock_quantity( 'edit' ) ) );
+				WC_Admin_Meta_Boxes::add_error( sprintf( __( 'The stock has not been updated because the value has changed since editing. Product %1$d has %2$d units in stock.', 'classic-store'), $product->get_id(), $product->get_stock_quantity( 'edit' ) ) );
 			} else {
 				$stock = wc_stock_amount( wp_unslash( $_POST['_stock'] ) );
 			}
@@ -486,7 +486,7 @@ class WC_Meta_Box_Product_Data {
 				if ( isset( $_POST['variable_stock'], $_POST['variable_stock'][ $i ] ) ) {
 					if ( isset( $_POST['variable_original_stock'], $_POST['variable_original_stock'][ $i ] ) && wc_stock_amount( $variation->get_stock_quantity( 'edit' ) ) !== wc_stock_amount( wp_unslash( $_POST['variable_original_stock'][ $i ] ) ) ) {
 						/* translators: 1: product ID 2: quantity in stock */
-						WC_Admin_Meta_Boxes::add_error( sprintf( __( 'The stock has not been updated because the value has changed since editing. Product %1$d has %2$d units in stock.', 'classic-commerce' ), $variation->get_id(), $variation->get_stock_quantity( 'edit' ) ) );
+						WC_Admin_Meta_Boxes::add_error( sprintf( __( 'The stock has not been updated because the value has changed since editing. Product %1$d has %2$d units in stock.', 'classic-store'), $variation->get_id(), $variation->get_stock_quantity( 'edit' ) ) );
 					} else {
 						$stock = wc_stock_amount( wp_unslash( $_POST['variable_stock'][ $i ] ) );
 					}

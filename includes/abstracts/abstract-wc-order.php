@@ -205,13 +205,13 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 			do_action( 'woocommerce_after_' . $this->object_type . '_object_save', $this, $this->data_store );
 
 		} catch ( Exception $e ) {
-			$message_id = $this->get_id() ? $this->get_id() : __( '(no ID)', 'classic-commerce' );
+			$message_id = $this->get_id() ? $this->get_id() : __( '(no ID)', 'classic-store' );
 			$this->handle_exception(
 				$e,
 				wp_kses_post(
 					sprintf(
 						/* translators: 1: Order ID or "(no ID)" if not known. */
-						__( 'Error saving order ID %1$s.', 'classic-commerce' ),
+						__( 'Error saving order ID %1$s.', 'classic-store'),
 						$message_id
 					)
 				)
@@ -531,7 +531,7 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 	 */
 	public function set_parent_id( $value ) {
 		if ( $value && ( $value === $this->get_id() || ! wc_get_order( $value ) ) ) {
-			$this->error( 'order_invalid_parent_id', __( 'Invalid parent ID', 'classic-commerce' ) );
+			$this->error( 'order_invalid_parent_id', __( 'Invalid parent ID', 'classic-store') );
 		}
 		$this->set_prop( 'parent_id', absint( $value ) );
 	}
@@ -588,7 +588,7 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 	 */
 	public function set_currency( $value ) {
 		if ( $value && ! in_array( $value, array_keys( get_woocommerce_currencies() ), true ) ) {
-			$this->error( 'order_invalid_currency', __( 'Invalid currency code', 'classic-commerce' ) );
+			$this->error( 'order_invalid_currency', __( 'Invalid currency code', 'classic-store') );
 		}
 		$this->set_prop( 'currency', $value ? $value : get_woocommerce_currency() );
 	}
@@ -1078,10 +1078,10 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 		$result = $coupon->get_data_store()->check_and_hold_coupon( $coupon );
 		if ( false === $result ) {
 			// translators: Actual coupon code.
-			throw new Exception( sprintf( __( 'An unexpected error happened while applying the Coupon %s.', 'classic-commerce' ), esc_html( $coupon->get_code() ) ) );
+			throw new Exception( sprintf( __( 'An unexpected error happened while applying the Coupon %s.', 'classic-store'), esc_html( $coupon->get_code() ) ) );
 		} elseif ( 0 === $result ) {
 			// translators: Actual coupon code.
-			throw new Exception( sprintf( __( 'Coupon %s was used in another transaction during this checkout, and coupon usage limit is reached. Please remove the coupon and try again.', 'classic-commerce' ), esc_html( $coupon->get_code() ) ) );
+			throw new Exception( sprintf( __( 'Coupon %s was used in another transaction during this checkout, and coupon usage limit is reached. Please remove the coupon and try again.', 'classic-store'), esc_html( $coupon->get_code() ) ) );
 		}
 		return $result;
 	}
@@ -1100,10 +1100,10 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 		$result = $coupon->get_data_store()->check_and_hold_coupon_for_user( $coupon, $user_ids_and_emails, $user_alias );
 		if ( false === $result ) {
 			// translators: Actual coupon code.
-			throw new Exception( sprintf( __( 'An unexpected error happened while applying the Coupon %s.', 'classic-commerce' ), esc_html( $coupon->get_code() ) ) );
+			throw new Exception( sprintf( __( 'An unexpected error happened while applying the Coupon %s.', 'classic-store'), esc_html( $coupon->get_code() ) ) );
 		} elseif ( 0 === $result ) {
 			// translators: Actual coupon code.
-			throw new Exception( sprintf( __( 'You have used this coupon %s in another transaction during this checkout, and coupon usage limit is reached. Please remove the coupon and try again.', 'classic-commerce' ), esc_html( $coupon->get_code() ) ) );
+			throw new Exception( sprintf( __( 'You have used this coupon %s in another transaction during this checkout, and coupon usage limit is reached. Please remove the coupon and try again.', 'classic-store'), esc_html( $coupon->get_code() ) ) );
 		}
 		return $result;
 	}
@@ -1144,7 +1144,7 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 			$coupon = new WC_Coupon( $code );
 
 			if ( $coupon->get_code() !== $code ) {
-				return new WP_Error( 'invalid_coupon', __( 'Invalid coupon code', 'classic-commerce' ) );
+				return new WP_Error( 'invalid_coupon', __( 'Invalid coupon code', 'classic-store') );
 			}
 
 			$discounts = new WC_Discounts( $this );
@@ -1154,14 +1154,14 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 				return $valid;
 			}
 		} else {
-			return new WP_Error( 'invalid_coupon', __( 'Invalid coupon', 'classic-commerce' ) );
+			return new WP_Error( 'invalid_coupon', __( 'Invalid coupon', 'classic-store') );
 		}
 
 		// Check to make sure coupon is not already applied.
 		$applied_coupons = $this->get_items( 'coupon' );
 		foreach ( $applied_coupons as $applied_coupon ) {
 			if ( $applied_coupon->get_code() === $coupon->get_code() ) {
-				return new WP_Error( 'invalid_coupon', __( 'Coupon code already applied!', 'classic-commerce' ) );
+				return new WP_Error( 'invalid_coupon', __( 'Coupon code already applied!', 'classic-store') );
 			}
 		}
 
@@ -1248,7 +1248,7 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 				$coupon_object = new WC_Coupon( $code );
 				$coupon_object->decrease_usage_count( $this->get_user_id() );
 				$this->recalculate_coupons();
-				
+
                 return true;
 			}
 		}
@@ -1776,7 +1776,7 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 		$shipping_total    = 0;
 		$cart_subtotal_tax = 0;
 		$cart_total_tax    = 0;
-        
+
         $cart_subtotal = $this->get_cart_subtotal_for_order();
 		$cart_total    = (float) $this->get_cart_total_for_order();
 
@@ -2067,12 +2067,12 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 			}
 
 			/* translators: %s: method */
-			$shipping .= apply_filters( 'woocommerce_order_shipping_to_display_shipped_via', '&nbsp;<small class="shipped_via">' . sprintf( __( 'via %s', 'classic-commerce' ), $this->get_shipping_method() ) . '</small>', $this );
+			$shipping .= apply_filters( 'woocommerce_order_shipping_to_display_shipped_via', '&nbsp;<small class="shipped_via">' . sprintf( __( 'via %s', 'classic-store'), $this->get_shipping_method() ) . '</small>', $this );
 
 		} elseif ( $this->get_shipping_method() ) {
 			$shipping = $this->get_shipping_method();
 		} else {
-			$shipping = __( 'Free!', 'classic-commerce' );
+			$shipping = __( 'Free!', 'classic-store');
 		}
 
 		return apply_filters( 'woocommerce_order_shipping_to_display', $shipping, $this );
@@ -2106,7 +2106,7 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 
 		if ( $subtotal ) {
 			$total_rows['cart_subtotal'] = array(
-				'label' => __( 'Subtotal:', 'classic-commerce' ),
+				'label' => __( 'Subtotal:', 'classic-store'),
 				'value' => $subtotal,
 			);
 		}
@@ -2121,7 +2121,7 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 	protected function add_order_item_totals_discount_row( &$total_rows, $tax_display ) {
 		if ( $this->get_total_discount() > 0 ) {
 			$total_rows['discount'] = array(
-				'label' => __( 'Discount:', 'classic-commerce' ),
+				'label' => __( 'Discount:', 'classic-store'),
 				'value' => '-' . $this->get_discount_to_display( $tax_display ),
 			);
 		}
@@ -2136,7 +2136,7 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 	protected function add_order_item_totals_shipping_row( &$total_rows, $tax_display ) {
 		if ( $this->get_shipping_method() ) {
 			$total_rows['shipping'] = array(
-				'label' => __( 'Shipping:', 'classic-commerce' ),
+				'label' => __( 'Shipping:', 'classic-store'),
 				'value' => $this->get_shipping_to_display( $tax_display ),
 			);
 		}
@@ -2197,7 +2197,7 @@ abstract class WC_Abstract_Order extends WC_Abstract_Legacy_Order {
 	 */
 	protected function add_order_item_totals_total_row( &$total_rows, $tax_display ) {
 		$total_rows['order_total'] = array(
-			'label' => __( 'Total:', 'classic-commerce' ),
+			'label' => __( 'Total:', 'classic-store'),
 			'value' => $this->get_formatted_order_total( $tax_display ),
 		);
 	}

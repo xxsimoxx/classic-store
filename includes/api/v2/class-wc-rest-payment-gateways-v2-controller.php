@@ -51,7 +51,7 @@ class WC_REST_Payment_Gateways_V2_Controller extends WC_REST_Controller {
 			$this->namespace, '/' . $this->rest_base . '/(?P<id>[\w-]+)', array(
 				'args'   => array(
 					'id' => array(
-						'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+						'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 						'type'        => 'string',
 					),
 				),
@@ -82,7 +82,7 @@ class WC_REST_Payment_Gateways_V2_Controller extends WC_REST_Controller {
 	 */
 	public function get_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'payment_gateways', 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 		return true;
 	}
@@ -95,7 +95,7 @@ class WC_REST_Payment_Gateways_V2_Controller extends WC_REST_Controller {
 	 */
 	public function get_item_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'payment_gateways', 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 		return true;
 	}
@@ -108,7 +108,7 @@ class WC_REST_Payment_Gateways_V2_Controller extends WC_REST_Controller {
 	 */
 	public function update_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'payment_gateways', 'edit' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_edit', __( 'Sorry, you are not allowed to edit this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_edit', __( 'Sorry, you are not allowed to edit this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 		return true;
 	}
@@ -141,7 +141,7 @@ class WC_REST_Payment_Gateways_V2_Controller extends WC_REST_Controller {
 		$gateway = $this->get_gateway( $request );
 
 		if ( is_null( $gateway ) ) {
-			return new WP_Error( 'woocommerce_rest_payment_gateway_invalid', __( 'Resource does not exist.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_payment_gateway_invalid', __( 'Resource does not exist.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		$gateway = $this->prepare_item_for_response( $gateway, $request );
@@ -158,7 +158,7 @@ class WC_REST_Payment_Gateways_V2_Controller extends WC_REST_Controller {
 		$gateway = $this->get_gateway( $request );
 
 		if ( is_null( $gateway ) ) {
-			return new WP_Error( 'woocommerce_rest_payment_gateway_invalid', __( 'Resource does not exist.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_payment_gateway_invalid', __( 'Resource does not exist.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		// Get settings.
@@ -184,7 +184,7 @@ class WC_REST_Payment_Gateways_V2_Controller extends WC_REST_Controller {
 			}
 
 			if ( $errors_found ) {
-				return new WP_Error( 'rest_setting_value_invalid', __( 'An invalid setting value was passed.', 'classic-commerce' ), array( 'status' => 400 ) );
+				return new WP_Error( 'rest_setting_value_invalid', __( 'An invalid setting value was passed.', 'classic-store'), array( 'status' => 400 ) );
 			}
 		}
 
@@ -351,23 +351,23 @@ class WC_REST_Payment_Gateways_V2_Controller extends WC_REST_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'id'                 => array(
-					'description' => __( 'Payment gateway ID.', 'classic-commerce' ),
+					'description' => __( 'Payment gateway ID.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'title'              => array(
-					'description' => __( 'Payment gateway title on checkout.', 'classic-commerce' ),
+					'description' => __( 'Payment gateway title on checkout.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'description'        => array(
-					'description' => __( 'Payment gateway description on checkout.', 'classic-commerce' ),
+					'description' => __( 'Payment gateway description on checkout.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'order'              => array(
-					'description' => __( 'Payment gateway sort order.', 'classic-commerce' ),
+					'description' => __( 'Payment gateway sort order.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -375,71 +375,71 @@ class WC_REST_Payment_Gateways_V2_Controller extends WC_REST_Controller {
 					),
 				),
 				'enabled'            => array(
-					'description' => __( 'Payment gateway enabled status.', 'classic-commerce' ),
+					'description' => __( 'Payment gateway enabled status.', 'classic-store'),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'method_title'       => array(
-					'description' => __( 'Payment gateway method title.', 'classic-commerce' ),
+					'description' => __( 'Payment gateway method title.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'method_description' => array(
-					'description' => __( 'Payment gateway method description.', 'classic-commerce' ),
+					'description' => __( 'Payment gateway method description.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'settings'           => array(
-					'description' => __( 'Payment gateway settings.', 'classic-commerce' ),
+					'description' => __( 'Payment gateway settings.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view', 'edit' ),
 					'properties'  => array(
 						'id'          => array(
-							'description' => __( 'A unique identifier for the setting.', 'classic-commerce' ),
+							'description' => __( 'A unique identifier for the setting.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,
 						),
 						'label'       => array(
-							'description' => __( 'A human readable label for the setting used in interfaces.', 'classic-commerce' ),
+							'description' => __( 'A human readable label for the setting used in interfaces.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,
 						),
 						'description' => array(
-							'description' => __( 'A human readable description for the setting used in interfaces.', 'classic-commerce' ),
+							'description' => __( 'A human readable description for the setting used in interfaces.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,
 						),
 						'type'        => array(
-							'description' => __( 'Type of setting.', 'classic-commerce' ),
+							'description' => __( 'Type of setting.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 							'enum'        => array( 'text', 'email', 'number', 'color', 'password', 'textarea', 'select', 'multiselect', 'radio', 'image_width', 'checkbox' ),
 							'readonly'    => true,
 						),
 						'value'       => array(
-							'description' => __( 'Setting value.', 'classic-commerce' ),
+							'description' => __( 'Setting value.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'default'     => array(
-							'description' => __( 'Default value for the setting.', 'classic-commerce' ),
+							'description' => __( 'Default value for the setting.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,
 						),
 						'tip'         => array(
-							'description' => __( 'Additional help text shown to the user about the setting.', 'classic-commerce' ),
+							'description' => __( 'Additional help text shown to the user about the setting.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,
 						),
 						'placeholder' => array(
-							'description' => __( 'Placeholder text to be displayed in text inputs.', 'classic-commerce' ),
+							'description' => __( 'Placeholder text to be displayed in text inputs.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,

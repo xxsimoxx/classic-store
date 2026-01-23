@@ -39,7 +39,7 @@ class WC_Admin_Exporters {
 		// Register Classic Commerce exporters.
 		$this->exporters['product_exporter'] = array(
 			'menu'       => 'edit.php?post_type=product',
-			'name'       => __( 'Product Export', 'classic-commerce' ),
+			'name'       => __( 'Product Export', 'classic-store'),
 			'capability' => 'export',
 			'callback'   => array( $this, 'product_exporter' ),
 		);
@@ -126,7 +126,7 @@ class WC_Admin_Exporters {
 		check_ajax_referer( 'wc-product-export', 'security' );
 
 		if ( ! $this->export_allowed() ) {
-			wp_send_json_error( array( 'message' => __( 'Insufficient privileges to export products.', 'classic-commerce' ) ) );
+			wp_send_json_error( array( 'message' => __( 'Insufficient privileges to export products.', 'classic-store') ) );
 		}
 
 		include_once WC_ABSPATH . 'includes/export/class-wc-product-csv-exporter.php';
@@ -197,7 +197,7 @@ class WC_Admin_Exporters {
 	 */
 	public static function get_product_types() {
 		$product_types = wc_get_product_types();
-		$product_types['variation'] = __( 'Product variations', 'classic-commerce' );
+		$product_types['variation'] = __( 'Product variations', 'classic-store');
 
     /**
         * Allow third-parties to filter the exportable product types.

@@ -55,16 +55,16 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 					'email' => array(
 						'required' => true,
 						'type'     => 'string',
-						'description' => __( 'New user email address.', 'classic-commerce' ),
+						'description' => __( 'New user email address.', 'classic-store'),
 					),
 					'username' => array(
 						'required' => 'no' === get_option( 'woocommerce_registration_generate_username', 'yes' ),
-						'description' => __( 'New user username.', 'classic-commerce' ),
+						'description' => __( 'New user username.', 'classic-store'),
 						'type'     => 'string',
 					),
 					'password' => array(
 						'required' => 'no' === get_option( 'woocommerce_registration_generate_password', 'no' ),
-						'description' => __( 'New user password.', 'classic-commerce' ),
+						'description' => __( 'New user password.', 'classic-store'),
 						'type'     => 'string',
 					),
 				) ),
@@ -75,7 +75,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 		register_rest_route( $this->namespace, '/' . $this->rest_base . '/(?P<id>[\d]+)', array(
 			'args' => array(
 				'id' => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 				),
 			),
@@ -101,12 +101,12 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 					'force' => array(
 						'default'     => false,
 						'type'        => 'boolean',
-						'description' => __( 'Required to be true, as resource does not support trashing.', 'classic-commerce' ),
+						'description' => __( 'Required to be true, as resource does not support trashing.', 'classic-store'),
 					),
 					'reassign' => array(
 						'default'     => 0,
 						'type'        => 'integer',
-						'description' => __( 'ID to reassign posts to.', 'classic-commerce' ),
+						'description' => __( 'ID to reassign posts to.', 'classic-store'),
 					),
 				),
 			),
@@ -132,7 +132,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 	 */
 	public function get_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_user_permissions( 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -147,7 +147,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 	 */
 	public function create_item_permissions_check( $request ) {
 		if ( ! wc_rest_check_user_permissions( 'create' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -163,7 +163,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 		$id = (int) $request['id'];
 
 		if ( ! wc_rest_check_user_permissions( 'read', $id ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -180,7 +180,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 		$id = (int) $request['id'];
 
 		if ( ! wc_rest_check_user_permissions( 'edit', $id ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_edit', __( 'Sorry, you are not allowed to edit this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_edit', __( 'Sorry, you are not allowed to edit this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -197,7 +197,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 		$id = (int) $request['id'];
 
 		if ( ! wc_rest_check_user_permissions( 'delete', $id ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Sorry, you are not allowed to delete this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Sorry, you are not allowed to delete this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -212,7 +212,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 	 */
 	public function batch_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_user_permissions( 'batch' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_batch', __( 'Sorry, you are not allowed to batch manipulate this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_batch', __( 'Sorry, you are not allowed to batch manipulate this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -324,7 +324,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 	public function create_item( $request ) {
 		try {
 			if ( ! empty( $request['id'] ) ) {
-				throw new WC_REST_Exception( 'woocommerce_rest_customer_exists', __( 'Cannot create existing resource.', 'classic-commerce' ), 400 );
+				throw new WC_REST_Exception( 'woocommerce_rest_customer_exists', __( 'Cannot create existing resource.', 'classic-store'), 400 );
 			}
 
 			// Sets the username.
@@ -342,7 +342,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 			$customer->save();
 
 			if ( ! $customer->get_id() ) {
-				throw new WC_REST_Exception( 'woocommerce_rest_cannot_create', __( 'This resource cannot be created.', 'classic-commerce' ), 400 );
+				throw new WC_REST_Exception( 'woocommerce_rest_cannot_create', __( 'This resource cannot be created.', 'classic-store'), 400 );
 			}
 
 			$user_data = get_userdata( $customer->get_id() );
@@ -380,7 +380,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 		$user_data = get_userdata( $id );
 
 		if ( empty( $id ) || empty( $user_data->ID ) ) {
-			return new WP_Error( 'woocommerce_rest_invalid_id', __( 'Invalid resource ID.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_invalid_id', __( 'Invalid resource ID.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		$customer = $this->prepare_item_for_response( $user_data, $request );
@@ -401,15 +401,15 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 			$customer = new WC_Customer( $id );
 
 			if ( ! $customer->get_id() ) {
-				throw new WC_REST_Exception( 'woocommerce_rest_invalid_id', __( 'Invalid resource ID.', 'classic-commerce' ), 400 );
+				throw new WC_REST_Exception( 'woocommerce_rest_invalid_id', __( 'Invalid resource ID.', 'classic-store'), 400 );
 			}
 
 			if ( ! empty( $request['email'] ) && email_exists( $request['email'] ) && $request['email'] !== $customer->get_email() ) {
-				throw new WC_REST_Exception( 'woocommerce_rest_customer_invalid_email', __( 'Email address is invalid.', 'classic-commerce' ), 400 );
+				throw new WC_REST_Exception( 'woocommerce_rest_customer_invalid_email', __( 'Email address is invalid.', 'classic-store'), 400 );
 			}
 
 			if ( ! empty( $request['username'] ) && $request['username'] !== $customer->get_username() ) {
-				throw new WC_REST_Exception( 'woocommerce_rest_customer_invalid_argument', __( "Username isn't editable.", 'classic-commerce' ), 400 );
+				throw new WC_REST_Exception( 'woocommerce_rest_customer_invalid_argument', __( "Username isn't editable.", 'classic-store'), 400 );
 			}
 
 			// Customer email.
@@ -463,17 +463,17 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 
 		// We don't support trashing for this type, error out.
 		if ( ! $force ) {
-			return new WP_Error( 'woocommerce_rest_trash_not_supported', __( 'Customers do not support trashing.', 'classic-commerce' ), array( 'status' => 501 ) );
+			return new WP_Error( 'woocommerce_rest_trash_not_supported', __( 'Customers do not support trashing.', 'classic-store'), array( 'status' => 501 ) );
 		}
 
 		$user_data = get_userdata( $id );
 		if ( ! $user_data ) {
-			return new WP_Error( 'woocommerce_rest_invalid_id', __( 'Invalid resource id.', 'classic-commerce' ), array( 'status' => 400 ) );
+			return new WP_Error( 'woocommerce_rest_invalid_id', __( 'Invalid resource id.', 'classic-store'), array( 'status' => 400 ) );
 		}
 
 		if ( ! empty( $reassign ) ) {
 			if ( $reassign === $id || ! get_userdata( $reassign ) ) {
-				return new WP_Error( 'woocommerce_rest_customer_invalid_reassign', __( 'Invalid resource id for reassignment.', 'classic-commerce' ), array( 'status' => 400 ) );
+				return new WP_Error( 'woocommerce_rest_customer_invalid_reassign', __( 'Invalid resource id for reassignment.', 'classic-store'), array( 'status' => 400 ) );
 			}
 		}
 
@@ -492,7 +492,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 		}
 
 		if ( ! $result ) {
-			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'The resource cannot be deleted.', 'classic-commerce' ), array( 'status' => 500 ) );
+			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'The resource cannot be deleted.', 'classic-store'), array( 'status' => 500 ) );
 		}
 
 		/**
@@ -629,31 +629,31 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'id' => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_created' => array(
-					'description' => __( 'The date the customer was created, as GMT.', 'classic-commerce' ),
+					'description' => __( 'The date the customer was created, as GMT.', 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_modified' => array(
-					'description' => __( 'The date the customer was last modified, as GMT.', 'classic-commerce' ),
+					'description' => __( 'The date the customer was last modified, as GMT.', 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'email' => array(
-					'description' => __( 'The email address for the customer.', 'classic-commerce' ),
+					'description' => __( 'The email address for the customer.', 'classic-store'),
 					'type'        => 'string',
 					'format'      => 'email',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'first_name' => array(
-					'description' => __( 'Customer first name.', 'classic-commerce' ),
+					'description' => __( 'Customer first name.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -661,7 +661,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 					),
 				),
 				'last_name' => array(
-					'description' => __( 'Customer last name.', 'classic-commerce' ),
+					'description' => __( 'Customer last name.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -669,7 +669,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 					),
 				),
 				'username' => array(
-					'description' => __( 'Customer login name.', 'classic-commerce' ),
+					'description' => __( 'Customer login name.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -677,24 +677,24 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 					),
 				),
 				'password' => array(
-					'description' => __( 'Customer password.', 'classic-commerce' ),
+					'description' => __( 'Customer password.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'edit' ),
 				),
 				'last_order' => array(
-					'description' => __( 'Last order data.', 'classic-commerce' ),
+					'description' => __( 'Last order data.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 					'properties'  => array(
 						'id' => array(
-							'description' => __( 'Last order ID.', 'classic-commerce' ),
+							'description' => __( 'Last order ID.', 'classic-store'),
 							'type'        => 'integer',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,
 						),
 						'date' => array(
-							'description' => __( 'The date of the customer last order, as GMT.', 'classic-commerce' ),
+							'description' => __( 'The date of the customer last order, as GMT.', 'classic-store'),
 							'type'        => 'date-time',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,
@@ -702,133 +702,133 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 					),
 				),
 				'orders_count' => array(
-					'description' => __( 'Quantity of orders made by the customer.', 'classic-commerce' ),
+					'description' => __( 'Quantity of orders made by the customer.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'total_spent' => array(
-					'description' => __( 'Total amount spent.', 'classic-commerce' ),
+					'description' => __( 'Total amount spent.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'avatar_url' => array(
-					'description' => __( 'Avatar URL.', 'classic-commerce' ),
+					'description' => __( 'Avatar URL.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'billing' => array(
-					'description' => __( 'List of billing address data.', 'classic-commerce' ),
+					'description' => __( 'List of billing address data.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view', 'edit' ),
 					'properties' => array(
 						'first_name' => array(
-							'description' => __( 'First name.', 'classic-commerce' ),
+							'description' => __( 'First name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'last_name' => array(
-							'description' => __( 'Last name.', 'classic-commerce' ),
+							'description' => __( 'Last name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'company' => array(
-							'description' => __( 'Company name.', 'classic-commerce' ),
+							'description' => __( 'Company name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'address_1' => array(
-							'description' => __( 'Address line 1.', 'classic-commerce' ),
+							'description' => __( 'Address line 1.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'address_2' => array(
-							'description' => __( 'Address line 2.', 'classic-commerce' ),
+							'description' => __( 'Address line 2.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'city' => array(
-							'description' => __( 'City name.', 'classic-commerce' ),
+							'description' => __( 'City name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'state' => array(
-							'description' => __( 'ISO code or name of the state, province or district.', 'classic-commerce' ),
+							'description' => __( 'ISO code or name of the state, province or district.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'postcode' => array(
-							'description' => __( 'Postal code.', 'classic-commerce' ),
+							'description' => __( 'Postal code.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'country' => array(
-							'description' => __( 'ISO code of the country.', 'classic-commerce' ),
+							'description' => __( 'ISO code of the country.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'email' => array(
-							'description' => __( 'Email address.', 'classic-commerce' ),
+							'description' => __( 'Email address.', 'classic-store'),
 							'type'        => 'string',
 							'format'      => 'email',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'phone' => array(
-							'description' => __( 'Phone number.', 'classic-commerce' ),
+							'description' => __( 'Phone number.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 					),
 				),
 				'shipping' => array(
-					'description' => __( 'List of shipping address data.', 'classic-commerce' ),
+					'description' => __( 'List of shipping address data.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view', 'edit' ),
 					'properties' => array(
 						'first_name' => array(
-							'description' => __( 'First name.', 'classic-commerce' ),
+							'description' => __( 'First name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'last_name' => array(
-							'description' => __( 'Last name.', 'classic-commerce' ),
+							'description' => __( 'Last name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'company' => array(
-							'description' => __( 'Company name.', 'classic-commerce' ),
+							'description' => __( 'Company name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'address_1' => array(
-							'description' => __( 'Address line 1.', 'classic-commerce' ),
+							'description' => __( 'Address line 1.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'address_2' => array(
-							'description' => __( 'Address line 2.', 'classic-commerce' ),
+							'description' => __( 'Address line 2.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'city' => array(
-							'description' => __( 'City name.', 'classic-commerce' ),
+							'description' => __( 'City name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'state' => array(
-							'description' => __( 'ISO code or name of the state, province or district.', 'classic-commerce' ),
+							'description' => __( 'ISO code or name of the state, province or district.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'postcode' => array(
-							'description' => __( 'Postal code.', 'classic-commerce' ),
+							'description' => __( 'Postal code.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'country' => array(
-							'description' => __( 'ISO code of the country.', 'classic-commerce' ),
+							'description' => __( 'ISO code of the country.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
@@ -862,7 +862,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 		$params['context']['default'] = 'view';
 
 		$params['exclude'] = array(
-			'description'       => __( 'Ensure result set excludes specific IDs.', 'classic-commerce' ),
+			'description'       => __( 'Ensure result set excludes specific IDs.', 'classic-store'),
 			'type'              => 'array',
 			'items'             => array(
 				'type'          => 'integer',
@@ -871,7 +871,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 			'sanitize_callback' => 'wp_parse_id_list',
 		);
 		$params['include'] = array(
-			'description'       => __( 'Limit result set to specific IDs.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to specific IDs.', 'classic-store'),
 			'type'              => 'array',
 			'items'             => array(
 				'type'          => 'integer',
@@ -880,14 +880,14 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 			'sanitize_callback' => 'wp_parse_id_list',
 		);
 		$params['offset'] = array(
-			'description'        => __( 'Offset the result set by a specific number of items.', 'classic-commerce' ),
+			'description'        => __( 'Offset the result set by a specific number of items.', 'classic-store'),
 			'type'               => 'integer',
 			'sanitize_callback'  => 'absint',
 			'validate_callback'  => 'rest_validate_request_arg',
 		);
 		$params['order'] = array(
 			'default'            => 'asc',
-			'description'        => __( 'Order sort attribute ascending or descending.', 'classic-commerce' ),
+			'description'        => __( 'Order sort attribute ascending or descending.', 'classic-store'),
 			'enum'               => array( 'asc', 'desc' ),
 			'sanitize_callback'  => 'sanitize_key',
 			'type'               => 'string',
@@ -895,7 +895,7 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 		);
 		$params['orderby'] = array(
 			'default'            => 'name',
-			'description'        => __( 'Sort collection by object attribute.', 'classic-commerce' ),
+			'description'        => __( 'Sort collection by object attribute.', 'classic-store'),
 			'enum'               => array(
 				'id',
 				'include',
@@ -907,13 +907,13 @@ class WC_REST_Customers_V1_Controller extends WC_REST_Controller {
 			'validate_callback'  => 'rest_validate_request_arg',
 		);
 		$params['email'] = array(
-			'description'        => __( 'Limit result set to resources with a specific email.', 'classic-commerce' ),
+			'description'        => __( 'Limit result set to resources with a specific email.', 'classic-store'),
 			'type'               => 'string',
 			'format'             => 'email',
 			'validate_callback'  => 'rest_validate_request_arg',
 		);
 		$params['role'] = array(
-			'description'        => __( 'Limit result set to resources with a specific role.', 'classic-commerce' ),
+			'description'        => __( 'Limit result set to resources with a specific role.', 'classic-store'),
 			'type'               => 'string',
 			'default'            => 'customer',
 			'enum'               => array_merge( array( 'all' ), $this->get_role_names() ),

@@ -110,7 +110,7 @@ class WC_Plugin_Updates {
 		}
 
 		/* translators: %s: version number */
-		$message = sprintf( __( "<strong>Heads up!</strong> The versions of the following plugins you're running haven't been tested with Classic Commerce %s. Please update them or confirm compatibility before updating Classic Commerce, or you may experience issues:", 'classic-commerce' ), $new_version );
+		$message = sprintf( __( "<strong>Heads up!</strong> The versions of the following plugins you're running haven't been tested with Classic Commerce %s. Please update them or confirm compatibility before updating Classic Commerce, or you may experience issues:", 'classic-store'), $new_version );
 
 		ob_start();
 		include __DIR__ . '/views/html-notice-untested-extensions-inline.php';
@@ -188,7 +188,7 @@ class WC_Plugin_Updates {
 					$untested[ $file ] = $plugin;
 				}
 			} else {
-				$plugin[ self::VERSION_TESTED_HEADER ] = __( 'unknown', 'classic-commerce' );
+				$plugin[ self::VERSION_TESTED_HEADER ] = __( 'unknown', 'classic-store');
 				$untested[ $file ]                     = $plugin;
 			}
 		}

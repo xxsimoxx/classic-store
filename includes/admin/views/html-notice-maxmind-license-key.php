@@ -10,10 +10,10 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <div id="message" class="updated woocommerce-message">
-	<a class="woocommerce-message-close notice-dismiss" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'wc-hide-notice', 'maxmind_license_key' ), 'woocommerce_hide_notices_nonce', '_wc_notice_nonce' ) ); ?>"><?php esc_html_e( 'Dismiss', 'classic-commerce' ); ?></a>
+	<a class="woocommerce-message-close notice-dismiss" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'wc-hide-notice', 'maxmind_license_key' ), 'woocommerce_hide_notices_nonce', '_wc_notice_nonce' ) ); ?>"><?php esc_html_e( 'Dismiss', 'classic-store'); ?></a>
 
 	<p>
-		<strong><?php esc_html_e( 'Geolocation has not been configured.', 'classic-commerce' ); ?></strong>
+		<strong><?php esc_html_e( 'Geolocation has not been configured.', 'classic-store'); ?></strong>
 	</p>
 
 	<p>
@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) || exit;
 		echo wp_kses_post(
 			sprintf(
 				/* translators: %1%s: integration page %2$s: general settings page */
-				__( 'You must enter a valid license key on the <a href="%1$s">MaxMind integration settings page</a> in order to use the geolocation service. If you do not need geolocation for shipping or taxes, you should change the default customer location on the <a href="%2$s">general settings page</a>.', 'classic-commerce' ),
+				__( 'You must enter a valid license key on the <a href="%1$s">MaxMind integration settings page</a> in order to use the geolocation service. If you do not need geolocation for shipping or taxes, you should change the default customer location on the <a href="%2$s">general settings page</a>.', 'classic-store'),
 				admin_url( 'admin.php?page=wc-settings&tab=integration&section=maxmind_geolocation' ),
 				admin_url( 'admin.php?page=wc-settings&tab=general' )
 			)

@@ -42,7 +42,7 @@ class WC_REST_Product_Reviews_V2_Controller extends WC_REST_Product_Reviews_V1_C
 			$this->namespace, '/' . $this->rest_base . '/batch', array(
 				'args'   => array(
 					'product_id' => array(
-						'description' => __( 'Unique identifier for the variable product.', 'classic-commerce' ),
+						'description' => __( 'Unique identifier for the variable product.', 'classic-store'),
 						'type'        => 'integer',
 					),
 				),
@@ -65,7 +65,7 @@ class WC_REST_Product_Reviews_V2_Controller extends WC_REST_Product_Reviews_V1_C
 	 */
 	public function batch_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_product_reviews_permissions( 'batch' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_batch', __( 'Sorry, you are not allowed to batch manipulate this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_batch', __( 'Sorry, you are not allowed to batch manipulate this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 		return true;
 	}
@@ -150,43 +150,43 @@ class WC_REST_Product_Reviews_V2_Controller extends WC_REST_Product_Reviews_V1_C
 			'type'       => 'object',
 			'properties' => array(
 				'id'               => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'review'           => array(
-					'description' => __( 'The content of the review.', 'classic-commerce' ),
+					'description' => __( 'The content of the review.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'date_created'     => array(
-					'description' => __( "The date the review was created, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the review was created, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'date_created_gmt' => array(
-					'description' => __( 'The date the review was created, as GMT.', 'classic-commerce' ),
+					'description' => __( 'The date the review was created, as GMT.', 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'rating'           => array(
-					'description' => __( 'Review rating (0 to 5).', 'classic-commerce' ),
+					'description' => __( 'Review rating (0 to 5).', 'classic-store' ),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'name'             => array(
-					'description' => __( 'Reviewer name.', 'classic-commerce' ),
+					'description' => __( 'Reviewer name.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'email'            => array(
-					'description' => __( 'Reviewer email.', 'classic-commerce' ),
+					'description' => __( 'Reviewer email.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'verified'         => array(
-					'description' => __( 'Shows if the reviewer bought the product or not.', 'classic-commerce' ),
+					'description' => __( 'Shows if the reviewer bought the product or not.', 'classic-store'),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,

@@ -35,7 +35,7 @@ class WC_REST_Order_Notes_Controller extends WC_REST_Order_Notes_V2_Controller {
 	public function prepare_item_for_response( $note, $request ) {
 		$data = array(
 			'id'               => (int) $note->comment_ID,
-			'author'           => __( 'woocommerce', 'classic-commerce' ) === $note->comment_author ? 'system' : $note->comment_author,
+			'author'           => __( 'woocommerce', 'classic-store') === $note->comment_author ? 'system' : $note->comment_author,
 			'date_created'     => wc_rest_prepare_date_response( $note->comment_date ),
 			'date_created_gmt' => wc_rest_prepare_date_response( $note->comment_date_gmt ),
 			'note'             => $note->comment_content,
@@ -70,20 +70,20 @@ class WC_REST_Order_Notes_Controller extends WC_REST_Order_Notes_V2_Controller {
 	public function create_item( $request ) {
 		if ( ! empty( $request['id'] ) ) {
 			/* translators: %s: post type */
-			return new WP_Error( "woocommerce_rest_{$this->post_type}_exists", sprintf( __( 'Cannot create existing %s.', 'classic-commerce' ), $this->post_type ), array( 'status' => 400 ) );
+			return new WP_Error( "woocommerce_rest_{$this->post_type}_exists", sprintf( __( 'Cannot create existing %s.', 'classic-store'), $this->post_type ), array( 'status' => 400 ) );
 		}
 
 		$order = wc_get_order( (int) $request['order_id'] );
 
 		if ( ! $order || $this->post_type !== $order->get_type() ) {
-			return new WP_Error( 'woocommerce_rest_order_invalid_id', __( 'Invalid order ID.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_order_invalid_id', __( 'Invalid order ID.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		// Create the note.
 		$note_id = $order->add_order_note( $request['note'], $request['customer_note'], $request['added_by_user'] );
 
 		if ( ! $note_id ) {
-			return new WP_Error( 'woocommerce_api_cannot_create_order_note', __( 'Cannot create order note, please try again.', 'classic-commerce' ), array( 'status' => 500 ) );
+			return new WP_Error( 'woocommerce_api_cannot_create_order_note', __( 'Cannot create order note, please try again.', 'classic-store'), array( 'status' => 500 ) );
 		}
 
 		$note = get_comment( $note_id );
@@ -119,42 +119,42 @@ class WC_REST_Order_Notes_Controller extends WC_REST_Order_Notes_V2_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'id'               => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'author'           => array(
-					'description' => __( 'Order note author.', 'classic-commerce' ),
+					'description' => __( 'Order note author.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_created'     => array(
-					'description' => __( "The date the order note was created, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the order note was created, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_created_gmt' => array(
-					'description' => __( 'The date the order note was created, as GMT.', 'classic-commerce' ),
+					'description' => __( 'The date the order note was created, as GMT.', 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'note'             => array(
-					'description' => __( 'Order note content.', 'classic-commerce' ),
+					'description' => __( 'Order note content.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'customer_note'    => array(
-					'description' => __( 'If true, the note will be shown to customers and they will be notified. If false, the note will be for admin reference only.', 'classic-commerce' ),
+					'description' => __( 'If true, the note will be shown to customers and they will be notified. If false, the note will be for admin reference only.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'added_by_user'    => array(
-					'description' => __( 'If true, this note will be attributed to the current user. If false, the note will be attributed to the system.', 'classic-commerce' ),
+					'description' => __( 'If true, this note will be attributed to the current user. If false, the note will be attributed to the system.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'edit' ),

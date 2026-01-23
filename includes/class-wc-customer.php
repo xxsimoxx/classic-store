@@ -783,7 +783,7 @@ class WC_Customer extends WC_Legacy_Customer {
 	 */
 	public function set_email( $value ) {
 		if ( $value && ! is_email( $value ) ) {
-			$this->error( 'customer_invalid_email', __( 'Invalid email address', 'classic-commerce' ) );
+			$this->error( 'customer_invalid_email', __( 'Invalid email address', 'classic-store') );
 		}
 		$this->set_prop( 'email', sanitize_email( $value ) );
 	}
@@ -816,7 +816,7 @@ class WC_Customer extends WC_Legacy_Customer {
 	 */
 	public function set_display_name( $display_name ) {
 		/* translators: 1: first name 2: last name */
-		$this->set_prop( 'display_name', is_email( $display_name ) ? sprintf( _x( '%1$s %2$s', 'display name', 'classic-commerce' ), $this->get_first_name(), $this->get_last_name() ) : $display_name );
+		$this->set_prop( 'display_name', is_email( $display_name ) ? sprintf( _x( '%1$s %2$s', 'display name', 'classic-store'), $this->get_first_name(), $this->get_last_name() ) : $display_name );
 	}
 
 	/**
@@ -829,7 +829,7 @@ class WC_Customer extends WC_Legacy_Customer {
 		global $wp_roles;
 
 		if ( $role && ! empty( $wp_roles->roles ) && ! in_array( $role, array_keys( $wp_roles->roles ), true ) ) {
-			$this->error( 'customer_invalid_role', __( 'Invalid role', 'classic-commerce' ) );
+			$this->error( 'customer_invalid_role', __( 'Invalid role', 'classic-store') );
 		}
 		$this->set_prop( 'role', $role );
 	}
@@ -1025,7 +1025,7 @@ class WC_Customer extends WC_Legacy_Customer {
 	 */
 	public function set_billing_email( $value ) {
 		if ( $value && ! is_email( $value ) ) {
-			$this->error( 'customer_invalid_billing_email', __( 'Invalid billing email address', 'classic-commerce' ) );
+			$this->error( 'customer_invalid_billing_email', __( 'Invalid billing email address', 'classic-store') );
 		}
 		$this->set_address_prop( 'email', 'billing', sanitize_email( $value ) );
 	}

@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			/* translators: 1: start date 2: end date */
 			printf(
-				esc_html__( 'From %1$s to %2$s', 'classic-commerce' ),
+				esc_html__( 'From %1$s to %2$s', 'classic-store'),
 				esc_html( wc_clean( wp_unslash( $_GET['start_date'] ) ) ),
 				esc_html( wc_clean( wp_unslash( $_GET['end_date'] ) ) )
 			);
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				}
 				?>
 				<li class="custom <?php echo ( 'custom' === $current_range ) ? 'active' : ''; ?>">
-					<?php esc_html_e( 'Custom:', 'classic-commerce' ); ?>
+					<?php esc_html_e( 'Custom:', 'classic-store'); ?>
 					<form method="GET">
 						<div>
 							<?php
@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<input type="text" size="11" placeholder="yyyy-mm-dd" value="<?php echo ( ! empty( $_GET['start_date'] ) ) ? esc_attr( wp_unslash( $_GET['start_date'] ) ) : ''; ?>" name="start_date" class="range_datepicker from" autocomplete="off" /><?php //@codingStandardsIgnoreLine ?>
 							<span>&ndash;</span>
 							<input type="text" size="11" placeholder="yyyy-mm-dd" value="<?php echo ( ! empty( $_GET['end_date'] ) ) ? esc_attr( wp_unslash( $_GET['end_date'] ) ) : ''; ?>" name="end_date" class="range_datepicker to" autocomplete="off" /><?php //@codingStandardsIgnoreLine ?>
-							<button type="submit" class="button" value="<?php esc_attr_e( 'Go', 'classic-commerce' ); ?>"><?php esc_html_e( 'Go', 'classic-commerce' ); ?></button>
+							<button type="submit" class="button" value="<?php esc_attr_e( 'Go', 'classic-store'); ?>"><?php esc_html_e( 'Go', 'classic-store'); ?></button>
 							<?php wp_nonce_field( 'custom_range', 'wc_reports_nonce', false ); ?>
 						</div>
 					</form>

@@ -29,8 +29,8 @@ if ( ! class_exists( 'WC_Email_Customer_On_Hold_Order', false ) ) :
 		public function __construct() {
 			$this->id             = 'customer_on_hold_order';
 			$this->customer_email = true;
-			$this->title          = __( 'Order on-hold', 'classic-commerce' );
-			$this->description    = __( 'This is an order notification sent to customers containing order details after an order is placed on-hold from Pending, Cancelled or Failed order status.', 'classic-commerce' );
+			$this->title          = __( 'Order on-hold', 'classic-store');
+			$this->description    = __( 'This is an order notification sent to customers containing order details after an order is placed on-hold from Pending, Cancelled or Failed order status.', 'classic-store');
 			$this->template_html  = 'emails/customer-on-hold-order.php';
 			$this->template_plain = 'emails/plain/customer-on-hold-order.php';
 			$this->placeholders   = array(
@@ -54,7 +54,7 @@ if ( ! class_exists( 'WC_Email_Customer_On_Hold_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( 'Your {site_title} order has been received!', 'classic-commerce' );
+			return __( 'Your {site_title} order has been received!', 'classic-store');
 		}
 
 		/**
@@ -64,7 +64,7 @@ if ( ! class_exists( 'WC_Email_Customer_On_Hold_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Thank you for your order', 'classic-commerce' );
+			return __( 'Thank you for your order', 'classic-store');
 		}
 
 		/**
@@ -139,7 +139,7 @@ if ( ! class_exists( 'WC_Email_Customer_On_Hold_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content() {
-			return __( 'We look forward to fulfilling your order soon.', 'classic-commerce' );
+			return __( 'We look forward to fulfilling your order soon.', 'classic-store');
 		}
 	}
 

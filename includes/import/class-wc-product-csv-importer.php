@@ -77,7 +77,7 @@ class WC_Product_CSV_Importer extends WC_Product_Importer {
 	 */
 	protected function read_file() {
 		if ( ! WC_Product_CSV_Importer_Controller::is_file_valid_csv( $this->file ) ) {
-			wp_die( esc_html__( 'Invalid file type. The importer supports CSV and TXT file formats.', 'classic-commerce' ) );
+			wp_die( esc_html__( 'Invalid file type. The importer supports CSV and TXT file formats.', 'classic-store') );
 		}
 
 		$handle = fopen( $this->file, 'r' ); // @codingStandardsIgnoreLine.
@@ -1012,11 +1012,11 @@ class WC_Product_CSV_Importer extends WC_Product_Importer {
 		}
 		if ( $id ) {
 			/* translators: %d: product ID */
-			$row_data[] = sprintf( __( 'ID %d', 'classic-commerce' ), $id );
+			$row_data[] = sprintf( __( 'ID %d', 'classic-store'), $id );
 		}
 		if ( $sku ) {
 			/* translators: %s: product SKU */
-			$row_data[] = sprintf( __( 'SKU %s', 'classic-commerce' ), $sku );
+			$row_data[] = sprintf( __( 'SKU %s', 'classic-store'), $sku );
 		}
 
 		return implode( ', ', $row_data );
@@ -1065,7 +1065,7 @@ class WC_Product_CSV_Importer extends WC_Product_Importer {
 			if ( $id_exists && ! $update_existing ) {
                     $data['skipped'][] = new WP_Error(
 					'woocommerce_product_importer_error',
-					esc_html__( 'A product with this ID already exists.', 'classic-commerce' ),
+					esc_html__( 'A product with this ID already exists.', 'classic-store'),
 					array(
 						'id'  => $id,
 						'row' => $this->get_row_id( $parsed_data ),
@@ -1077,7 +1077,7 @@ class WC_Product_CSV_Importer extends WC_Product_Importer {
 			if ( $sku_exists && ! $update_existing ) {
                     $data['skipped'][] = new WP_Error(
                     'woocommerce_product_importer_error',
-                    esc_html__( 'A product with this SKU already exists.', 'classic-commerce' ),
+                    esc_html__( 'A product with this SKU already exists.', 'classic-store'),
                     array(
                         'sku' => $sku,
                         'row' => $this->get_row_id( $parsed_data ),
@@ -1088,7 +1088,7 @@ class WC_Product_CSV_Importer extends WC_Product_Importer {
 
 			if ( $update_existing && ( isset( $parsed_data['id'] ) || isset( $parsed_data['sku'] ) ) && ! $id_exists && ! $sku_exists ) {
                     $data['skipped'][] = new WP_Error( 'woocommerce_product_importer_error',
-                    esc_html__( 'No matching product exists to update.', 'classic-commerce' ),
+                    esc_html__( 'No matching product exists to update.', 'classic-store'),
                     array(
                         'id'  => $id,
                         'sku' => $sku,

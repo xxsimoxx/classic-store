@@ -250,7 +250,7 @@ function wc_get_attribute_taxonomy_names() {
 function wc_get_attribute_types() {
 	return (array) apply_filters(
 		'product_attributes_type_selector', array(
-			'select' => __( 'Select', 'classic-commerce' ),
+			'select' => __( 'Select', 'classic-store'),
 		)
 	);
 }
@@ -277,7 +277,7 @@ function wc_has_custom_attribute_types() {
 function wc_get_attribute_type_label( $type ) {
 	$types = wc_get_attribute_types();
 
-	return isset( $types[ $type ] ) ? $types[ $type ] : __( 'Select', 'classic-commerce' );
+	return isset( $types[ $type ] ) ? $types[ $type ] : __( 'Select', 'classic-store');
 }
 
 /**
@@ -472,7 +472,7 @@ function wc_create_attribute( $args ) {
 
 	// Name is required.
 	if ( empty( $args['name'] ) ) {
-		return new WP_Error( 'missing_attribute_name', __( 'Please, provide an attribute name.', 'classic-commerce' ), array( 'status' => 400 ) );
+		return new WP_Error( 'missing_attribute_name', __( 'Please, provide an attribute name.', 'classic-store'), array( 'status' => 400 ) );
 	}
 
 	// Set the attribute slug.
@@ -485,13 +485,13 @@ function wc_create_attribute( $args ) {
 	// Validate slug.
 	if ( strlen( $slug ) >= 28 ) {
 		/* translators: %s: attribute slug */
-		return new WP_Error( 'invalid_product_attribute_slug_too_long', sprintf( __( 'Slug "%s" is too long (28 characters max). Shorten it, please.', 'classic-commerce' ), $slug ), array( 'status' => 400 ) );
+		return new WP_Error( 'invalid_product_attribute_slug_too_long', sprintf( __( 'Slug "%s" is too long (28 characters max). Shorten it, please.', 'classic-store' ), $slug ), array( 'status' => 400 ) );
 	} elseif ( wc_check_if_attribute_name_is_reserved( $slug ) ) {
 		/* translators: %s: attribute slug */
-		return new WP_Error( 'invalid_product_attribute_slug_reserved_name', sprintf( __( 'Slug "%s" is not allowed because it is a reserved term. Change it, please.', 'classic-commerce' ), $slug ), array( 'status' => 400 ) );
+		return new WP_Error( 'invalid_product_attribute_slug_reserved_name', sprintf( __( 'Slug "%s" is not allowed because it is a reserved term. Change it, please.', 'classic-store'), $slug ), array( 'status' => 400 ) );
 	} elseif ( ( 0 === $id && taxonomy_exists( wc_attribute_taxonomy_name( $slug ) ) ) || ( isset( $args['old_slug'] ) && $args['old_slug'] !== $slug && taxonomy_exists( wc_attribute_taxonomy_name( $slug ) ) ) ) {
 		/* translators: %s: attribute slug */
-		return new WP_Error( 'invalid_product_attribute_slug_already_exists', sprintf( __( 'Slug "%s" is already in use. Change it, please.', 'classic-commerce' ), $slug ), array( 'status' => 400 ) );
+		return new WP_Error( 'invalid_product_attribute_slug_already_exists', sprintf( __( 'Slug "%s" is already in use. Change it, please.', 'classic-store'), $slug ), array( 'status' => 400 ) );
 	}
 
 	// Validate type.
@@ -543,7 +543,7 @@ function wc_create_attribute( $args ) {
 		);
 
 		if ( false === $results ) {
-			return new WP_Error( 'cannot_update_attribute', __( 'Could not update the attribute.', 'classic-commerce' ), array( 'status' => 400 ) );
+			return new WP_Error( 'cannot_update_attribute', __( 'Could not update the attribute.', 'classic-store'), array( 'status' => 400 ) );
 		}
 
 		// Set old slug to check for database changes.

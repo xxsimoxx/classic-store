@@ -100,44 +100,44 @@ class WC_Query {
 
 		switch ( $endpoint ) {
 			case 'order-pay':
-				$title = __( 'Pay for order', 'classic-commerce' );
+				$title = __( 'Pay for order', 'classic-store');
 				break;
 			case 'order-received':
-				$title = __( 'Order received', 'classic-commerce' );
+				$title = __( 'Order received', 'classic-store');
 				break;
 			case 'orders':
 				if ( ! empty( $wp->query_vars['orders'] ) ) {
 					/* translators: %s: page */
-					$title = sprintf( __( 'Orders (page %d)', 'classic-commerce' ), intval( $wp->query_vars['orders'] ) );
+					$title = sprintf( __( 'Orders (page %d)', 'classic-store' ), intval( $wp->query_vars['orders'] ) );
 				} else {
-					$title = __( 'Orders', 'classic-commerce' );
+					$title = __( 'Orders', 'classic-store');
 				}
 				break;
 			case 'view-order':
 				$order = wc_get_order( $wp->query_vars['view-order'] );
 				/* translators: %s: order number */
-				$title = ( $order ) ? sprintf( __( 'Order #%s', 'classic-commerce' ), $order->get_order_number() ) : '';
+				$title = ( $order ) ? sprintf( __( 'Order #%s', 'classic-store'), $order->get_order_number() ) : '';
 				break;
 			case 'downloads':
-				$title = __( 'Downloads', 'classic-commerce' );
+				$title = __( 'Downloads', 'classic-store');
 				break;
 			case 'edit-account':
-				$title = __( 'Account details', 'classic-commerce' );
+				$title = __( 'Account details', 'classic-store');
 				break;
 			case 'edit-address':
-				$title = __( 'Addresses', 'classic-commerce' );
+				$title = __( 'Addresses', 'classic-store');
 				break;
 			case 'payment-methods':
-				$title = __( 'Payment methods', 'classic-commerce' );
+				$title = __( 'Payment methods', 'classic-store');
 				break;
 			case 'add-payment-method':
-				$title = __( 'Add payment method', 'classic-commerce' );
+				$title = __( 'Add payment method', 'classic-store');
 				break;
 			case 'lost-password':
 				if ( in_array( $action, array( 'rp', 'resetpass', 'newaccount' ) ) ) {
-					$title = __( 'Set password', 'classic-commerce' );
+					$title = __( 'Set password', 'classic-store');
 				} else {
-					$title = __( 'Lost password', 'classic-commerce' );
+					$title = __( 'Lost password', 'classic-store');
 				}
 				break;
 			default:
@@ -355,7 +355,7 @@ class WC_Query {
 
 			// Remove post type archive name from front page title tag.
 			add_filter( 'post_type_archive_title', '__return_empty_string', 5 );
-			
+
 		} elseif ( ! $q->is_post_type_archive( 'product' ) && ! $q->is_tax( get_object_taxonomies( 'product' ) ) ) {
 			// Only apply to product categories, the product post archive, the shop page, product tags, and product attribute taxonomies.
 			return;

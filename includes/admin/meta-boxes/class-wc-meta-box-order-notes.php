@@ -32,16 +32,16 @@ class WC_Meta_Box_Order_Notes {
 		?>
 		<div class="add_note">
 			<p>
-				<label for="add_order_note"><?php esc_html_e( 'Add note', 'classic-commerce' ); ?> <?php echo wc_help_tip( __( 'Add a note for your reference, or add a customer note (the user will be notified).', 'classic-commerce' ) ); ?></label>
+				<label for="add_order_note"><?php esc_html_e( 'Add note', 'classic-store'); ?> <?php echo wc_help_tip( __( 'Add a note for your reference, or add a customer note (the user will be notified).', 'classic-store' ) ); ?></label>
 				<textarea type="text" name="order_note" id="add_order_note" class="input-text" cols="20" rows="5"></textarea>
 			</p>
 			<p>
-				<label for="order_note_type" class="screen-reader-text"><?php esc_html_e( 'Note type', 'classic-commerce' ); ?></label>
+				<label for="order_note_type" class="screen-reader-text"><?php esc_html_e( 'Note type', 'classic-store'); ?></label>
 				<select name="order_note_type" id="order_note_type">
-					<option value=""><?php esc_html_e( 'Private note', 'classic-commerce' ); ?></option>
-					<option value="customer"><?php esc_html_e( 'Note to customer', 'classic-commerce' ); ?></option>
+					<option value=""><?php esc_html_e( 'Private note', 'classic-store'); ?></option>
+					<option value="customer"><?php esc_html_e( 'Note to customer', 'classic-store'); ?></option>
 				</select>
-				<button type="button" class="add_note button"><?php esc_html_e( 'Add', 'classic-commerce' ); ?></button>
+				<button type="button" class="add_note button"><?php esc_html_e( 'Add', 'classic-store'); ?></button>
 			</p>
 		</div>
 		<?php

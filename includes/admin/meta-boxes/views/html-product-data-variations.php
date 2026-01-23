@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						echo wp_kses_post(
 							sprintf(
 								/* translators: %1$s: url for attributes tab, %2$s: url for variable product documentation */
-								__( 'Add some attributes in the <a class="variations-add-attributes-link" href="%1$s">Attributes</a> tab to generate variations. Make sure to check the <b>Used for variations</b> box. <a class="variations-learn-more-link" href="%2$s" target="_blank" rel="noreferrer">Learn more</a>', 'classic-commerce' ),
+								__( 'Add some attributes in the <a class="variations-add-attributes-link" href="%1$s">Attributes</a> tab to generate variations. Make sure to check the <b>Used for variations</b> box. <a class="variations-learn-more-link" href="%2$s" target="_blank" rel="noreferrer">Learn more</a>', 'classic-store'),
 								esc_url( '#product_attributes' ),
 								esc_url( 'https://classiccommerce.cc/docs/installation-and-setup/variable-products/' )
 							)
@@ -35,14 +35,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<div class="toolbar toolbar-variations-defaults">
 				<div class="variations-defaults">
-					<strong><?php esc_html_e( 'Default Form Values', 'classic-commerce' ); ?>: <?php echo wc_help_tip( __( 'Choose a default form value if you want a certain variation already selected when a user visits the product page.', 'classic-commerce' ) ); ?></strong>
+					<strong><?php esc_html_e( 'Default Form Values', 'classic-store'); ?>: <?php echo wc_help_tip( __( 'Choose a default form value if you want a certain variation already selected when a user visits the product page.', 'classic-store') ); ?></strong>
 					<?php
 					foreach ( $variation_attributes as $attribute ) {
 						$selected_value = isset( $default_attributes[ sanitize_title( $attribute->get_name() ) ] ) ? $default_attributes[ sanitize_title( $attribute->get_name() ) ] : '';
 						?>
 						<select name="default_attribute_<?php echo esc_attr( sanitize_title( $attribute->get_name() ) ); ?>" data-current="<?php echo esc_attr( $selected_value ); ?>">
 							<?php /* translators: WooCommerce attribute label */ ?>
-							<option value=""><?php echo esc_html( sprintf( __( 'No default %s&hellip;', 'classic-commerce' ), wc_attribute_label( $attribute->get_name() ) ) ); ?></option>
+							<option value=""><?php echo esc_html( sprintf( __( 'No default %s&hellip;', 'classic-store'), wc_attribute_label( $attribute->get_name() ) ) ); ?></option>
 							<?php if ( $attribute->is_taxonomy() ) : ?>
 								<?php foreach ( $attribute->get_terms() as $option ) : ?>
 									<?php /* phpcs:disable WooCommerce.Commenting.CommentHooks.MissingHookComment */ ?>
@@ -69,42 +69,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php /* phpcs:enable */ ?>
 
 			<div class="toolbar toolbar-top">
-				<button type="button" class="button generate_variations"><?php esc_html_e( 'Generate variations', 'classic-commerce' ); ?></button>
-				<button type="button" class="button add_variation_manually"><?php esc_html_e( 'Add manually', 'classic-commerce' ); ?></button>
+				<button type="button" class="button generate_variations"><?php esc_html_e( 'Generate variations', 'classic-store'); ?></button>
+				<button type="button" class="button add_variation_manually"><?php esc_html_e( 'Add manually', 'classic-store'); ?></button>
 				<select id="field_to_edit" class="select variation_actions hidden">
 					<option value="bulk_actions" disabled>Bulk actions</option>
-					<option value="delete_all"><?php esc_html_e( 'Delete all variations', 'classic-commerce' ); ?></option>
-					<optgroup label="<?php esc_attr_e( 'Status', 'classic-commerce' ); ?>">
-						<option value="toggle_enabled"><?php esc_html_e( 'Toggle &quot;Enabled&quot;', 'classic-commerce' ); ?></option>
-						<option value="toggle_downloadable"><?php esc_html_e( 'Toggle &quot;Downloadable&quot;', 'classic-commerce' ); ?></option>
-						<option value="toggle_virtual"><?php esc_html_e( 'Toggle &quot;Virtual&quot;', 'classic-commerce' ); ?></option>
+					<option value="delete_all"><?php esc_html_e( 'Delete all variations', 'classic-store'); ?></option>
+					<optgroup label="<?php esc_attr_e( 'Status', 'classic-store'); ?>">
+						<option value="toggle_enabled"><?php esc_html_e( 'Toggle &quot;Enabled&quot;', 'classic-store'); ?></option>
+						<option value="toggle_downloadable"><?php esc_html_e( 'Toggle &quot;Downloadable&quot;', 'classic-store'); ?></option>
+						<option value="toggle_virtual"><?php esc_html_e( 'Toggle &quot;Virtual&quot;', 'classic-store'); ?></option>
 					</optgroup>
-					<optgroup label="<?php esc_attr_e( 'Pricing', 'classic-commerce' ); ?>">
-						<option value="variable_regular_price"><?php esc_html_e( 'Set regular prices', 'classic-commerce' ); ?></option>
-						<option value="variable_regular_price_increase"><?php esc_html_e( 'Increase regular prices (fixed amount or percentage)', 'classic-commerce' ); ?></option>
-						<option value="variable_regular_price_decrease"><?php esc_html_e( 'Decrease regular prices (fixed amount or percentage)', 'classic-commerce' ); ?></option>
-						<option value="variable_sale_price"><?php esc_html_e( 'Set sale prices', 'classic-commerce' ); ?></option>
-						<option value="variable_sale_price_increase"><?php esc_html_e( 'Increase sale prices (fixed amount or percentage)', 'classic-commerce' ); ?></option>
-						<option value="variable_sale_price_decrease"><?php esc_html_e( 'Decrease sale prices (fixed amount or percentage)', 'classic-commerce' ); ?></option>
-						<option value="variable_sale_schedule"><?php esc_html_e( 'Set scheduled sale dates', 'classic-commerce' ); ?></option>
+					<optgroup label="<?php esc_attr_e( 'Pricing', 'classic-store'); ?>">
+						<option value="variable_regular_price"><?php esc_html_e( 'Set regular prices', 'classic-store'); ?></option>
+						<option value="variable_regular_price_increase"><?php esc_html_e( 'Increase regular prices (fixed amount or percentage)', 'classic-store' ); ?></option>
+						<option value="variable_regular_price_decrease"><?php esc_html_e( 'Decrease regular prices (fixed amount or percentage)', 'classic-store' ); ?></option>
+						<option value="variable_sale_price"><?php esc_html_e( 'Set sale prices', 'classic-store'); ?></option>
+						<option value="variable_sale_price_increase"><?php esc_html_e( 'Increase sale prices (fixed amount or percentage)', 'classic-store' ); ?></option>
+						<option value="variable_sale_price_decrease"><?php esc_html_e( 'Decrease sale prices (fixed amount or percentage)', 'classic-store' ); ?></option>
+						<option value="variable_sale_schedule"><?php esc_html_e( 'Set scheduled sale dates', 'classic-store'); ?></option>
 					</optgroup>
-					<optgroup label="<?php esc_attr_e( 'Inventory', 'classic-commerce' ); ?>">
-						<option value="toggle_manage_stock"><?php esc_html_e( 'Toggle &quot;Manage stock&quot;', 'classic-commerce' ); ?></option>
-						<option value="variable_stock"><?php esc_html_e( 'Stock', 'classic-commerce' ); ?></option>
-						<option value="variable_stock_status_instock"><?php esc_html_e( 'Set Status - In stock', 'classic-commerce' ); ?></option>
-						<option value="variable_stock_status_outofstock"><?php esc_html_e( 'Set Status - Out of stock', 'classic-commerce' ); ?></option>
-						<option value="variable_stock_status_onbackorder"><?php esc_html_e( 'Set Status - On backorder', 'classic-commerce' ); ?></option>
-						<option value="variable_low_stock_amount"><?php esc_html_e( 'Low stock threshold', 'classic-commerce' ); ?></option>
+					<optgroup label="<?php esc_attr_e( 'Inventory', 'classic-store'); ?>">
+						<option value="toggle_manage_stock"><?php esc_html_e( 'Toggle &quot;Manage stock&quot;', 'classic-store'); ?></option>
+						<option value="variable_stock"><?php esc_html_e( 'Stock', 'classic-store'); ?></option>
+						<option value="variable_stock_status_instock"><?php esc_html_e( 'Set Status - In stock', 'classic-store'); ?></option>
+						<option value="variable_stock_status_outofstock"><?php esc_html_e( 'Set Status - Out of stock', 'classic-store'); ?></option>
+						<option value="variable_stock_status_onbackorder"><?php esc_html_e( 'Set Status - On backorder', 'classic-store'); ?></option>
+						<option value="variable_low_stock_amount"><?php esc_html_e( 'Low stock threshold', 'classic-store'); ?></option>
 					</optgroup>
-					<optgroup label="<?php esc_attr_e( 'Shipping', 'classic-commerce' ); ?>">
-						<option value="variable_length"><?php esc_html_e( 'Length', 'classic-commerce' ); ?></option>
-						<option value="variable_width"><?php esc_html_e( 'Width', 'classic-commerce' ); ?></option>
-						<option value="variable_height"><?php esc_html_e( 'Height', 'classic-commerce' ); ?></option>
-						<option value="variable_weight"><?php esc_html_e( 'Weight', 'classic-commerce' ); ?></option>
+					<optgroup label="<?php esc_attr_e( 'Shipping', 'classic-store'); ?>">
+						<option value="variable_length"><?php esc_html_e( 'Length', 'classic-store'); ?></option>
+						<option value="variable_width"><?php esc_html_e( 'Width', 'classic-store'); ?></option>
+						<option value="variable_height"><?php esc_html_e( 'Height', 'classic-store'); ?></option>
+						<option value="variable_weight"><?php esc_html_e( 'Weight', 'classic-store'); ?></option>
 					</optgroup>
-					<optgroup label="<?php esc_attr_e( 'Downloadable products', 'classic-commerce' ); ?>">
-						<option value="variable_download_limit"><?php esc_html_e( 'Download limit', 'classic-commerce' ); ?></option>
-						<option value="variable_download_expiry"><?php esc_html_e( 'Download expiry', 'classic-commerce' ); ?></option>
+					<optgroup label="<?php esc_attr_e( 'Downloadable products', 'classic-store'); ?>">
+						<option value="variable_download_limit"><?php esc_html_e( 'Download limit', 'classic-store'); ?></option>
+						<option value="variable_download_expiry"><?php esc_html_e( 'Download expiry', 'classic-store'); ?></option>
 					</optgroup>
 					<?php /* phpcs:disable WooCommerce.Commenting.CommentHooks.MissingHookComment */ ?>
 					<?php do_action( 'woocommerce_variable_product_bulk_edit_actions' ); ?>
@@ -113,26 +113,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<div class="variations-pagenav">
 					<?php /* translators: variations count */ ?>
-					<span class="displaying-num"><?php echo esc_html( sprintf( _n( '%s item', '%s items', $variations_count, 'classic-commerce' ), $variations_count ) ); ?></span>
+					<span class="displaying-num"><?php echo esc_html( sprintf( _n( '%s item', '%s items', $variations_count, 'classic-store' ), $variations_count ) ); ?></span>
 					<span class="expand-close">
-						(<a href="#" class="expand_all"><?php esc_html_e( 'Expand', 'classic-commerce' ); ?></a> / <a href="#" class="close_all"><?php esc_html_e( 'Close', 'classic-commerce' ); ?></a>)
+						(<a href="#" class="expand_all"><?php esc_html_e( 'Expand', 'classic-store'); ?></a> / <a href="#" class="close_all"><?php esc_html_e( 'Close', 'classic-store'); ?></a>)
 					</span>
 					<span class="pagination-links">
-						<a class="first-page disabled" title="<?php esc_attr_e( 'Go to the first page', 'classic-commerce' ); ?>" href="#">&laquo;</a>
-						<a class="prev-page disabled" title="<?php esc_attr_e( 'Go to the previous page', 'classic-commerce' ); ?>" href="#">&lsaquo;</a>
+						<a class="first-page disabled" title="<?php esc_attr_e( 'Go to the first page', 'classic-store'); ?>" href="#">&laquo;</a>
+						<a class="prev-page disabled" title="<?php esc_attr_e( 'Go to the previous page', 'classic-store'); ?>" href="#">&lsaquo;</a>
 						<span class="paging-select">
-							<label for="current-page-selector-1" class="screen-reader-text"><?php esc_html_e( 'Select Page', 'classic-commerce' ); ?></label>
-							<select class="page-selector" id="current-page-selector-1" title="<?php esc_attr_e( 'Current page', 'classic-commerce' ); ?>">
+							<label for="current-page-selector-1" class="screen-reader-text"><?php esc_html_e( 'Select Page', 'classic-store'); ?></label>
+							<select class="page-selector" id="current-page-selector-1" title="<?php esc_attr_e( 'Current page', 'classic-store'); ?>">
 								<?php for ( $i = 1; $i <= $variations_total_pages; $i++ ) : ?>
 									<?php /* phpcs:disable WooCommerce.Commenting.CommentHooks.MissingHookComment */ ?>
 									<option value="<?php echo $i; // WPCS: XSS ok. ?>"><?php echo $i; // WPCS: XSS ok. ?></option>
 									<?php /* phpcs:enable */ ?>
 								<?php endfor; ?>
 							</select>
-							<?php echo esc_html_x( 'of', 'number of pages', 'classic-commerce' ); ?> <span class="total-pages"><?php echo esc_html( $variations_total_pages ); ?></span>
+							<?php echo esc_html_x( 'of', 'number of pages', 'classic-store'); ?> <span class="total-pages"><?php echo esc_html( $variations_total_pages ); ?></span>
 						</span>
-						<a class="next-page" title="<?php esc_attr_e( 'Go to the next page', 'classic-commerce' ); ?>" href="#">&rsaquo;</a>
-						<a class="last-page" title="<?php esc_attr_e( 'Go to the last page', 'classic-commerce' ); ?>" href="#">&raquo;</a>
+						<a class="next-page" title="<?php esc_attr_e( 'Go to the next page', 'classic-store'); ?>" href="#">&rsaquo;</a>
+						<a class="last-page" title="<?php esc_attr_e( 'Go to the last page', 'classic-store'); ?>" href="#">&raquo;</a>
 					</span>
 				</div>
 				<div class="clear"></div>
@@ -142,9 +142,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<p>
 					<?php
 					esc_html_e(
-						'Generate variations from all added attributes or add a new variation manually.',
-						'classic-commerce'
-					);
+						'Generate variations from all added attributes or add a new variation manually.', 'classic-store');
 					?>
 				</p>
 			</div>
@@ -154,31 +152,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php /* phpcs:enable */ ?>
 
 			<div class="toolbar">
-				<button type="button" class="button-primary save-variation-changes" disabled="disabled"><?php esc_html_e( 'Save changes', 'classic-commerce' ); ?></button>
-				<button type="button" class="button cancel-variation-changes" disabled="disabled"><?php esc_html_e( 'Cancel', 'classic-commerce' ); ?></button>
+				<button type="button" class="button-primary save-variation-changes" disabled="disabled"><?php esc_html_e( 'Save changes', 'classic-store'); ?></button>
+				<button type="button" class="button cancel-variation-changes" disabled="disabled"><?php esc_html_e( 'Cancel', 'classic-store'); ?></button>
 
 				<div class="variations-pagenav">
 					<?php /* translators: variations count*/ ?>
-					<span class="displaying-num"><?php echo esc_html( sprintf( _n( '%s item', '%s items', $variations_count, 'classic-commerce' ), $variations_count ) ); ?></span>
+					<span class="displaying-num"><?php echo esc_html( sprintf( _n( '%s item', '%s items', $variations_count, 'classic-store' ), $variations_count ) ); ?></span>
 					<span class="expand-close">
-						(<a href="#" class="expand_all"><?php esc_html_e( 'Expand', 'classic-commerce' ); ?></a> / <a href="#" class="close_all"><?php esc_html_e( 'Close', 'classic-commerce' ); ?></a>)
+						(<a href="#" class="expand_all"><?php esc_html_e( 'Expand', 'classic-store'); ?></a> / <a href="#" class="close_all"><?php esc_html_e( 'Close', 'classic-store'); ?></a>)
 					</span>
 					<span class="pagination-links">
-						<a class="first-page disabled" title="<?php esc_attr_e( 'Go to the first page', 'classic-commerce' ); ?>" href="#">&laquo;</a>
-						<a class="prev-page disabled" title="<?php esc_attr_e( 'Go to the previous page', 'classic-commerce' ); ?>" href="#">&lsaquo;</a>
+						<a class="first-page disabled" title="<?php esc_attr_e( 'Go to the first page', 'classic-store'); ?>" href="#">&laquo;</a>
+						<a class="prev-page disabled" title="<?php esc_attr_e( 'Go to the previous page', 'classic-store'); ?>" href="#">&lsaquo;</a>
 						<span class="paging-select">
-							<label for="current-page-selector-1" class="screen-reader-text"><?php esc_html_e( 'Select Page', 'classic-commerce' ); ?></label>
-							<select class="page-selector" id="current-page-selector-1" title="<?php esc_attr_e( 'Current page', 'classic-commerce' ); ?>">
+							<label for="current-page-selector-1" class="screen-reader-text"><?php esc_html_e( 'Select Page', 'classic-store'); ?></label>
+							<select class="page-selector" id="current-page-selector-1" title="<?php esc_attr_e( 'Current page', 'classic-store'); ?>">
 								<?php for ( $i = 1; $i <= $variations_total_pages; $i++ ) : ?>
 									<?php /* phpcs:disable WooCommerce.Commenting.CommentHooks.MissingHookComment */ ?>
 									<option value="<?php echo $i; // WPCS: XSS ok. ?>"><?php echo $i; // WPCS: XSS ok. ?></option>
 									<?php /* phpcs:enable */ ?>
 								<?php endfor; ?>
 							</select>
-							<?php echo esc_html_x( 'of', 'number of pages', 'classic-commerce' ); ?> <span class="total-pages"><?php echo esc_html( $variations_total_pages ); ?></span>
+							<?php echo esc_html_x( 'of', 'number of pages', 'classic-store'); ?> <span class="total-pages"><?php echo esc_html( $variations_total_pages ); ?></span>
 						</span>
-						<a class="next-page" title="<?php esc_attr_e( 'Go to the next page', 'classic-commerce' ); ?>" href="#">&rsaquo;</a>
-						<a class="last-page" title="<?php esc_attr_e( 'Go to the last page', 'classic-commerce' ); ?>" href="#">&raquo;</a>
+						<a class="next-page" title="<?php esc_attr_e( 'Go to the next page', 'classic-store'); ?>" href="#">&rsaquo;</a>
+						<a class="last-page" title="<?php esc_attr_e( 'Go to the last page', 'classic-store'); ?>" href="#">&raquo;</a>
 					</span>
 				</div>
 				<div class="clear"></div>
@@ -196,12 +194,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 				<div class="woocommerce-usage-modal__wrapper">
 					<div class="woocommerce-usage-modal__message">
-						<span><?php esc_html_e( 'Add price to all variations that don\'t have a price', 'classic-commerce' ); ?> (<?php echo esc_attr( get_woocommerce_currency_symbol() ); ?> <?php echo esc_textarea( get_woocommerce_currency() ); ?>)</span>
+						<span><?php esc_html_e( 'Add price to all variations that don\'t have a price', 'classic-store'); ?> (<?php echo esc_attr( get_woocommerce_currency_symbol() ); ?> <?php echo esc_textarea( get_woocommerce_currency() ); ?>)</span>
 						<input type="text" class="components-text-control__input wc_input_variations_price"/>
 					</div>
 					<div class="woocommerce-usage-modal__actions">
-						<button class="modal-close components-button is-secondary"><?php esc_html_e( 'Cancel', 'classic-commerce' ); ?></button>
-						<button class="modal-close button components-button add_variations_price_button button-primary" disabled><?php esc_html_e( 'Add prices', 'classic-commerce' ); ?></button>
+						<button class="modal-close components-button is-secondary"><?php esc_html_e( 'Cancel', 'classic-store'); ?></button>
+						<button class="modal-close button components-button add_variations_price_button button-primary" disabled><?php esc_html_e( 'Add prices', 'classic-store'); ?></button>
 					</div>
 				</div>
 			</div>

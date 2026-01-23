@@ -33,7 +33,7 @@ class WC_Report_Taxes_By_Code extends WC_Admin_Report {
 			class="export_csv"
 			data-export="table"
 		>
-			<?php esc_html_e( 'Export CSV', 'classic-commerce' ); ?>
+			<?php esc_html_e( 'Export CSV', 'classic-store'); ?>
 		</a>
 		<?php
 	}
@@ -44,9 +44,9 @@ class WC_Report_Taxes_By_Code extends WC_Admin_Report {
 	public function output_report() {
 
 		$ranges = array(
-			'year'       => __( 'Year', 'classic-commerce' ),
-			'last_month' => __( 'Last month', 'classic-commerce' ),
-			'month'      => __( 'This month', 'classic-commerce' ),
+			'year'       => __( 'Year', 'classic-store'),
+			'last_month' => __( 'Last month', 'classic-store'),
+			'month'      => __( 'This month', 'classic-store'),
 		);
 
 		$current_range = ! empty( $_GET['range'] ) ? sanitize_text_field( wp_unslash( $_GET['range'] ) ) : 'last_month';
@@ -188,12 +188,12 @@ class WC_Report_Taxes_By_Code extends WC_Admin_Report {
 		<table class="widefat">
 			<thead>
 				<tr>
-					<th><?php esc_html_e( 'Tax', 'classic-commerce' ); ?></th>
-					<th><?php esc_html_e( 'Rate', 'classic-commerce' ); ?></th>
-					<th class="total_row"><?php esc_html_e( 'Number of orders', 'classic-commerce' ); ?></th>
-					<th class="total_row"><?php esc_html_e( 'Tax amount', 'classic-commerce' ); ?> <?php echo wc_help_tip( __( 'This is the sum of the "Tax rows" tax amount within your orders.', 'classic-commerce' ) ); ?></th>
-					<th class="total_row"><?php esc_html_e( 'Shipping tax amount', 'classic-commerce' ); ?> <?php echo wc_help_tip( __( 'This is the sum of the "Tax rows" shipping tax amount within your orders.', 'classic-commerce' ) ); ?></th>
-					<th class="total_row"><?php esc_html_e( 'Total tax', 'classic-commerce' ); ?> <?php echo wc_help_tip( __( 'This is the total tax for the rate (shipping tax + product tax).', 'classic-commerce' ) ); ?></th>
+					<th><?php esc_html_e( 'Tax', 'classic-store'); ?></th>
+					<th><?php esc_html_e( 'Rate', 'classic-store'); ?></th>
+					<th class="total_row"><?php esc_html_e( 'Number of orders', 'classic-store'); ?></th>
+					<th class="total_row"><?php esc_html_e( 'Tax amount', 'classic-store'); ?> <?php echo wc_help_tip( __( 'This is the sum of the "Tax rows" tax amount within your orders.', 'classic-store') ); ?></th>
+					<th class="total_row"><?php esc_html_e( 'Shipping tax amount', 'classic-store'); ?> <?php echo wc_help_tip( __( 'This is the sum of the "Tax rows" shipping tax amount within your orders.', 'classic-store') ); ?></th>
+					<th class="total_row"><?php esc_html_e( 'Total tax', 'classic-store'); ?> <?php echo wc_help_tip( __( 'This is the total tax for the rate (shipping tax + product tax).', 'classic-store' ) ); ?></th>
 				</tr>
 			</thead>
 			<?php if ( ! empty( $tax_rows ) ) : ?>
@@ -217,7 +217,7 @@ class WC_Report_Taxes_By_Code extends WC_Admin_Report {
 				</tbody>
 				<tfoot>
 					<tr>
-                        <th scope="row" colspan="3"><?php esc_html_e( 'Total', 'classic-commerce' ); ?></th>
+                        <th scope="row" colspan="3"><?php esc_html_e( 'Total', 'classic-store'); ?></th>
 						<th class="total_row"><?php echo wc_price( wc_round_tax_total( array_sum( wp_list_pluck( (array) $tax_rows, 'tax_amount' ) ) ) ); // phpcs:ignore ?></th>
 						<th class="total_row"><?php echo wc_price( wc_round_tax_total( array_sum( wp_list_pluck( (array) $tax_rows, 'shipping_tax_amount' ) ) ) ); // phpcs:ignore ?></th>
 						<th class="total_row"><strong><?php echo wc_price( wc_round_tax_total( array_sum( wp_list_pluck( (array) $tax_rows, 'tax_amount' ) ) + array_sum( wp_list_pluck( (array) $tax_rows, 'shipping_tax_amount' ) ) ) ); // phpcs:ignore ?></strong></th>
@@ -226,7 +226,7 @@ class WC_Report_Taxes_By_Code extends WC_Admin_Report {
 			<?php else : ?>
 				<tbody>
 					<tr>
-						<td><?php esc_html_e( 'No taxes found in this period', 'classic-commerce' ); ?></td>
+						<td><?php esc_html_e( 'No taxes found in this period', 'classic-store'); ?></td>
 					</tr>
 				</tbody>
 			<?php endif; ?>

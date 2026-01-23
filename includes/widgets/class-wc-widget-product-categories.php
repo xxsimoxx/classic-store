@@ -34,53 +34,53 @@ class WC_Widget_Product_Categories extends WC_Widget {
 	 */
 	public function __construct() {
 		$this->widget_cssclass    = 'woocommerce widget_product_categories';
-		$this->widget_description = __( 'A list or dropdown of product categories.', 'classic-commerce' );
+		$this->widget_description = __( 'A list or dropdown of product categories.', 'classic-store');
 		$this->widget_id          = 'woocommerce_product_categories';
-		$this->widget_name        = __( 'Product Categories', 'classic-commerce' );
+		$this->widget_name        = __( 'Product Categories', 'classic-store');
 		$this->settings           = array(
 			'title'              => array(
 				'type'  => 'text',
-				'std'   => __( 'Product categories', 'classic-commerce' ),
-				'label' => __( 'Title', 'classic-commerce' ),
+				'std'   => __( 'Product categories', 'classic-store'),
+				'label' => __( 'Title', 'classic-store'),
 			),
 			'orderby'            => array(
 				'type'    => 'select',
 				'std'     => 'name',
-				'label'   => __( 'Order by', 'classic-commerce' ),
+				'label'   => __( 'Order by', 'classic-store'),
 				'options' => array(
-					'order' => __( 'Category order', 'classic-commerce' ),
-					'name'  => __( 'Name', 'classic-commerce' ),
+					'order' => __( 'Category order', 'classic-store'),
+					'name'  => __( 'Name', 'classic-store'),
 				),
 			),
 			'dropdown'           => array(
 				'type'  => 'checkbox',
 				'std'   => 0,
-				'label' => __( 'Show as dropdown', 'classic-commerce' ),
+				'label' => __( 'Show as dropdown', 'classic-store'),
 			),
 			'count'              => array(
 				'type'  => 'checkbox',
 				'std'   => 0,
-				'label' => __( 'Show product counts', 'classic-commerce' ),
+				'label' => __( 'Show product counts', 'classic-store'),
 			),
 			'hierarchical'       => array(
 				'type'  => 'checkbox',
 				'std'   => 1,
-				'label' => __( 'Show hierarchy', 'classic-commerce' ),
+				'label' => __( 'Show hierarchy', 'classic-store'),
 			),
 			'show_children_only' => array(
 				'type'  => 'checkbox',
 				'std'   => 0,
-				'label' => __( 'Only show children of the current category', 'classic-commerce' ),
+				'label' => __( 'Only show children of the current category', 'classic-store'),
 			),
 			'hide_empty'         => array(
 				'type'  => 'checkbox',
 				'std'   => 0,
-				'label' => __( 'Hide empty categories', 'classic-commerce' ),
+				'label' => __( 'Hide empty categories', 'classic-store'),
 			),
 			'max_depth'          => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Maximum depth', 'classic-commerce' ),
+				'label' => __( 'Maximum depth', 'classic-store'),
 			),
 		);
 
@@ -264,13 +264,13 @@ class WC_Widget_Product_Categories extends WC_Widget {
 				if ( jQuery().selectWoo ) {
 					var wc_product_cat_select = function() {
 						jQuery( '.dropdown_product_cat' ).selectWoo( {
-							placeholder: '" . esc_js( __( 'Select a category', 'classic-commerce' ) ) . "',
+							placeholder: '" . esc_js( __( 'Select a category', 'classic-store') ) . "',
 							minimumResultsForSearch: 5,
 							width: '100%',
 							allowClear: true,
 							language: {
 								noResults: function() {
-									return '" . esc_js( _x( 'No matches found', 'enhanced select', 'classic-commerce' ) ) . "';
+									return '" . esc_js( _x( 'No matches found', 'enhanced select', 'classic-store') ) . "';
 								}
 							}
 						} );
@@ -285,7 +285,7 @@ class WC_Widget_Product_Categories extends WC_Widget {
 			$list_args['walker']                     = new WC_Product_Cat_List_Walker();
 			$list_args['title_li']                   = '';
 			$list_args['pad_counts']                 = 1;
-			$list_args['show_option_none']           = __( 'No product categories exist.', 'classic-commerce' );
+			$list_args['show_option_none']           = __( 'No product categories exist.', 'classic-store');
 			$list_args['current_category']           = ( $this->current_cat ) ? $this->current_cat->term_id : '';
 			$list_args['current_category_ancestors'] = $this->cat_ancestors;
 			$list_args['max_depth']                  = $max_depth;

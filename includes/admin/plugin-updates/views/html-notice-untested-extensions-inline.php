@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<table class="plugin-details-table" cellspacing="0">
 		<thead>
 			<tr>
-				<th><?php esc_html_e( 'Plugin', 'classic-commerce' ); ?></th>
-				<th><?php esc_html_e( 'Tested up to Classic Commerce version', 'classic-commerce' ); ?></th>
+				<th><?php esc_html_e( 'Plugin', 'classic-store'); ?></th>
+				<th><?php esc_html_e( 'Tested up to Classic Commerce version', 'classic-store'); ?></th>
 			</tr>
 		</thead>
 		<tbody>

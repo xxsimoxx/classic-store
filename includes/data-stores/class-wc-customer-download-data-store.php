@@ -80,7 +80,7 @@ class WC_Customer_Download_Data_Store implements WC_Customer_Download_Data_Store
 		global $wpdb;
 
 		if ( ! $download->get_id() ) {
-			throw new Exception( __( 'Invalid download.', 'classic-commerce' ) );
+			throw new Exception( __( 'Invalid download.', 'classic-store') );
 		}
 
 		$download->set_defaults();
@@ -92,7 +92,7 @@ class WC_Customer_Download_Data_Store implements WC_Customer_Download_Data_Store
 		);
 
 		if ( ! $raw_download ) {
-			throw new Exception( __( 'Invalid download.', 'classic-commerce' ) );
+			throw new Exception( __( 'Invalid download.', 'classic-store') );
 		}
 
 		$download->set_props(
@@ -215,7 +215,7 @@ class WC_Customer_Download_Data_Store implements WC_Customer_Download_Data_Store
 		} elseif ( is_float( $value ) ) {
 			$value_placeholder = '%f';
 		} else {
-			wc_doing_it_wrong( __METHOD__, __( 'Unsupported argument type provided as value.', 'classic-commerce' ), '7.0' );
+			wc_doing_it_wrong( __METHOD__, __( 'Unsupported argument type provided as value.', 'classic-store'), '7.0' );
 			// The `prepare` further down would fail if the placeholder was missing, so skip download log removal.
 			return;
 		}

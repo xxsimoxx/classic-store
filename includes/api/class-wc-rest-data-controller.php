@@ -58,7 +58,7 @@ class WC_REST_Data_Controller extends WC_REST_Controller {
 	 */
 	public function get_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'settings', 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -72,7 +72,7 @@ class WC_REST_Data_Controller extends WC_REST_Controller {
 	 */
 	public function get_item_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'settings', 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -90,15 +90,15 @@ class WC_REST_Data_Controller extends WC_REST_Controller {
 		$resources = array(
 			array(
 				'slug'        => 'continents',
-				'description' => __( 'List of supported continents, countries, and states.', 'classic-commerce' ),
+				'description' => __( 'List of supported continents, countries, and states.', 'classic-store'),
 			),
 			array(
 				'slug'        => 'countries',
-				'description' => __( 'List of supported states in a given country.', 'classic-commerce' ),
+				'description' => __( 'List of supported states in a given country.', 'classic-store'),
 			),
 			array(
 				'slug'        => 'currencies',
-				'description' => __( 'List of supported currencies.', 'classic-commerce' ),
+				'description' => __( 'List of supported currencies.', 'classic-store'),
 			),
 		);
 
@@ -165,13 +165,13 @@ class WC_REST_Data_Controller extends WC_REST_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'slug'        => array(
-					'description' => __( 'Data resource ID.', 'classic-commerce' ),
+					'description' => __( 'Data resource ID.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'description' => array(
-					'description' => __( 'Data resource description.', 'classic-commerce' ),
+					'description' => __( 'Data resource description.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,

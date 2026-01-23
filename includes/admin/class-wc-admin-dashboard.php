@@ -38,9 +38,9 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 		public function init() {
 			// Reviews Widget.
 			if ( current_user_can( 'publish_shop_orders' ) && post_type_supports( 'product', 'comments' ) ) {
-				wp_add_dashboard_widget( 'woocommerce_dashboard_recent_reviews', __( 'Classic Commerce Recent Reviews', 'classic-commerce' ), array( $this, 'recent_reviews' ) );
+				wp_add_dashboard_widget( 'woocommerce_dashboard_recent_reviews', __( 'Classic Commerce Recent Reviews', 'classic-store'), array( $this, 'recent_reviews' ) );
 			}
-			wp_add_dashboard_widget( 'woocommerce_dashboard_status', __( 'Classic Commerce Status', 'classic-commerce' ), array( $this, 'status_widget' ) );
+			wp_add_dashboard_widget( 'woocommerce_dashboard_status', __( 'Classic Commerce Status', 'classic-store'), array( $this, 'status_widget' ) );
 
 			// Network Order Widget.
 			if ( is_multisite() && is_main_site() ) {
@@ -52,7 +52,7 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 		 * Register the network order dashboard widget.
 		 */
 		public function register_network_order_widget() {
-			wp_add_dashboard_widget( 'woocommerce_network_orders', __( 'Classic Commerce Network Orders', 'classic-commerce' ), array( $this, 'network_orders' ) );
+			wp_add_dashboard_widget( 'woocommerce_network_orders', __( 'Classic Commerce Network Orders', 'classic-store'), array( $this, 'network_orders' ) );
 		}
 
 		/**
@@ -114,7 +114,7 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 		 * Show status widget.
 		 */
 		public function status_widget() {
-			
+
             include_once dirname( __FILE__ ) . '/reports/class-wc-admin-report.php';
 
 			$reports = new WC_Admin_Report();
@@ -135,7 +135,7 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 					<?php
 						printf(
 							/* translators: %s: net sales */
-							esc_html__( '%s net sales this month', 'classic-commerce' ),
+							esc_html__( '%s net sales this month', 'classic-store'),
 							'<strong>' . wc_price( $report_data->net_sales ) . '</strong>'
 						); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 					?>
@@ -153,7 +153,7 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 					<?php
 						printf(
 							/* translators: 1: top seller product title 2: top seller quantity */
-							esc_html__( '%1$s top seller this month (sold %2$d)', 'classic-commerce' ),
+							esc_html__( '%1$s top seller this month (sold %2$d)', 'classic-store' ),
 							'<strong>' . get_the_title( $top_seller->product_id ) . '</strong>',
 							$top_seller->qty
 						); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
@@ -194,7 +194,7 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 				<?php
 					printf(
 						/* translators: %s: order count */
-						_n( '<strong>%s order</strong> awaiting processing', '<strong>%s orders</strong> awaiting processing', $processing_count, 'classic-commerce' ),
+						_n( '<strong>%s order</strong> awaiting processing', '<strong>%s orders</strong> awaiting processing', $processing_count, 'classic-store' ),
 						$processing_count
 					); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 				?>
@@ -205,7 +205,7 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 				<?php
 					printf(
 						/* translators: %s: order count */
-						_n( '<strong>%s order</strong> on-hold', '<strong>%s orders</strong> on-hold', $on_hold_count, 'classic-commerce' ),
+						_n( '<strong>%s order</strong> on-hold', '<strong>%s orders</strong> on-hold', $on_hold_count, 'classic-store' ),
 						$on_hold_count
 					); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 				?>
@@ -298,7 +298,7 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 				<?php
 					printf(
 						/* translators: %s: order count */
-						_n( '<strong>%s product</strong> low in stock', '<strong>%s products</strong> low in stock', $lowinstock_count, 'classic-commerce' ),
+						_n( '<strong>%s product</strong> low in stock', '<strong>%s products</strong> low in stock', $lowinstock_count, 'classic-store' ),
 						$lowinstock_count
 					); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 				?>
@@ -309,7 +309,7 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 				<?php
 					printf(
 						/* translators: %s: order count */
-						_n( '<strong>%s product</strong> out of stock', '<strong>%s products</strong> out of stock', $outofstock_count, 'classic-commerce' ),
+						_n( '<strong>%s product</strong> out of stock', '<strong>%s products</strong> out of stock', $outofstock_count, 'classic-store' ),
 						$outofstock_count
 					); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 				?>
@@ -352,16 +352,16 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 					$rating = intval( get_comment_meta( $comment->comment_ID, 'rating', true ) );
 
 					/* translators: %s: rating */
-					echo '<div class="star-rating"><span style="width:' . esc_attr( $rating * 20 ) . '%">' . sprintf( esc_html__( '%s out of 5', 'classic-commerce' ), esc_html( $rating ) ) . '</span></div>';
+					echo '<div class="star-rating"><span style="width:' . esc_attr( $rating * 20 ) . '%">' . sprintf( esc_html__( '%s out of 5', 'classic-store'), esc_html( $rating ) ) . '</span></div>';
 
 					/* translators: %s: review author */
-					echo '<h4 class="meta"><a href="' . esc_url( get_permalink( $comment->ID ) ) . '#comment-' . esc_attr( absint( $comment->comment_ID ) ) . '">' . esc_html( apply_filters( 'woocommerce_admin_dashboard_recent_reviews', $comment->post_title, $comment ) ) . '</a> ' . sprintf( esc_html__( 'reviewed by %s', 'classic-commerce' ), esc_html( $comment->comment_author ) ) . '</h4>';
+					echo '<h4 class="meta"><a href="' . esc_url( get_permalink( $comment->ID ) ) . '#comment-' . esc_attr( absint( $comment->comment_ID ) ) . '">' . esc_html( apply_filters( 'woocommerce_admin_dashboard_recent_reviews', $comment->post_title, $comment ) ) . '</a> ' . sprintf( esc_html__( 'reviewed by %s', 'classic-store'), esc_html( $comment->comment_author ) ) . '</h4>';
 					echo '<blockquote>' . wp_kses_data( $comment->comment_content ) . '</blockquote></li>';
 
 				}
 				echo '</ul>';
 			} else {
-				echo '<p>' . esc_html__( 'There are no product reviews yet.', 'classic-commerce' ) . '</p>';
+				echo '<p>' . esc_html__( 'There are no product reviews yet.', 'classic-store') . '</p>';
 			}
 		}
 
@@ -393,16 +393,16 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 			<div class="post-type-shop_order">
 			<div id="woocommerce-network-order-table-loading" class="woocommerce-network-order-table-loading is-active">
 				<p>
-					<span class="spinner is-active"></span> <?php esc_html_e( 'Loading network orders', 'classic-commerce' ); ?>
+					<span class="spinner is-active"></span> <?php esc_html_e( 'Loading network orders', 'classic-store'); ?>
 				</p>
 
 			</div>
 			<table id="woocommerce-network-order-table" class="woocommerce-network-order-table">
 				<thead>
 					<tr>
-						<td><?php esc_html_e( 'Order', 'classic-commerce' ); ?></td>
-						<td><?php esc_html_e( 'Status', 'classic-commerce' ); ?></td>
-						<td><?php esc_html_e( 'Total', 'classic-commerce' ); ?></td>
+						<td><?php esc_html_e( 'Order', 'classic-store'); ?></td>
+						<td><?php esc_html_e( 'Status', 'classic-store'); ?></td>
+						<td><?php esc_html_e( 'Total', 'classic-store'); ?></td>
 					</tr>
 				</thead>
 				<tbody id="network-orders-tbody">
@@ -411,7 +411,7 @@ if ( ! class_exists( 'WC_Admin_Dashboard', false ) ) :
 			</table>
 			<div id="woocommerce-network-orders-no-orders" class="woocommerce-network-orders-no-orders">
 				<p>
-					<?php esc_html_e( 'No orders found', 'classic-commerce' ); ?>
+					<?php esc_html_e( 'No orders found', 'classic-store'); ?>
 				</p>
 			</div>
 			<?php // @codingStandardsIgnoreStart ?>

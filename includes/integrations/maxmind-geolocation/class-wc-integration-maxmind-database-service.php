@@ -106,12 +106,12 @@ class WC_Integration_MaxMind_Database_Service {
 					case 401:
 						return new WP_Error(
 							'woocommerce_maxmind_geolocation_database_license_key',
-							__( 'The MaxMind license key is invalid.', 'classic-commerce' )
+							__( 'The MaxMind license key is invalid.', 'classic-store')
 						);
 				}
 			}
 
-			return new WP_Error( 'woocommerce_maxmind_geolocation_database_download', __( 'Failed to download the MaxMind database.', 'classic-commerce' ) );
+			return new WP_Error( 'woocommerce_maxmind_geolocation_database_download', __( 'Failed to download the MaxMind database.', 'classic-store') );
 		}
 
 		// Extract the database from the archive.
@@ -145,7 +145,7 @@ class WC_Integration_MaxMind_Database_Service {
 		$country_code = null;
 
 		if ( ! class_exists( 'MaxMind\Db\Reader' ) ) {
-			wc_get_logger()->notice( __( 'Missing MaxMind Reader library!', 'classic-commerce' ), array( 'source' => 'maxmind-geolocation' ) );
+			wc_get_logger()->notice( __( 'Missing MaxMind Reader library!', 'classic-store'), array( 'source' => 'maxmind-geolocation' ) );
 			return $country_code;
 		}
 

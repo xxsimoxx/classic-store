@@ -18,7 +18,7 @@ if ( $upsells ) : ?>
 
 	<div class="up-sells upsells products">
         <?php
-		$heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'classic-commerce' ) );
+		$heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'classic-store') );
 		if ( $heading ) :
 			?>
 			<h2><?php echo esc_html( $heading ); ?></h2>

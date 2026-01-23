@@ -115,7 +115,7 @@ class ActionScheduler_DBStore extends ActionScheduler_Store {
 				if ( $unique ) {
 					return 0;
 				}
-				throw new \RuntimeException( $wpdb->last_error ? $wpdb->last_error : __( 'Database error.', 'action-scheduler' ) );
+				throw new \RuntimeException( $wpdb->last_error ? $wpdb->last_error : __( 'Database error.', 'classic-store') );
 			}
 
 			do_action( 'action_scheduler_stored_action', $action_id );
@@ -123,7 +123,7 @@ class ActionScheduler_DBStore extends ActionScheduler_Store {
 			return $action_id;
 		} catch ( \Exception $e ) {
 			/* translators: %s: error message */
-			throw new \RuntimeException( sprintf( __( 'Error saving action: %s', 'action-scheduler' ), $e->getMessage() ), 0 );
+			throw new \RuntimeException( sprintf( __( 'Error saving action: %s', 'classic-store'), $e->getMessage() ), 0 );
 		}
 	}
 
@@ -393,7 +393,7 @@ AND `group_id` = %d
 	protected function get_query_actions_sql( array $query, $select_or_count = 'select' ) {
 
 		if ( ! in_array( $select_or_count, array( 'select', 'count' ), true ) ) {
-			throw new InvalidArgumentException( __( 'Invalid value for select or count parameter. Cannot query actions.', 'action-scheduler' ) );
+			throw new InvalidArgumentException( __( 'Invalid value for select or count parameter. Cannot query actions.', 'classic-store') );
 		}
 
 		$query = wp_parse_args( $query, array(
@@ -451,7 +451,7 @@ AND `group_id` = %d
 			switch ( $query['partial_args_matching'] ) {
 				case 'json':
 					if ( ! $supports_json ) {
-						throw new \RuntimeException( __( 'JSON partial matching not supported in your environment. Please check your MySQL/MariaDB version.', 'action-scheduler' ) );
+						throw new \RuntimeException( __( 'JSON partial matching not supported in your environment. Please check your MySQL/MariaDB version.', 'classic-store') );
 					}
 					$supported_types = array(
 						'integer' => '%d',
@@ -468,7 +468,7 @@ AND `group_id` = %d
 						if ( ! $placeholder ) {
 							throw new \RuntimeException( sprintf(
 								/* translators: %s: provided value type */
-								__( 'The value type for the JSON partial matching is not supported. Must be either integer, boolean, double or string. %s type provided.', 'action-scheduler' ),
+								__( 'The value type for the JSON partial matching is not supported. Must be either integer, boolean, double or string. %s type provided.', 'classic-store'),
 								$value_type
 							) );
 						}
@@ -489,7 +489,7 @@ AND `group_id` = %d
 					$sql_params[] = $this->get_args_for_query( $query['args'] );
 					break;
 				default:
-					throw new \RuntimeException( __( 'Unknown partial args matching value.', 'action-scheduler' ) );
+					throw new \RuntimeException( __( 'Unknown partial args matching value.', 'classic-store') );
 			}
 		}
 
@@ -650,7 +650,7 @@ AND `group_id` = %d
 		);
 		if ( false === $updated ) {
 			/* translators: %s: action ID */
-			throw new \InvalidArgumentException( sprintf( __( 'Unidentified action %s', 'action-scheduler' ), $action_id ) );
+			throw new \InvalidArgumentException( sprintf( __( 'Unidentified action %s', 'classic-store'), $action_id ) );
 		}
 		do_action( 'action_scheduler_canceled_action', $action_id );
 	}
@@ -742,7 +742,7 @@ AND `group_id` = %d
 		global $wpdb;
 		$deleted = $wpdb->delete( $wpdb->actionscheduler_actions, array( 'action_id' => $action_id ), array( '%d' ) );
 		if ( empty( $deleted ) ) {
-			throw new \InvalidArgumentException( sprintf( __( 'Unidentified action %s', 'action-scheduler' ), $action_id ) ); //phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+			throw new \InvalidArgumentException( sprintf( __( 'Unidentified action %s', 'classic-store'), $action_id ) ); //phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 		}
 		do_action( 'action_scheduler_deleted_action', $action_id );
 	}
@@ -773,7 +773,7 @@ AND `group_id` = %d
 		global $wpdb;
 		$record = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->actionscheduler_actions} WHERE action_id=%d", $action_id ) );
 		if ( empty( $record ) ) {
-			throw new \InvalidArgumentException( sprintf( __( 'Unidentified action %s', 'action-scheduler' ), $action_id ) ); //phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+			throw new \InvalidArgumentException( sprintf( __( 'Unidentified action %s', 'classic-store'), $action_id ) ); //phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 		}
 		if ( self::STATUS_PENDING === $record->status ) {
 			return as_get_datetime_object( $record->scheduled_date_gmt );
@@ -911,7 +911,7 @@ AND `group_id` = %d
 							'The group "%s" does not exist.',
 							'The groups "%s" do not exist.',
 							is_array( $group ) ? count( $group ) : 1,
-							'action-scheduler'
+							'classic-store'
 						),
 						$group
 					)
@@ -936,13 +936,13 @@ AND `group_id` = %d
 		$rows_affected = $wpdb->query( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		if ( false === $rows_affected ) {
 			$error = empty( $wpdb->last_error )
-				? _x( 'unknown', 'database error', 'action-scheduler' )
+				? _x( 'unknown', 'database error', 'classic-store')
 				: $wpdb->last_error;
 
 			throw new \RuntimeException(
 				sprintf(
 					/* translators: %s database error. */
-					__( 'Unable to claim actions. Database error: %s.', 'action-scheduler' ),
+					__( 'Unable to claim actions. Database error: %s.', 'classic-store'),
 					$error
 				)
 			);
@@ -1040,7 +1040,7 @@ AND `group_id` = %d
 			throw new RuntimeException(
 				sprintf(
 					// translators: %d is an id.
-					__( 'Unable to release actions from claim id %d.', 'action-scheduler' ),
+					__( 'Unable to release actions from claim id %d.', 'classic-store'),
 					$claim->get_id()
 				)
 			);
@@ -1083,7 +1083,7 @@ AND `group_id` = %d
 			array( '%d' )
 		);
 		if ( empty( $updated ) ) {
-			throw new \InvalidArgumentException( sprintf( __( 'Unidentified action %s', 'action-scheduler' ), $action_id ) ); //phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+			throw new \InvalidArgumentException( sprintf( __( 'Unidentified action %s', 'classic-store'), $action_id ) ); //phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 		}
 	}
 
@@ -1110,7 +1110,7 @@ AND `group_id` = %d
 			throw new Exception(
 				sprintf(
 					/* translators: 1: action ID. 2: status slug. */
-					__( 'Unable to update the status of action %1$d to %2$s.', 'action-scheduler' ),
+					__( 'Unable to update the status of action %1$d to %2$s.', 'classic-store'),
 					$action_id,
 					self::STATUS_RUNNING
 				)
@@ -1141,7 +1141,7 @@ AND `group_id` = %d
 			array( '%d' )
 		);
 		if ( empty( $updated ) ) {
-			throw new \InvalidArgumentException( sprintf( __( 'Unidentified action %s', 'action-scheduler' ), $action_id ) ); //phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+			throw new \InvalidArgumentException( sprintf( __( 'Unidentified action %s', 'classic-store'), $action_id ) ); //phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 		}
 
 		/**
@@ -1171,9 +1171,9 @@ AND `group_id` = %d
 		$status = $wpdb->get_var( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
 		if ( null === $status ) {
-			throw new \InvalidArgumentException( __( 'Invalid action ID. No status found.', 'action-scheduler' ) );
+			throw new \InvalidArgumentException( __( 'Invalid action ID. No status found.', 'classic-store') );
 		} elseif ( empty( $status ) ) {
-			throw new \RuntimeException( __( 'Unknown status found for action.', 'action-scheduler' ) );
+			throw new \RuntimeException( __( 'Unknown status found for action.', 'classic-store') );
 		} else {
 			return $status;
 		}

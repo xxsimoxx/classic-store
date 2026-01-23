@@ -172,7 +172,7 @@ class WC_REST_Refunds_Controller extends WC_REST_Order_Refunds_Controller {
 			array_slice( $schema['properties'], 0, 1, true ),
 			array(
 				'parent_id' => array(
-					'description' => __( 'Parent order ID.', 'classic-commerce' ),
+					'description' => __( 'Parent order ID.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 				),

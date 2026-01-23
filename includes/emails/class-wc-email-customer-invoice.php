@@ -31,8 +31,8 @@ if ( ! class_exists( 'WC_Email_Customer_Invoice', false ) ) :
 		public function __construct() {
 			$this->id             = 'customer_invoice';
 			$this->customer_email = true;
-			$this->title          = __( 'Order details', 'classic-commerce' );
-			$this->description    = __( 'Order detail emails can be sent to customers containing their order information and payment links.', 'classic-commerce' );
+			$this->title          = __( 'Order details', 'classic-store');
+			$this->description    = __( 'Order detail emails can be sent to customers containing their order information and payment links.', 'classic-store');
 			$this->template_html  = 'emails/customer-invoice.php';
 			$this->template_plain = 'emails/plain/customer-invoice.php';
 			$this->placeholders   = array(
@@ -54,7 +54,7 @@ if ( ! class_exists( 'WC_Email_Customer_Invoice', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject( $paid = false ) {
-			return __( 'Details for order #{order_number} on {site_title}', 'classic-commerce' );
+			return __( 'Details for order #{order_number} on {site_title}', 'classic-store');
 		}
 
 		/**
@@ -65,7 +65,7 @@ if ( ! class_exists( 'WC_Email_Customer_Invoice', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading( $paid = false ) {
-			return __( 'Details for order #{order_number}', 'classic-commerce' );
+			return __( 'Details for order #{order_number}', 'classic-store');
 		}
 
 		/**
@@ -106,7 +106,7 @@ if ( ! class_exists( 'WC_Email_Customer_Invoice', false ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content() {
-			return __( 'Thanks for using {site_url}!', 'classic-commerce' );
+			return __( 'Thanks for using {site_url}!', 'classic-store');
 		}
 
 		/**
@@ -179,10 +179,10 @@ if ( ! class_exists( 'WC_Email_Customer_Invoice', false ) ) :
 		 */
 		public function init_form_fields() {
             /* translators: %s: list of placeholders */
-			$placeholder_text  = sprintf( __( 'Available placeholders: %s', 'classic-commerce' ), '<code>' . esc_html( implode( '</code>, <code>', array_keys( $this->placeholders ) ) ) . '</code>' );
+			$placeholder_text  = sprintf( __( 'Available placeholders: %s', 'classic-store'), '<code>' . esc_html( implode( '</code>, <code>', array_keys( $this->placeholders ) ) ) . '</code>' );
 			$this->form_fields = array(
 				'subject'      => array(
-					'title'       => __( 'Subject', 'classic-commerce' ),
+					'title'       => __( 'Subject', 'classic-store'),
 					'type'        => 'text',
 					'desc_tip'    => true,
 					'description' => $placeholder_text,
@@ -190,7 +190,7 @@ if ( ! class_exists( 'WC_Email_Customer_Invoice', false ) ) :
 					'default'     => '',
 				),
 				'heading'      => array(
-					'title'       => __( 'Email heading', 'classic-commerce' ),
+					'title'       => __( 'Email heading', 'classic-store'),
 					'type'        => 'text',
 					'desc_tip'    => true,
 					'description' => $placeholder_text,
@@ -198,7 +198,7 @@ if ( ! class_exists( 'WC_Email_Customer_Invoice', false ) ) :
 					'default'     => '',
 				),
 				'subject_paid' => array(
-					'title'       => __( 'Subject (paid)', 'classic-commerce' ),
+					'title'       => __( 'Subject (paid)', 'classic-store' ),
 					'type'        => 'text',
 					'desc_tip'    => true,
 					'description' => $placeholder_text,
@@ -206,7 +206,7 @@ if ( ! class_exists( 'WC_Email_Customer_Invoice', false ) ) :
 					'default'     => '',
 				),
 				'heading_paid' => array(
-					'title'       => __( 'Email heading (paid)', 'classic-commerce' ),
+					'title'       => __( 'Email heading (paid)', 'classic-store' ),
 					'type'        => 'text',
 					'desc_tip'    => true,
 					'description' => $placeholder_text,
@@ -214,18 +214,18 @@ if ( ! class_exists( 'WC_Email_Customer_Invoice', false ) ) :
 					'default'     => '',
 				),
                 'additional_content' => array(
-					'title'       => __( 'Additional content', 'classic-commerce' ),
-					'description' => __( 'Text to appear to appear below the main email content.', 'classic-commerce' ) . ' ' . $placeholder_text,
+					'title'       => __( 'Additional content', 'classic-store'),
+					'description' => __( 'Text to appear to appear below the main email content.', 'classic-store') . ' ' . $placeholder_text,
 					'css'         => 'width:400px; height: 75px;',
-					'placeholder' => __( 'N/A', 'woocommerce' ),
+					'placeholder' => __( 'N/A', 'classic-store'),
 					'type'        => 'textarea',
 					'default'     => $this->get_default_additional_content(),
 					'desc_tip'    => true,
 				),
 				'email_type'   => array(
-					'title'       => __( 'Email type', 'classic-commerce' ),
+					'title'       => __( 'Email type', 'classic-store'),
 					'type'        => 'select',
-					'description' => __( 'Choose which format of email to send.', 'classic-commerce' ),
+					'description' => __( 'Choose which format of email to send.', 'classic-store'),
 					'default'     => 'html',
 					'class'       => 'email_type wc-enhanced-select',
 					'options'     => $this->get_email_type_options(),

@@ -546,7 +546,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 			$discount_type = 'percent'; // Backwards compatibility.
 		}
 		if ( ! in_array( $discount_type, array_keys( wc_get_coupon_types() ), true ) ) {
-			$this->error( 'coupon_invalid_discount_type', __( 'Invalid discount type', 'classic-commerce' ) );
+			$this->error( 'coupon_invalid_discount_type', __( 'Invalid discount type', 'classic-store') );
 		}
 		$this->set_prop( 'discount_type', $discount_type );
 	}
@@ -565,11 +565,11 @@ class WC_Coupon extends WC_Legacy_Coupon {
 		}
 
 		if ( $amount < 0 ) {
-			$this->error( 'coupon_invalid_amount', __( 'Invalid discount amount', 'classic-commerce' ) );
+			$this->error( 'coupon_invalid_amount', __( 'Invalid discount amount', 'classic-store') );
 		}
 
 		if ( 'percent' === $this->get_discount_type() && $amount > 100 ) {
-			$this->error( 'coupon_invalid_amount', __( 'Invalid discount amount', 'classic-commerce' ) );
+			$this->error( 'coupon_invalid_amount', __( 'Invalid discount amount', 'classic-store') );
 		}
 
 		$this->set_prop( 'amount', $amount );
@@ -745,7 +745,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 		$emails = array_filter( array_map( 'sanitize_email', array_map( 'strtolower', (array) $emails ) ) );
 		foreach ( $emails as $email ) {
 			if ( ! is_email( $email ) ) {
-				$this->error( 'coupon_invalid_email_address', __( 'Invalid email address restriction', 'classic-commerce' ) );
+				$this->error( 'coupon_invalid_email_address', __( 'Invalid email address restriction', 'classic-store') );
 			}
 		}
 		$this->set_prop( 'email_restrictions', $emails );
@@ -999,10 +999,10 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	public function get_coupon_message( $msg_code ) {
 		switch ( $msg_code ) {
 			case self::WC_COUPON_SUCCESS:
-				$msg = __( 'Coupon code applied successfully.', 'classic-commerce' );
+				$msg = __( 'Coupon code applied successfully.', 'classic-store');
 				break;
 			case self::WC_COUPON_REMOVED:
-				$msg = __( 'Coupon code removed successfully.', 'classic-commerce' );
+				$msg = __( 'Coupon code removed successfully.', 'classic-store');
 				break;
 			default:
 				$msg = '';
@@ -1020,61 +1020,61 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	public function get_coupon_error( $err_code ) {
 		switch ( $err_code ) {
 			case self::E_WC_COUPON_INVALID_FILTERED:
-				$err = __( 'Coupon is not valid.', 'classic-commerce' );
+				$err = __( 'Coupon is not valid.', 'classic-store');
 				break;
 			case self::E_WC_COUPON_NOT_EXIST:
 				/* translators: %s: coupon code */
-				$err = sprintf( __( 'Coupon "%s" does not exist!', 'classic-commerce' ), esc_html( $this->get_code() ) );
+				$err = sprintf( __( 'Coupon "%s" does not exist!', 'classic-store'), esc_html( $this->get_code() ) );
 				break;
 			case self::E_WC_COUPON_INVALID_REMOVED:
 				/* translators: %s: coupon code */
-				$err = sprintf( __( 'Sorry, it seems the coupon "%s" is invalid - it has now been removed from your order.', 'classic-commerce' ), esc_html( $this->get_code() ) );
+				$err = sprintf( __( 'Sorry, it seems the coupon "%s" is invalid - it has now been removed from your order.', 'classic-store'), esc_html( $this->get_code() ) );
 				break;
 			case self::E_WC_COUPON_NOT_YOURS_REMOVED:
 				// We check for supplied billing email. On shortcode, this will be present for checkout requests.
 				$billing_email = \Automattic\WooCommerce\Utilities\ArrayUtil::get_value_or_default( $_POST, 'billing_email' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				if ( ! is_null( $billing_email ) ) {
 					/* translators: %s: coupon code */
-					$err = sprintf( __( 'Please enter a valid email to use coupon code "%s".', 'classic-commerce' ), esc_html( $this->get_code() ) );
+					$err = sprintf( __( 'Please enter a valid email to use coupon code "%s".', 'classic-store'), esc_html( $this->get_code() ) );
 				} else {
 					/* translators: %s: coupon code */
-					$err = sprintf( __( 'Please enter a valid email at checkout to use coupon code "%s".', 'classic-commerce' ), esc_html( $this->get_code() ) );
+					$err = sprintf( __( 'Please enter a valid email at checkout to use coupon code "%s".', 'classic-store'), esc_html( $this->get_code() ) );
 				}
 				break;
 			case self::E_WC_COUPON_ALREADY_APPLIED:
-				$err = __( 'Coupon code already applied!', 'classic-commerce' );
+				$err = __( 'Coupon code already applied!', 'classic-store');
 				break;
 			case self::E_WC_COUPON_ALREADY_APPLIED_INDIV_USE_ONLY:
 				/* translators: %s: coupon code */
-				$err = sprintf( __( 'Sorry, coupon "%s" has already been applied and cannot be used in conjunction with other coupons.', 'classic-commerce' ), esc_html( $this->get_code() ) );
+				$err = sprintf( __( 'Sorry, coupon "%s" has already been applied and cannot be used in conjunction with other coupons.', 'classic-store'), esc_html( $this->get_code() ) );
 				break;
 			case self::E_WC_COUPON_USAGE_LIMIT_REACHED:
-				$err = __( 'Coupon usage limit has been reached.', 'classic-commerce' );
+				$err = __( 'Coupon usage limit has been reached.', 'classic-store');
 				break;
 			case self::E_WC_COUPON_EXPIRED:
-				$err = __( 'This coupon has expired.', 'classic-commerce' );
+				$err = __( 'This coupon has expired.', 'classic-store');
 				break;
 			case self::E_WC_COUPON_MIN_SPEND_LIMIT_NOT_MET:
 				/* translators: %s: coupon minimum amount */
-				$err = sprintf( __( 'The minimum spend for this coupon is %s.', 'classic-commerce' ), wc_price( $this->get_minimum_amount() ) );
+				$err = sprintf( __( 'The minimum spend for this coupon is %s.', 'classic-store'), wc_price( $this->get_minimum_amount() ) );
 				break;
 			case self::E_WC_COUPON_MAX_SPEND_LIMIT_MET:
 				/* translators: %s: coupon maximum amount */
-				$err = sprintf( __( 'The maximum spend for this coupon is %s.', 'classic-commerce' ), wc_price( $this->get_maximum_amount() ) );
+				$err = sprintf( __( 'The maximum spend for this coupon is %s.', 'classic-store'), wc_price( $this->get_maximum_amount() ) );
 				break;
 			case self::E_WC_COUPON_NOT_APPLICABLE:
-				$err = __( 'Sorry, this coupon is not applicable to your cart contents.', 'classic-commerce' );
+				$err = __( 'Sorry, this coupon is not applicable to your cart contents.', 'classic-store');
 				break;
 			case self::E_WC_COUPON_USAGE_LIMIT_COUPON_STUCK:
 				if ( is_user_logged_in() && wc_get_page_id( 'myaccount' ) > 0 ) {
 					/* translators: %s: myaccount page link. */
-					$err = sprintf( __( 'Coupon usage limit has been reached. If you were using this coupon just now but your order was not complete, you can retry or cancel the order by going to the <a href="%s">my account page</a>.', 'classic-commerce' ), wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) );
+					$err = sprintf( __( 'Coupon usage limit has been reached. If you were using this coupon just now but your order was not complete, you can retry or cancel the order by going to the <a href="%s">my account page</a>.', 'classic-store'), wc_get_endpoint_url( 'orders', '', wc_get_page_permalink( 'myaccount' ) ) );
 				} else {
 					$err = $this->get_coupon_error( self::E_WC_COUPON_USAGE_LIMIT_REACHED );
 				}
 				break;
 			case self::E_WC_COUPON_USAGE_LIMIT_COUPON_STUCK_GUEST:
-				$err = __( 'Coupon usage limit has been reached. Please try again after some time, or contact us for help.', 'classic-commerce' );
+				$err = __( 'Coupon usage limit has been reached. Please try again after some time, or contact us for help.', 'classic-store');
 				break;
 			case self::E_WC_COUPON_EXCLUDED_PRODUCTS:
 				// Store excluded products that are in cart in $products.
@@ -1088,7 +1088,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 				}
 
 				/* translators: %s: products list */
-				$err = sprintf( __( 'Sorry, this coupon is not applicable to the products: %s.', 'classic-commerce' ), implode( ', ', $products ) );
+				$err = sprintf( __( 'Sorry, this coupon is not applicable to the products: %s.', 'classic-store'), implode( ', ', $products ) );
 				break;
 			case self::E_WC_COUPON_EXCLUDED_CATEGORIES:
 				// Store excluded categories that are in cart in $categories.
@@ -1108,10 +1108,10 @@ class WC_Coupon extends WC_Legacy_Coupon {
 				}
 
 				/* translators: %s: categories list */
-				$err = sprintf( __( 'Sorry, this coupon is not applicable to the categories: %s.', 'classic-commerce' ), implode( ', ', array_unique( $categories ) ) );
+				$err = sprintf( __( 'Sorry, this coupon is not applicable to the categories: %s.', 'classic-store'), implode( ', ', array_unique( $categories ) ) );
 				break;
 			case self::E_WC_COUPON_NOT_VALID_SALE_ITEMS:
-				$err = __( 'Sorry, this coupon is not valid for sale items.', 'classic-commerce' );
+				$err = __( 'Sorry, this coupon is not valid for sale items.', 'classic-store');
 				break;
 			default:
 				$err = '';
@@ -1131,10 +1131,10 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	public static function get_generic_coupon_error( $err_code ) {
 		switch ( $err_code ) {
 			case self::E_WC_COUPON_NOT_EXIST:
-				$err = __( 'Coupon does not exist!', 'classic-commerce' );
+				$err = __( 'Coupon does not exist!', 'classic-store');
 				break;
 			case self::E_WC_COUPON_PLEASE_ENTER:
-				$err = __( 'Please enter a coupon code.', 'classic-commerce' );
+				$err = __( 'Please enter a coupon code.', 'classic-store');
 				break;
 			default:
 				$err = '';
@@ -1203,9 +1203,9 @@ class WC_Coupon extends WC_Legacy_Coupon {
 			case self::E_WC_COUPON_NOT_YOURS_REMOVED:
 				return array(
 					/* translators: %s: coupon code */
-					'cart'     => sprintf( __( 'Please enter a valid email at checkout to use coupon code "%s".', 'classic-commerce' ), esc_html( $this->get_code() ) ),
+					'cart'     => sprintf( __( 'Please enter a valid email at checkout to use coupon code "%s".', 'classic-store'), esc_html( $this->get_code() ) ),
 					/* translators: %s: coupon code */
-					'checkout' => sprintf( __( 'Please enter a valid email to use coupon code "%s".', 'classic-commerce' ), esc_html( $this->get_code() ) ),
+					'checkout' => sprintf( __( 'Please enter a valid email to use coupon code "%s".', 'classic-store'), esc_html( $this->get_code() ) ),
 				);
 			default:
 				return array();

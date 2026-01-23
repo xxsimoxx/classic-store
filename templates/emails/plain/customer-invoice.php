@@ -16,13 +16,13 @@ echo esc_html( wp_strip_all_tags( $email_heading ) );
 echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 /* translators: %s: Customer first name */
-echo sprintf( esc_html__( 'Hi %s,', 'classic-commerce' ), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
+echo sprintf( esc_html__( 'Hi %s,', 'classic-store'), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
 
 if ( $order->has_status( 'pending' ) ) {
 	echo wp_kses_post(
 		sprintf(
 			/* translators: %1$s: Site title, %2$s: Order pay link */
-			__( 'An order has been created for you on %1$s. Your invoice is below, with a link to make payment when you’re ready: %2$s', 'classic-commerce' ),
+			__( 'An order has been created for you on %1$s. Your invoice is below, with a link to make payment when you’re ready: %2$s', 'classic-store'),
 			esc_html( get_bloginfo( 'name', 'display' ) ),
 			esc_url( $order->get_checkout_payment_url() )
 		)
@@ -30,7 +30,7 @@ if ( $order->has_status( 'pending' ) ) {
 
 } else {
 	/* translators: %s: Order date */
-	echo sprintf( esc_html__( 'Here are the details of your order placed on %s:', 'classic-commerce' ), esc_html( wc_format_datetime( $order->get_date_created() ) ) ) . "\n\n";
+	echo sprintf( esc_html__( 'Here are the details of your order placed on %s:', 'classic-store'), esc_html( wc_format_datetime( $order->get_date_created() ) ) ) . "\n\n";
 
 /**
  * Hook for the woocommerce_email_order_details.

@@ -65,7 +65,7 @@ class WC_Product_Variable extends WC_Product {
 		 *
 		 * @since 7.8.0
 		 */
-		return apply_filters( 'woocommerce_product_add_to_cart_aria_describedby', $this->is_purchasable() ? __( 'This product has multiple variants. The options may be chosen on the product page', 'classic-commerce' ) : '', $this );
+		return apply_filters( 'woocommerce_product_add_to_cart_aria_describedby', $this->is_purchasable() ? __( 'This product has multiple variants. The options may be chosen on the product page', 'classic-store') : '', $this );
     }
 
 	/**
@@ -74,7 +74,7 @@ class WC_Product_Variable extends WC_Product {
 	 * @return string
 	 */
 	public function add_to_cart_text() {
-		return apply_filters( 'woocommerce_product_add_to_cart_text', $this->is_purchasable() ? __( 'Select options', 'classic-commerce' ) : __( 'Read more', 'classic-commerce' ), $this );
+		return apply_filters( 'woocommerce_product_add_to_cart_text', $this->is_purchasable() ? __( 'Select options', 'classic-store') : __( 'Read more', 'classic-store'), $this );
 	}
 
 	/**
@@ -85,7 +85,7 @@ class WC_Product_Variable extends WC_Product {
 	 */
 	public function add_to_cart_description() {
 		/* translators: %s: Product title */
-		return apply_filters( 'woocommerce_product_add_to_cart_description', sprintf( __( 'Select options for &ldquo;%s&rdquo;', 'classic-commerce' ), $this->get_name() ), $this );
+		return apply_filters( 'woocommerce_product_add_to_cart_description', sprintf( __( 'Select options for &ldquo;%s&rdquo;', 'classic-store'), $this->get_name() ), $this );
 	}
 
 	/**

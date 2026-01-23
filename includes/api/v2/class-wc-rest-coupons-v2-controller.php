@@ -60,7 +60,7 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 					'args'                => array_merge(
 						$this->get_endpoint_args_for_item_schema( WP_REST_Server::CREATABLE ), array(
 							'code' => array(
-								'description' => __( 'Coupon code.', 'classic-commerce' ),
+								'description' => __( 'Coupon code.', 'classic-store'),
 								'required'    => true,
 								'type'        => 'string',
 							),
@@ -75,7 +75,7 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 			$this->namespace, '/' . $this->rest_base . '/(?P<id>[\d]+)', array(
 				'args'   => array(
 					'id' => array(
-						'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+						'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 						'type'        => 'integer',
 					),
 				),
@@ -101,7 +101,7 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 						'force' => array(
 							'default'     => false,
 							'type'        => 'boolean',
-							'description' => __( 'Whether to bypass trash and force deletion.', 'classic-commerce' ),
+							'description' => __( 'Whether to bypass trash and force deletion.', 'classic-store'),
 						),
 					),
 				),
@@ -272,7 +272,7 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 
 		// Validate required POST fields.
 		if ( $creating && StringUtil::is_null_or_whitespace( $request['code'] ?? null ) ) {
-			return new WP_Error( 'woocommerce_rest_empty_coupon_code', sprintf( __( 'The coupon code cannot be empty.', 'classic-commerce' ), 'code' ), array( 'status' => 400 ) );
+			return new WP_Error( 'woocommerce_rest_empty_coupon_code', sprintf( __( 'The coupon code cannot be empty.', 'classic-store'), 'code' ), array( 'status' => 400 ) );
 		}
 
 		// Handle all writable props.
@@ -287,7 +287,7 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 						$id_from_code = wc_get_coupon_id_by_code( $coupon_code, $id );
 
 						if ( $id_from_code ) {
-							return new WP_Error( 'woocommerce_rest_coupon_code_already_exists', __( 'The coupon code already exists', 'classic-commerce' ), array( 'status' => 400 ) );
+							return new WP_Error( 'woocommerce_rest_coupon_code_already_exists', __( 'The coupon code already exists', 'classic-store'), array( 'status' => 400 ) );
 						}
 
 						$coupon->set_code( $coupon_code );
@@ -336,86 +336,86 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'id'                          => array(
-					'description' => __( 'Unique identifier for the object.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the object.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'code'                        => array(
-					'description' => __( 'Coupon code.', 'classic-commerce' ),
+					'description' => __( 'Coupon code.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'amount'                      => array(
-					'description' => __( 'The amount of discount. Should always be numeric, even if setting a percentage.', 'classic-commerce' ),
+					'description' => __( 'The amount of discount. Should always be numeric, even if setting a percentage.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
                 'status' => array(
-					'description' => __( 'The status of the coupon. Should always be draft, published, or pending review', 'classic-commerce' ),
+					'description' => __( 'The status of the coupon. Should always be draft, published, or pending review', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'date_created'                => array(
-					'description' => __( "The date the coupon was created, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the coupon was created, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_created_gmt'            => array(
-					'description' => __( 'The date the coupon was created, as GMT.', 'classic-commerce' ),
+					'description' => __( 'The date the coupon was created, as GMT.', 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_modified'               => array(
-					'description' => __( "The date the coupon was last modified, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the coupon was last modified, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_modified_gmt'           => array(
-					'description' => __( 'The date the coupon was last modified, as GMT.', 'classic-commerce' ),
+					'description' => __( 'The date the coupon was last modified, as GMT.', 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'discount_type'               => array(
-					'description' => __( 'Determines the type of discount that will be applied.', 'classic-commerce' ),
+					'description' => __( 'Determines the type of discount that will be applied.', 'classic-store'),
 					'type'        => 'string',
 					'default'     => 'fixed_cart',
 					'enum'        => array_keys( wc_get_coupon_types() ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'description'                 => array(
-					'description' => __( 'Coupon description.', 'classic-commerce' ),
+					'description' => __( 'Coupon description.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'date_expires'                => array(
-					'description' => __( "The date the coupon expires, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the coupon expires, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'date_expires_gmt'            => array(
-					'description' => __( 'The date the coupon expires, as GMT.', 'classic-commerce' ),
+					'description' => __( 'The date the coupon expires, as GMT.', 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'usage_count'                 => array(
-					'description' => __( 'Number of times the coupon has been used already.', 'classic-commerce' ),
+					'description' => __( 'Number of times the coupon has been used already.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'individual_use'              => array(
-					'description' => __( 'If true, the coupon can only be used individually. Other applied coupons will be removed from the cart.', 'classic-commerce' ),
+					'description' => __( 'If true, the coupon can only be used individually. Other applied coupons will be removed from the cart.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'product_ids'                 => array(
-					'description' => __( 'List of product IDs the coupon can be used on.', 'classic-commerce' ),
+					'description' => __( 'List of product IDs the coupon can be used on.', 'classic-store'),
 					'type'        => 'array',
 					'items'       => array(
 						'type' => 'integer',
@@ -423,7 +423,7 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 					'context'     => array( 'view', 'edit' ),
 				),
 				'excluded_product_ids'        => array(
-					'description' => __( 'List of product IDs the coupon cannot be used on.', 'classic-commerce' ),
+					'description' => __( 'List of product IDs the coupon cannot be used on.', 'classic-store'),
 					'type'        => 'array',
 					'items'       => array(
 						'type' => 'integer',
@@ -431,28 +431,28 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 					'context'     => array( 'view', 'edit' ),
 				),
 				'usage_limit'                 => array(
-					'description' => __( 'How many times the coupon can be used in total.', 'classic-commerce' ),
+					'description' => __( 'How many times the coupon can be used in total.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'usage_limit_per_user'        => array(
-					'description' => __( 'How many times the coupon can be used per customer.', 'classic-commerce' ),
+					'description' => __( 'How many times the coupon can be used per customer.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'limit_usage_to_x_items'      => array(
-					'description' => __( 'Max number of items in the cart the coupon can be applied to.', 'classic-commerce' ),
+					'description' => __( 'Max number of items in the cart the coupon can be applied to.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'free_shipping'               => array(
-					'description' => __( 'If true and if the free shipping method requires a coupon, this coupon will enable free shipping.', 'classic-commerce' ),
+					'description' => __( 'If true and if the free shipping method requires a coupon, this coupon will enable free shipping.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'product_categories'          => array(
-					'description' => __( 'List of category IDs the coupon applies to.', 'classic-commerce' ),
+					'description' => __( 'List of category IDs the coupon applies to.', 'classic-store'),
 					'type'        => 'array',
 					'items'       => array(
 						'type' => 'integer',
@@ -460,7 +460,7 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 					'context'     => array( 'view', 'edit' ),
 				),
 				'excluded_product_categories' => array(
-					'description' => __( 'List of category IDs the coupon does not apply to.', 'classic-commerce' ),
+					'description' => __( 'List of category IDs the coupon does not apply to.', 'classic-store'),
 					'type'        => 'array',
 					'items'       => array(
 						'type' => 'integer',
@@ -468,23 +468,23 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 					'context'     => array( 'view', 'edit' ),
 				),
 				'exclude_sale_items'          => array(
-					'description' => __( 'If true, this coupon will not be applied to items that have sale prices.', 'classic-commerce' ),
+					'description' => __( 'If true, this coupon will not be applied to items that have sale prices.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'minimum_amount'              => array(
-					'description' => __( 'Minimum order amount that needs to be in the cart before coupon applies.', 'classic-commerce' ),
+					'description' => __( 'Minimum order amount that needs to be in the cart before coupon applies.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'maximum_amount'              => array(
-					'description' => __( 'Maximum order amount allowed when using the coupon.', 'classic-commerce' ),
+					'description' => __( 'Maximum order amount allowed when using the coupon.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'email_restrictions'          => array(
-					'description' => __( 'List of email addresses that can use this coupon.', 'classic-commerce' ),
+					'description' => __( 'List of email addresses that can use this coupon.', 'classic-store'),
 					'type'        => 'array',
 					'items'       => array(
 						'type' => 'string',
@@ -492,7 +492,7 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 					'context'     => array( 'view', 'edit' ),
 				),
 				'used_by'                     => array(
-					'description' => __( 'List of user IDs (or guest email addresses) that have used the coupon.', 'classic-commerce' ),
+					'description' => __( 'List of user IDs (or guest email addresses) that have used the coupon.', 'classic-store' ),
 					'type'        => 'array',
 					'items'       => array(
 						'type' => 'integer',
@@ -501,25 +501,25 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 					'readonly'    => true,
 				),
 				'meta_data'                   => array(
-					'description' => __( 'Meta data.', 'classic-commerce' ),
+					'description' => __( 'Meta data.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id'    => array(
-								'description' => __( 'Meta ID.', 'classic-commerce' ),
+								'description' => __( 'Meta ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'key'   => array(
-								'description' => __( 'Meta key.', 'classic-commerce' ),
+								'description' => __( 'Meta key.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'value' => array(
-								'description' => __( 'Meta value.', 'classic-commerce' ),
+								'description' => __( 'Meta value.', 'classic-store'),
 								'type'        => 'mixed',
 								'context'     => array( 'view', 'edit' ),
 							),
@@ -540,7 +540,7 @@ class WC_REST_Coupons_V2_Controller extends WC_REST_CRUD_Controller {
 		$params = parent::get_collection_params();
 
 		$params['code'] = array(
-			'description'       => __( 'Limit result set to resources with a specific code.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to resources with a specific code.', 'classic-store'),
 			'type'              => 'string',
 			'sanitize_callback' => 'sanitize_text_field',
 			'validate_callback' => 'rest_validate_request_arg',

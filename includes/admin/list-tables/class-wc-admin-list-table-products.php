@@ -47,9 +47,9 @@ class WC_Admin_List_Table_Products extends WC_Admin_List_Table {
 	 */
 	protected function render_blank_state() {
 		echo '<div class="woocommerce-BlankState">';
-		echo '<h2 class="woocommerce-BlankState-message">' . esc_html__( 'Ready to start selling something awesome?', 'classic-commerce' ) . '</h2>';
-		echo '<a class="woocommerce-BlankState-cta button-primary button" href="' . esc_url( admin_url( 'post-new.php?post_type=product&tutorial=true' ) ) . '">' . esc_html__( 'Create your first product!', 'classic-commerce' ) . '</a>';
-		echo '<a class="woocommerce-BlankState-cta button" href="' . esc_url( admin_url( 'edit.php?post_type=product&page=product_importer' ) ) . '">' . esc_html__( 'Import products from a CSV file', 'classic-commerce' ) . '</a>';
+		echo '<h2 class="woocommerce-BlankState-message">' . esc_html__( 'Ready to start selling something awesome?', 'classic-store') . '</h2>';
+		echo '<a class="woocommerce-BlankState-cta button-primary button" href="' . esc_url( admin_url( 'post-new.php?post_type=product&tutorial=true' ) ) . '">' . esc_html__( 'Create your first product!', 'classic-store') . '</a>';
+		echo '<a class="woocommerce-BlankState-cta button" href="' . esc_url( admin_url( 'edit.php?post_type=product&page=product_importer' ) ) . '">' . esc_html__( 'Import products from a CSV file', 'classic-store') . '</a>';
 		echo '</div>';
 	}
 
@@ -71,7 +71,7 @@ class WC_Admin_List_Table_Products extends WC_Admin_List_Table {
 	 */
 	protected function get_row_actions( $actions, $post ) {
 		/* translators: %d: product ID. */
-		return array_merge( array( 'id' => sprintf( __( 'ID: %d', 'classic-commerce' ), $post->ID ) ), $actions );
+		return array_merge( array( 'id' => sprintf( __( 'ID: %d', 'classic-store'), $post->ID ) ), $actions );
 	}
 
 	/**
@@ -104,22 +104,22 @@ class WC_Admin_List_Table_Products extends WC_Admin_List_Table {
 
 		$show_columns          = array();
 		$show_columns['cb']    = '<input type="checkbox" />';
-		$show_columns['thumb'] = '<span class="wc-image tips" data-tip="' . esc_attr__( 'Image', 'classic-commerce' ) . '">' . __( 'Image', 'classic-commerce' ) . '</span>';
-		$show_columns['name']  = __( 'Name', 'classic-commerce' );
+		$show_columns['thumb'] = '<span class="wc-image tips" data-tip="' . esc_attr__( 'Image', 'classic-store') . '">' . __( 'Image', 'classic-store') . '</span>';
+		$show_columns['name']  = __( 'Name', 'classic-store');
 
 		if ( wc_product_sku_enabled() ) {
-			$show_columns['sku'] = __( 'SKU', 'classic-commerce' );
+			$show_columns['sku'] = __( 'SKU', 'classic-store');
 		}
 
 		if ( 'yes' === get_option( 'woocommerce_manage_stock' ) ) {
-			$show_columns['is_in_stock'] = __( 'Stock', 'classic-commerce' );
+			$show_columns['is_in_stock'] = __( 'Stock', 'classic-store');
 		}
 
-		$show_columns['price']        = __( 'Price', 'classic-commerce' );
-		$show_columns['product_cat']  = __( 'Categories', 'classic-commerce' );
-		$show_columns['product_tag']  = __( 'Tags', 'classic-commerce' );
-		$show_columns['featured']     = '<span class="wc-featured parent-tips" data-tip="' . esc_attr__( 'Featured', 'classic-commerce' ) . '">' . __( 'Featured', 'classic-commerce' ) . '</span>';
-		$show_columns['date']         = __( 'Date', 'classic-commerce' );
+		$show_columns['price']        = __( 'Price', 'classic-store');
+		$show_columns['product_cat']  = __( 'Categories', 'classic-store');
+		$show_columns['product_tag']  = __( 'Tags', 'classic-store');
+		$show_columns['featured']     = '<span class="wc-featured parent-tips" data-tip="' . esc_attr__( 'Featured', 'classic-store') . '">' . __( 'Featured', 'classic-store') . '</span>';
+		$show_columns['date']         = __( 'Date', 'classic-store');
 
 		return array_merge( $show_columns, $columns );
 	}
@@ -246,11 +246,11 @@ class WC_Admin_List_Table_Products extends WC_Admin_List_Table {
 	 */
 	protected function render_featured_column() {
 		$url = wp_nonce_url( admin_url( 'admin-ajax.php?action=woocommerce_feature_product&product_id=' . $this->object->get_id() ), 'woocommerce-feature-product' );
-		echo '<a href="' . esc_url( $url ) . '" aria-label="' . esc_attr__( 'Toggle featured', 'classic-commerce' ) . '">';
+		echo '<a href="' . esc_url( $url ) . '" aria-label="' . esc_attr__( 'Toggle featured', 'classic-store') . '">';
 		if ( $this->object->is_featured() ) {
-			echo '<span class="wc-featured tips" data-tip="' . esc_attr__( 'Yes', 'classic-commerce' ) . '">' . esc_html__( 'Yes', 'classic-commerce' ) . '</span>';
+			echo '<span class="wc-featured tips" data-tip="' . esc_attr__( 'Yes', 'classic-store') . '">' . esc_html__( 'Yes', 'classic-store') . '</span>';
 		} else {
-			echo '<span class="wc-featured not-featured tips" data-tip="' . esc_attr__( 'No', 'classic-commerce' ) . '">' . esc_html__( 'No', 'classic-commerce' ) . '</span>';
+			echo '<span class="wc-featured not-featured tips" data-tip="' . esc_attr__( 'No', 'classic-store') . '">' . esc_html__( 'No', 'classic-store') . '</span>';
 		}
 		echo '</a>';
 	}
@@ -260,11 +260,11 @@ class WC_Admin_List_Table_Products extends WC_Admin_List_Table {
 	 */
 	protected function render_is_in_stock_column() {
 		if ( $this->object->is_on_backorder() ) {
-			$stock_html = '<mark class="onbackorder">' . __( 'On backorder', 'classic-commerce' ) . '</mark>';
+			$stock_html = '<mark class="onbackorder">' . __( 'On backorder', 'classic-store') . '</mark>';
 		} elseif ( $this->object->is_in_stock() ) {
-			$stock_html = '<mark class="instock">' . __( 'In stock', 'classic-commerce' ) . '</mark>';
+			$stock_html = '<mark class="instock">' . __( 'In stock', 'classic-store') . '</mark>';
 		} else {
-			$stock_html = '<mark class="outofstock">' . __( 'Out of stock', 'classic-commerce' ) . '</mark>';
+			$stock_html = '<mark class="outofstock">' . __( 'Out of stock', 'classic-store') . '</mark>';
 		}
 
 		if ( $this->object->managing_stock() ) {
@@ -318,7 +318,7 @@ class WC_Admin_List_Table_Products extends WC_Admin_List_Table {
 		if ( $categories_count <= apply_filters( 'woocommerce_product_category_filter_threshold', 100 ) ) {
 			wc_product_dropdown_categories(
 				array(
-					'option_select_text' => __( 'Filter by category', 'classic-commerce' ),
+					'option_select_text' => __( 'Filter by category', 'classic-store'),
 					'hide_empty'         => 0,
 				)
 			);
@@ -326,7 +326,7 @@ class WC_Admin_List_Table_Products extends WC_Admin_List_Table {
 			$current_category_slug = isset( $_GET['product_cat'] ) ? wc_clean( wp_unslash( $_GET['product_cat'] ) ) : false; // WPCS: input var ok, CSRF ok.
 			$current_category      = $current_category_slug ? get_term_by( 'slug', $current_category_slug, 'product_cat' ) : false;
 			?>
-			<select class="wc-category-search" name="product_cat" data-placeholder="<?php esc_attr_e( 'Filter by category', 'classic-commerce' ); ?>" data-allow_clear="true">
+			<select class="wc-category-search" name="product_cat" data-placeholder="<?php esc_attr_e( 'Filter by category', 'classic-store'); ?>" data-allow_clear="true">
 				<?php if ( $current_category_slug && $current_category ) : ?>
                 <option value="<?php echo esc_attr( $current_category_slug ); ?>" selected="selected"><?php echo esc_html( htmlspecialchars( wp_kses_post( $current_category->name ) ) ); ?></option>
 				<?php endif; ?>
@@ -342,7 +342,7 @@ class WC_Admin_List_Table_Products extends WC_Admin_List_Table {
 	 */
 	protected function render_products_type_filter() {
 		$current_product_type = isset( $_REQUEST['product_type'] ) ? wc_clean( wp_unslash( $_REQUEST['product_type'] ) ) : false; // WPCS: input var ok, sanitization ok.
-		$output               = '<select name="product_type" id="dropdown_product_type"><option value="">' . esc_html__( 'Filter by product type', 'classic-commerce' ) . '</option>';
+		$output               = '<select name="product_type" id="dropdown_product_type"><option value="">' . esc_html__( 'Filter by product type', 'classic-store') . '</option>';
 
 		foreach ( wc_get_product_types() as $value => $label ) {
 			$output .= '<option value="' . esc_attr( $value ) . '" ';
@@ -353,11 +353,11 @@ class WC_Admin_List_Table_Products extends WC_Admin_List_Table {
 
 				$output .= '<option value="downloadable" ';
 				$output .= selected( 'downloadable', $current_product_type, false );
-				$output .= '> ' . ( is_rtl() ? '&larr;' : '&rarr;' ) . ' ' . esc_html__( 'Downloadable', 'classic-commerce' ) . '</option>';
+				$output .= '> ' . ( is_rtl() ? '&larr;' : '&rarr;' ) . ' ' . esc_html__( 'Downloadable', 'classic-store') . '</option>';
 
 				$output .= '<option value="virtual" ';
 				$output .= selected( 'virtual', $current_product_type, false );
-				$output .= '> ' . ( is_rtl() ? '&larr;' : '&rarr;' ) . ' ' . esc_html__( 'Virtual', 'classic-commerce' ) . '</option>';
+				$output .= '> ' . ( is_rtl() ? '&larr;' : '&rarr;' ) . ' ' . esc_html__( 'Virtual', 'classic-store') . '</option>';
 			}
 		}
 
@@ -373,7 +373,7 @@ class WC_Admin_List_Table_Products extends WC_Admin_List_Table {
 	public function render_products_stock_status_filter() {
 		$current_stock_status = isset( $_REQUEST['stock_status'] ) ? wc_clean( wp_unslash( $_REQUEST['stock_status'] ) ) : false; // WPCS: input var ok, sanitization ok.
 		$stock_statuses       = wc_get_product_stock_status_options();
-		$output               = '<select name="stock_status"><option value="">' . esc_html__( 'Filter by stock status', 'classic-commerce' ) . '</option>';
+		$output               = '<select name="stock_status"><option value="">' . esc_html__( 'Filter by stock status', 'classic-store') . '</option>';
 
 		foreach ( $stock_statuses as $status => $label ) {
 			$output .= '<option ' . selected( $status, $current_stock_status, false ) . ' value="' . esc_attr( $status ) . '">' . esc_html( $label ) . '</option>';
@@ -493,7 +493,7 @@ class WC_Admin_List_Table_Products extends WC_Admin_List_Table {
 			$query_string     = remove_query_arg( array( 'orderby', 'order' ) );
 			$query_string     = add_query_arg( 'orderby', rawurlencode( 'menu_order title' ), $query_string );
 			$query_string     = add_query_arg( 'order', rawurlencode( 'ASC' ), $query_string );
-			$views['byorder'] = '<a href="' . esc_url( $query_string ) . '" class="' . esc_attr( $class ) . '">' . __( 'Sorting', 'classic-commerce' ) . '</a>';
+			$views['byorder'] = '<a href="' . esc_url( $query_string ) . '" class="' . esc_attr( $class ) . '">' . __( 'Sorting', 'classic-store') . '</a>';
 		}
 
 		return $views;

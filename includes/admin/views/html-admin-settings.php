@@ -42,7 +42,7 @@ if ( ! $tab_exists ) {
 		?>
 		<p class="submit">
 			<?php if ( empty( $GLOBALS['hide_save_button'] ) ) : ?>
-				<button name="save" class="button-primary woocommerce-save-button" type="submit" value="<?php esc_attr_e( 'Save changes', 'classic-commerce' ); ?>"><?php esc_html_e( 'Save changes', 'classic-commerce' ); ?></button>
+				<button name="save" class="button-primary woocommerce-save-button" type="submit" value="<?php esc_attr_e( 'Save changes', 'classic-store'); ?>"><?php esc_html_e( 'Save changes', 'classic-store'); ?></button>
 			<?php endif; ?>
 			<?php wp_nonce_field( 'woocommerce-settings' ); ?>
 		</p>

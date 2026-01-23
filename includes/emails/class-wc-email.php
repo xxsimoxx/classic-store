@@ -720,16 +720,16 @@ class WC_Email extends WC_Settings_API {
 	 */
 	public function init_form_fields() {
         /* translators: %s: list of placeholders */
-		$placeholder_text  = sprintf( __( 'Available placeholders: %s', 'classic-commerce' ), '<code>' . esc_html( implode( '</code>, <code>', array_keys( $this->placeholders ) ) ) . '</code>' );
+		$placeholder_text  = sprintf( __( 'Available placeholders: %s', 'classic-store'), '<code>' . esc_html( implode( '</code>, <code>', array_keys( $this->placeholders ) ) ) . '</code>' );
 		$this->form_fields = array(
 			'enabled'       => array(
-            'title'         => __( 'Enable/Disable', 'classic-commerce' ),
+            'title'         => __( 'Enable/Disable', 'classic-store'),
 				'type'      => 'checkbox',
-				'label'     => __( 'Enable this email notification', 'classic-commerce' ),
+				'label'     => __( 'Enable this email notification', 'classic-store'),
 				'default'   => 'yes',
 			),
 			'subject'       => array(
-				'title'       => __( 'Subject', 'classic-commerce' ),
+				'title'       => __( 'Subject', 'classic-store'),
 				'type'        => 'text',
 				'desc_tip'    => true,
 				'description' => $placeholder_text,
@@ -737,7 +737,7 @@ class WC_Email extends WC_Settings_API {
 				'default'     => '',
 			),
 			'heading'       => array(
-				'title'       => __( 'Email heading', 'classic-commerce' ),
+				'title'       => __( 'Email heading', 'classic-store'),
 				'type'        => 'text',
 				'desc_tip'    => true,
 				'description' => $placeholder_text,
@@ -745,18 +745,18 @@ class WC_Email extends WC_Settings_API {
 				'default'     => '',
 			),
                 'additional_content' => array(
-				'title'       => __( 'Additional content', 'woocommerce' ),
-				'description' => __( 'Text to appear to appear below the main email content.', 'woocommerce' ) . ' ' . $placeholder_text,
+				'title'       => __( 'Additional content', 'classic-store' ),
+				'description' => __( 'Text to appear to appear below the main email content.', 'classic-store' ) . ' ' . $placeholder_text,
 				'css'         => 'width:400px; height: 75px;',
-				'placeholder' => __( 'N/A', 'woocommerce' ),
+				'placeholder' => __( 'N/A', 'classic-store' ),
 				'type'        => 'textarea',
 				'default'     => $this->get_default_additional_content(),
 				'desc_tip'    => true,
 			),
 			'email_type'         => array(
-				'title'       => __( 'Email type', 'classic-commerce' ),
+				'title'       => __( 'Email type', 'classic-store'),
 				'type'        => 'select',
-				'description' => __( 'Choose which format of email to send.', 'classic-commerce' ),
+				'description' => __( 'Choose which format of email to send.', 'classic-store'),
 				'default'     => 'html',
 				'class'       => 'email_type wc-enhanced-select',
 				'options'     => $this->get_email_type_options(),
@@ -771,11 +771,11 @@ class WC_Email extends WC_Settings_API {
 	 * @return array
 	 */
 	public function get_email_type_options() {
-		$types = array( 'plain' => __( 'Plain text', 'classic-commerce' ) );
+		$types = array( 'plain' => __( 'Plain text', 'classic-store') );
 
 		if ( class_exists( 'DOMDocument' ) ) {
-			$types['html']      = __( 'HTML', 'classic-commerce' );
-			$types['multipart'] = __( 'Multipart', 'classic-commerce' );
+			$types['html']      = __( 'HTML', 'classic-store');
+			$types['multipart'] = __( 'Multipart', 'classic-store');
 		}
 
 		return $types;
@@ -840,7 +840,7 @@ class WC_Email extends WC_Settings_API {
 			}
 
 			if ( ! $saved ) {
-				$redirect = add_query_arg( 'wc_error', rawurlencode( __( 'Could not write to template file.', 'classic-commerce' ) ) );
+				$redirect = add_query_arg( 'wc_error', rawurlencode( __( 'Could not write to template file.', 'classic-store') ) );
 				wp_safe_redirect( $redirect );
 				exit;
 			}
@@ -887,7 +887,7 @@ class WC_Email extends WC_Settings_API {
 
 				?>
 				<div class="updated">
-					<p><?php echo esc_html__( 'Template file copied to theme.', 'classic-commerce' ); ?></p>
+					<p><?php echo esc_html__( 'Template file copied to theme.', 'classic-store'); ?></p>
 				</div>
 				<?php
 			}
@@ -918,7 +918,7 @@ class WC_Email extends WC_Settings_API {
 					do_action( 'woocommerce_delete_email_template', $template_type, $this );
 					?>
 					<div class="updated">
-						<p><?php echo esc_html__( 'Template file deleted from theme.', 'classic-commerce' ); ?></p>
+						<p><?php echo esc_html__( 'Template file deleted from theme.', 'classic-store'); ?></p>
 					</div>
 					<?php
 				}
@@ -937,11 +937,11 @@ class WC_Email extends WC_Settings_API {
 			&& 'GET' === $_SERVER['REQUEST_METHOD'] // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 		) {
 			if ( empty( $_GET['_wc_email_nonce'] ) || ! wp_verify_nonce( wc_clean( wp_unslash( $_GET['_wc_email_nonce'] ) ), 'woocommerce_email_template_nonce' ) ) {
-				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'classic-commerce' ) );
+				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'classic-store') );
 			}
 
 			if ( ! current_user_can( 'edit_themes' ) ) {
-				wp_die( esc_html__( 'You don&#8217;t have permission to do this.', 'classic-commerce' ) );
+				wp_die( esc_html__( 'You don&#8217;t have permission to do this.', 'classic-store') );
 			}
 
 			if ( ! empty( $_GET['move_template'] ) ) {
@@ -966,7 +966,7 @@ class WC_Email extends WC_Settings_API {
 		// Do admin actions.
 		$this->admin_actions();
 		?>
-		<h2><?php echo esc_html( $this->get_title() ); ?> <?php wc_back_link( __( 'Return to emails', 'classic-commerce' ), admin_url( 'admin.php?page=wc-settings&tab=email' ) ); ?></h2>
+		<h2><?php echo esc_html( $this->get_title() ); ?> <?php wc_back_link( __( 'Return to emails', 'classic-store'), admin_url( 'admin.php?page=wc-settings&tab=email' ) ); ?></h2>
 
 		<?php echo wpautop( wp_kses_post( $this->get_description() ) ); // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
 
@@ -999,8 +999,8 @@ class WC_Email extends WC_Settings_API {
 			<div id="template">
 				<?php
 				$templates = array(
-					'template_html'  => __( 'HTML template', 'classic-commerce' ),
-					'template_plain' => __( 'Plain text template', 'classic-commerce' ),
+					'template_html'  => __( 'HTML template', 'classic-store'),
+					'template_plain' => __( 'Plain text template', 'classic-store'),
 				);
 
 				foreach ( $templates as $template_type => $title ) :
@@ -1025,13 +1025,13 @@ class WC_Email extends WC_Settings_API {
 
 								<?php if ( is_writable( $local_file ) ) : // phpcs:ignore WordPress.VIP.FileSystemWritesDisallow.file_ops_is_writable ?>
 									<a href="<?php echo esc_url( wp_nonce_url( remove_query_arg( array( 'move_template', 'saved' ), add_query_arg( 'delete_template', $template_type ) ), 'woocommerce_email_template_nonce', '_wc_email_nonce' ) ); ?>" class="delete_template button">
-										<?php esc_html_e( 'Delete template file', 'classic-commerce' ); ?>
+										<?php esc_html_e( 'Delete template file', 'classic-store'); ?>
 									</a>
 								<?php endif; ?>
 
 								<?php
 								/* translators: %s: Path to template file */
-								printf( esc_html__( 'This template has been overridden by your theme and can be found in: %s.', 'classic-commerce' ), '<code>' . esc_html( trailingslashit( basename( get_stylesheet_directory() ) ) . $template_dir . '/' . $template ) . '</code>' );
+								printf( esc_html__( 'This template has been overridden by your theme and can be found in: %s.', 'classic-store'), '<code>' . esc_html( trailingslashit( basename( get_stylesheet_directory() ) ) . $template_dir . '/' . $template ) . '</code>' );
 								?>
 							</p>
 
@@ -1064,15 +1064,15 @@ class WC_Email extends WC_Settings_API {
 								if ( is_writable( $target_dir ) ) : // phpcs:ignore WordPress.VIP.FileSystemWritesDisallow.file_ops_is_writable
 									?>
 									<a href="<?php echo esc_url( wp_nonce_url( remove_query_arg( array( 'delete_template', 'saved' ), add_query_arg( 'move_template', $template_type ) ), 'woocommerce_email_template_nonce', '_wc_email_nonce' ) ); ?>" class="button">
-										<?php esc_html_e( 'Copy file to theme', 'classic-commerce' ); ?>
+										<?php esc_html_e( 'Copy file to theme', 'classic-store'); ?>
 									</a>
 								<?php endif; ?>
 
 								<?php
 								/* translators: 1: Path to template file 2: Path to theme folder */
-								printf( esc_html__( 'To override and edit this email template copy %1$s to your theme folder: %2$s.', 'classic-commerce' ), '<code>' . esc_html( plugin_basename( $template_file ) ) . '</code>', '<code>' . esc_html( trailingslashit( basename( get_stylesheet_directory() ) ) . $template_dir . '/' . $template ) . '</code>' );
+								printf( esc_html__( 'To override and edit this email template copy %1$s to your theme folder: %2$s.', 'classic-store'), '<code>' . esc_html( plugin_basename( $template_file ) ) . '</code>', '<code>' . esc_html( trailingslashit( basename( get_stylesheet_directory() ) ) . $template_dir . '/' . $template ) . '</code>' );
 								/* translators: 1: URL to documentation */
-								printf( __( ' <a href="%1$s" rel="noopener nofollow" target="_blank">View documentation</a>.', 'classic-commerce' ), $email_docs_url ) ;
+								printf( __( ' <a href="%1$s" rel="noopener nofollow" target="_blank">View documentation</a>.', 'classic-store'), $email_docs_url ) ;
 								?>
 							</p>
 
@@ -1080,7 +1080,7 @@ class WC_Email extends WC_Settings_API {
 								<textarea class="code" readonly="readonly" disabled="disabled" cols="25" rows="20"><?php echo esc_html( file_get_contents( $template_file ) );// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents  ?></textarea>
 							</div>
 						<?php else : ?>
-							<p><?php esc_html_e( 'File was not found.', 'classic-commerce' ); ?></p>
+							<p><?php esc_html_e( 'File was not found.', 'classic-store'); ?></p>
 						<?php endif; ?>
 					</div>
 				<?php endforeach; ?>
@@ -1104,8 +1104,8 @@ class WC_Email extends WC_Settings_API {
 
 				}).trigger( 'change' );
 
-				var view = '" . esc_js( __( 'View template', 'classic-commerce' ) ) . "';
-				var hide = '" . esc_js( __( 'Hide template', 'classic-commerce' ) ) . "';
+				var view = '" . esc_js( __( 'View template', 'classic-store') ) . "';
+				var hide = '" . esc_js( __( 'Hide template', 'classic-store') ) . "';
 
 				jQuery( 'a.toggle_editor' ).text( view ).toggle( function() {
 					jQuery( this ).text( hide ).closest(' .template' ).find( '.editor' ).slideToggle();
@@ -1116,7 +1116,7 @@ class WC_Email extends WC_Settings_API {
 				} );
 
 				jQuery( 'a.delete_template' ).on( 'click', function() {
-					if ( window.confirm('" . esc_js( __( 'Are you sure you want to delete this template file?', 'classic-commerce' ) ) . "') ) {
+					if ( window.confirm('" . esc_js( __( 'Are you sure you want to delete this template file?', 'classic-store') ) . "') ) {
 						return true;
 					}
 

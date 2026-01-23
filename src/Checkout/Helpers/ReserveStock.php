@@ -100,7 +100,7 @@ final class ReserveStock {
 						'woocommerce_product_out_of_stock',
 						sprintf(
 							/* translators: %s: product name */
-							__( '&quot;%s&quot; is out of stock and cannot be purchased.', 'classic-commerce' ),
+							__( '&quot;%s&quot; is out of stock and cannot be purchased.', 'classic-store'),
 							$product->get_name()
 						),
 						403
@@ -127,7 +127,7 @@ final class ReserveStock {
 
                 if ( count( $held_stock_notes ) < 5 ) {
 					// translators: %1$s is a product's formatted name, %2$d: is the quantity of said product to which the stock hold applied.
-					$held_stock_notes[] = sprintf( _x( '- %1$s &times; %2$d', 'held stock note', 'classic-commerce' ), $product->get_formatted_name(), $rows[ $managed_by_id ] );
+					$held_stock_notes[] = sprintf( _x( '- %1$s &times; %2$d', 'held stock note', 'classic-store'), $product->get_formatted_name(), $rows[ $managed_by_id ] );
 				}
 			}
 
@@ -147,7 +147,7 @@ final class ReserveStock {
 			if ( $remaining_count > 0 ) {
 				$held_stock_notes[] = sprintf(
 					// translators: %d is the remaining order items count.
-					_nx( '- ...and %d more item.', '- ... and %d more items.', $remaining_count, 'held stock note', 'classic-commerce' ),
+					_nx( '- ...and %d more item.', '- ... and %d more items.', $remaining_count, 'held stock note', 'classic-store'),
 					$remaining_count
 				);
 			}
@@ -155,7 +155,7 @@ final class ReserveStock {
 			$order->add_order_note(
 				sprintf(
 					// translators: %1$s is a time in minutes, %2$s is a list of products and quantities.
-					_x( 'Stock hold of %1$s minutes applied to: %2$s', 'held stock note', 'classic-commerce' ),
+					_x( 'Stock hold of %1$s minutes applied to: %2$s', 'held stock note', 'classic-store'),
 					$minutes,
 					'<br>' . implode( '<br>', $held_stock_notes )
 				)
@@ -224,7 +224,7 @@ final class ReserveStock {
 				'woocommerce_product_not_enough_stock',
 				sprintf(
 					/* translators: %s: product name */
-					__( 'Not enough units of %s are available in stock to fulfil this order.', 'classic-commerce' ),
+					__( 'Not enough units of %s are available in stock to fulfil this order.', 'classic-store'),
 					$product ? $product->get_name() : '#' . $product_id
 				),
 				403

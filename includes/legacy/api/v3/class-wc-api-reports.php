@@ -323,7 +323,7 @@ class WC_API_Reports extends WC_API_Resource {
 
 		return new WP_Error(
 			'woocommerce_api_user_cannot_read_report',
-			__( 'You do not have permission to read this report', 'classic-commerce' ),
+			__( 'You do not have permission to read this report', 'classic-store'),
 			array( 'status' => 401 )
 		);
 	}

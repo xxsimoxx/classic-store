@@ -42,10 +42,10 @@ $calculator_text          = '';
 					<?php
 					if ( $formatted_destination ) {
 						// Translators: $s shipping destination.
-						printf( esc_html__( 'Shipping to %s.', 'classic-commerce' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' );
-						$calculator_text = esc_html__( 'Change address', 'classic-commerce' );
+						printf( esc_html__( 'Shipping to %s.', 'classic-store') . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' );
+						$calculator_text = esc_html__( 'Change address', 'classic-store');
 					} else {
-						echo esc_html__( 'Shipping options will be updated during checkout.', 'classic-commerce' );
+						echo esc_html__( 'Shipping options will be updated during checkout.', 'classic-store');
 					}
 					?>
 				</p>
@@ -53,12 +53,12 @@ $calculator_text          = '';
 		<?php
 		elseif ( ! $has_calculated_shipping || ! $formatted_destination ) :
 			if ( is_cart() && 'no' === get_option( 'woocommerce_enable_shipping_calc' ) ) {
-				echo wp_kses_post( apply_filters( 'woocommerce_shipping_not_enabled_on_cart_html', __( 'Shipping costs are calculated during checkout.', 'classic-commerce' ) ) );
+				echo wp_kses_post( apply_filters( 'woocommerce_shipping_not_enabled_on_cart_html', __( 'Shipping costs are calculated during checkout.', 'classic-store') ) );
 			} else {
-				echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'classic-commerce' ) ) );
+				echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'classic-store') ) );
 			}
 		elseif ( ! is_cart() ) :
-			echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'classic-commerce' ) ) );
+			echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'classic-store') ) );
 		else :
         			echo wp_kses_post(
 				/**
@@ -72,11 +72,11 @@ $calculator_text          = '';
 				apply_filters(
 					'woocommerce_cart_no_shipping_available_html',
 					// Translators: $s shipping destination.
-					sprintf( esc_html__( 'No shipping options were found for %s.', 'classic-commerce' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' ),
+					sprintf( esc_html__( 'No shipping options were found for %s.', 'classic-store') . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' ),
 					$formatted_destination
 				)
 			);
-			$calculator_text = esc_html__( 'Enter a different address', 'classic-commerce' );
+			$calculator_text = esc_html__( 'Enter a different address', 'classic-store');
 		endif;
 		?>
 

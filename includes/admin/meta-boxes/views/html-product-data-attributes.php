@@ -21,19 +21,17 @@ $product_attributes = $product_object->get_attributes( 'edit' );
 			<p class="help">
 				<?php
 				esc_html_e(
-					'Add descriptive pieces of information that customers can use to search for this product on your store, such as “Material” or “Brand”.',
-					'woocommerce'
-				);
+					'Add descriptive pieces of information that customers can use to search for this product on your store, such as “Material” or “Brand”.', 'classic-store');
 				?>
-				<button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php esc_html_e( 'Dismiss this notice.', 'classic-commerce' ); ?></span></button>
+				<button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php esc_html_e( 'Dismiss this notice.', 'classic-store'); ?></span></button>
 			</p>
 		</div>
 		<span class="expand-close">
-			<a href="#" class="expand_all"><?php esc_html_e( 'Expand', 'classic-commerce' ); ?></a> / <a href="#" class="close_all"><?php esc_html_e( 'Close', 'classic-commerce' ); ?></a>
+			<a href="#" class="expand_all"><?php esc_html_e( 'Expand', 'classic-store'); ?></a> / <a href="#" class="close_all"><?php esc_html_e( 'Close', 'classic-store'); ?></a>
 		</span>
 		<div class="actions">
-			<button type="button" class="button add_custom_attribute"><?php esc_html_e( 'Add new', 'classic-commerce' ); ?></button>
-			<select class="wc-attribute-search" data-placeholder="<?php esc_attr_e( 'Add existing', 'classic-commerce' ); ?>" data-minimum-input-length="0">
+			<button type="button" class="button add_custom_attribute"><?php esc_html_e( 'Add new', 'classic-store'); ?></button>
+			<select class="wc-attribute-search" data-placeholder="<?php esc_attr_e( 'Add existing', 'classic-store'); ?>" data-minimum-input-length="0">
 			</select>
 		</div>
 	</div>
@@ -56,9 +54,9 @@ $product_attributes = $product_object->get_attributes( 'edit' );
 	</div>
 	<div class="toolbar toolbar-buttons">
 		<span class="expand-close">
-			<a href="#" class="expand_all"><?php esc_html_e( 'Expand', 'classic-commerce' ); ?></a> / <a href="#" class="close_all"><?php esc_html_e( 'Close', 'classic-commerce' ); ?></a>
+			<a href="#" class="expand_all"><?php esc_html_e( 'Expand', 'classic-store'); ?></a> / <a href="#" class="close_all"><?php esc_html_e( 'Close', 'classic-store'); ?></a>
 		</span>
-		<button type="button" aria-disabled="true" class="button save_attributes button-primary disabled"><?php esc_html_e( 'Save attributes', 'classic-commerce' ); ?></button>
+		<button type="button" aria-disabled="true" class="button save_attributes button-primary disabled"><?php esc_html_e( 'Save attributes', 'classic-store'); ?></button>
 	</div>
 	<?php do_action( 'woocommerce_product_options_attributes' ); ?>
 </div>

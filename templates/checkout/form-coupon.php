@@ -17,20 +17,20 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 
 ?>
 <div class="woocommerce-form-coupon-toggle">
-	<?php wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message', esc_html__( 'Have a coupon?', 'classic-commerce' ) . ' <a href="#" class="showcoupon">' . esc_html__( 'Click here to enter your code', 'classic-commerce' ) . '</a>' ), 'notice' ); ?>
+	<?php wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message', esc_html__( 'Have a coupon?', 'classic-store') . ' <a href="#" class="showcoupon">' . esc_html__( 'Click here to enter your code', 'classic-store') . '</a>' ), 'notice' ); ?>
 </div>
 
 <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:none">
 
-	<p><?php esc_html_e( 'If you have a coupon code, please apply it below.', 'classic-commerce' ); ?></p>
+	<p><?php esc_html_e( 'If you have a coupon code, please apply it below.', 'classic-store'); ?></p>
 
 	<p class="form-row form-row-first">
-        <label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'classic-commerce' ); ?></label>
-		<input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'classic-commerce' ); ?>" id="coupon_code" value="" />
+        <label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'classic-store'); ?></label>
+		<input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'classic-store'); ?>" id="coupon_code" value="" />
 	</p>
 
 	<p class="form-row form-row-last">
-		<button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'classic-commerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'classic-commerce' ); ?></button>
+		<button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'classic-store'); ?>"><?php esc_html_e( 'Apply coupon', 'classic-store'); ?></button>
 	</p>
 
 	<div class="clear"></div>

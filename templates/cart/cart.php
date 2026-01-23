@@ -19,12 +19,12 @@ do_action( 'woocommerce_before_cart' ); ?>
 	<table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
 		<thead>
 			<tr>
-				<th class="product-remove"><span class="screen-reader-text"><?php esc_html_e( 'Remove item', 'classic-commerce' ); ?></span></th>
-				<th class="product-thumbnail"><span class="screen-reader-text"><?php esc_html_e( 'Thumbnail image', 'classic-commerce' ); ?></span></th>
-				<th class="product-name"><?php esc_html_e( 'Product', 'classic-commerce' ); ?></th>
-				<th class="product-price"><?php esc_html_e( 'Price', 'classic-commerce' ); ?></th>
-				<th class="product-quantity"><?php esc_html_e( 'Quantity', 'classic-commerce' ); ?></th>
-				<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'classic-commerce' ); ?></th>
+				<th class="product-remove"><span class="screen-reader-text"><?php esc_html_e( 'Remove item', 'classic-store'); ?></span></th>
+				<th class="product-thumbnail"><span class="screen-reader-text"><?php esc_html_e( 'Thumbnail image', 'classic-store'); ?></span></th>
+				<th class="product-name"><?php esc_html_e( 'Product', 'classic-store'); ?></th>
+				<th class="product-price"><?php esc_html_e( 'Price', 'classic-store'); ?></th>
+				<th class="product-quantity"><?php esc_html_e( 'Quantity', 'classic-store'); ?></th>
+				<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'classic-store'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -57,7 +57,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 									sprintf(
 										'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
 										esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-										esc_attr( sprintf( __( 'Remove %s from cart', 'classic-commerce' ), wp_strip_all_tags( $product_name ) ) ),
+										esc_attr( sprintf( __( 'Remove %s from cart', 'classic-store'), wp_strip_all_tags( $product_name ) ) ),
 										esc_attr( $product_id ),
 										esc_attr( $_product->get_sku() )
 									),
@@ -78,7 +78,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 						</td>
 
-						<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'classic-commerce' ); ?>">
+						<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'classic-store'); ?>">
 						<?php
 						if ( ! $product_permalink ) {
 							echo wp_kses_post( $product_name . '&nbsp;' );
@@ -100,18 +100,18 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 						// Backorder notification.
 						if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
-							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'classic-commerce' ) . '</p>', $product_id ) );
+							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'classic-store') . '</p>', $product_id ) );
 						}
 						?>
 						</td>
 
-						<td class="product-price" data-title="<?php esc_attr_e( 'Price', 'classic-commerce' ); ?>">
+						<td class="product-price" data-title="<?php esc_attr_e( 'Price', 'classic-store'); ?>">
 							<?php
 								echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 							?>
 						</td>
 
-						<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'classic-commerce' ); ?>">
+						<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'classic-store'); ?>">
 						<?php
 						if ( $_product->is_sold_individually() ) {
 							$min_quantity = 1;
@@ -137,7 +137,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 						</td>
 
-						<td class="product-subtotal" data-title="<?php esc_attr_e( 'Total', 'classic-commerce' ); ?>">
+						<td class="product-subtotal" data-title="<?php esc_attr_e( 'Total', 'classic-store'); ?>">
 							<?php
 								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 							?>
@@ -155,12 +155,12 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 					<?php if ( wc_coupons_enabled() ) { ?>
 						<div class="coupon">
-							<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'classic-commerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'classic-commerce' ); ?>" /> <button type="submit" class="button" name="apply_coupon" value="<?php esc_html_e( 'Apply coupon', 'classic-commerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'classic-commerce' ); ?></button>
+							<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'classic-store'); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'classic-store'); ?>" /> <button type="submit" class="button" name="apply_coupon" value="<?php esc_html_e( 'Apply coupon', 'classic-store'); ?>"><?php esc_attr_e( 'Apply coupon', 'classic-store'); ?></button>
 							<?php do_action( 'woocommerce_cart_coupon' ); ?>
 						</div>
 					<?php } ?>
 
-					<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'classic-commerce' ); ?>"><?php esc_html_e( 'Update cart', 'classic-commerce' ); ?></button>
+					<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'classic-store'); ?>"><?php esc_html_e( 'Update cart', 'classic-store'); ?></button>
 
 					<?php do_action( 'woocommerce_cart_actions' ); ?>
 

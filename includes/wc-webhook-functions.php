@@ -146,9 +146,9 @@ function wc_get_webhook_statuses() {
     return apply_filters(
 		'woocommerce_webhook_statuses',
 		array(
-			'active'   => __( 'Active', 'woocommerce' ),
-			'paused'   => __( 'Paused', 'woocommerce' ),
-			'disabled' => __( 'Disabled', 'woocommerce' ),
+			'active'   => __( 'Active', 'classic-store'),
+			'paused'   => __( 'Paused', 'classic-store'),
+			'disabled' => __( 'Disabled', 'classic-store'),
 		)
 	);
 }

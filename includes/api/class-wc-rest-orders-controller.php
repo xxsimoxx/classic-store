@@ -56,12 +56,12 @@ class WC_REST_Orders_Controller extends WC_REST_Orders_V2_Controller {
 
 		foreach ( $request['coupon_lines'] as $item ) {
 			if ( ! empty( $item['id'] ) ) {
-				throw new WC_REST_Exception( 'woocommerce_rest_coupon_item_id_readonly', __( 'Coupon item ID is readonly.', 'classic-commerce' ), 400 );
+				throw new WC_REST_Exception( 'woocommerce_rest_coupon_item_id_readonly', __( 'Coupon item ID is readonly.', 'classic-store'), 400 );
 			}
 
 			$coupon_code = ArrayUtil::get_value_or_default( $item, 'code' );
 			if ( StringUtil::is_null_or_whitespace( $coupon_code ) ) {
-				throw new WC_REST_Exception( 'woocommerce_rest_invalid_coupon', __( 'Coupon code is required.', 'classic-commerce' ), 400 );
+				throw new WC_REST_Exception( 'woocommerce_rest_invalid_coupon', __( 'Coupon code is required.', 'classic-store'), 400 );
 			}
 
 			$coupon_code = wc_format_coupon_code( wc_clean( $coupon_code ) );
@@ -185,7 +185,7 @@ class WC_REST_Orders_Controller extends WC_REST_Orders_V2_Controller {
 		if ( ! $item ) {
 			throw new WC_REST_Exception(
 				'woocommerce_rest_invalid_item_id',
-				esc_html__( 'Order item ID provided is not associated with order.', 'classic-commerce' ),
+				esc_html__( 'Order item ID provided is not associated with order.', 'classic-store'),
 				400
 			);
 		}
@@ -230,7 +230,7 @@ class WC_REST_Orders_Controller extends WC_REST_Orders_V2_Controller {
 			if ( ! is_null( $request['customer_id'] ) && 0 !== $request['customer_id'] ) {
 				// Make sure customer exists.
 				if ( false === get_user_by( 'id', $request['customer_id'] ) ) {
-					throw new WC_REST_Exception( 'woocommerce_rest_invalid_customer_id', __( 'Customer ID is invalid.', 'classic-commerce' ), 400 );
+					throw new WC_REST_Exception( 'woocommerce_rest_invalid_customer_id', __( 'Customer ID is invalid.', 'classic-store'), 400 );
 				}
 
 				// Make sure customer is part of blog.
@@ -321,7 +321,7 @@ class WC_REST_Orders_Controller extends WC_REST_Orders_V2_Controller {
 
         $schema['properties']['manual_update'] = array(
 			'default'     => false,
-			'description' => __( 'Set the action as manual so that the order note registers as "added by user".', 'classic-commerce' ),
+			'description' => __( 'Set the action as manual so that the order note registers as "added by user".', 'classic-store'),
 			'type'        => 'boolean',
 			'context'     => array( 'edit' ),
 		);
@@ -339,7 +339,7 @@ class WC_REST_Orders_Controller extends WC_REST_Orders_V2_Controller {
 
 		$params['status'] = array(
 			'default'           => 'any',
-			'description'       => __( 'Limit result set to orders which have specific statuses.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to orders which have specific statuses.', 'classic-store'),
 			'type'              => 'array',
 			'items'             => array(
 				'type' => 'string',

@@ -39,110 +39,110 @@ if ( ! class_exists( 'WC_Admin_Profile', false ) ) :
 			$show_fields = apply_filters(
 				'woocommerce_customer_meta_fields', array(
 					'billing'  => array(
-						'title'  => __( 'Customer billing address', 'classic-commerce' ),
+						'title'  => __( 'Customer billing address', 'classic-store'),
 						'fields' => array(
 							'billing_first_name' => array(
-								'label'       => __( 'First name', 'classic-commerce' ),
+								'label'       => __( 'First name', 'classic-store'),
 								'description' => '',
 							),
 							'billing_last_name'  => array(
-								'label'       => __( 'Last name', 'classic-commerce' ),
+								'label'       => __( 'Last name', 'classic-store'),
 								'description' => '',
 							),
 							'billing_company'    => array(
-								'label'       => __( 'Company', 'classic-commerce' ),
+								'label'       => __( 'Company', 'classic-store'),
 								'description' => '',
 							),
 							'billing_address_1'  => array(
-								'label'       => __( 'Address line 1', 'classic-commerce' ),
+								'label'       => __( 'Address line 1', 'classic-store'),
 								'description' => '',
 							),
 							'billing_address_2'  => array(
-								'label'       => __( 'Address line 2', 'classic-commerce' ),
+								'label'       => __( 'Address line 2', 'classic-store'),
 								'description' => '',
 							),
 							'billing_city'       => array(
-								'label'       => __( 'City', 'classic-commerce' ),
+								'label'       => __( 'City', 'classic-store'),
 								'description' => '',
 							),
 							'billing_postcode'   => array(
-								'label'       => __( 'Postcode / ZIP', 'classic-commerce' ),
+								'label'       => __( 'Postcode / ZIP', 'classic-store'),
 								'description' => '',
 							),
 							'billing_country'    => array(
-								'label'       => __( 'Country / Region', 'classic-commerce' ),
+								'label'       => __( 'Country / Region', 'classic-store'),
 								'description' => '',
 								'class'       => 'js_field-country',
 								'type'        => 'select',
-								'options'     => array( '' => __( 'Select a country / region&hellip;', 'classic-commerce' ) ) + WC()->countries->get_allowed_countries(),
+								'options'     => array( '' => __( 'Select a country / region&hellip;', 'classic-store') ) + WC()->countries->get_allowed_countries(),
 							),
 							'billing_state'      => array(
-								'label'       => __( 'State / County', 'classic-commerce' ),
-								'description' => __( 'State / County or state code', 'classic-commerce' ),
+								'label'       => __( 'State / County', 'classic-store'),
+								'description' => __( 'State / County or state code', 'classic-store'),
 								'class'       => 'js_field-state',
 							),
 							'billing_phone'      => array(
-								'label'       => __( 'Phone', 'classic-commerce' ),
+								'label'       => __( 'Phone', 'classic-store'),
 								'description' => '',
 							),
 							'billing_email'      => array(
-								'label'       => __( 'Email address', 'classic-commerce' ),
+								'label'       => __( 'Email address', 'classic-store'),
 								'description' => '',
 							),
 						),
 					),
 					'shipping' => array(
-						'title'  => __( 'Customer shipping address', 'classic-commerce' ),
+						'title'  => __( 'Customer shipping address', 'classic-store'),
 						'fields' => array(
 							'copy_billing'        => array(
-								'label'       => __( 'Copy from billing address', 'classic-commerce' ),
+								'label'       => __( 'Copy from billing address', 'classic-store'),
 								'description' => '',
 								'class'       => 'js_copy-billing',
 								'type'        => 'button',
-								'text'        => __( 'Copy', 'classic-commerce' ),
+								'text'        => __( 'Copy', 'classic-store'),
 							),
 							'shipping_first_name' => array(
-								'label'       => __( 'First name', 'classic-commerce' ),
+								'label'       => __( 'First name', 'classic-store'),
 								'description' => '',
 							),
 							'shipping_last_name'  => array(
-								'label'       => __( 'Last name', 'classic-commerce' ),
+								'label'       => __( 'Last name', 'classic-store'),
 								'description' => '',
 							),
 							'shipping_company'    => array(
-								'label'       => __( 'Company', 'classic-commerce' ),
+								'label'       => __( 'Company', 'classic-store'),
 								'description' => '',
 							),
 							'shipping_address_1'  => array(
-								'label'       => __( 'Address line 1', 'classic-commerce' ),
+								'label'       => __( 'Address line 1', 'classic-store'),
 								'description' => '',
 							),
 							'shipping_address_2'  => array(
-								'label'       => __( 'Address line 2', 'classic-commerce' ),
+								'label'       => __( 'Address line 2', 'classic-store'),
 								'description' => '',
 							),
 							'shipping_city'       => array(
-								'label'       => __( 'City', 'classic-commerce' ),
+								'label'       => __( 'City', 'classic-store'),
 								'description' => '',
 							),
 							'shipping_postcode'   => array(
-								'label'       => __( 'Postcode / ZIP', 'classic-commerce' ),
+								'label'       => __( 'Postcode / ZIP', 'classic-store'),
 								'description' => '',
 							),
 							'shipping_country'    => array(
-								'label'       => __( 'Country / Region', 'classic-commerce' ),
+								'label'       => __( 'Country / Region', 'classic-store'),
 								'description' => '',
 								'class'       => 'js_field-country',
 								'type'        => 'select',
-								'options'     => array( '' => __( 'Select a country / region&hellip;', 'classic-commerce' ) ) + WC()->countries->get_allowed_countries(),
+								'options'     => array( '' => __( 'Select a country / region&hellip;', 'classic-store') ) + WC()->countries->get_allowed_countries(),
 							),
 							'shipping_state'      => array(
-								'label'       => __( 'State / County', 'classic-commerce' ),
-								'description' => __( 'State / County or state code', 'classic-commerce' ),
+								'label'       => __( 'State / County', 'classic-store'),
+								'description' => __( 'State / County or state code', 'classic-store'),
 								'class'       => 'js_field-state',
 							),
                             'shipping_phone'      => array(
-								'label'       => __( 'Phone', 'classic-commerce' ),
+								'label'       => __( 'Phone', 'classic-store'),
 								'description' => '',
 							),
 						),

@@ -20,14 +20,14 @@ class WC_Widget_Price_Filter extends WC_Widget {
 	 */
 	public function __construct() {
 		$this->widget_cssclass    = 'woocommerce widget_price_filter';
-		$this->widget_description = __( 'Display a slider to filter products in your store by price.', 'classic-commerce' );
+		$this->widget_description = __( 'Display a slider to filter products in your store by price.', 'classic-store');
 		$this->widget_id          = 'woocommerce_price_filter';
-		$this->widget_name        = __( 'Filter Products by Price', 'classic-commerce' );
+		$this->widget_name        = __( 'Filter Products by Price', 'classic-store');
 		$this->settings           = array(
 			'title' => array(
 				'type'  => 'text',
-				'std'   => __( 'Filter by price', 'classic-commerce' ),
-				'label' => __( 'Title', 'classic-commerce' ),
+				'std'   => __( 'Filter by price', 'classic-store'),
+				'label' => __( 'Title', 'classic-store'),
 			),
 		);
 		$suffix                   = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';

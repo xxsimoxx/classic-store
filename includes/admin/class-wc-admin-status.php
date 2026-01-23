@@ -69,7 +69,7 @@ class WC_Admin_Status {
 			} else {
 				$response = array(
 					'success' => false,
-					'message' => __( 'Tool does not exist.', 'classic-commerce' ),
+					'message' => __( 'Tool does not exist.', 'classic-store'),
 				);
 			}
 
@@ -82,7 +82,7 @@ class WC_Admin_Status {
 
 		// Display message if settings settings have been saved.
 		if ( isset( $_REQUEST['settings-updated'] ) ) { // WPCS: input var ok.
-			echo '<div class="updated inline"><p>' . esc_html__( 'Your changes have been saved.', 'classic-commerce' ) . '</p></div>';
+			echo '<div class="updated inline"><p>' . esc_html__( 'Your changes have been saved.', 'classic-store') . '</p></div>';
 		}
 
 		include_once __DIR__ . '/views/html-admin-page-status-tools.php';
@@ -295,7 +295,7 @@ class WC_Admin_Status {
 	 */
 	public static function remove_log() {
 		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( wp_unslash( $_REQUEST['_wpnonce'] ), 'remove_log' ) ) { // WPCS: input var ok, sanitization ok.
-			wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'classic-commerce' ) );
+			wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'classic-store') );
 		}
 
 		if ( ! empty( $_REQUEST['handle'] ) ) {  // WPCS: input var ok.
@@ -314,7 +314,7 @@ class WC_Admin_Status {
 	 */
 	private static function flush_db_logs() {
 		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'woocommerce-status-logs' ) ) { // WPCS: input var ok, sanitization ok.
-			wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'classic-commerce' ) );
+			wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'classic-store') );
 		}
 
 		WC_Log_Handler_DB::flush();
@@ -330,7 +330,7 @@ class WC_Admin_Status {
 	 */
 	private static function log_table_bulk_actions() {
 		if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'woocommerce-status-logs' ) ) { // WPCS: input var ok, sanitization ok.
-			wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'classic-commerce' ) );
+			wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'classic-store') );
 		}
 
 		$log_ids = array_map( 'absint', (array) isset( $_REQUEST['log'] ) ? wp_unslash( $_REQUEST['log'] ) : array() ); // WPCS: input var ok, sanitization ok.
@@ -356,9 +356,9 @@ class WC_Admin_Status {
 		<strong style="color:#a00;">
 			<span class="dashicons dashicons-warning"></span>
 			<?php
-				esc_html_e( 'Missing base tables: ', 'classic-commerce' );
+				esc_html_e( 'Missing base tables: ', 'classic-store');
 				echo esc_html( implode( ', ', $missing_tables ) );
-				esc_html_e( '. Some Classic Commerce functionality may not work as expected.', 'classic-commerce' );
+				esc_html_e( '. Some Classic Commerce functionality may not work as expected.', 'classic-store');
 			?>
 		</strong>
 

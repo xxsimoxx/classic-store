@@ -76,7 +76,7 @@ if ( ! class_exists( 'WC_Admin_Settings', false ) ) :
 			do_action( 'woocommerce_update_options_' . $current_tab );
 			do_action( 'woocommerce_update_options' );
 
-			self::add_message( __( 'Your settings have been saved.', 'classic-commerce' ) );
+			self::add_message( __( 'Your settings have been saved.', 'classic-store') );
 			self::check_download_folder_protection();
 
 			// Clear any unwanted data and flush rules.
@@ -138,10 +138,10 @@ if ( ! class_exists( 'WC_Admin_Settings', false ) ) :
 				'woocommerce_settings',
 				'woocommerce_settings_params',
 				array(
-					'i18n_nav_warning'                    => __( 'The changes you made will be lost if you navigate away from this page.', 'classic-commerce' ),
-					'i18n_moved_up'                       => __( 'Item moved up', 'classic-commerce' ),
-					'i18n_moved_down'                     => __( 'Item moved down', 'classic-commerce' ),
-					'i18n_no_specific_countries_selected' => __( 'Selecting no country / region to sell to prevents from completing the checkout. Continue anyway?', 'classic-commerce' ),
+					'i18n_nav_warning'                    => __( 'The changes you made will be lost if you navigate away from this page.', 'classic-store'),
+					'i18n_moved_up'                       => __( 'Item moved up', 'classic-store'),
+					'i18n_moved_down'                     => __( 'Item moved down', 'classic-store'),
+					'i18n_no_specific_countries_selected' => __( 'Selecting no country / region to sell to prevents from completing the checkout. Continue anyway?', 'classic-store'),
 				)
 			);
 
@@ -583,7 +583,7 @@ if ( ! class_exists( 'WC_Admin_Settings', false ) ) :
 
 						if ( has_filter( 'woocommerce_get_image_size_' . $image_size ) ) {
 							$disabled_attr    = 'disabled="disabled"';
-							$disabled_message = '<p><small>' . esc_html__( 'The settings of this image size have been disabled because its values are being overwritten by a filter.', 'classic-commerce' ) . '</small></p>';
+							$disabled_message = '<p><small>' . esc_html__( 'The settings of this image size have been disabled because its values are being overwritten by a filter.', 'classic-store') . '</small></p>';
 						}
 
 						?>
@@ -595,7 +595,7 @@ if ( ! class_exists( 'WC_Admin_Settings', false ) ) :
 
 								<input name="<?php echo esc_attr( $value['field_name'] ); ?>[width]" <?php echo $disabled_attr; // WPCS: XSS ok. ?> id="<?php echo esc_attr( $value['id'] ); ?>-width" type="text" size="3" value="<?php echo esc_attr( $width ); ?>" /> &times; <input name="<?php echo esc_attr( $value['id'] ); ?>[height]" <?php echo $disabled_attr; // WPCS: XSS ok. ?> id="<?php echo esc_attr( $value['id'] ); ?>-height" type="text" size="3" value="<?php echo esc_attr( $height ); ?>" />px
 
-								<label><input name="<?php echo esc_attr( $value['field_name'] ); ?>[crop]" <?php echo $disabled_attr; // WPCS: XSS ok. ?> id="<?php echo esc_attr( $value['id'] ); ?>-crop" type="checkbox" value="1" <?php checked( 1, $crop ); ?> /> <?php esc_html_e( 'Hard crop?', 'classic-commerce' ); ?></label>
+								<label><input name="<?php echo esc_attr( $value['field_name'] ); ?>[crop]" <?php echo $disabled_attr; // WPCS: XSS ok. ?> id="<?php echo esc_attr( $value['id'] ); ?>-crop" type="checkbox" value="1" <?php checked( 1, $crop ); ?> /> <?php esc_html_e( 'Hard crop?', 'classic-store'); ?></label>
 
 								</td>
 						</tr>
@@ -626,7 +626,7 @@ if ( ! class_exists( 'WC_Admin_Settings', false ) ) :
 								<label><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 							</th>
 							<td class="forminp">
-								<?php echo str_replace( ' id=', " data-placeholder='" . esc_attr__( 'Select a page&hellip;', 'classic-commerce' ) . "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); // WPCS: XSS ok. ?> <?php echo $description; // WPCS: XSS ok. ?>
+								<?php echo str_replace( ' id=', " data-placeholder='" . esc_attr__( 'Select a page&hellip;', 'classic-store') . "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); // WPCS: XSS ok. ?> <?php echo $description; // WPCS: XSS ok. ?>
 							</td>
 						</tr>
 						<?php
@@ -640,7 +640,7 @@ if ( ! class_exists( 'WC_Admin_Settings', false ) ) :
 							$page                = get_post( $option_value );
 							$option_display_name = sprintf(
 								/* translators: 1: page name 2: page ID */
-								__( '%1$s (ID: %2$s)', 'classic-commerce' ),
+								__( '%1$s (ID: %2$s)', 'classic-store' ),
 								$page->post_title,
 								$option_value
 							);
@@ -657,7 +657,7 @@ if ( ! class_exists( 'WC_Admin_Settings', false ) ) :
 									style="<?php echo esc_attr( $value['css'] ); ?>"
 									class="<?php echo esc_attr( $value['class'] ); ?>"
 									<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-									data-placeholder="<?php esc_attr_e( 'Search for a page&hellip;', 'classic-commerce' ); ?>"
+									data-placeholder="<?php esc_attr_e( 'Search for a page&hellip;', 'classic-store'); ?>"
 									data-allow_clear="true"
 									data-exclude="<?php echo wc_esc_json( wp_json_encode( $value['args']['exclude'] ) ); ?>"
 									>
@@ -690,7 +690,7 @@ if ( ! class_exists( 'WC_Admin_Settings', false ) ) :
 							<th scope="row" class="titledesc">
 								<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 							</th>
-							<td class="forminp"><select name="<?php echo esc_attr( $value['field_name'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php esc_attr_e( 'Choose a country / region&hellip;', 'classic-commerce' ); ?>" aria-label="<?php esc_attr_e( 'Country / Region', 'classic-commerce' ); ?>" class="wc-enhanced-select">
+							<td class="forminp"><select name="<?php echo esc_attr( $value['field_name'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php esc_attr_e( 'Choose a country / region&hellip;', 'classic-store'); ?>" aria-label="<?php esc_attr_e( 'Country / Region', 'classic-store'); ?>" class="wc-enhanced-select">
 								<?php WC()->countries->country_dropdown_options( $country, $state ); ?>
 							</select> <?php echo $description; // WPCS: XSS ok. ?>
 							</td>
@@ -715,7 +715,7 @@ if ( ! class_exists( 'WC_Admin_Settings', false ) ) :
 								<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 							</th>
 							<td class="forminp">
-								<select multiple="multiple" name="<?php echo esc_attr( $value['field_name'] ); ?>[]" style="width:350px" data-placeholder="<?php esc_attr_e( 'Choose countries / regions&hellip;', 'classic-commerce' ); ?>" aria-label="<?php esc_attr_e( 'Country / Region', 'classic-commerce' ); ?>" class="wc-enhanced-select">
+								<select multiple="multiple" name="<?php echo esc_attr( $value['field_name'] ); ?>[]" style="width:350px" data-placeholder="<?php esc_attr_e( 'Choose countries / regions&hellip;', 'classic-store'); ?>" aria-label="<?php esc_attr_e( 'Country / Region', 'classic-store'); ?>" class="wc-enhanced-select">
 									<?php
 									if ( ! empty( $countries ) ) {
 										foreach ( $countries as $key => $val ) {
@@ -723,7 +723,7 @@ if ( ! class_exists( 'WC_Admin_Settings', false ) ) :
 										}
 									}
 									?>
-								</select> <?php echo ( $description ) ? $description : ''; // WPCS: XSS ok. ?> <br /><a class="select_all button" href="#"><?php esc_html_e( 'Select all', 'classic-commerce' ); ?></a> <a class="select_none button" href="#"><?php esc_html_e( 'Select none', 'classic-commerce' ); ?></a>
+								</select> <?php echo ( $description ) ? $description : ''; // WPCS: XSS ok. ?> <br /><a class="select_all button" href="#"><?php esc_html_e( 'Select all', 'classic-store'); ?></a> <a class="select_none button" href="#"><?php esc_html_e( 'Select none', 'classic-store'); ?></a>
 							</td>
 						</tr>
 						<?php
@@ -732,10 +732,10 @@ if ( ! class_exists( 'WC_Admin_Settings', false ) ) :
 					// Days/months/years selector.
 					case 'relative_date_selector':
 						$periods      = array(
-							'days'   => __( 'Day(s)', 'classic-commerce' ),
-							'weeks'  => __( 'Week(s)', 'classic-commerce' ),
-							'months' => __( 'Month(s)', 'classic-commerce' ),
-							'years'  => __( 'Year(s)', 'classic-commerce' ),
+							'days'   => __( 'Day(s)', 'classic-store' ),
+							'weeks'  => __( 'Week(s)', 'classic-store' ),
+							'months' => __( 'Month(s)', 'classic-store' ),
+							'years'  => __( 'Year(s)', 'classic-store' ),
 						);
 						$option_value = wc_parse_relative_date_option( $value['value'] );
 						?>

@@ -18,14 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<td class="name">
 		<div class="view">
-			<?php echo esc_html( $item->get_name() ? $item->get_name() : __( 'Shipping', 'classic-commerce' ) ); ?>
+			<?php echo esc_html( $item->get_name() ? $item->get_name() : __( 'Shipping', 'classic-store') ); ?>
 		</div>
 		<div class="edit" style="display: none;">
 			<input type="hidden" name="shipping_method_id[]" value="<?php echo esc_attr( $item_id ); ?>" />
-			<input type="text" class="shipping_method_name" placeholder="<?php esc_attr_e( 'Shipping name', 'classic-commerce' ); ?>" name="shipping_method_title[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $item->get_name() ); ?>" />
+			<input type="text" class="shipping_method_name" placeholder="<?php esc_attr_e( 'Shipping name', 'classic-store'); ?>" name="shipping_method_title[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $item->get_name() ); ?>" />
 			<select class="shipping_method" name="shipping_method[<?php echo esc_attr( $item_id ); ?>]">
-				<optgroup label="<?php esc_attr_e( 'Shipping method', 'classic-commerce' ); ?>">
-					<option value=""><?php esc_html_e( 'N/A', 'classic-commerce' ); ?></option>
+				<optgroup label="<?php esc_attr_e( 'Shipping method', 'classic-store'); ?>">
+					<option value=""><?php esc_html_e( 'N/A', 'classic-store'); ?></option>
 					<?php
 					$found_method = false;
 
@@ -40,9 +40,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 					}
 
 					if ( ! $found_method && $item->get_method_id() ) {
-						echo '<option value="' . esc_attr( $item->get_method_id() ) . '" selected="selected">' . esc_html__( 'Other', 'classic-commerce' ) . '</option>';
+						echo '<option value="' . esc_attr( $item->get_method_id() ) . '" selected="selected">' . esc_html__( 'Other', 'classic-store') . '</option>';
 					} else {
-						echo '<option value="other">' . esc_html__( 'Other', 'classic-commerce' ) . '</option>';
+						echo '<option value="other">' . esc_html__( 'Other', 'classic-store') . '</option>';
 					}
 					?>
 				</optgroup>

@@ -20,9 +20,9 @@ use ClassicCommerce\Utilities\StringUtil;
 function wc_get_coupon_types() {
 	return (array) apply_filters(
 		'woocommerce_coupon_discount_types', array(
-			'percent'       => __( 'Percentage discount', 'classic-commerce' ),
-			'fixed_cart'    => __( 'Fixed cart discount', 'classic-commerce' ),
-			'fixed_product' => __( 'Fixed product discount', 'classic-commerce' ),
+			'percent'       => __( 'Percentage discount', 'classic-store'),
+			'fixed_cart'    => __( 'Fixed cart discount', 'classic-store'),
+			'fixed_product' => __( 'Fixed product discount', 'classic-store'),
 		)
 	);
 }

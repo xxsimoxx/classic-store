@@ -30,8 +30,8 @@ if ( ! class_exists( 'WC_Email_Customer_Processing_Order', false ) ) :
 			$this->id             = 'customer_processing_order';
 			$this->customer_email = true;
 
-			$this->title          = __( 'Processing order', 'classic-commerce' );
-			$this->description    = __( 'This is an order notification sent to customers containing order details after payment.', 'classic-commerce' );
+			$this->title          = __( 'Processing order', 'classic-store');
+			$this->description    = __( 'This is an order notification sent to customers containing order details after payment.', 'classic-store');
 			$this->template_html  = 'emails/customer-processing-order.php';
 			$this->template_plain = 'emails/plain/customer-processing-order.php';
 			$this->placeholders   = array(
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WC_Email_Customer_Processing_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( 'Your {site_title} order has been received!', 'classic-commerce' );
+			return __( 'Your {site_title} order has been received!', 'classic-store');
 		}
 
 		/**
@@ -66,7 +66,7 @@ if ( ! class_exists( 'WC_Email_Customer_Processing_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Thank you for your order', 'classic-commerce' );
+			return __( 'Thank you for your order', 'classic-store');
 		}
 
 		/**
@@ -141,7 +141,7 @@ if ( ! class_exists( 'WC_Email_Customer_Processing_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content() {
-			return __( 'Thanks for using {site_url}!', 'classic-commerce' );
+			return __( 'Thanks for using {site_url}!', 'classic-store');
 		}
 	}
 

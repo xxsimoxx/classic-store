@@ -59,7 +59,7 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 	 */
 	public function get_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'system_status', 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 		return true;
 	}
@@ -90,195 +90,195 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'environment'        => array(
-					'description' => __( 'Environment.', 'classic-commerce' ),
+					'description' => __( 'Environment.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 					'properties'  => array(
 						'home_url'                  => array(
-							'description' => __( 'Home URL.', 'classic-commerce' ),
+							'description' => __( 'Home URL.', 'classic-store'),
 							'type'        => 'string',
 							'format'      => 'uri',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'site_url'                  => array(
-							'description' => __( 'Site URL.', 'classic-commerce' ),
+							'description' => __( 'Site URL.', 'classic-store'),
 							'type'        => 'string',
 							'format'      => 'uri',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'version'                   => array(
-							'description' => __( 'WooCommerce version.', 'classic-commerce' ),
+							'description' => __( 'WooCommerce version.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'log_directory'             => array(
-							'description' => __( 'Log directory.', 'classic-commerce' ),
+							'description' => __( 'Log directory.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'log_directory_writable'    => array(
-							'description' => __( 'Is log directory writable?', 'classic-commerce' ),
+							'description' => __( 'Is log directory writable?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'wp_version'                => array(
-							'description' => __( 'WordPress version.', 'classic-commerce' ),
+							'description' => __( 'WordPress version.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'wp_multisite'              => array(
-							'description' => __( 'Is WordPress multisite?', 'classic-commerce' ),
+							'description' => __( 'Is WordPress multisite?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'wp_memory_limit'           => array(
-							'description' => __( 'WordPress memory limit.', 'classic-commerce' ),
+							'description' => __( 'WordPress memory limit.', 'classic-store'),
 							'type'        => 'integer',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'wp_debug_mode'             => array(
-							'description' => __( 'Is WordPress debug mode active?', 'classic-commerce' ),
+							'description' => __( 'Is WordPress debug mode active?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'wp_cron'                   => array(
-							'description' => __( 'Are WordPress cron jobs enabled?', 'classic-commerce' ),
+							'description' => __( 'Are WordPress cron jobs enabled?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'language'                  => array(
-							'description' => __( 'WordPress language.', 'classic-commerce' ),
+							'description' => __( 'WordPress language.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'server_info'               => array(
-							'description' => __( 'Server info.', 'classic-commerce' ),
+							'description' => __( 'Server info.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'php_version'               => array(
-							'description' => __( 'PHP version.', 'classic-commerce' ),
+							'description' => __( 'PHP version.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'php_post_max_size'         => array(
-							'description' => __( 'PHP post max size.', 'classic-commerce' ),
+							'description' => __( 'PHP post max size.', 'classic-store'),
 							'type'        => 'integer',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'php_max_execution_time'    => array(
-							'description' => __( 'PHP max execution time.', 'classic-commerce' ),
+							'description' => __( 'PHP max execution time.', 'classic-store'),
 							'type'        => 'integer',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'php_max_input_vars'        => array(
-							'description' => __( 'PHP max input vars.', 'classic-commerce' ),
+							'description' => __( 'PHP max input vars.', 'classic-store'),
 							'type'        => 'integer',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'curl_version'              => array(
-							'description' => __( 'cURL version.', 'classic-commerce' ),
+							'description' => __( 'cURL version.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'suhosin_installed'         => array(
-							'description' => __( 'Is SUHOSIN installed?', 'classic-commerce' ),
+							'description' => __( 'Is SUHOSIN installed?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'max_upload_size'           => array(
-							'description' => __( 'Max upload size.', 'classic-commerce' ),
+							'description' => __( 'Max upload size.', 'classic-store'),
 							'type'        => 'integer',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'mysql_version'             => array(
-							'description' => __( 'MySQL version.', 'classic-commerce' ),
+							'description' => __( 'MySQL version.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'mysql_version_string'      => array(
-							'description' => __( 'MySQL version string.', 'classic-commerce' ),
+							'description' => __( 'MySQL version string.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'default_timezone'          => array(
-							'description' => __( 'Default timezone.', 'classic-commerce' ),
+							'description' => __( 'Default timezone.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'fsockopen_or_curl_enabled' => array(
-							'description' => __( 'Is fsockopen/cURL enabled?', 'classic-commerce' ),
+							'description' => __( 'Is fsockopen/cURL enabled?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'soapclient_enabled'        => array(
-							'description' => __( 'Is SoapClient class enabled?', 'classic-commerce' ),
+							'description' => __( 'Is SoapClient class enabled?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'domdocument_enabled'       => array(
-							'description' => __( 'Is DomDocument class enabled?', 'classic-commerce' ),
+							'description' => __( 'Is DomDocument class enabled?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'gzip_enabled'              => array(
-							'description' => __( 'Is GZip enabled?', 'classic-commerce' ),
+							'description' => __( 'Is GZip enabled?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'mbstring_enabled'          => array(
-							'description' => __( 'Is mbstring enabled?', 'classic-commerce' ),
+							'description' => __( 'Is mbstring enabled?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'remote_post_successful'    => array(
-							'description' => __( 'Remote POST successful?', 'classic-commerce' ),
+							'description' => __( 'Remote POST successful?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'remote_post_response'      => array(
-							'description' => __( 'Remote POST response.', 'classic-commerce' ),
+							'description' => __( 'Remote POST response.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'remote_get_successful'     => array(
-							'description' => __( 'Remote GET successful?', 'classic-commerce' ),
+							'description' => __( 'Remote GET successful?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'remote_get_response'       => array(
-							'description' => __( 'Remote GET response.', 'classic-commerce' ),
+							'description' => __( 'Remote GET response.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
@@ -286,31 +286,31 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 					),
 				),
 				'database'           => array(
-					'description' => __( 'Database.', 'classic-commerce' ),
+					'description' => __( 'Database.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 					'properties'  => array(
 						'wc_database_version'    => array(
-							'description' => __( 'WC database version.', 'classic-commerce' ),
+							'description' => __( 'WC database version.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'database_prefix'        => array(
-							'description' => __( 'Database prefix.', 'classic-commerce' ),
+							'description' => __( 'Database prefix.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'maxmind_geoip_database' => array(
-							'description' => __( 'MaxMind GeoIP database.', 'classic-commerce' ),
+							'description' => __( 'MaxMind GeoIP database.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'database_tables'        => array(
-							'description' => __( 'Database tables.', 'classic-commerce' ),
+							'description' => __( 'Database tables.', 'classic-store'),
 							'type'        => 'array',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
@@ -321,7 +321,7 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 					),
 				),
 				'active_plugins'     => array(
-					'description' => __( 'Active plugins.', 'classic-commerce' ),
+					'description' => __( 'Active plugins.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
@@ -330,7 +330,7 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 					),
 				),
 				'inactive_plugins'   => array(
-					'description' => __( 'Inactive plugins.', 'classic-commerce' ),
+					'description' => __( 'Inactive plugins.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
@@ -339,7 +339,7 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 					),
 				),
 				'dropins_mu_plugins' => array(
-					'description' => __( 'Dropins & MU plugins.', 'classic-commerce' ),
+					'description' => __( 'Dropins & MU plugins.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
@@ -348,56 +348,56 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 					),
 				),
 				'theme'              => array(
-					'description' => __( 'Theme.', 'classic-commerce' ),
+					'description' => __( 'Theme.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 					'properties'  => array(
 						'name'                    => array(
-							'description' => __( 'Theme name.', 'classic-commerce' ),
+							'description' => __( 'Theme name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'version'                 => array(
-							'description' => __( 'Theme version.', 'classic-commerce' ),
+							'description' => __( 'Theme version.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'author_url'              => array(
-							'description' => __( 'Theme author URL.', 'classic-commerce' ),
+							'description' => __( 'Theme author URL.', 'classic-store'),
 							'type'        => 'string',
 							'format'      => 'uri',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'is_child_theme'          => array(
-							'description' => __( 'Is this theme a child theme?', 'classic-commerce' ),
+							'description' => __( 'Is this theme a child theme?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'has_woocommerce_support' => array(
-							'description' => __( 'Does the theme declare Classic Commerce support?', 'classic-commerce' ),
+							'description' => __( 'Does the theme declare Classic Commerce support?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'has_woocommerce_file'    => array(
-							'description' => __( 'Does the theme have a classic-commerce.php file?', 'classic-commerce' ),
+							'description' => __( 'Does the theme have a classic-commerce.php file?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'has_outdated_templates'  => array(
-							'description' => __( 'Does this theme have outdated templates?', 'classic-commerce' ),
+							'description' => __( 'Does this theme have outdated templates?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'overrides'               => array(
-							'description' => __( 'Template overrides.', 'classic-commerce' ),
+							'description' => __( 'Template overrides.', 'classic-store'),
 							'type'        => 'array',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
@@ -406,19 +406,19 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 							),
 						),
 						'parent_name'             => array(
-							'description' => __( 'Parent theme name.', 'classic-commerce' ),
+							'description' => __( 'Parent theme name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'parent_version'          => array(
-							'description' => __( 'Parent theme version.', 'classic-commerce' ),
+							'description' => __( 'Parent theme version.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'parent_author_url'       => array(
-							'description' => __( 'Parent theme author URL.', 'classic-commerce' ),
+							'description' => __( 'Parent theme author URL.', 'classic-store'),
 							'type'        => 'string',
 							'format'      => 'uri',
 							'context'     => array( 'view' ),
@@ -427,67 +427,67 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 					),
 				),
 				'settings'           => array(
-					'description' => __( 'Settings.', 'classic-commerce' ),
+					'description' => __( 'Settings.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 					'properties'  => array(
 						'api_enabled'              => array(
-							'description' => __( 'Legacy REST API enabled?', 'classic-commerce' ),
+							'description' => __( 'Legacy REST API enabled?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'force_ssl'                => array(
-							'description' => __( 'SSL forced?', 'classic-commerce' ),
+							'description' => __( 'SSL forced?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'currency'                 => array(
-							'description' => __( 'Currency.', 'classic-commerce' ),
+							'description' => __( 'Currency.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'currency_symbol'          => array(
-							'description' => __( 'Currency symbol.', 'classic-commerce' ),
+							'description' => __( 'Currency symbol.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'currency_position'        => array(
-							'description' => __( 'Currency position.', 'classic-commerce' ),
+							'description' => __( 'Currency position.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'thousand_separator'       => array(
-							'description' => __( 'Thousand separator.', 'classic-commerce' ),
+							'description' => __( 'Thousand separator.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'decimal_separator'        => array(
-							'description' => __( 'Decimal separator.', 'classic-commerce' ),
+							'description' => __( 'Decimal separator.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'number_of_decimals'       => array(
-							'description' => __( 'Number of decimals.', 'classic-commerce' ),
+							'description' => __( 'Number of decimals.', 'classic-store'),
 							'type'        => 'integer',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'geolocation_enabled'      => array(
-							'description' => __( 'Geolocation enabled?', 'classic-commerce' ),
+							'description' => __( 'Geolocation enabled?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'taxonomies'               => array(
-							'description' => __( 'Taxonomy terms for product/order statuses.', 'classic-commerce' ),
+							'description' => __( 'Taxonomy terms for product/order statuses.', 'classic-store'),
 							'type'        => 'array',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
@@ -496,7 +496,7 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 							),
 						),
 						'product_visibility_terms' => array(
-							'description' => __( 'Terms in the product visibility taxonomy.', 'classic-commerce' ),
+							'description' => __( 'Terms in the product visibility taxonomy.', 'classic-store'),
 							'type'        => 'array',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
@@ -507,19 +507,19 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 					),
 				),
 				'security'           => array(
-					'description' => __( 'Security.', 'classic-commerce' ),
+					'description' => __( 'Security.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 					'properties'  => array(
 						'secure_connection' => array(
-							'description' => __( 'Is the connection to your store secure?', 'classic-commerce' ),
+							'description' => __( 'Is the connection to your store secure?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'hide_errors'       => array(
-							'description' => __( 'Hide errors from visitors?', 'classic-commerce' ),
+							'description' => __( 'Hide errors from visitors?', 'classic-store'),
 							'type'        => 'boolean',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
@@ -527,7 +527,7 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 					),
 				),
 				'pages'              => array(
-					'description' => __( 'Classic Commerce pages.', 'classic-commerce' ),
+					'description' => __( 'Classic Commerce pages.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
@@ -536,7 +536,7 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 					),
 				),
 				'post_type_counts'   => array(
-					'description' => __( 'Total post count.', 'classic-commerce' ),
+					'description' => __( 'Total post count.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
@@ -651,7 +651,7 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 			$curl_version = curl_version();
 			$curl_version = $curl_version['version'] . ', ' . $curl_version['ssl_version'];
 		} elseif ( extension_loaded( 'curl' ) ) {
-			$curl_version = __( 'cURL installed but unable to retrieve version.', 'classic-commerce' );
+			$curl_version = __( 'cURL installed but unable to retrieve version.', 'classic-store');
 		}
 
 		// WP memory limit.
@@ -1152,23 +1152,23 @@ class WC_REST_System_Status_V2_Controller extends WC_REST_Controller {
 	public function get_pages() {
 		// WC pages to check against.
 		$check_pages = array(
-			_x( 'Shop base', 'Page setting', 'classic-commerce' ) => array(
+			_x( 'Shop base', 'Page setting', 'classic-store') => array(
 				'option'    => 'woocommerce_shop_page_id',
 				'shortcode' => '',
 			),
-			_x( 'Cart', 'Page setting', 'classic-commerce' ) => array(
+			_x( 'Cart', 'Page setting', 'classic-store') => array(
 				'option'    => 'woocommerce_cart_page_id',
 				'shortcode' => '[' . apply_filters( 'woocommerce_cart_shortcode_tag', 'woocommerce_cart' ) . ']',
 			),
-			_x( 'Checkout', 'Page setting', 'classic-commerce' ) => array(
+			_x( 'Checkout', 'Page setting', 'classic-store') => array(
 				'option'    => 'woocommerce_checkout_page_id',
 				'shortcode' => '[' . apply_filters( 'woocommerce_checkout_shortcode_tag', 'woocommerce_checkout' ) . ']',
 			),
-			_x( 'My account', 'Page setting', 'classic-commerce' ) => array(
+			_x( 'My account', 'Page setting', 'classic-store') => array(
 				'option'    => 'woocommerce_myaccount_page_id',
 				'shortcode' => '[' . apply_filters( 'woocommerce_my_account_shortcode_tag', 'woocommerce_my_account' ) . ']',
 			),
-			_x( 'Terms and conditions', 'Page setting', 'classic-commerce' ) => array(
+			_x( 'Terms and conditions', 'Page setting', 'classic-store') => array(
 				'option'    => 'woocommerce_terms_page_id',
 				'shortcode' => '',
 			),

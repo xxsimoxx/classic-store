@@ -17,20 +17,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <ul class="order_details">
 	<li class="order">
-		<?php esc_html_e( 'Order number:', 'classic-commerce' ); ?>
+		<?php esc_html_e( 'Order number:', 'classic-store'); ?>
 		<strong><?php echo esc_html( $order->get_order_number() ); ?></strong>
 	</li>
 	<li class="date">
-		<?php esc_html_e( 'Date:', 'classic-commerce' ); ?>
+		<?php esc_html_e( 'Date:', 'classic-store'); ?>
 		<strong><?php echo esc_html( wc_format_datetime( $order->get_date_created() ) ); ?></strong>
 	</li>
 	<li class="total">
-		<?php esc_html_e( 'Total:', 'classic-commerce' ); ?>
+		<?php esc_html_e( 'Total:', 'classic-store'); ?>
 		<strong><?php echo wp_kses_post( $order->get_formatted_order_total() ); ?></strong>
 	</li>
 	<?php if ( $order->get_payment_method_title() ) : ?>
 	<li class="method">
-		<?php esc_html_e( 'Payment method:', 'classic-commerce' ); ?>
+		<?php esc_html_e( 'Payment method:', 'classic-store'); ?>
 		<strong><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></strong>
 	</li>
 	<?php endif; ?>

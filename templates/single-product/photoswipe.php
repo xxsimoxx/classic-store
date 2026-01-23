@@ -26,10 +26,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="pswp__ui pswp__ui--hidden">
 			<div class="pswp__top-bar">
 				<div class="pswp__counter"></div>
-				<button class="pswp__button pswp__button--close" aria-label="<?php esc_attr_e( 'Close (Esc)', 'classic-commerce' ); ?>"></button>
-				<button class="pswp__button pswp__button--share" aria-label="<?php esc_attr_e( 'Share', 'classic-commerce' ); ?>"></button>
-				<button class="pswp__button pswp__button--fs" aria-label="<?php esc_attr_e( 'Toggle fullscreen', 'classic-commerce' ); ?>"></button>
-				<button class="pswp__button pswp__button--zoom" aria-label="<?php esc_attr_e( 'Zoom in/out', 'classic-commerce' ); ?>"></button>
+				<button class="pswp__button pswp__button--close" aria-label="<?php esc_attr_e( 'Close (Esc)', 'classic-store' ); ?>"></button>
+				<button class="pswp__button pswp__button--share" aria-label="<?php esc_attr_e( 'Share', 'classic-store'); ?>"></button>
+				<button class="pswp__button pswp__button--fs" aria-label="<?php esc_attr_e( 'Toggle fullscreen', 'classic-store'); ?>"></button>
+				<button class="pswp__button pswp__button--zoom" aria-label="<?php esc_attr_e( 'Zoom in/out', 'classic-store'); ?>"></button>
 				<div class="pswp__preloader">
 					<div class="pswp__preloader__icn">
 						<div class="pswp__preloader__cut">
@@ -41,8 +41,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
 				<div class="pswp__share-tooltip"></div>
 			</div>
-			<button class="pswp__button pswp__button--arrow--left" aria-label="<?php esc_attr_e( 'Previous (arrow left)', 'classic-commerce' ); ?>"></button>
-			<button class="pswp__button pswp__button--arrow--right" aria-label="<?php esc_attr_e( 'Next (arrow right)', 'classic-commerce' ); ?>"></button>
+			<button class="pswp__button pswp__button--arrow--left" aria-label="<?php esc_attr_e( 'Previous (arrow left)', 'classic-store' ); ?>"></button>
+			<button class="pswp__button pswp__button--arrow--right" aria-label="<?php esc_attr_e( 'Next (arrow right)', 'classic-store' ); ?>"></button>
 			<div class="pswp__caption">
 				<div class="pswp__caption__center"></div>
 			</div>

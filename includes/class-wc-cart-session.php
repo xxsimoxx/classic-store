@@ -65,13 +65,13 @@ final class WC_Cart_Session {
 		if ( ! apply_filters( 'woocommerce_cart_session_initialize', true, $this ) ) {
 			return;
 		}
-        
+
 		add_action( 'wp_loaded', array( $this, 'get_cart_from_session' ) );
 		add_action( 'woocommerce_cart_emptied', array( $this, 'destroy_cart_session' ) );
 		add_action( 'woocommerce_after_calculate_totals', array( $this, 'set_session' ), 1000 );
 		add_action( 'woocommerce_cart_loaded_from_session', array( $this, 'set_session' ) );
 		add_action( 'woocommerce_removed_coupon', array( $this, 'set_session' ) );
-		
+
         // Persistent cart stored to usermeta.
 		add_action( 'woocommerce_add_to_cart', array( $this, 'persistent_cart_update' ) );
 		add_action( 'woocommerce_cart_item_removed', array( $this, 'persistent_cart_update' ) );
@@ -177,7 +177,7 @@ final class WC_Cart_Session {
 			} elseif ( ! apply_filters( 'woocommerce_cart_item_is_purchasable', $product->is_purchasable(), $key, $values, $product ) ) {
 				$update_cart_session = true;
 				/* translators: %s: product name */
-				$message = sprintf( __( '%s has been removed from your cart because it can no longer be purchased. Please contact us if you need assistance.', 'classic-commerce' ), $product->get_name() );
+				$message = sprintf( __( '%s has been removed from your cart because it can no longer be purchased. Please contact us if you need assistance.', 'classic-store'), $product->get_name() );
 				/**
 				 * Filter message about item removed from the cart.
 				 *
@@ -192,7 +192,7 @@ final class WC_Cart_Session {
 			} elseif ( ! empty( $values['data_hash'] ) && ! hash_equals( $values['data_hash'], wc_get_cart_item_data_hash( $product ) ) ) { // phpcs:ignore PHPCompatibility.PHP.NewFunctions.hash_equalsFound
 				$update_cart_session = true;
 				/* translators: %1$s: product name. %2$s product permalink */
-				$message = sprintf( __( '%1$s has been removed from your cart because it has since been modified. You can add it back to your cart <a href="%2$s">here</a>.', 'classic-commerce' ), $product->get_name(), $product->get_permalink() );
+				$message = sprintf( __( '%1$s has been removed from your cart because it has since been modified. You can add it back to your cart <a href="%2$s">here</a>.', 'classic-store'), $product->get_name(), $product->get_permalink() );
 				$message = apply_filters( 'woocommerce_cart_item_removed_because_modified_message', $message, $product );
 				wc_add_notice( $message, 'notice' );
 				do_action( 'woocommerce_remove_cart_item_from_session', $key, $values );
@@ -494,7 +494,7 @@ final class WC_Cart_Session {
 						'%d item from your previous order is currently unavailable and could not be added to your cart.',
 						'%d items from your previous order are currently unavailable and could not be added to your cart.',
 						$num_items_in_original_order - $num_items_added,
-						'classic-commerce'
+						'classic-store'
 					),
 					$num_items_in_original_order - $num_items_added
 				),
@@ -503,7 +503,7 @@ final class WC_Cart_Session {
 		}
 
 		if ( 0 < $num_items_added ) {
-			wc_add_notice( __( 'The cart has been filled with the items from your previous order.', 'classic-commerce' ) );
+			wc_add_notice( __( 'The cart has been filled with the items from your previous order.', 'classic-store') );
 		}
 
 		return $cart;

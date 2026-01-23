@@ -131,7 +131,7 @@ abstract class WC_CSV_Batch_Exporter extends WC_CSV_Exporter {
             wc_get_logger()->error(
 				sprintf(
 					/* translators: %s is file path. */
-					__( 'Unable to create or write to %s during CSV export. Please check file permissions.', 'classic-commerce' ),
+					__( 'Unable to create or write to %s during CSV export. Please check file permissions.', 'classic-store'),
 					esc_html( $this->get_file_path() )
 				)
 			);

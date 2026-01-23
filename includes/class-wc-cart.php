@@ -599,7 +599,7 @@ class WC_Cart extends WC_Legacy_Cart {
 	 */
 	public function get_cart() {
 		if ( ! did_action( 'wp_loaded' ) ) {
-			wc_doing_it_wrong( __FUNCTION__, __( 'Get cart should not be called before the wp_loaded action.', 'classic-commerce' ), '2.3' );
+			wc_doing_it_wrong( __FUNCTION__, __( 'Get cart should not be called before the wp_loaded action.', 'classic-store'), '2.3' );
 		}
 		if ( ! did_action( 'woocommerce_load_cart_from_session' ) ) {
 			$this->session->get_cart_from_session();
@@ -745,7 +745,7 @@ class WC_Cart extends WC_Legacy_Cart {
 
 			if ( ! $product || ! $product->exists() || 'trash' === $product->get_status() ) {
 				$this->set_quantity( $cart_item_key, 0 );
-				$return = new WP_Error( 'invalid', __( 'An item which is no longer available was removed from your cart.', 'classic-commerce' ) );
+				$return = new WP_Error( 'invalid', __( 'An item which is no longer available was removed from your cart.', 'classic-store') );
 			}
 		}
 
@@ -768,7 +768,7 @@ class WC_Cart extends WC_Legacy_Cart {
 			// Check stock based on stock-status.
 			if ( ! $product->is_in_stock() ) {
 				/* translators: %s: product name */
-				$error->add( 'out-of-stock', sprintf( __( 'Sorry, "%s" is not in stock. Please edit your cart and try again. We apologize for any inconvenience caused.', 'classic-commerce' ), $product->get_name() ) );
+				$error->add( 'out-of-stock', sprintf( __( 'Sorry, "%s" is not in stock. Please edit your cart and try again. We apologize for any inconvenience caused.', 'classic-store'), $product->get_name() ) );
 				return $error;
 			}
 
@@ -791,7 +791,7 @@ class WC_Cart extends WC_Legacy_Cart {
 			 */
 			if ( apply_filters( 'woocommerce_cart_item_required_stock_is_not_enough', $product->get_stock_quantity() < ( $held_stock + $required_stock ), $product, $values ) ) {
 				/* translators: 1: product name 2: quantity in stock */
-				$error->add( 'out-of-stock', sprintf( __( 'Sorry, we do not have enough "%1$s" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused.', 'classic-commerce' ), $product->get_name(), wc_format_stock_quantity_for_display( $product->get_stock_quantity() - $held_stock, $product ) ) );
+				$error->add( 'out-of-stock', sprintf( __( 'Sorry, we do not have enough "%1$s" in stock to fulfill your order (%2$s available). We apologize for any inconvenience caused.', 'classic-store' ), $product->get_name(), wc_format_stock_quantity_for_display( $product->get_stock_quantity() - $held_stock, $product ) ) );
 				return $error;
 			}
 		}
@@ -1082,7 +1082,7 @@ class WC_Cart extends WC_Legacy_Cart {
 
 				// Do we have a variation ID?
 				if ( empty( $variation_id ) ) {
-					throw new Exception( __( 'Please choose product options&hellip;', 'classic-commerce' ) );
+					throw new Exception( __( 'Please choose product options&hellip;', 'classic-store') );
 				}
 
 				// Check the data we have is valid.
@@ -1114,7 +1114,7 @@ class WC_Cart extends WC_Legacy_Cart {
 							$attributes[ $attribute_key ] = $value;
 						} else {
 							/* translators: %s: Attribute name. */
-							throw new Exception( sprintf( __( 'Invalid value posted for %s', 'classic-commerce' ), wc_attribute_label( $attribute['name'] ) ) );
+							throw new Exception( sprintf( __( 'Invalid value posted for %s', 'classic-store'), wc_attribute_label( $attribute['name'] ) ) );
 						}
 					} elseif ( '' === $valid_value ) {
 						$missing_attributes[] = wc_attribute_label( $attribute['name'] );
@@ -1124,7 +1124,7 @@ class WC_Cart extends WC_Legacy_Cart {
 				}
 				if ( ! empty( $missing_attributes ) ) {
 					/* translators: %s: Attribute name. */
-					throw new Exception( sprintf( _n( '%s is a required field', '%s are required fields', count( $missing_attributes ), 'classic-commerce' ), wc_format_list_of_items( $missing_attributes ) ) );
+					throw new Exception( sprintf( _n( '%s is a required field', '%s are required fields', count( $missing_attributes ), 'classic-store' ), wc_format_list_of_items( $missing_attributes ) ) );
 				}
 			}
 
@@ -1139,7 +1139,7 @@ class WC_Cart extends WC_Legacy_Cart {
 				$product = wc_get_product( $product_id );
 
 				/* translators: 1: product link, 2: product name */
-				throw new Exception( sprintf( __( 'The selected product isn\'t a variation of %2$s, please choose product options by visiting <a href="%1$s" title="%2$s">%2$s</a>.', 'classic-commerce' ), esc_url( $product->get_permalink() ), esc_html( $product->get_name() ) ) );
+				throw new Exception( sprintf( __( 'The selected product isn\'t a variation of %2$s, please choose product options by visiting <a href="%1$s" title="%2$s">%2$s</a>.', 'classic-store'), esc_url( $product->get_permalink() ), esc_html( $product->get_name() ) ) );
 			}
 
 			// Load cart item data - may be added by other plugins.
@@ -1158,7 +1158,7 @@ class WC_Cart extends WC_Legacy_Cart {
 
 				if ( $found_in_cart ) {
 					/* translators: %s: product name */
-					$message = sprintf( __( 'You cannot add another "%s" to your cart.', 'classic-commerce' ), $product_data->get_name() );
+					$message = sprintf( __( 'You cannot add another "%s" to your cart.', 'classic-store'), $product_data->get_name() );
 
 					/**
 					 * Filters message about more than 1 product being added to cart.
@@ -1169,12 +1169,12 @@ class WC_Cart extends WC_Legacy_Cart {
 					 */
 					$message = apply_filters( 'woocommerce_cart_product_cannot_add_another_message', $message, $product_data );
 
-					throw new Exception( sprintf( '%s <a href="%s" class="button wc-forward">%s</a>', $message, wc_get_cart_url(), __( 'View cart', 'classic-commerce' ) ) );
+					throw new Exception( sprintf( '%s <a href="%s" class="button wc-forward">%s</a>', $message, wc_get_cart_url(), __( 'View cart', 'classic-store') ) );
 				}
 			}
 
 			if ( ! $product_data->is_purchasable() ) {
-				$message = __( 'Sorry, this product cannot be purchased.', 'classic-commerce' );
+				$message = __( 'Sorry, this product cannot be purchased.', 'classic-store');
 				/**
 				 * Filters message about product unable to be purchased.
 				 *
@@ -1189,7 +1189,7 @@ class WC_Cart extends WC_Legacy_Cart {
 			// Stock check - only check if we're managing stock and backorders are not allowed.
 			if ( ! $product_data->is_in_stock() ) {
 				/* translators: %s: product name */
-				$message = sprintf( __( 'You cannot add &quot;%s&quot; to the cart because the product is out of stock.', 'classic-commerce' ), $product_data->get_name() );
+				$message = sprintf( __( 'You cannot add &quot;%s&quot; to the cart because the product is out of stock.', 'classic-store'), $product_data->get_name() );
 
 				/**
 				 * Filters message about product being out of stock.
@@ -1206,7 +1206,7 @@ class WC_Cart extends WC_Legacy_Cart {
 				$stock_quantity = $product_data->get_stock_quantity();
 
 				/* translators: 1: product name 2: quantity in stock */
-				$message = sprintf( __( 'You cannot add that amount of &quot;%1$s&quot; to the cart because there is not enough stock (%2$s remaining).', 'classic-commerce' ), $product_data->get_name(), wc_format_stock_quantity_for_display( $stock_quantity, $product_data ) );
+				$message = sprintf( __( 'You cannot add that amount of &quot;%1$s&quot; to the cart because there is not enough stock (%2$s remaining).', 'classic-store' ), $product_data->get_name(), wc_format_stock_quantity_for_display( $stock_quantity, $product_data ) );
 
 				/**
 				 * Filters message about product not having enough stock.
@@ -1232,9 +1232,9 @@ class WC_Cart extends WC_Legacy_Cart {
 					$message = sprintf(
                         '%s <a href="%s" class="button wc-forward">%s</a>',
 						/* translators: 1: quantity in stock 2: current quantity */
-						sprintf( __( 'You cannot add that amount to the cart &mdash; we have %1$s in stock and you already have %2$s in your cart.', 'classic-commerce' ), wc_format_stock_quantity_for_display( $stock_quantity, $product_data ), wc_format_stock_quantity_for_display( $stock_quantity_in_cart, $product_data ) ),
+						sprintf( __( 'You cannot add that amount to the cart &mdash; we have %1$s in stock and you already have %2$s in your cart.', 'classic-store'), wc_format_stock_quantity_for_display( $stock_quantity, $product_data ), wc_format_stock_quantity_for_display( $stock_quantity_in_cart, $product_data ) ),
 						wc_get_cart_url(),
-						__( 'View cart', 'classic-commerce' )
+						__( 'View cart', 'classic-store')
 					);
 
 					/**
@@ -1610,7 +1610,7 @@ class WC_Cart extends WC_Legacy_Cart {
 	public function get_cart_shipping_total() {
 
 		// Default total assumes Free shipping.
-		$total = __( 'Free!', 'classic-commerce' );
+		$total = __( 'Free!', 'classic-store');
 
 		if ( 0 < $this->get_shipping_total() ) {
 
@@ -1699,7 +1699,7 @@ class WC_Cart extends WC_Legacy_Cart {
 	public function is_coupon_emails_allowed( $check_emails, $restrictions ) {
         wc_doing_it_wrong(
 			'WC_Cart::is_coupon_emails_allowed',
-			__( 'This method has been deprecated and will be removed soon. Use Automattic\WooCommerce\Utilities\DiscountsUtil::is_coupon_emails_allowed instead.', 'classic-commerce' ),
+			__( 'This method has been deprecated and will be removed soon. Use Automattic\WooCommerce\Utilities\DiscountsUtil::is_coupon_emails_allowed instead.', 'classic-store'),
 			'9.0.0'
 		);
         return DiscountsUtil::is_coupon_emails_allowed( $check_emails, $restrictions );

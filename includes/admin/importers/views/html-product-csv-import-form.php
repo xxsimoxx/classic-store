@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <form class="wc-progress-form-content woocommerce-importer" enctype="multipart/form-data" method="post">
 	<header>
-		<h2><?php esc_html_e( 'Import products from a CSV file', 'classic-commerce' ); ?></h2>
-		<p><?php esc_html_e( 'This tool allows you to import (or merge) product data to your store from a CSV or TXT  file.', 'classic-commerce' ); ?></p>
+		<h2><?php esc_html_e( 'Import products from a CSV file', 'classic-store'); ?></h2>
+		<p><?php esc_html_e( 'This tool allows you to import (or merge) product data to your store from a CSV or TXT  file.', 'classic-store' ); ?></p>
 	</header>
 	<section>
 		<table class="form-table woocommerce-importer-options">
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<tr>
 					<th scope="row">
 						<label for="upload">
-							<?php esc_html_e( 'Choose a CSV file from your computer:', 'classic-commerce' ); ?>
+							<?php esc_html_e( 'Choose a CSV file from your computer:', 'classic-store'); ?>
 						</label>
 					</th>
 					<td>
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						if ( ! empty( $upload_dir['error'] ) ) {
 							?>
 							<div class="inline error">
-								<p><?php esc_html_e( 'Before you can upload your import file, you will need to fix the following error:', 'classic-commerce' ); ?></p>
+								<p><?php esc_html_e( 'Before you can upload your import file, you will need to fix the following error:', 'classic-store'); ?></p>
 								<p><strong><?php echo esc_html( $upload_dir['error'] ); ?></strong></p>
 							</div>
 							<?php
@@ -42,7 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<?php
 								printf(
 									/* translators: %s: maximum upload size */
-									esc_html__( 'Maximum size: %s', 'classic-commerce' ),
+									esc_html__( 'Maximum size: %s', 'classic-store'),
 									esc_html( $size )
 								);
 								?>
@@ -53,16 +53,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</td>
 				</tr>
 				<tr>
-					<th><label for="woocommerce-importer-update-existing"><?php esc_html_e( 'Update existing products', 'classic-commerce' ); ?></label><br/></th>
+					<th><label for="woocommerce-importer-update-existing"><?php esc_html_e( 'Update existing products', 'classic-store'); ?></label><br/></th>
 					<td>
 						<input type="hidden" name="update_existing" value="0" />
 						<input type="checkbox" id="woocommerce-importer-update-existing" name="update_existing" value="1" />
-						<label for="woocommerce-importer-update-existing"><?php esc_html_e( 'Existing products that match by ID or SKU will be updated. Products that do not exist will be skipped.', 'classic-commerce' ); ?></label>
+						<label for="woocommerce-importer-update-existing"><?php esc_html_e( 'Existing products that match by ID or SKU will be updated. Products that do not exist will be skipped.', 'classic-store'); ?></label>
 					</td>
 				</tr>
 				<tr class="woocommerce-importer-advanced hidden">
 					<th>
-						<label for="woocommerce-importer-file-url"><?php esc_html_e( 'Alternatively, enter the path to a CSV file on your server:', 'classic-commerce' ); ?></label>
+						<label for="woocommerce-importer-file-url"><?php esc_html_e( 'Alternatively, enter the path to a CSV file on your server:', 'classic-store'); ?></label>
 					</th>
 					<td>
 						<label for="woocommerce-importer-file-url" class="woocommerce-importer-file-url-field-wrapper">
@@ -71,17 +71,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</td>
 				</tr>
 				<tr class="woocommerce-importer-advanced hidden">
-					<th><label><?php esc_html_e( 'CSV Delimiter', 'classic-commerce' ); ?></label><br/></th>
+					<th><label><?php esc_html_e( 'CSV Delimiter', 'classic-store'); ?></label><br/></th>
 					<td><input type="text" name="delimiter" placeholder="," size="2" /></td>
 				</tr>
 				<tr class="woocommerce-importer-advanced hidden">
-					<th><label><?php esc_html_e( 'Use previous column mapping preferences?', 'classic-commerce' ); ?></label><br/></th>
+					<th><label><?php esc_html_e( 'Use previous column mapping preferences?', 'classic-store'); ?></label><br/></th>
 					<td><input type="checkbox" id="woocommerce-importer-map-preferences" name="map_preferences" value="1" /></td>
 				</tr>
                 <tr class="woocommerce-importer-advanced hidden">
-					<th><label><?php esc_html_e( 'Character encoding of the file', 'classic-commerce' ); ?></label><br/></th>
+					<th><label><?php esc_html_e( 'Character encoding of the file', 'classic-store'); ?></label><br/></th>
 					<td><select id="woocommerce-importer-character-encoding" name="character_encoding">
-							<option value="" selected><?php esc_html_e( 'Autodetect', 'classic-commerce' ); ?></option>
+							<option value="" selected><?php esc_html_e( 'Autodetect', 'classic-store'); ?></option>
 							<?php
 							$encodings = mb_list_encodings();
 							sort( $encodings, SORT_NATURAL );
@@ -111,8 +111,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		});
 	</script>
 	<div class="wc-actions">
-		<a href="#" class="woocommerce-importer-toggle-advanced-options" data-hidetext="<?php esc_attr_e( 'Hide advanced options', 'classic-commerce' ); ?>" data-showtext="<?php esc_html_e( 'Hide advanced options', 'classic-commerce' ); ?>"><?php esc_html_e( 'Show advanced options', 'classic-commerce' ); ?></a>
-		<button type="submit" class="button button-primary button-next" value="<?php esc_attr_e( 'Continue', 'classic-commerce' ); ?>" name="save_step"><?php esc_html_e( 'Continue', 'classic-commerce' ); ?></button>
+		<a href="#" class="woocommerce-importer-toggle-advanced-options" data-hidetext="<?php esc_attr_e( 'Hide advanced options', 'classic-store'); ?>" data-showtext="<?php esc_html_e( 'Hide advanced options', 'classic-store'); ?>"><?php esc_html_e( 'Show advanced options', 'classic-store'); ?></a>
+		<button type="submit" class="button button-primary button-next" value="<?php esc_attr_e( 'Continue', 'classic-store'); ?>" name="save_step"><?php esc_html_e( 'Continue', 'classic-store'); ?></button>
 		<?php wp_nonce_field( 'woocommerce-csv-importer' ); ?>
 	</div>
 </form>

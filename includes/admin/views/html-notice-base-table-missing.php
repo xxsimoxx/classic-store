@@ -10,11 +10,11 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="updated woocommerce-message">
 	<a class="woocommerce-message-close notice-dismiss" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'wc-hide-notice', 'base_tables_missing' ), 'woocommerce_hide_notices_nonce', '_wc_notice_nonce' ) ); ?>">
-		<?php esc_html_e( 'Dismiss', 'classic-commerce' ); ?>
+		<?php esc_html_e( 'Dismiss', 'classic-store'); ?>
 	</a>
 
 	<p>
-		<strong><?php esc_html_e( 'Database tables missing', 'classic-commerce' ); ?></strong>
+		<strong><?php esc_html_e( 'Database tables missing', 'classic-store'); ?></strong>
 	</p>
 	<p>
 		<?php
@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 			echo wp_kses_post(
 				sprintf(
 				/* translators: %1%s: Missing tables (seperated by ",") %2$s: Link to check again */
-					__( 'One or more tables required for Classic Commerce to function are missing, some features may not work as expected. Missing tables: %1$s. <a href="%2$s">Check again.</a>', 'classic-commerce' ),
+					__( 'One or more tables required for Classic Commerce to function are missing, some features may not work as expected. Missing tables: %1$s. <a href="%2$s">Check again.</a>', 'classic-store'),
 					esc_html( implode( ', ', $missing_tables ) ),
 					wp_nonce_url( admin_url( 'admin.php?page=wc-status&tab=tools&action=verify_db_tables' ), 'debug_action' )
                     )
@@ -33,7 +33,7 @@ defined( 'ABSPATH' ) || exit;
 			echo wp_kses_post(
 				sprintf(
 				/* translators: %1%s: Missing tables (seperated by ",") */
-					__( 'One or more tables required for Classic Commerce to function are missing, some features may not work as expected. Missing tables: %1$s.', 'classic-commerce' ),
+					__( 'One or more tables required for Classic Commerce to function are missing, some features may not work as expected. Missing tables: %1$s.', 'classic-store'),
 					esc_html( implode( ', ', $missing_tables ) )
 				)
 			);

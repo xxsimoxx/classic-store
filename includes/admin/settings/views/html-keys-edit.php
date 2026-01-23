@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <div id="key-fields" class="settings-panel">
-	<h2><?php esc_html_e( 'Key details', 'classic-commerce' ); ?></h2>
+	<h2><?php esc_html_e( 'Key details', 'classic-store'); ?></h2>
 
 	<input type="hidden" id="key_id" value="<?php echo esc_attr( $key_id ); ?>" />
 
@@ -18,8 +18,8 @@ defined( 'ABSPATH' ) || exit;
 			<tr valign="top">
 				<th scope="row" class="titledesc">
 					<label for="key_description">
-						<?php esc_html_e( 'Description', 'classic-commerce' ); ?>
-						<?php echo wc_help_tip( __( 'Friendly name for identifying this key.', 'classic-commerce' ) ); ?>
+						<?php esc_html_e( 'Description', 'classic-store'); ?>
+						<?php echo wc_help_tip( __( 'Friendly name for identifying this key.', 'classic-store') ); ?>
 					</label>
 				</th>
 				<td class="forminp">
@@ -29,8 +29,8 @@ defined( 'ABSPATH' ) || exit;
 			<tr valign="top">
 				<th scope="row" class="titledesc">
 					<label for="key_user">
-						<?php esc_html_e( 'User', 'classic-commerce' ); ?>
-						<?php echo wc_help_tip( __( 'Owner of these keys.', 'classic-commerce' ) ); ?>
+						<?php esc_html_e( 'User', 'classic-store'); ?>
+						<?php echo wc_help_tip( __( 'Owner of these keys.', 'classic-store') ); ?>
 					</label>
 				</th>
 				<td class="forminp">
@@ -40,13 +40,13 @@ defined( 'ABSPATH' ) || exit;
 					$user           = get_user_by( 'id', $user_id );
 					$user_string    = sprintf(
 						/* translators: 1: user display name 2: user ID 3: user email */
-						esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'classic-commerce' ),
+						esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'classic-store' ),
 						$user->display_name,
 						absint( $user->ID ),
 						$user->user_email
 					);
 					?>
-					<select class="wc-customer-search" id="key_user" data-placeholder="<?php esc_attr_e( 'Search for a user&hellip;', 'classic-commerce' ); ?>" data-allow_clear="true">
+					<select class="wc-customer-search" id="key_user" data-placeholder="<?php esc_attr_e( 'Search for a user&hellip;', 'classic-store'); ?>" data-allow_clear="true">
 						<option value="<?php echo esc_attr( $user_id ); ?>" selected="selected"><?php echo htmlspecialchars( wp_kses_post( $user_string ) ); // htmlspecialchars to prevent XSS when rendered by selectWoo. ?></option>
 					</select>
 				</td>
@@ -54,17 +54,17 @@ defined( 'ABSPATH' ) || exit;
 			<tr valign="top">
 				<th scope="row" class="titledesc">
 					<label for="key_permissions">
-						<?php esc_html_e( 'Permissions', 'classic-commerce' ); ?>
-						<?php echo wc_help_tip( __( 'Select the access type of these keys.', 'classic-commerce' ) ); ?>
+						<?php esc_html_e( 'Permissions', 'classic-store'); ?>
+						<?php echo wc_help_tip( __( 'Select the access type of these keys.', 'classic-store') ); ?>
 					</label>
 				</th>
 				<td class="forminp">
 					<select id="key_permissions" class="wc-enhanced-select">
 						<?php
 						$permissions = array(
-							'read'       => __( 'Read', 'classic-commerce' ),
-							'write'      => __( 'Write', 'classic-commerce' ),
-							'read_write' => __( 'Read/Write', 'classic-commerce' ),
+							'read'       => __( 'Read', 'classic-store'),
+							'write'      => __( 'Write', 'classic-store'),
+							'read_write' => __( 'Read/Write', 'classic-store'),
 						);
 
 						foreach ( $permissions as $permission_id => $permission_name ) :
@@ -78,7 +78,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php if ( 0 !== $key_id ) : ?>
 				<tr valign="top">
 					<th scope="row" class="titledesc">
-						<?php esc_html_e( 'Consumer key ending in', 'classic-commerce' ); ?>
+						<?php esc_html_e( 'Consumer key ending in', 'classic-store'); ?>
 					</th>
 					<td class="forminp">
 						<code>&hellip;<?php echo esc_html( $key_data['truncated_key'] ); ?></code>
@@ -86,18 +86,18 @@ defined( 'ABSPATH' ) || exit;
 				</tr>
 				<tr valign="top">
 					<th scope="row" class="titledesc">
-						<?php esc_html_e( 'Last access', 'classic-commerce' ); ?>
+						<?php esc_html_e( 'Last access', 'classic-store'); ?>
 					</th>
 					<td class="forminp">
 						<span>
 						<?php
 						if ( ! empty( $key_data['last_access'] ) ) {
 							/* translators: 1: last access date 2: last access time */
-							$date = sprintf( __( '%1$s at %2$s', 'classic-commerce' ), date_i18n( wc_date_format(), strtotime( $key_data['last_access'] ) ), date_i18n( wc_time_format(), strtotime( $key_data['last_access'] ) ) );
+							$date = sprintf( __( '%1$s at %2$s', 'classic-store'), date_i18n( wc_date_format(), strtotime( $key_data['last_access'] ) ), date_i18n( wc_time_format(), strtotime( $key_data['last_access'] ) ) );
 
 							echo esc_html( apply_filters( 'woocommerce_api_key_last_access_datetime', $date, $key_data['last_access'] ) );
 						} else {
-							esc_html_e( 'Unknown', 'classic-commerce' );
+							esc_html_e( 'Unknown', 'classic-store');
 						}
 						?>
 						</span>
@@ -111,12 +111,12 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php
 	if ( 0 === intval( $key_id ) ) {
-		submit_button( __( 'Generate API key', 'classic-commerce' ), 'primary', 'update_api_key' );
+		submit_button( __( 'Generate API key', 'classic-store'), 'primary', 'update_api_key' );
 	} else {
 		?>
 		<p class="submit">
-			<?php submit_button( __( 'Save changes', 'classic-commerce' ), 'primary', 'update_api_key', false ); ?>
-			<a style="color: #a00; text-decoration: none; margin-left: 10px;" href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'revoke-key' => $key_id ), admin_url( 'admin.php?page=wc-settings&tab=advanced&section=keys' ) ), 'revoke' ) ); ?>"><?php esc_html_e( 'Revoke key', 'classic-commerce' ); ?></a>
+			<?php submit_button( __( 'Save changes', 'classic-store'), 'primary', 'update_api_key', false ); ?>
+			<a style="color: #a00; text-decoration: none; margin-left: 10px;" href="<?php echo esc_url( wp_nonce_url( add_query_arg( array( 'revoke-key' => $key_id ), admin_url( 'admin.php?page=wc-settings&tab=advanced&section=keys' ) ), 'revoke' ) ); ?>"><?php esc_html_e( 'Revoke key', 'classic-store'); ?></a>
 		</p>
 		<?php
 	}
@@ -129,23 +129,23 @@ defined( 'ABSPATH' ) || exit;
 		<tbody>
 			<tr valign="top">
 				<th scope="row" class="titledesc">
-					<?php esc_html_e( 'Consumer key', 'classic-commerce' ); ?>
+					<?php esc_html_e( 'Consumer key', 'classic-store'); ?>
 				</th>
 				<td class="forminp">
-					<input id="key_consumer_key" type="text" value="{{ data.consumer_key }}" size="55" readonly="readonly"> <button type="button" class="button-secondary copy-key" data-tip="<?php esc_attr_e( 'Copied!', 'classic-commerce' ); ?>"><?php esc_html_e( 'Copy', 'classic-commerce' ); ?></button>
+					<input id="key_consumer_key" type="text" value="{{ data.consumer_key }}" size="55" readonly="readonly"> <button type="button" class="button-secondary copy-key" data-tip="<?php esc_attr_e( 'Copied!', 'classic-store'); ?>"><?php esc_html_e( 'Copy', 'classic-store'); ?></button>
 				</td>
 			</tr>
 			<tr valign="top">
 				<th scope="row" class="titledesc">
-					<?php esc_html_e( 'Consumer secret', 'classic-commerce' ); ?>
+					<?php esc_html_e( 'Consumer secret', 'classic-store'); ?>
 				</th>
 				<td class="forminp">
-					<input id="key_consumer_secret" type="text" value="{{ data.consumer_secret }}" size="55" readonly="readonly"> <button type="button" class="button-secondary copy-secret" data-tip="<?php esc_attr_e( 'Copied!', 'classic-commerce' ); ?>"><?php esc_html_e( 'Copy', 'classic-commerce' ); ?></button>
+					<input id="key_consumer_secret" type="text" value="{{ data.consumer_secret }}" size="55" readonly="readonly"> <button type="button" class="button-secondary copy-secret" data-tip="<?php esc_attr_e( 'Copied!', 'classic-store'); ?>"><?php esc_html_e( 'Copy', 'classic-store'); ?></button>
 				</td>
 			</tr>
 			<tr valign="top">
 				<th scope="row" class="titledesc">
-					<?php esc_html_e( 'QRCode', 'classic-commerce' ); ?>
+					<?php esc_html_e( 'QRCode', 'classic-store'); ?>
 				</th>
 				<td class="forminp">
 					<div id="keys-qrcode"></div>

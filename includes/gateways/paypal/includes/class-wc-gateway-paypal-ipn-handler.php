@@ -140,7 +140,7 @@ class WC_Gateway_Paypal_IPN_Handler extends WC_Gateway_Paypal_Response {
 			WC_Gateway_Paypal::log( 'Payment error: Currencies do not match (sent "' . $order->get_currency() . '" | returned "' . $currency . '")' );
 
 			/* translators: %s: currency code. */
-			$order->update_status( 'on-hold', sprintf( __( 'Validation error: PayPal currencies do not match (code %s).', 'classic-commerce' ), $currency ) );
+			$order->update_status( 'on-hold', sprintf( __( 'Validation error: PayPal currencies do not match (code %s).', 'classic-store' ), $currency ) );
 			exit;
 		}
 	}
@@ -156,7 +156,7 @@ class WC_Gateway_Paypal_IPN_Handler extends WC_Gateway_Paypal_Response {
 			WC_Gateway_Paypal::log( 'Payment error: Amounts do not match (gross ' . $amount . ')' );
 
 			/* translators: %s: Amount. */
-			$order->update_status( 'on-hold', sprintf( __( 'Validation error: PayPal amounts do not match (gross %s).', 'classic-commerce' ), $amount ) );
+			$order->update_status( 'on-hold', sprintf( __( 'Validation error: PayPal amounts do not match (gross %s).', 'classic-store' ), $amount ) );
 			exit;
 		}
 	}
@@ -173,7 +173,7 @@ class WC_Gateway_Paypal_IPN_Handler extends WC_Gateway_Paypal_Response {
 			WC_Gateway_Paypal::log( "IPN Response is for another account: {$receiver_email}. Your email is {$this->receiver_email}" );
 
 			/* translators: %s: email address . */
-			$order->update_status( 'on-hold', sprintf( __( 'Validation error: PayPal IPN response from a different email address (%s).', 'classic-commerce' ), $receiver_email ) );
+			$order->update_status( 'on-hold', sprintf( __( 'Validation error: PayPal IPN response from a different email address (%s).', 'classic-store' ), $receiver_email ) );
 			exit;
 		}
 	}
@@ -205,13 +205,13 @@ class WC_Gateway_Paypal_IPN_Handler extends WC_Gateway_Paypal_Response {
 				$order->add_meta_data( 'PayPal Transaction Fee', wc_clean( $posted['mc_fee'] ) );
 			}
 
-			$this->payment_complete( $order, ( ! empty( $posted['txn_id'] ) ? wc_clean( $posted['txn_id'] ) : '' ), __( 'IPN payment completed', 'classic-commerce' ) );
+			$this->payment_complete( $order, ( ! empty( $posted['txn_id'] ) ? wc_clean( $posted['txn_id'] ) : '' ), __( 'IPN payment completed', 'classic-store') );
 		} else {
 			if ( 'authorization' === $posted['pending_reason'] ) {
-				$this->payment_on_hold( $order, __( 'Payment authorized. Change payment status to processing or complete to capture funds.', 'classic-commerce' ) );
+				$this->payment_on_hold( $order, __( 'Payment authorized. Change payment status to processing or complete to capture funds.', 'classic-store') );
 			} else {
 				/* translators: %s: pending reason. */
-				$this->payment_on_hold( $order, sprintf( __( 'Payment pending (%s).', 'classic-commerce' ), $posted['pending_reason'] ) );
+				$this->payment_on_hold( $order, sprintf( __( 'Payment pending (%s).', 'classic-store' ), $posted['pending_reason'] ) );
 			}
 		}
 	}
@@ -234,7 +234,7 @@ class WC_Gateway_Paypal_IPN_Handler extends WC_Gateway_Paypal_Response {
 	 */
 	protected function payment_status_failed( $order, $posted ) {
 		/* translators: %s: payment status. */
-		$order->update_status( 'failed', sprintf( __( 'Payment %s via IPN.', 'classic-commerce' ), wc_clean( $posted['payment_status'] ) ) );
+		$order->update_status( 'failed', sprintf( __( 'Payment %s via IPN.', 'classic-store'), wc_clean( $posted['payment_status'] ) ) );
 	}
 
 	/**
@@ -276,9 +276,9 @@ class WC_Gateway_Paypal_IPN_Handler extends WC_Gateway_Paypal_Response {
 	protected function payment_status_paid_cancelled_order( $order, $posted ) {
 		$this->send_ipn_email_notification(
 			/* translators: %s: order link. */
-			sprintf( __( 'Payment for cancelled order %s received', 'classic-commerce' ), '<a class="link" href="' . esc_url( $order->get_edit_order_url() ) . '">' . $order->get_order_number() . '</a>' ),
+			sprintf( __( 'Payment for cancelled order %s received', 'classic-store'), '<a class="link" href="' . esc_url( $order->get_edit_order_url() ) . '">' . $order->get_order_number() . '</a>' ),
 			/* translators: %s: order ID. */
-			sprintf( __( 'Order #%s has been marked paid by PayPal IPN, but was previously cancelled. Admin handling required.', 'classic-commerce' ), $order->get_order_number() )
+			sprintf( __( 'Order #%s has been marked paid by PayPal IPN, but was previously cancelled. Admin handling required.', 'classic-store'), $order->get_order_number() )
 		);
 	}
 
@@ -293,13 +293,13 @@ class WC_Gateway_Paypal_IPN_Handler extends WC_Gateway_Paypal_Response {
 		if ( $order->get_total() === wc_format_decimal( $posted['mc_gross'] * -1, wc_get_price_decimals() ) ) {
 
 			/* translators: %s: payment status. */
-			$order->update_status( 'refunded', sprintf( __( 'Payment %s via IPN.', 'classic-commerce' ), strtolower( $posted['payment_status'] ) ) );
+			$order->update_status( 'refunded', sprintf( __( 'Payment %s via IPN.', 'classic-store'), strtolower( $posted['payment_status'] ) ) );
 
 			$this->send_ipn_email_notification(
 				/* translators: %s: order link. */
-				sprintf( __( 'Payment for order %s refunded', 'classic-commerce' ), '<a class="link" href="' . esc_url( $order->get_edit_order_url() ) . '">' . $order->get_order_number() . '</a>' ),
+				sprintf( __( 'Payment for order %s refunded', 'classic-store'), '<a class="link" href="' . esc_url( $order->get_edit_order_url() ) . '">' . $order->get_order_number() . '</a>' ),
 				/* translators: %1$s: order ID, %2$s: reason code. */
-				sprintf( __( 'Order #%1$s has been marked as refunded - PayPal reason code: %2$s', 'classic-commerce' ), $order->get_order_number(), $posted['reason_code'] )
+				sprintf( __( 'Order #%1$s has been marked as refunded - PayPal reason code: %2$s', 'classic-store'), $order->get_order_number(), $posted['reason_code'] )
 			);
 		}
 	}
@@ -312,13 +312,13 @@ class WC_Gateway_Paypal_IPN_Handler extends WC_Gateway_Paypal_Response {
 	 */
 	protected function payment_status_reversed( $order, $posted ) {
 		/* translators: %s: payment status. */
-		$order->update_status( 'on-hold', sprintf( __( 'Payment %s via IPN.', 'classic-commerce' ), wc_clean( $posted['payment_status'] ) ) );
+		$order->update_status( 'on-hold', sprintf( __( 'Payment %s via IPN.', 'classic-store'), wc_clean( $posted['payment_status'] ) ) );
 
 		$this->send_ipn_email_notification(
 			/* translators: %s: order link. */
-			sprintf( __( 'Payment for order %s reversed', 'classic-commerce' ), '<a class="link" href="' . esc_url( $order->get_edit_order_url() ) . '">' . $order->get_order_number() . '</a>' ),
+			sprintf( __( 'Payment for order %s reversed', 'classic-store'), '<a class="link" href="' . esc_url( $order->get_edit_order_url() ) . '">' . $order->get_order_number() . '</a>' ),
 			/* translators: %1$s: order ID, %2$s: reason code. */
-			sprintf( __( 'Order #%1$s has been marked on-hold due to a reversal - PayPal reason code: %2$s', 'classic-commerce' ), $order->get_order_number(), wc_clean( $posted['reason_code'] ) )
+			sprintf( __( 'Order #%1$s has been marked on-hold due to a reversal - PayPal reason code: %2$s', 'classic-store'), $order->get_order_number(), wc_clean( $posted['reason_code'] ) )
 		);
 	}
 
@@ -331,9 +331,9 @@ class WC_Gateway_Paypal_IPN_Handler extends WC_Gateway_Paypal_Response {
 	protected function payment_status_canceled_reversal( $order, $posted ) {
 		$this->send_ipn_email_notification(
 			/* translators: %s: order link. */
-			sprintf( __( 'Reversal cancelled for order #%s', 'classic-commerce' ), $order->get_order_number() ),
+			sprintf( __( 'Reversal cancelled for order #%s', 'classic-store'), $order->get_order_number() ),
 			/* translators: %1$s: order ID, %2$s: order link. */
-			sprintf( __( 'Order #%1$s has had a reversal cancelled. Please check the status of payment and update the order status accordingly here: %2$s', 'classic-commerce' ), $order->get_order_number(), esc_url( $order->get_edit_order_url() ) )
+			sprintf( __( 'Order #%1$s has had a reversal cancelled. Please check the status of payment and update the order status accordingly here: %2$s', 'classic-store'), $order->get_order_number(), esc_url( $order->get_edit_order_url() ) )
 		);
 	}
 
