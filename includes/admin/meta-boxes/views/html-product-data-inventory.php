@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <div class="inline notice woocommerce-message show_if_variable">
 		<p>
-			<?php echo esc_html_e( 'Settings below apply to all variations without manual stock management enabled.', 'classic-commerce' ); ?> <a target="_blank" href="https://classiccommerce.cc/docs/installation-and-setup/variable-products/"><?php esc_html_e( 'Learn more', 'classic-commerce' ); ?></a>
+			<?php echo esc_html_e( 'Settings below apply to all variations without manual stock management enabled.', 'classic-store'); ?> <a target="_blank" href="https://classiccommerce.cc/docs/installation-and-setup/variable-products/"><?php esc_html_e( 'Learn more', 'classic-store'); ?></a>
 		</p>
 	</div>
 
@@ -24,9 +24,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				array(
 					'id'          => '_sku',
 					'value'       => $product_object->get_sku( 'edit' ),
-					'label'       => '<abbr title="' . esc_attr__( 'Stock Keeping Unit', 'classic-commerce' ) . '">' . esc_html__( 'SKU', 'classic-commerce' ) . '</abbr>',
+					'label'       => '<abbr title="' . esc_attr__( 'Stock Keeping Unit', 'classic-store') . '">' . esc_html__( 'SKU', 'classic-store') . '</abbr>',
 					'desc_tip'    => true,
-					'description' => __( 'SKU refers to a Stock-keeping unit, a unique identifier for each distinct product and service that can be purchased.', 'classic-commerce' ),
+					'description' => __( 'SKU refers to a Stock-keeping unit, a unique identifier for each distinct product and service that can be purchased.', 'classic-store'),
 				)
 			);
 		}
@@ -40,8 +40,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					'id'            => '_manage_stock',
 					'value'         => $product_object->get_manage_stock( 'edit' ) ? 'yes' : 'no',
 					'wrapper_class' => 'show_if_simple show_if_variable',
-					'label'         => __( 'Manage stock?', 'classic-commerce' ),
-					'description'   => __( 'Enable stock management at product level', 'classic-commerce' ),
+					'label'         => __( 'Manage stock?', 'classic-store'),
+					'description'   => __( 'Enable stock management at product level', 'classic-store'),
 				)
 			);
 
@@ -53,9 +53,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				array(
 					'id'                => '_stock',
 					'value'             => wc_stock_amount( $product_object->get_stock_quantity( 'edit' ) ?? 1 ),
-					'label'             => __( 'Stock quantity', 'classic-commerce' ),
+					'label'             => __( 'Stock quantity', 'classic-store'),
 					'desc_tip'          => true,
-					'description'       => __( 'Stock quantity. If this is a variable product this value will be used to control stock for all variations, unless you define stock at variation level.', 'classic-commerce' ),
+					'description'       => __( 'Stock quantity. If this is a variable product this value will be used to control stock for all variations, unless you define stock at variation level.', 'classic-store'),
 					'type'              => 'number',
 					'custom_attributes' => array(
 						'step' => 'any',
@@ -69,7 +69,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$backorder_args = array(
 				'id'      => '_backorders',
 				'value'   => $product_object->get_backorders( 'edit' ),
-				'label'   => __( 'Allow backorders?', 'classic-commerce' ),
+				'label'   => __( 'Allow backorders?', 'classic-store'),
 				'options' => wc_get_product_backorder_options(),
 			);
 
@@ -92,12 +92,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 					'value'             => $product_object->get_low_stock_amount( 'edit' ),
 					'placeholder'       => sprintf(
 						/* translators: %d: Amount of stock left */
-						esc_attr__( 'Store-wide threshold (%d)', 'classic-commerce' ),
+						esc_attr__( 'Store-wide threshold (%d)', 'classic-store' ),
 						esc_attr( get_option( 'woocommerce_notify_low_stock_amount' ) )
 					),
-					'label'             => __( 'Low stock threshold', 'classic-commerce' ),
+					'label'             => __( 'Low stock threshold', 'classic-store'),
 					'desc_tip'          => true,
-					'description'       => __( 'When product stock reaches this amount you will be notified by email. It is possible to define different values for each variation individually. The shop default value can be set in Settings > Products > Inventory.', 'classic-commerce' ),
+					'description'       => __( 'When product stock reaches this amount you will be notified by email. It is possible to define different values for each variation individually. The shop default value can be set in Settings > Products > Inventory.', 'classic-store'),
 					'type'              => 'number',
 					'custom_attributes' => array(
 						'step' => 'any',
@@ -113,11 +113,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			woocommerce_wp_note(
 				array(
 					'id'               => '_manage_stock_disabled',
-					'label'            => __( 'Stock management', 'classic-commerce' ),
-					'label-aria-label' => __( 'Stock management disabled in store settings', 'classic-commerce' ),
+					'label'            => __( 'Stock management', 'classic-store'),
+					'label-aria-label' => __( 'Stock management disabled in store settings', 'classic-store'),
 					'message'          => sprintf(
 						/* translators: %s: url for store settings */
-						__( 'Disabled in <a href="%s" aria-label="stock management store settings">store settings</a>.', 'classic-commerce' ),
+						__( 'Disabled in <a href="%s" aria-label="stock management store settings">store settings</a>.', 'classic-store'),
 						esc_url( 'admin.php?page=wc-settings&tab=products&section=inventory' )
 					),
 					'wrapper_class'    => 'show_if_simple show_if_variable',
@@ -132,10 +132,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'id'            => '_stock_status',
 			'value'         => $product_object->get_stock_status( 'edit' ),
 			'wrapper_class' => 'stock_status_field hide_if_variable hide_if_external hide_if_grouped',
-			'label'         => __( 'Stock status', 'classic-commerce' ),
+			'label'         => __( 'Stock status', 'classic-store'),
 			'options'       => $stock_status_options,
 			'desc_tip'      => true,
-			'description'   => __( 'Controls whether or not the product is listed as "in stock" or "out of stock" on the frontend.', 'classic-commerce' ),
+			'description'   => __( 'Controls whether or not the product is listed as "in stock" or "out of stock" on the frontend.', 'classic-store'),
 		);
 
 		/**
@@ -162,12 +162,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'id'            => '_sold_individually',
 				'value'         => $product_object->get_sold_individually( 'edit' ) ? 'yes' : 'no',
 				'wrapper_class' => 'show_if_simple show_if_variable',
-				'label'         => __( 'Sold individually', 'classic-commerce' ),
-				'description'   => __( 'Limit purchases to 1 item per order', 'classic-commerce' ),
+				'label'         => __( 'Sold individually', 'classic-store'),
+				'description'   => __( 'Limit purchases to 1 item per order', 'classic-store'),
 			)
 		);
 
-		echo wc_help_tip( __( 'Check to let customers to purchase only 1 item in a single order. This is particularly useful for items that have limited quantity, for example art or handmade goods.', 'classic-commerce' ) );
+		echo wc_help_tip( __( 'Check to let customers to purchase only 1 item in a single order. This is particularly useful for items that have limited quantity, for example art or handmade goods.', 'classic-store') );
 
 		do_action( 'woocommerce_product_options_sold_individually' );
 		?>

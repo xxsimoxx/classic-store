@@ -25,7 +25,7 @@ if ( ! wp_doing_ajax() ) {
 				}
 			} else {
 				echo '<li>';
-				wc_print_notice( apply_filters( 'woocommerce_no_available_payment_methods_message', WC()->customer->get_billing_country() ? esc_html__( 'Sorry, it seems that there are no available payment methods. Please contact us if you require assistance or wish to make alternate arrangements.', 'classic-commerce' ) : esc_html__( 'Please fill in your details above to see available payment methods.', 'classic-commerce' ) ), 'notice' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+				wc_print_notice( apply_filters( 'woocommerce_no_available_payment_methods_message', WC()->customer->get_billing_country() ? esc_html__( 'Sorry, it seems that there are no available payment methods. Please contact us if you require assistance or wish to make alternate arrangements.', 'classic-store') : esc_html__( 'Please fill in your details above to see available payment methods.', 'classic-store') ), 'notice' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
 				echo '</li>';
 			}
 			?>
@@ -35,9 +35,9 @@ if ( ! wp_doing_ajax() ) {
 		<noscript>
 			<?php
 			/* translators: $1 and $2 opening and closing emphasis tags respectively */
-			printf( esc_html__( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the %1$sUpdate Totals%2$s button before placing your order. You may be charged more than the amount stated above if you fail to do so.', 'classic-commerce' ), '<em>', '</em>' );
+			printf( esc_html__( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the %1$sUpdate Totals%2$s button before placing your order. You may be charged more than the amount stated above if you fail to do so.', 'classic-store'), '<em>', '</em>' );
 			?>
-			<br/><button type="submit" class="button alt" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'classic-commerce' ); ?>"><?php esc_html_e( 'Update totals', 'classic-commerce' ); ?></button>
+			<br/><button type="submit" class="button alt" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'classic-store'); ?>"><?php esc_html_e( 'Update totals', 'classic-store'); ?></button>
 		</noscript>
 		<?php wc_get_template( 'checkout/terms.php' ); ?>
 		<?php do_action( 'woocommerce_review_order_before_submit' ); ?>

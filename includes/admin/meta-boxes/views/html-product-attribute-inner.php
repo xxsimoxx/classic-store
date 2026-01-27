@@ -14,18 +14,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<tbody>
 	<tr>
 		<td class="attribute_name">
-			<label><?php esc_html_e( 'Name', 'classic-commerce' ); ?>:</label>
+			<label><?php esc_html_e( 'Name', 'classic-store'); ?>:</label>
 
 			<?php if ( $attribute->is_taxonomy() ) : ?>
 				<strong><?php echo esc_html( wc_attribute_label( $attribute->get_name() ) ); ?></strong>
 				<input type="hidden" name="attribute_names[<?php echo esc_attr( $i ); ?>]" value="<?php echo esc_attr( $attribute->get_name() ); ?>" />
 			<?php else : ?>
-				<input type="text" class="attribute_name" name="attribute_names[<?php echo esc_attr( $i ); ?>]" value="<?php echo esc_attr( $attribute->get_name() ); ?>" placeholder="<?php esc_attr_e( 'f.e. size or color', 'classic-commerce' ); ?>" />
+				<input type="text" class="attribute_name" name="attribute_names[<?php echo esc_attr( $i ); ?>]" value="<?php echo esc_attr( $attribute->get_name() ); ?>" placeholder="<?php esc_attr_e( 'f.e. size or color', 'classic-store'); ?>" />
 			<?php endif; ?>
 			<input type="hidden" name="attribute_position[<?php echo esc_attr( $i ); ?>]" class="attribute_position" value="<?php echo esc_attr( $attribute->get_position() ); ?>" />
 		</td>
 		<td rowspan="3">
-			<label><?php esc_html_e( 'Value(s)', 'classic-commerce' ); ?>:</label>
+			<label><?php esc_html_e( 'Value(s)', 'classic-store' ); ?>:</label>
 			<?php
 			if ( $attribute->is_taxonomy() && $attribute->get_taxonomy_object() ) {
 				$attribute_taxonomy = $attribute->get_taxonomy_object();
@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<select multiple="multiple"
 							data-minimum_input_length="0"
 							data-limit="50" data-return_id="id"
-							data-placeholder="<?php esc_attr_e( 'Select terms', 'classic-commerce' ); ?>"
+							data-placeholder="<?php esc_attr_e( 'Select terms', 'classic-store'); ?>"
 							data-orderby="<?php echo esc_attr( $attribute_orderby ); ?>"
 							class="multiselect attribute_values wc-taxonomy-term-search"
 							name="attribute_values[<?php echo esc_attr( $i ); ?>][]"
@@ -62,9 +62,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 						}
 						?>
 					</select>
-					<button class="button plus select_all_attributes"><?php esc_html_e( 'Select all', 'classic-commerce' ); ?></button>
-					<button class="button minus select_no_attributes"><?php esc_html_e( 'Select none', 'classic-commerce' ); ?></button>
-					<button class="button fr plus add_new_attribute"><?php esc_html_e( 'Create value', 'classic-commerce' ); ?></button>
+					<button class="button plus select_all_attributes"><?php esc_html_e( 'Select all', 'classic-store'); ?></button>
+					<button class="button minus select_no_attributes"><?php esc_html_e( 'Select none', 'classic-store'); ?></button>
+					<button class="button fr plus add_new_attribute"><?php esc_html_e( 'Create value', 'classic-store'); ?></button>
 					<?php
 				}
 
@@ -79,7 +79,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				do_action( 'woocommerce_product_option_terms', $attribute_taxonomy, $i, $attribute );
 			} else {
 				?>
-				<textarea name="attribute_values[<?php echo esc_attr( $i ); ?>]" cols="5" rows="5" placeholder="<?php /* translators: %s: WC_DELIMITER */ printf( esc_attr__( 'Enter options for customers to choose from, f.e. “Blue” or “Large”. Use “%s” to separate different options.', 'classic-commerce' ), esc_attr( WC_DELIMITER ) ); ?>"><?php echo esc_textarea( wc_implode_text_attributes( $attribute->get_options() ) ); ?></textarea>
+				<textarea name="attribute_values[<?php echo esc_attr( $i ); ?>]" cols="5" rows="5" placeholder="<?php /* translators: %s: WC_DELIMITER */ printf( esc_attr__( 'Enter options for customers to choose from, f.e. “Blue” or “Large”. Use “%s” to separate different options.', 'classic-store'), esc_attr( WC_DELIMITER ) ); ?>"><?php echo esc_textarea( wc_implode_text_attributes( $attribute->get_options() ) ); ?></textarea>
 				<?php
 			}
 			?>
@@ -87,13 +87,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</tr>
 	<tr>
 		<td>
-			<label><input type="checkbox" class="checkbox" <?php checked( $attribute->get_visible(), true ); ?> name="attribute_visibility[<?php echo esc_attr( $i ); ?>]" value="1" /> <?php esc_html_e( 'Visible on the product page', 'classic-commerce' ); ?></label>
+			<label><input type="checkbox" class="checkbox" <?php checked( $attribute->get_visible(), true ); ?> name="attribute_visibility[<?php echo esc_attr( $i ); ?>]" value="1" /> <?php esc_html_e( 'Visible on the product page', 'classic-store'); ?></label>
 		</td>
 	</tr>
 	<tr>
 		<td>
 			<div class="enable_variation show_if_variable">
-				<label><input type="checkbox" class="checkbox" <?php checked( $attribute->get_variation(), true ); ?> name="attribute_variation[<?php echo esc_attr( $i ); ?>]" value="1" /> <?php esc_html_e( 'Used for variations', 'woocommerce' ); ?></label>
+				<label><input type="checkbox" class="checkbox" <?php checked( $attribute->get_variation(), true ); ?> name="attribute_variation[<?php echo esc_attr( $i ); ?>]" value="1" /> <?php esc_html_e( 'Used for variations', 'classic-store'); ?></label>
 			</div>
 		</td>
 	</tr>

@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		if ( 0 < $imported ) {
 			$results[] = sprintf(
 				/* translators: %d: products count */
-				_n( '%s product imported', '%s products imported', $imported, 'classic-commerce' ),
+				_n( '%s product imported', '%s products imported', $imported, 'classic-store' ),
 				'<strong>' . number_format_i18n( $imported ) . '</strong>'
 			);
 		}
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		if ( 0 < $updated ) {
 			$results[] = sprintf(
 				/* translators: %d: products count */
-				_n( '%s product updated', '%s products updated', $updated, 'classic-commerce' ),
+				_n( '%s product updated', '%s products updated', $updated, 'classic-store' ),
 				'<strong>' . number_format_i18n( $updated ) . '</strong>'
 			);
 		}
@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         if ( 0 < $imported_variations ) {
 			$results[] = sprintf(
 				/* translators: %d: products count */
-				_n( '%s variations imported', '%s variations imported', $imported_variations, 'classic-commerce' ),
+				_n( '%s variations imported', '%s variations imported', $imported_variations, 'classic-store' ),
 				'<strong>' . number_format_i18n( $imported_variations ) . '</strong>'
 			);
 		}
@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		if ( 0 < $skipped ) {
 			$results[] = sprintf(
 				/* translators: %d: products count */
-				_n( '%s product was skipped', '%s products were skipped', $skipped, 'classic-commerce' ),
+				_n( '%s product was skipped', '%s products were skipped', $skipped, 'classic-store' ),
 				'<strong>' . number_format_i18n( $skipped ) . '</strong>'
 			);
 		}
@@ -49,33 +49,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 		if ( 0 < $failed ) {
 			$results [] = sprintf(
 				/* translators: %d: products count */
-				_n( 'Failed to import %s product', 'Failed to import %s products', $failed, 'classic-commerce' ),
+				_n( 'Failed to import %s product', 'Failed to import %s products', $failed, 'classic-store' ),
 				'<strong>' . number_format_i18n( $failed ) . '</strong>'
 			);
 		}
 
 		if ( 0 < $failed || 0 < $skipped ) {
-			$results[] = '<a href="#" class="woocommerce-importer-done-view-errors">' . __( 'View import log', 'classic-commerce' ) . '</a>';
+			$results[] = '<a href="#" class="woocommerce-importer-done-view-errors">' . __( 'View import log', 'classic-store') . '</a>';
 		}
 
         if ( ! empty( $file_name ) ) {
 			$results[] = sprintf(
 				/* translators: %s: File name */
-				__( 'File uploaded: %s', 'classic-commerce' ),
+				__( 'File uploaded: %s', 'classic-store'),
 				'<strong>' . $file_name . '</strong>'
 			);
 		}
 
 		/* translators: %d: import results */
-		echo wp_kses_post( __( 'Import complete!', 'classic-commerce' ) . ' ' . implode( '. ', $results ) );
+		echo wp_kses_post( __( 'Import complete!', 'classic-store') . ' ' . implode( '. ', $results ) );
 		?>
 	</section>
 	<section class="wc-importer-error-log" style="display:none">
 		<table class="widefat wc-importer-error-log-table">
 			<thead>
 				<tr>
-					<th><?php esc_html_e( 'Product', 'classic-commerce' ); ?></th>
-					<th><?php esc_html_e( 'Reason for failure', 'classic-commerce' ); ?></th>
+					<th><?php esc_html_e( 'Product', 'classic-store'); ?></th>
+					<th><?php esc_html_e( 'Reason for failure', 'classic-store'); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -107,6 +107,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		} );
 	</script>
 	<div class="wc-actions">
-		<a class="button button-primary" href="<?php echo esc_url( admin_url( 'edit.php?post_type=product' ) ); ?>"><?php esc_html_e( 'View products', 'classic-commerce' ); ?></a>
+		<a class="button button-primary" href="<?php echo esc_url( admin_url( 'edit.php?post_type=product' ) ); ?>"><?php esc_html_e( 'View products', 'classic-store'); ?></a>
 	</div>
 </div>

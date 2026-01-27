@@ -61,7 +61,7 @@ function wc_get_products( $args ) {
 function wc_get_product( $the_product = false, $deprecated = array() ) {
 	if ( ! did_action( 'woocommerce_init' ) || ! did_action( 'woocommerce_after_register_taxonomy' ) || ! did_action( 'woocommerce_after_register_post_type' ) ) {
 		/* translators: 1: wc_get_product 2: woocommerce_init 3: woocommerce_after_register_taxonomy 4: woocommerce_after_register_post_type */
-		wc_doing_it_wrong( __FUNCTION__, sprintf( __( '%1$s should not be called before the %2$s, %3$s and %4$s actions have finished.', 'classic-commerce' ), 'wc_get_product', 'woocommerce_init', 'woocommerce_after_register_taxonomy', 'woocommerce_after_register_post_type' ), '3.9' );
+		wc_doing_it_wrong( __FUNCTION__, sprintf( __( '%1$s should not be called before the %2$s, %3$s and %4$s actions have finished.', 'classic-store'), 'wc_get_product', 'woocommerce_init', 'woocommerce_after_register_taxonomy', 'woocommerce_after_register_post_type' ), '3.9' );
 		return false;
 	}
 	if ( ! empty( $deprecated ) ) {
@@ -242,7 +242,7 @@ function wc_product_post_type_link( $permalink, $post ) {
 		}
 	} else {
 		// If no terms are assigned to this post, use a string instead (can't leave the placeholder there).
-		$product_cat = _x( 'uncategorized', 'slug', 'classic-commerce' );
+		$product_cat = _x( 'uncategorized', 'slug', 'classic-store');
 	}
 
 	$find = array(
@@ -312,7 +312,7 @@ function wc_placeholder_img( $size = 'woocommerce_thumbnail', $attr = '' ) {
 
 	$default_attr = array(
 		'class' => 'woocommerce-placeholder wp-post-image',
-		'alt'   => __( 'Placeholder', 'classic-commerce' ),
+		'alt'   => __( 'Placeholder', 'classic-store'),
 	);
 
     $attr = wp_parse_args( $attr, $default_attr );
@@ -586,10 +586,10 @@ function wc_get_product_types() {
 	return (array) apply_filters(
 		'product_type_selector',
         array(
-			'simple'   => __( 'Simple product', 'classic-commerce' ),
-			'grouped'  => __( 'Grouped product', 'classic-commerce' ),
-			'external' => __( 'External/Affiliate product', 'classic-commerce' ),
-			'variable' => __( 'Variable product', 'classic-commerce' ),
+			'simple'   => __( 'Simple product', 'classic-store'),
+			'grouped'  => __( 'Grouped product', 'classic-store'),
+			'external' => __( 'External/Affiliate product', 'classic-store'),
+			'variable' => __( 'Variable product', 'classic-store'),
 		)
 	);
 }
@@ -822,10 +822,10 @@ function wc_get_product_attachment_props( $attachment_id = null, $product = fals
 function wc_get_product_visibility_options() {
 	return apply_filters(
 		'woocommerce_product_visibility_options', array(
-			'visible' => __( 'Shop and search results', 'classic-commerce' ),
-			'catalog' => __( 'Shop only', 'classic-commerce' ),
-			'search'  => __( 'Search results only', 'classic-commerce' ),
-			'hidden'  => __( 'Hidden', 'classic-commerce' ),
+			'visible' => __( 'Shop and search results', 'classic-store'),
+			'catalog' => __( 'Shop only', 'classic-store'),
+			'search'  => __( 'Search results only', 'classic-store'),
+			'hidden'  => __( 'Hidden', 'classic-store'),
 		)
 	);
 }
@@ -839,7 +839,7 @@ function wc_get_product_visibility_options() {
 function wc_get_product_tax_class_options() {
 	$tax_classes           = WC_Tax::get_tax_classes();
 	$tax_class_options     = array();
-	$tax_class_options[''] = __( 'Standard', 'classic-commerce' );
+	$tax_class_options[''] = __( 'Standard', 'classic-store');
 
 	if ( ! empty( $tax_classes ) ) {
 		foreach ( $tax_classes as $class ) {
@@ -859,9 +859,9 @@ function wc_get_product_stock_status_options() {
 		return apply_filters(
 		'woocommerce_product_stock_status_options',
 		array(
-			'instock'     => __( 'In stock', 'woocommerce' ),
-			'outofstock'  => __( 'Out of stock', 'woocommerce' ),
-			'onbackorder' => __( 'On backorder', 'woocommerce' ),
+			'instock'     => __( 'In stock', 'classic-store'),
+			'outofstock'  => __( 'Out of stock', 'classic-store'),
+			'onbackorder' => __( 'On backorder', 'classic-store'),
 		)
 	);
 }
@@ -874,9 +874,9 @@ function wc_get_product_stock_status_options() {
  */
 function wc_get_product_backorder_options() {
 	return array(
-		'no'     => __( 'Do not allow', 'classic-commerce' ),
-		'notify' => __( 'Allow, but notify customer', 'classic-commerce' ),
-		'yes'    => __( 'Allow', 'classic-commerce' ),
+		'no'     => __( 'Do not allow', 'classic-store'),
+		'notify' => __( 'Allow, but notify customer', 'classic-store'),
+		'yes'    => __( 'Allow', 'classic-store'),
 	);
 }
 

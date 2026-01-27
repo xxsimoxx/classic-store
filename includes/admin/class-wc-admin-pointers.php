@@ -58,8 +58,8 @@ class WC_Admin_Pointers {
 						'event'  => 'input',
 					),
 					'options'      => array(
-						'content'  => '<h3>' . esc_html__( 'Product name', 'classic-commerce' ) . '</h3>' .
-										'<p>' . esc_html__( 'Give your new product a name here. This is a required field and will be what your customers will see in your store.', 'classic-commerce' ) . '</p>',
+						'content'  => '<h3>' . esc_html__( 'Product name', 'classic-store') . '</h3>' .
+										'<p>' . esc_html__( 'Give your new product a name here. This is a required field and will be what your customers will see in your store.', 'classic-store') . '</p>',
 						'position' => array(
 							'edge'  => 'top',
 							'align' => 'left',
@@ -71,8 +71,8 @@ class WC_Admin_Pointers {
 					'next'         => 'product-type',
 					'next_trigger' => array(),
 					'options'      => array(
-						'content'  => '<h3>' . esc_html__( 'Product description', 'classic-commerce' ) . '</h3>' .
-										'<p>' . esc_html__( 'This is your products main body of content. Here you should describe your product in detail.', 'classic-commerce' ) . '</p>',
+						'content'  => '<h3>' . esc_html__( 'Product description', 'classic-store') . '</h3>' .
+										'<p>' . esc_html__( 'This is your products main body of content. Here you should describe your product in detail.', 'classic-store') . '</p>',
 						'position' => array(
 							'edge'  => 'bottom',
 							'align' => 'middle',
@@ -87,11 +87,11 @@ class WC_Admin_Pointers {
 						'event'  => 'change blur click',
 					),
 					'options'      => array(
-						'content'  => '<h3>' . esc_html__( 'Choose product type', 'classic-commerce' ) . '</h3>' .
-										'<p>' . esc_html__( 'Choose a type for this product. Simple is suitable for most physical goods and services (we recommend setting up a simple product for now).', 'classic-commerce' ) . '</p>' .
-										'<p>' . esc_html__( 'Variable is for more complex products such as t-shirts with multiple sizes.', 'classic-commerce' ) . '</p>' .
-										'<p>' . esc_html__( 'Grouped products are for grouping several simple products into one.', 'classic-commerce' ) . '</p>' .
-										'<p>' . esc_html__( 'Finally, external products are for linking off-site.', 'classic-commerce' ) . '</p>',
+						'content'  => '<h3>' . esc_html__( 'Choose product type', 'classic-store') . '</h3>' .
+										'<p>' . esc_html__( 'Choose a type for this product. Simple is suitable for most physical goods and services (we recommend setting up a simple product for now).', 'classic-store' ) . '</p>' .
+										'<p>' . esc_html__( 'Variable is for more complex products such as t-shirts with multiple sizes.', 'classic-store') . '</p>' .
+										'<p>' . esc_html__( 'Grouped products are for grouping several simple products into one.', 'classic-store') . '</p>' .
+										'<p>' . esc_html__( 'Finally, external products are for linking off-site.', 'classic-store') . '</p>',
 						'position' => array(
 							'edge'  => 'bottom',
 							'align' => 'middle',
@@ -106,8 +106,8 @@ class WC_Admin_Pointers {
 						'event'  => 'change',
 					),
 					'options'      => array(
-						'content'  => '<h3>' . esc_html__( 'Virtual products', 'classic-commerce' ) . '</h3>' .
-										'<p>' . esc_html__( 'Check the "Virtual" box if this is a non-physical item, for example a service, which does not need shipping.', 'classic-commerce' ) . '</p>',
+						'content'  => '<h3>' . esc_html__( 'Virtual products', 'classic-store') . '</h3>' .
+										'<p>' . esc_html__( 'Check the "Virtual" box if this is a non-physical item, for example a service, which does not need shipping.', 'classic-store') . '</p>',
 						'position' => array(
 							'edge'  => 'bottom',
 							'align' => 'middle',
@@ -122,8 +122,8 @@ class WC_Admin_Pointers {
 						'event'  => 'change',
 					),
 					'options'      => array(
-						'content'  => '<h3>' . esc_html__( 'Downloadable products', 'classic-commerce' ) . '</h3>' .
-										'<p>' . esc_html__( 'If purchasing this product gives a customer access to a downloadable file, e.g. software, check this box.', 'classic-commerce' ) . '</p>',
+						'content'  => '<h3>' . esc_html__( 'Downloadable products', 'classic-store') . '</h3>' .
+										'<p>' . esc_html__( 'If purchasing this product gives a customer access to a downloadable file, e.g. software, check this box.', 'classic-store') . '</p>',
 						'position' => array(
 							'edge'  => 'bottom',
 							'align' => 'middle',
@@ -138,8 +138,8 @@ class WC_Admin_Pointers {
 						'event'  => 'input',
 					),
 					'options'      => array(
-						'content'  => '<h3>' . esc_html__( 'Prices', 'classic-commerce' ) . '</h3>' .
-										'<p>' . esc_html__( 'Next you need to give your product a price.', 'classic-commerce' ) . '</p>',
+						'content'  => '<h3>' . esc_html__( 'Prices', 'classic-store') . '</h3>' .
+										'<p>' . esc_html__( 'Next you need to give your product a price.', 'classic-store') . '</p>',
 						'position' => array(
 							'edge'  => 'bottom',
 							'align' => 'middle',
@@ -154,8 +154,8 @@ class WC_Admin_Pointers {
 						'event'  => 'input',
 					),
 					'options'      => array(
-						'content'  => '<h3>' . esc_html__( 'Product short description', 'classic-commerce' ) . '</h3>' .
-										'<p>' . esc_html__( 'Add a quick summary for your product here. This will appear on the product page under the product name.', 'classic-commerce' ) . '</p>',
+						'content'  => '<h3>' . esc_html__( 'Product short description', 'classic-store') . '</h3>' .
+										'<p>' . esc_html__( 'Add a quick summary for your product here. This will appear on the product page under the product name.', 'classic-store') . '</p>',
 						'position' => array(
 							'edge'  => 'bottom',
 							'align' => 'middle',
@@ -166,8 +166,8 @@ class WC_Admin_Pointers {
 					'target'  => '#postimagediv',
 					'next'    => 'product_tag',
 					'options' => array(
-						'content'  => '<h3>' . esc_html__( 'Product images', 'classic-commerce' ) . '</h3>' .
-										'<p>' . esc_html__( "Upload or assign an image to your product here. This image will be shown in your store's catalog.", 'classic-commerce' ) . '</p>',
+						'content'  => '<h3>' . esc_html__( 'Product images', 'classic-store') . '</h3>' .
+										'<p>' . esc_html__( "Upload or assign an image to your product here. This image will be shown in your store's catalog.", 'classic-store') . '</p>',
 						'position' => array(
 							'edge'  => 'right',
 							'align' => 'middle',
@@ -178,8 +178,8 @@ class WC_Admin_Pointers {
 					'target'  => '#tagsdiv-product_tag',
 					'next'    => 'product_catdiv',
 					'options' => array(
-						'content'  => '<h3>' . esc_html__( 'Product tags', 'classic-commerce' ) . '</h3>' .
-										'<p>' . esc_html__( 'You can optionally "tag" your products here. Tags are a method of labeling your products to make them easier for customers to find.', 'classic-commerce' ) . '</p>',
+						'content'  => '<h3>' . esc_html__( 'Product tags', 'classic-store') . '</h3>' .
+										'<p>' . esc_html__( 'You can optionally "tag" your products here. Tags are a method of labeling your products to make them easier for customers to find.', 'classic-store') . '</p>',
 						'position' => array(
 							'edge'  => 'right',
 							'align' => 'middle',
@@ -190,8 +190,8 @@ class WC_Admin_Pointers {
 					'target'  => '#product_catdiv',
 					'next'    => 'submitdiv',
 					'options' => array(
-						'content'  => '<h3>' . esc_html__( 'Product categories', 'classic-commerce' ) . '</h3>' .
-										'<p>' . esc_html__( 'Optionally assign categories to your products to make them easier to browse through and find in your store.', 'classic-commerce' ) . '</p>',
+						'content'  => '<h3>' . esc_html__( 'Product categories', 'classic-store') . '</h3>' .
+										'<p>' . esc_html__( 'Optionally assign categories to your products to make them easier to browse through and find in your store.', 'classic-store') . '</p>',
 						'position' => array(
 							'edge'  => 'right',
 							'align' => 'middle',
@@ -202,8 +202,8 @@ class WC_Admin_Pointers {
 					'target'  => '#submitdiv',
 					'next'    => '',
 					'options' => array(
-						'content'  => '<h3>' . esc_html__( 'Publish your product!', 'classic-commerce' ) . '</h3>' .
-										'<p>' . esc_html__( 'When you are finished editing your product, hit the "Publish" button to publish your product to your store.', 'classic-commerce' ) . '</p>',
+						'content'  => '<h3>' . esc_html__( 'Publish your product!', 'classic-store') . '</h3>' .
+										'<p>' . esc_html__( 'When you are finished editing your product, hit the "Publish" button to publish your product to your store.', 'classic-store') . '</p>',
 						'position' => array(
 							'edge'  => 'right',
 							'align' => 'middle',
@@ -248,8 +248,8 @@ class WC_Admin_Pointers {
 							}
 						},
 						buttons: function( event, t ) {
-							var close   = '" . esc_js( __( 'Dismiss', 'classic-commerce' ) ) . "',
-								next    = '" . esc_js( __( 'Next', 'classic-commerce' ) ) . "',
+							var close   = '" . esc_js( __( 'Dismiss', 'classic-store') ) . "',
+								next    = '" . esc_js( __( 'Next', 'classic-store') ) . "',
 								button  = $( '<a class=\"close\" href=\"#\">' + close + '</a>' ),
 								button2 = $( '<a class=\"button button-primary\" href=\"#\">' + next + '</a>' ),
 								wrapper = $( '<div class=\"wc-pointer-buttons\" />' );

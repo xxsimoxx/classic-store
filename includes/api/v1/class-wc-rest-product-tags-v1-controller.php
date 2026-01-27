@@ -91,13 +91,13 @@ class WC_REST_Product_Tags_V1_Controller extends WC_REST_Terms_Controller {
 			'type'                 => 'object',
 			'properties'           => array(
 				'id' => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'name' => array(
-					'description' => __( 'Tag name.', 'classic-commerce' ),
+					'description' => __( 'Tag name.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -105,7 +105,7 @@ class WC_REST_Product_Tags_V1_Controller extends WC_REST_Terms_Controller {
 					),
 				),
 				'slug' => array(
-					'description' => __( 'An alphanumeric identifier for the resource unique to its type.', 'classic-commerce' ),
+					'description' => __( 'An alphanumeric identifier for the resource unique to its type.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -113,7 +113,7 @@ class WC_REST_Product_Tags_V1_Controller extends WC_REST_Terms_Controller {
 					),
 				),
 				'description' => array(
-					'description' => __( 'HTML description of the resource.', 'classic-commerce' ),
+					'description' => __( 'HTML description of the resource.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -121,7 +121,7 @@ class WC_REST_Product_Tags_V1_Controller extends WC_REST_Terms_Controller {
 					),
 				),
 				'count' => array(
-					'description' => __( 'Number of published products for the resource.', 'classic-commerce' ),
+					'description' => __( 'Number of published products for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,

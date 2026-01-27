@@ -20,11 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="woocommerce-billing-fields">
 	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
-		<h3><?php _e( 'Billing &amp; Shipping', 'classic-commerce' ); ?></h3>
+		<h3><?php _e( 'Billing &amp; Shipping', 'classic-store'); ?></h3>
 
 	<?php else : ?>
 
-		<h3><?php _e( 'Billing details', 'classic-commerce' ); ?></h3>
+		<h3><?php _e( 'Billing details', 'classic-store'); ?></h3>
 
 	<?php endif; ?>
 
@@ -52,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<p class="form-row form-row-wide create-account">
 				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ) ?> type="checkbox" name="createaccount" value="1" /> <span><?php _e( 'Create an account?', 'classic-commerce' ); ?></span>
+					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ) ?> type="checkbox" name="createaccount" value="1" /> <span><?php _e( 'Create an account?', 'classic-store'); ?></span>
 				</label>
 			</p>
 

@@ -18,14 +18,14 @@ class WC_Widget_Layered_Nav_Filters extends WC_Widget {
 	 */
 	public function __construct() {
 		$this->widget_cssclass    = 'woocommerce widget_layered_nav_filters';
-		$this->widget_description = __( 'Display a list of active product filters.', 'classic-commerce' );
+		$this->widget_description = __( 'Display a list of active product filters.', 'classic-store');
 		$this->widget_id          = 'woocommerce_layered_nav_filters';
-		$this->widget_name        = __( 'Active Product Filters', 'classic-commerce' );
+		$this->widget_name        = __( 'Active Product Filters', 'classic-store');
 		$this->settings           = array(
 			'title' => array(
 				'type'  => 'text',
-				'std'   => __( 'Active filters', 'classic-commerce' ),
-				'label' => __( 'Title', 'classic-commerce' ),
+				'std'   => __( 'Active filters', 'classic-store'),
+				'label' => __( 'Title', 'classic-store'),
 			),
 		);
 
@@ -97,7 +97,7 @@ class WC_Widget_Layered_Nav_Filters extends WC_Widget {
 						 * @since 8.8.0
 						 */
 						$anchor_text = apply_filters( 'woocommerce_widget_layered_nav_term_anchor_text', $term->name, $term, $taxonomy );
-						echo '<li class="' . esc_attr( implode( ' ', $filter_classes ) ) . '"><a rel="nofollow" aria-label="' . esc_attr__( 'Remove filter', 'classic-commerce' ) . '" href="' . esc_url( $link ) . '">' . esc_html( $anchor_text ) . '</a></li>';
+						echo '<li class="' . esc_attr( implode( ' ', $filter_classes ) ) . '"><a rel="nofollow" aria-label="' . esc_attr__( 'Remove filter', 'classic-store') . '" href="' . esc_url( $link ) . '">' . esc_html( $anchor_text ) . '</a></li>';
 					}
 				}
 			}
@@ -105,13 +105,13 @@ class WC_Widget_Layered_Nav_Filters extends WC_Widget {
 			if ( $min_price ) {
 				$link = remove_query_arg( 'min_price', $base_link );
 				/* translators: %s: minimum price */
-				echo '<li class="chosen"><a rel="nofollow" aria-label="' . esc_attr__( 'Remove filter', 'classic-commerce' ) . '" href="' . esc_url( $link ) . '">' . sprintf( __( 'Min %s', 'classic-commerce' ), wc_price( $min_price ) ) . '</a></li>'; // WPCS: XSS ok.
+				echo '<li class="chosen"><a rel="nofollow" aria-label="' . esc_attr__( 'Remove filter', 'classic-store') . '" href="' . esc_url( $link ) . '">' . sprintf( __( 'Min %s', 'classic-store'), wc_price( $min_price ) ) . '</a></li>'; // WPCS: XSS ok.
 			}
 
 			if ( $max_price ) {
 				$link = remove_query_arg( 'max_price', $base_link );
 				/* translators: %s: maximum price */
-				echo '<li class="chosen"><a rel="nofollow" aria-label="' . esc_attr__( 'Remove filter', 'classic-commerce' ) . '" href="' . esc_url( $link ) . '">' . sprintf( __( 'Max %s', 'classic-commerce' ), wc_price( $max_price ) ) . '</a></li>'; // WPCS: XSS ok.
+				echo '<li class="chosen"><a rel="nofollow" aria-label="' . esc_attr__( 'Remove filter', 'classic-store') . '" href="' . esc_url( $link ) . '">' . sprintf( __( 'Max %s', 'classic-store'), wc_price( $max_price ) ) . '</a></li>'; // WPCS: XSS ok.
 			}
 
 			if ( ! empty( $rating_filter ) ) {
@@ -120,7 +120,7 @@ class WC_Widget_Layered_Nav_Filters extends WC_Widget {
 					$link         = $link_ratings ? add_query_arg( 'rating_filter', $link_ratings ) : remove_query_arg( 'rating_filter', $base_link );
 
 					/* translators: %s: rating */
-					echo '<li class="chosen"><a rel="nofollow" aria-label="' . esc_attr__( 'Remove filter', 'classic-commerce' ) . '" href="' . esc_url( $link ) . '">' . sprintf( esc_html__( 'Rated %s out of 5', 'classic-commerce' ), esc_html( $rating ) ) . '</a></li>';
+					echo '<li class="chosen"><a rel="nofollow" aria-label="' . esc_attr__( 'Remove filter', 'classic-store') . '" href="' . esc_url( $link ) . '">' . sprintf( esc_html__( 'Rated %s out of 5', 'classic-store'), esc_html( $rating ) ) . '</a></li>';
 				}
 			}
 

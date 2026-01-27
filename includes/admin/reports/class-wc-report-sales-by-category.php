@@ -97,7 +97,7 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 
 			$legend[] = array(
 				/* translators: 1: total items sold 2: category name */
-				'title'            => sprintf( __( '%1$s sales in %2$s', 'classic-commerce' ), '<strong>' . wc_price( $total ) . '</strong>', $category->name ),
+				'title'            => sprintf( __( '%1$s sales in %2$s', 'classic-store'), '<strong>' . wc_price( $total ) . '</strong>', $category->name ),
 				'color'            => isset( $this->chart_colours[ $index ] ) ? $this->chart_colours[ $index ] : $this->chart_colours[0],
 				'highlight_series' => $index,
 			);
@@ -114,10 +114,10 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 	public function output_report() {
 
 		$ranges = array(
-			'year'       => __( 'Year', 'classic-commerce' ),
-			'last_month' => __( 'Last month', 'classic-commerce' ),
-			'month'      => __( 'This month', 'classic-commerce' ),
-			'7day'       => __( 'Last 7 days', 'classic-commerce' ),
+			'year'       => __( 'Year', 'classic-store'),
+			'last_month' => __( 'Last month', 'classic-store'),
+			'month'      => __( 'This month', 'classic-store'),
+			'7day'       => __( 'Last 7 days', 'classic-store'),
 		);
 
 		$this->chart_colours = array( '#3498db', '#34495e', '#1abc9c', '#2ecc71', '#f1c40f', '#e67e22', '#e74c3c', '#2980b9', '#8e44ad', '#2c3e50', '#16a085', '#27ae60', '#f39c12', '#d35400', '#c0392b' );
@@ -196,7 +196,7 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 
 		return array(
 			array(
-				'title'    => __( 'Categories', 'classic-commerce' ),
+				'title'    => __( 'Categories', 'classic-store'),
 				'callback' => array( $this, 'category_widget' ),
 			),
 		);
@@ -211,7 +211,7 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 		?>
 		<form method="GET">
 			<div>
-				<select multiple="multiple" data-placeholder="<?php esc_attr_e( 'Select categories&hellip;', 'classic-commerce' ); ?>" class="wc-enhanced-select" id="show_categories" name="show_categories[]" style="width: 205px;">
+				<select multiple="multiple" data-placeholder="<?php esc_attr_e( 'Select categories&hellip;', 'classic-store'); ?>" class="wc-enhanced-select" id="show_categories" name="show_categories[]" style="width: 205px;">
 					<?php
 						$r                 = array();
 						$r['pad_counts']   = 1;
@@ -226,9 +226,9 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 					?>
 				</select>
 				<?php // @codingStandardsIgnoreStart ?>
-				<a href="#" class="select_none"><?php esc_html_e( 'None', 'classic-commerce' ); ?></a>
-				<a href="#" class="select_all"><?php esc_html_e( 'All', 'classic-commerce' ); ?></a>
-				<button type="submit" class="submit button" value="<?php esc_attr_e( 'Show', 'classic-commerce' ); ?>"><?php esc_html_e( 'Show', 'classic-commerce' ); ?></button>
+				<a href="#" class="select_none"><?php esc_html_e( 'None', 'classic-store'); ?></a>
+				<a href="#" class="select_all"><?php esc_html_e( 'All', 'classic-store'); ?></a>
+				<button type="submit" class="submit button" value="<?php esc_attr_e( 'Show', 'classic-store'); ?>"><?php esc_html_e( 'Show', 'classic-store'); ?></button>
 				<input type="hidden" name="range" value="<?php echo ( ! empty( $_GET['range'] ) ) ? esc_attr( wp_unslash( $_GET['range'] ) ) : ''; ?>" />
 				<input type="hidden" name="start_date" value="<?php echo ( ! empty( $_GET['start_date'] ) ) ? esc_attr( wp_unslash( $_GET['start_date'] ) ) : ''; ?>" />
 				<input type="hidden" name="end_date" value="<?php echo ( ! empty( $_GET['end_date'] ) ) ? esc_attr( wp_unslash( $_GET['end_date'] ) ) : ''; ?>" />
@@ -269,10 +269,10 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 			download="report-<?php echo esc_attr( $current_range ); ?>-<?php echo esc_attr( date_i18n( 'Y-m-d', current_time( 'timestamp' ) ) ); ?>.csv"
 			class="export_csv"
 			data-export="chart"
-			data-xaxes="<?php esc_attr_e( 'Date', 'classic-commerce' ); ?>"
+			data-xaxes="<?php esc_attr_e( 'Date', 'classic-store'); ?>"
 			data-groupby="<?php echo esc_attr( $this->chart_groupby ); ?>"
 		>
-			<?php esc_html_e( 'Export CSV', 'classic-commerce' ); ?>
+			<?php esc_html_e( 'Export CSV', 'classic-store'); ?>
 		</a>
 		<?php
 	}
@@ -286,7 +286,7 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 		if ( empty( $this->show_categories ) ) {
 			?>
 			<div class="chart-container">
-				<p class="chart-prompt"><?php esc_html_e( 'Choose a category to view stats', 'classic-commerce' ); ?></p>
+				<p class="chart-prompt"><?php esc_html_e( 'Choose a category to view stats', 'classic-store'); ?></p>
 			</div>
 			<?php
 		} else {

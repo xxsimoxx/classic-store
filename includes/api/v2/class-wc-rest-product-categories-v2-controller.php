@@ -100,13 +100,13 @@ class WC_REST_Product_Categories_V2_Controller extends WC_REST_Product_Categorie
 			'type'       => 'object',
 			'properties' => array(
 				'id'          => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'name'        => array(
-					'description' => __( 'Category name.', 'classic-commerce' ),
+					'description' => __( 'Category name.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -114,7 +114,7 @@ class WC_REST_Product_Categories_V2_Controller extends WC_REST_Product_Categorie
 					),
 				),
 				'slug'        => array(
-					'description' => __( 'An alphanumeric identifier for the resource unique to its type.', 'classic-commerce' ),
+					'description' => __( 'An alphanumeric identifier for the resource unique to its type.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -122,12 +122,12 @@ class WC_REST_Product_Categories_V2_Controller extends WC_REST_Product_Categorie
 					),
 				),
 				'parent'      => array(
-					'description' => __( 'The ID for the parent of the resource.', 'classic-commerce' ),
+					'description' => __( 'The ID for the parent of the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'description' => array(
-					'description' => __( 'HTML description of the resource.', 'classic-commerce' ),
+					'description' => __( 'HTML description of the resource.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -135,71 +135,71 @@ class WC_REST_Product_Categories_V2_Controller extends WC_REST_Product_Categorie
 					),
 				),
 				'display'     => array(
-					'description' => __( 'Category archive display type.', 'classic-commerce' ),
+					'description' => __( 'Category archive display type.', 'classic-store'),
 					'type'        => 'string',
 					'default'     => 'default',
 					'enum'        => array( 'default', 'products', 'subcategories', 'both' ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'image'       => array(
-					'description' => __( 'Image data.', 'classic-commerce' ),
+					'description' => __( 'Image data.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view', 'edit' ),
 					'properties'  => array(
 						'id'                => array(
-							'description' => __( 'Image ID.', 'classic-commerce' ),
+							'description' => __( 'Image ID.', 'classic-store'),
 							'type'        => 'integer',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'date_created'      => array(
-							'description' => __( "The date the image was created, in the site's timezone.", 'classic-commerce' ),
+							'description' => __( "The date the image was created, in the site's timezone.", 'classic-store'),
 							'type'        => 'date-time',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,
 						),
 						'date_created_gmt'  => array(
-							'description' => __( 'The date the image was created, as GMT.', 'classic-commerce' ),
+							'description' => __( 'The date the image was created, as GMT.', 'classic-store'),
 							'type'        => 'date-time',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,
 						),
 						'date_modified'     => array(
-							'description' => __( "The date the image was last modified, in the site's timezone.", 'classic-commerce' ),
+							'description' => __( "The date the image was last modified, in the site's timezone.", 'classic-store'),
 							'type'        => 'date-time',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,
 						),
 						'date_modified_gmt' => array(
-							'description' => __( 'The date the image was last modified, as GMT.', 'classic-commerce' ),
+							'description' => __( 'The date the image was last modified, as GMT.', 'classic-store'),
 							'type'        => 'date-time',
 							'context'     => array( 'view', 'edit' ),
 							'readonly'    => true,
 						),
 						'src'               => array(
-							'description' => __( 'Image URL.', 'classic-commerce' ),
+							'description' => __( 'Image URL.', 'classic-store'),
 							'type'        => 'string',
 							'format'      => 'uri',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'title'             => array(
-							'description' => __( 'Image name.', 'classic-commerce' ),
+							'description' => __( 'Image name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'alt'               => array(
-							'description' => __( 'Image alternative text.', 'classic-commerce' ),
+							'description' => __( 'Image alternative text.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 					),
 				),
 				'menu_order'  => array(
-					'description' => __( 'Menu order, used to custom sort the resource.', 'classic-commerce' ),
+					'description' => __( 'Menu order, used to custom sort the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'count'       => array(
-					'description' => __( 'Number of published products for the resource.', 'classic-commerce' ),
+					'description' => __( 'Number of published products for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,

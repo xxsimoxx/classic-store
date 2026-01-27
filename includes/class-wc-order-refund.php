@@ -64,7 +64,7 @@ class WC_Order_Refund extends WC_Abstract_Order {
 	 */
 	public function get_post_title() {
 		// @codingStandardsIgnoreStart
-		return sprintf( __( 'Refund &ndash; %s', 'classic-commerce' ), strftime( _x( '%b %d, %Y @ %I:%M %p', 'Order date parsed by strftime', 'classic-commerce' ) ) );
+		return sprintf( __( 'Refund &ndash; %s', 'classic-store'), strftime( _x( '%b %d, %Y @ %I:%M %p', 'Order date parsed by strftime', 'classic-store') ) );
 		// @codingStandardsIgnoreEnd
 	}
 

@@ -55,7 +55,7 @@ class WC_REST_Tax_Classes_V2_Controller extends WC_REST_Tax_Classes_V1_Controlle
 			array(
 				'args' => array(
 					'slug' => array(
-						'description' => __( 'Unique slug for the resource.', 'classic-commerce' ),
+						'description' => __( 'Unique slug for the resource.', 'classic-store'),
 						'type'        => 'string',
 					),
 				),
@@ -72,7 +72,7 @@ class WC_REST_Tax_Classes_V2_Controller extends WC_REST_Tax_Classes_V1_Controlle
 						'force' => array(
 							'default'     => false,
 							'type'        => 'boolean',
-							'description' => __( 'Required to be true, as resource does not support trashing.', 'classic-commerce' ),
+							'description' => __( 'Required to be true, as resource does not support trashing.', 'classic-store'),
 						),
 					),
 				),
@@ -91,14 +91,14 @@ class WC_REST_Tax_Classes_V2_Controller extends WC_REST_Tax_Classes_V1_Controlle
 		if ( 'standard' === $request['slug'] ) {
 			$tax_class = array(
 				'slug' => 'standard',
-				'name' => __( 'Standard rate', 'classic-commerce' ),
+				'name' => __( 'Standard rate', 'classic-store'),
 			);
 		} else {
 			$tax_class = WC_Tax::get_tax_class_by( 'slug', sanitize_title( $request['slug'] ) );
 		}
 
 		if ( ! $tax_class ) {
-			return new WP_Error( 'woocommerce_rest_tax_class_invalid_slug', __( 'Invalid slug.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_tax_class_invalid_slug', __( 'Invalid slug.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		$data   = array();

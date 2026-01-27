@@ -94,7 +94,7 @@ class WC_Autoloader {
 
         // Prevent plugins from breaking if they extend the rest API early.
 		if ( 0 === strpos( $class, 'wc_rest_' ) && ! class_exists( $class, false ) && ! did_action( 'rest_api_init' ) ) {
-			wc_doing_it_wrong( $class, __( 'Classes that extend the Classic Commerce/WordPress REST API should only be loaded during the rest_api_init action, or should call WC()->api->rest_api_includes() manually.', 'woocommerce' ), '3.6' );
+			wc_doing_it_wrong( $class, __( 'Classes that extend the Classic Commerce/WordPress REST API should only be loaded during the rest_api_init action, or should call WC()->api->rest_api_includes() manually.', 'classic-store' ), '3.6' );
 			WC()->api->rest_api_includes();
 		}
 

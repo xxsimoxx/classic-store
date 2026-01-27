@@ -48,50 +48,50 @@ class WC_Meta_Box_Order_Data {
         self::$billing_fields = apply_filters(
 			'woocommerce_admin_billing_fields', array(
 				'first_name' => array(
-					'label' => __( 'First name', 'classic-commerce' ),
+					'label' => __( 'First name', 'classic-store'),
 					'show'  => false,
 				),
 				'last_name'  => array(
-					'label' => __( 'Last name', 'classic-commerce' ),
+					'label' => __( 'Last name', 'classic-store'),
 					'show'  => false,
 				),
 				'company'    => array(
-					'label' => __( 'Company', 'classic-commerce' ),
+					'label' => __( 'Company', 'classic-store'),
 					'show'  => false,
 				),
 				'address_1'  => array(
-					'label' => __( 'Address line 1', 'classic-commerce' ),
+					'label' => __( 'Address line 1', 'classic-store'),
 					'show'  => false,
 				),
 				'address_2'  => array(
-					'label' => __( 'Address line 2', 'classic-commerce' ),
+					'label' => __( 'Address line 2', 'classic-store'),
 					'show'  => false,
 				),
 				'city'       => array(
-					'label' => __( 'City', 'classic-commerce' ),
+					'label' => __( 'City', 'classic-store'),
 					'show'  => false,
 				),
 				'postcode'   => array(
-					'label' => __( 'Postcode / ZIP', 'classic-commerce' ),
+					'label' => __( 'Postcode / ZIP', 'classic-store'),
 					'show'  => false,
 				),
 				'country'    => array(
-					'label'   => __( 'Country / Region', 'classic-commerce' ),
+					'label'   => __( 'Country / Region', 'classic-store'),
 					'show'    => false,
 					'class'   => 'js_field-country select short',
 					'type'    => 'select',
-					'options' => array( '' => __( 'Select a country / region&hellip;', 'classic-commerce' ) ) + WC()->countries->get_allowed_countries(),
+					'options' => array( '' => __( 'Select a country / region&hellip;', 'classic-store') ) + WC()->countries->get_allowed_countries(),
 				),
 				'state'      => array(
-					'label' => __( 'State / County', 'classic-commerce' ),
+					'label' => __( 'State / County', 'classic-store'),
 					'class' => 'js_field-state select short',
 					'show'  => false,
 				),
 				'email'      => array(
-					'label' => __( 'Email address', 'classic-commerce' ),
+					'label' => __( 'Email address', 'classic-store'),
 				),
 				'phone'      => array(
-					'label' => __( 'Phone', 'classic-commerce' ),
+					'label' => __( 'Phone', 'classic-store'),
 				),
 			)
 		);
@@ -106,47 +106,47 @@ class WC_Meta_Box_Order_Data {
         self::$shipping_fields = apply_filters(
 			'woocommerce_admin_shipping_fields', array(
 				'first_name' => array(
-					'label' => __( 'First name', 'classic-commerce' ),
+					'label' => __( 'First name', 'classic-store'),
 					'show'  => false,
 				),
 				'last_name'  => array(
-					'label' => __( 'Last name', 'classic-commerce' ),
+					'label' => __( 'Last name', 'classic-store'),
 					'show'  => false,
 				),
 				'company'    => array(
-					'label' => __( 'Company', 'classic-commerce' ),
+					'label' => __( 'Company', 'classic-store'),
 					'show'  => false,
 				),
 				'address_1'  => array(
-					'label' => __( 'Address line 1', 'classic-commerce' ),
+					'label' => __( 'Address line 1', 'classic-store'),
 					'show'  => false,
 				),
 				'address_2'  => array(
-					'label' => __( 'Address line 2', 'classic-commerce' ),
+					'label' => __( 'Address line 2', 'classic-store'),
 					'show'  => false,
 				),
 				'city'       => array(
-					'label' => __( 'City', 'classic-commerce' ),
+					'label' => __( 'City', 'classic-store'),
 					'show'  => false,
 				),
 				'postcode'   => array(
-					'label' => __( 'Postcode / ZIP', 'classic-commerce' ),
+					'label' => __( 'Postcode / ZIP', 'classic-store'),
 					'show'  => false,
 				),
 				'country'    => array(
-					'label'   => __( 'Country / Region', 'classic-commerce' ),
+					'label'   => __( 'Country / Region', 'classic-store'),
 					'show'    => false,
 					'type'    => 'select',
 					'class'   => 'js_field-country select short',
-					'options' => array( '' => __( 'Select a country / region&hellip;', 'classic-commerce' ) ) + WC()->countries->get_shipping_countries(),
+					'options' => array( '' => __( 'Select a country / region&hellip;', 'classic-store') ) + WC()->countries->get_shipping_countries(),
 				),
 				'state'      => array(
-					'label' => __( 'State / County', 'classic-commerce' ),
+					'label' => __( 'State / County', 'classic-store'),
 					'class' => 'js_field-state select short',
 					'show'  => false,
 				),
                 'phone'      => array(
-					'label' => __( 'Phone', 'classic-commerce' ),
+					'label' => __( 'Phone', 'classic-store'),
 				),
 			)
 		);
@@ -183,7 +183,7 @@ class WC_Meta_Box_Order_Data {
 			#post-body-content, #titlediv { display:none }
 		</style>
 		<div class="panel-wrap woocommerce">
-			<input name="post_title" type="hidden" value="<?php echo empty( $post->post_title ) ? __( 'Order', 'classic-commerce' ) : esc_attr( $post->post_title ); ?>" />
+			<input name="post_title" type="hidden" value="<?php echo empty( $post->post_title ) ? __( 'Order', 'classic-store') : esc_attr( $post->post_title ); ?>" />
 			<input name="post_status" type="hidden" value="<?php echo esc_attr( $post->post_status ); ?>" />
 			<div id="order_data" class="panel woocommerce-order-data">
 				<h2 class="woocommerce-order-data__heading">
@@ -191,7 +191,7 @@ class WC_Meta_Box_Order_Data {
 
 					/* translators: 1: order type 2: order number */
 					printf(
-						esc_html__( '%1$s #%2$s details', 'classic-commerce' ),
+						esc_html__( '%1$s #%2$s details', 'classic-store'),
 						esc_html( $order_type_object->labels->singular_name ),
 						esc_html( $order->get_order_number() )
 					);
@@ -206,7 +206,7 @@ class WC_Meta_Box_Order_Data {
 					if ( $payment_method ) {
 						/* translators: %s: payment method */
 						$payment_method_string = sprintf(
-							__( 'Payment via %s', 'classic-commerce' ),
+							__( 'Payment via %s', 'classic-store'),
 							esc_html( isset( $payment_gateways[ $payment_method ] ) ? $payment_gateways[ $payment_method ]->get_title() : $payment_method )
 						);
 
@@ -224,7 +224,7 @@ class WC_Meta_Box_Order_Data {
 					if ( $order->get_date_paid() ) {
 						/* translators: 1: date 2: time */
 						$meta_list[] = sprintf(
-							__( 'Paid on %1$s @ %2$s', 'classic-commerce' ),
+							__( 'Paid on %1$s @ %2$s', 'classic-store'),
 							wc_format_datetime( $order->get_date_paid() ),
 							wc_format_datetime( $order->get_date_paid(), get_option( 'time_format' ) )
 						);
@@ -233,7 +233,7 @@ class WC_Meta_Box_Order_Data {
 					if ( $ip_address = $order->get_customer_ip_address() ) {
 						/* translators: %s: IP address */
 						$meta_list[] = sprintf(
-							__( 'Customer IP: %s', 'classic-commerce' ),
+							__( 'Customer IP: %s', 'classic-store'),
 							'<span class="woocommerce-Order-customerIP">' . esc_html( $ip_address ) . '</span>'
 						);
 					}
@@ -259,29 +259,29 @@ class WC_Meta_Box_Order_Data {
 				?>
 				<div class="order_data_column_container">
 					<div class="order_data_column">
-						<h3><?php esc_html_e( 'General', 'classic-commerce' ); ?></h3>
+						<h3><?php esc_html_e( 'General', 'classic-store'); ?></h3>
 
 						<p class="form-field form-field-wide">
 							<?php
 							$order_date_created_localised = ! is_null( $order->get_date_created() ) ? $order->get_date_created()->getOffsetTimestamp() : '';
 							?>
-							<label for="order_date"><?php esc_html_e( 'Date created:', 'classic-commerce' ); ?></label>
+							<label for="order_date"><?php esc_html_e( 'Date created:', 'classic-store'); ?></label>
 							<input type="text" class="date-picker" name="order_date" maxlength="10" value="<?php echo esc_attr( date_i18n( 'Y-m-d', $order_date_created_localised ) ); ?>" pattern="<?php echo esc_attr( apply_filters( 'woocommerce_date_input_html_pattern', '[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])' ) ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment ?>" />@
 							&lrm;
-                            <input type="number" class="hour" placeholder="<?php esc_attr_e( 'h', 'classic-commerce' ); ?>" name="order_date_hour" min="0" max="23" step="1" value="<?php echo esc_attr( date_i18n( 'H', $order_date_created_localised ) ); ?>" pattern="([01]?[0-9]{1}|2[0-3]{1})" />:
-							<input type="number" class="minute" placeholder="<?php esc_attr_e( 'm', 'classic-commerce' ); ?>" name="order_date_minute" min="0" max="59" step="1" value="<?php echo esc_attr( date_i18n( 'i', $order_date_created_localised ) ); ?>" pattern="[0-5]{1}[0-9]{1}" />
+                            <input type="number" class="hour" placeholder="<?php esc_attr_e( 'h', 'classic-store'); ?>" name="order_date_hour" min="0" max="23" step="1" value="<?php echo esc_attr( date_i18n( 'H', $order_date_created_localised ) ); ?>" pattern="([01]?[0-9]{1}|2[0-3]{1})" />:
+							<input type="number" class="minute" placeholder="<?php esc_attr_e( 'm', 'classic-store'); ?>" name="order_date_minute" min="0" max="59" step="1" value="<?php echo esc_attr( date_i18n( 'i', $order_date_created_localised ) ); ?>" pattern="[0-5]{1}[0-9]{1}" />
 							<input type="hidden" name="order_date_second" value="<?php echo esc_attr( date_i18n( 's', $order_date_created_localised ) ); ?>" />
 						</p>
 
 						<p class="form-field form-field-wide wc-order-status">
 							<label for="order_status">
 								<?php
-								_e( 'Status:', 'classic-commerce' );
+								_e( 'Status:', 'classic-store');
 								if ( $order->needs_payment() ) {
 									printf(
 										'<a href="%s">%s</a>',
 										esc_url( $order->get_checkout_payment_url() ),
-										__( 'Customer payment page &rarr;', 'classic-commerce' )
+										__( 'Customer payment page &rarr;', 'classic-store')
 									);
 								}
 								?>
@@ -300,7 +300,7 @@ class WC_Meta_Box_Order_Data {
 							<!--email_off--> <!-- Disable CloudFlare email obfuscation -->
 							<label for="customer_user">
 								<?php
-								_e( 'Customer:', 'classic-commerce' );
+								_e( 'Customer:', 'classic-store');
 								if ( $order->get_user_id( 'edit' ) ) {
 									$args = array(
 										'post_status'    => 'all',
@@ -310,12 +310,12 @@ class WC_Meta_Box_Order_Data {
 									printf(
 										'<a href="%s">%s</a>',
 										esc_url( add_query_arg( $args, admin_url( 'edit.php' ) ) ),
-										' ' . __( 'View other orders &rarr;', 'classic-commerce' )
+										' ' . __( 'View other orders &rarr;', 'classic-store')
 									);
 									printf(
 										'<a href="%s">%s</a>',
 										esc_url( add_query_arg( 'user_id', $order->get_user_id( 'edit' ), admin_url( 'user-edit.php' ) ) ),
-										' ' . __( 'Profile &rarr;', 'classic-commerce' )
+										' ' . __( 'Profile &rarr;', 'classic-store')
 									);
 								}
 								?>
@@ -329,14 +329,14 @@ class WC_Meta_Box_Order_Data {
 								/* translators: 1: user display name 2: user ID 3: user email */
 								$user_string = sprintf(
                                     /* translators: 1: customer name, 2 customer id, 3: customer email */
-									esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'classic-commerce' ),
+									esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'classic-store' ),
 									$customer->get_first_name() . ' ' . $customer->get_last_name(),
 									$customer->get_id(),
 									$customer->get_email()
 								);
 							}
 							?>
-							<select class="wc-customer-search" id="customer_user" name="customer_user" data-placeholder="<?php esc_attr_e( 'Guest', 'classic-commerce' ); ?>" data-allow_clear="true">
+							<select class="wc-customer-search" id="customer_user" name="customer_user" data-placeholder="<?php esc_attr_e( 'Guest', 'classic-store'); ?>" data-allow_clear="true">
 								<?php
 								// phpcs:disable WooCommerce.Commenting.CommentHooks.MissingHookComment
 								/**
@@ -357,10 +357,10 @@ class WC_Meta_Box_Order_Data {
 					</div>
 					<div class="order_data_column">
 						<h3>
-							<?php esc_html_e( 'Billing', 'classic-commerce' ); ?>
-							<a href="#" class="edit_address"><?php esc_html_e( 'Edit', 'classic-commerce' ); ?></a>
+							<?php esc_html_e( 'Billing', 'classic-store'); ?>
+							<a href="#" class="edit_address"><?php esc_html_e( 'Edit', 'classic-store'); ?></a>
 							<span>
-								<a href="#" class="load_customer_billing" style="display:none;"><?php esc_html_e( 'Load billing address', 'classic-commerce' ); ?></a>
+								<a href="#" class="load_customer_billing" style="display:none;"><?php esc_html_e( 'Load billing address', 'classic-store'); ?></a>
 							</span>
 						</h3>
 						<div class="address">
@@ -370,7 +370,7 @@ class WC_Meta_Box_Order_Data {
 							if ( $order->get_formatted_billing_address() ) {
 								echo '<p>' . wp_kses( $order->get_formatted_billing_address(), array( 'br' => array() ) ) . '</p>';
 							} else {
-								echo '<p class="none_set"><strong>' . __( 'Address:', 'classic-commerce' ) . '</strong> ' . __( 'No billing address set.', 'classic-commerce' ) . '</p>';
+								echo '<p class="none_set"><strong>' . __( 'Address:', 'classic-store') . '</strong> ' . __( 'No billing address set.', 'classic-store') . '</p>';
 							}
 
 							foreach ( self::$billing_fields as $key => $field ) {
@@ -436,9 +436,9 @@ class WC_Meta_Box_Order_Data {
 							}
 							?>
 							<p class="form-field form-field-wide">
-								<label><?php esc_html_e( 'Payment method:', 'classic-commerce' ); ?></label>
+								<label><?php esc_html_e( 'Payment method:', 'classic-store'); ?></label>
 								<select name="_payment_method" id="_payment_method" class="first">
-									<option value=""><?php esc_html_e( 'N/A', 'classic-commerce' ); ?></option>
+									<option value=""><?php esc_html_e( 'N/A', 'classic-store'); ?></option>
 									<?php
 									$found_method = false;
 
@@ -452,9 +452,9 @@ class WC_Meta_Box_Order_Data {
 									}
 
 									if ( ! $found_method && ! empty( $payment_method ) ) {
-										echo '<option value="' . esc_attr( $payment_method ) . '" selected="selected">' . esc_html__( 'Other', 'classic-commerce' ) . '</option>';
+										echo '<option value="' . esc_attr( $payment_method ) . '" selected="selected">' . esc_html__( 'Other', 'classic-store') . '</option>';
 									} else {
-										echo '<option value="other">' . esc_html__( 'Other', 'classic-commerce' ) . '</option>';
+										echo '<option value="other">' . esc_html__( 'Other', 'classic-store') . '</option>';
 									}
 									?>
 								</select>
@@ -464,7 +464,7 @@ class WC_Meta_Box_Order_Data {
 							woocommerce_wp_text_input(
 								array(
 									'id'    => '_transaction_id',
-									'label' => __( 'Transaction ID', 'classic-commerce' ),
+									'label' => __( 'Transaction ID', 'classic-store'),
 									'value' => $order->get_transaction_id( 'edit' ),
 								)
 							);
@@ -475,11 +475,11 @@ class WC_Meta_Box_Order_Data {
 					</div>
 					<div class="order_data_column">
 						<h3>
-							<?php esc_html_e( 'Shipping', 'classic-commerce' ); ?>
-							<a href="#" class="edit_address"><?php esc_html_e( 'Edit', 'classic-commerce' ); ?></a>
+							<?php esc_html_e( 'Shipping', 'classic-store'); ?>
+							<a href="#" class="edit_address"><?php esc_html_e( 'Edit', 'classic-store'); ?></a>
 							<span>
-								<a href="#" class="load_customer_shipping" style="display:none;"><?php esc_html_e( 'Load shipping address', 'classic-commerce' ); ?></a>
-								<a href="#" class="billing-same-as-shipping" style="display:none;"><?php esc_html_e( 'Copy billing address', 'classic-commerce' ); ?></a>
+								<a href="#" class="load_customer_shipping" style="display:none;"><?php esc_html_e( 'Load shipping address', 'classic-store'); ?></a>
+								<a href="#" class="billing-same-as-shipping" style="display:none;"><?php esc_html_e( 'Copy billing address', 'classic-store'); ?></a>
 							</span>
 						</h3>
 						<div class="address">
@@ -489,7 +489,7 @@ class WC_Meta_Box_Order_Data {
 							if ( $order->get_formatted_shipping_address() ) {
 								echo '<p>' . wp_kses( $order->get_formatted_shipping_address(), array( 'br' => array() ) ) . '</p>';
 							} else {
-								echo '<p class="none_set"><strong>' . __( 'Address:', 'classic-commerce' ) . '</strong> ' . __( 'No shipping address set.', 'classic-commerce' ) . '</p>';
+								echo '<p class="none_set"><strong>' . __( 'Address:', 'classic-store') . '</strong> ' . __( 'No shipping address set.', 'classic-store') . '</p>';
 							}
 
 							if ( ! empty( self::$shipping_fields ) ) {
@@ -517,7 +517,7 @@ class WC_Meta_Box_Order_Data {
 							}
 
 							if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' == get_option( 'woocommerce_enable_order_comments', 'yes' ) ) && $post->post_excerpt ) {
-								echo '<p class="order_note"><strong>' . __( 'Customer provided note:', 'classic-commerce' ) . '</strong> ' . wp_kses( nl2br( esc_html( $order->get_customer_note() ) ), array() ) . '</p>';
+								echo '<p class="order_note"><strong>' . __( 'Customer provided note:', 'classic-store') . '</strong> ' . wp_kses( nl2br( esc_html( $order->get_customer_note() ) ), array() ) . '</p>';
 							}
 							?>
 						</div>
@@ -563,8 +563,8 @@ class WC_Meta_Box_Order_Data {
                             if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' == get_option( 'woocommerce_enable_order_comments', 'yes' ) ) ) :
 								?>
 								<p class="form-field form-field-wide">
-									<label for="excerpt"><?php _e( 'Customer provided note', 'classic-commerce' ); ?>:</label>
-									<textarea rows="1" cols="40" name="excerpt" tabindex="6" id="excerpt" placeholder="<?php esc_attr_e( 'Customer notes about the order', 'classic-commerce' ); ?>"><?php echo wp_kses( $order->get_customer_note(), array() ); ?></textarea>
+									<label for="excerpt"><?php _e( 'Customer provided note', 'classic-store'); ?>:</label>
+									<textarea rows="1" cols="40" name="excerpt" tabindex="6" id="excerpt" placeholder="<?php esc_attr_e( 'Customer notes about the order', 'classic-store'); ?>"><?php echo wp_kses( $order->get_customer_note(), array() ); ?></textarea>
 								</p>
 							<?php endif; ?>
 						</div>
@@ -658,7 +658,7 @@ class WC_Meta_Box_Order_Data {
 			}
 
             if ( $payment_method == 'other') {
-				$payment_method_title = esc_html__( 'Other', 'classic-commerce' );
+				$payment_method_title = esc_html__( 'Other', 'classic-store');
 			}
 
 			$props['payment_method']       = $payment_method;

@@ -41,9 +41,9 @@ class WC_Shipping_Legacy_Free_Shipping extends WC_Shipping_Method {
 	 */
 	public function __construct() {
 		$this->id           = 'legacy_free_shipping';
-		$this->method_title = __( 'Free shipping (legacy)', 'classic-commerce' );
+		$this->method_title = __( 'Free shipping (legacy)', 'classic-store' );
 		/* translators: %s: Admin shipping settings URL */
-		$this->method_description = '<strong>' . sprintf( __( 'This method is deprecated in 2.6.0 and will be removed in future versions - we recommend disabling it and instead setting up a new rate within your <a href="%s">Shipping zones</a>.', 'classic-commerce' ), admin_url( 'admin.php?page=wc-settings&tab=shipping' ) ) . '</strong>';
+		$this->method_description = '<strong>' . sprintf( __( 'This method is deprecated in 2.6.0 and will be removed in future versions - we recommend disabling it and instead setting up a new rate within your <a href="%s">Shipping zones</a>.', 'classic-store'), admin_url( 'admin.php?page=wc-settings&tab=shipping' ) ) . '</strong>';
 		$this->init();
 	}
 
@@ -96,57 +96,57 @@ class WC_Shipping_Legacy_Free_Shipping extends WC_Shipping_Method {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'enabled'      => array(
-				'title'   => __( 'Enable/Disable', 'classic-commerce' ),
+				'title'   => __( 'Enable/Disable', 'classic-store'),
 				'type'    => 'checkbox',
-				'label'   => __( 'Once disabled, this legacy method will no longer be available.', 'classic-commerce' ),
+				'label'   => __( 'Once disabled, this legacy method will no longer be available.', 'classic-store'),
 				'default' => 'no',
 			),
 			'title'        => array(
-				'title'       => __( 'Method title', 'classic-commerce' ),
+				'title'       => __( 'Method title', 'classic-store'),
 				'type'        => 'text',
-				'description' => __( 'This controls the title which the user sees during checkout.', 'classic-commerce' ),
-				'default'     => __( 'Free Shipping', 'classic-commerce' ),
+				'description' => __( 'This controls the title which the user sees during checkout.', 'classic-store'),
+				'default'     => __( 'Free Shipping', 'classic-store'),
 				'desc_tip'    => true,
 			),
 			'availability' => array(
-				'title'   => __( 'Method availability', 'classic-commerce' ),
+				'title'   => __( 'Method availability', 'classic-store'),
 				'type'    => 'select',
 				'default' => 'all',
 				'class'   => 'availability wc-enhanced-select',
 				'options' => array(
-					'all'      => __( 'All allowed countries', 'classic-commerce' ),
-					'specific' => __( 'Specific Countries', 'classic-commerce' ),
+					'all'      => __( 'All allowed countries', 'classic-store'),
+					'specific' => __( 'Specific Countries', 'classic-store'),
 				),
 			),
 			'countries'    => array(
-				'title'             => __( 'Specific countries', 'classic-commerce' ),
+				'title'             => __( 'Specific countries', 'classic-store'),
 				'type'              => 'multiselect',
 				'class'             => 'wc-enhanced-select',
 				'css'               => 'width: 400px;',
 				'default'           => '',
 				'options'           => WC()->countries->get_shipping_countries(),
 				'custom_attributes' => array(
-					'data-placeholder' => __( 'Select some countries', 'classic-commerce' ),
+					'data-placeholder' => __( 'Select some countries', 'classic-store'),
 				),
 			),
 			'requires'     => array(
-				'title'   => __( 'Free shipping requires...', 'classic-commerce' ),
+				'title'   => __( 'Free shipping requires...', 'classic-store'),
 				'type'    => 'select',
 				'class'   => 'wc-enhanced-select',
 				'default' => '',
 				'options' => array(
-					''           => __( 'N/A', 'classic-commerce' ),
-					'coupon'     => __( 'A valid free shipping coupon', 'classic-commerce' ),
-					'min_amount' => __( 'A minimum order amount', 'classic-commerce' ),
-					'either'     => __( 'A minimum order amount OR a coupon', 'classic-commerce' ),
-					'both'       => __( 'A minimum order amount AND a coupon', 'classic-commerce' ),
+					''           => __( 'N/A', 'classic-store'),
+					'coupon'     => __( 'A valid free shipping coupon', 'classic-store'),
+					'min_amount' => __( 'A minimum order amount', 'classic-store'),
+					'either'     => __( 'A minimum order amount OR a coupon', 'classic-store'),
+					'both'       => __( 'A minimum order amount AND a coupon', 'classic-store'),
 				),
 			),
 			'min_amount'   => array(
-				'title'       => __( 'Minimum order amount', 'classic-commerce' ),
+				'title'       => __( 'Minimum order amount', 'classic-store'),
 				'type'        => 'price',
 				'placeholder' => wc_format_localized_price( 0 ),
-				'description' => __( 'Users will need to spend this amount to get free shipping (if enabled above).', 'classic-commerce' ),
+				'description' => __( 'Users will need to spend this amount to get free shipping (if enabled above).', 'classic-store' ),
 				'default'     => '0',
 				'desc_tip'    => true,
 			),

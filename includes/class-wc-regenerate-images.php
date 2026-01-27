@@ -147,7 +147,7 @@ class WC_Regenerate_Images {
 
 			$log = wc_get_logger();
 			$log->info(
-				__( 'Cancelled product image regeneration job.', 'classic-commerce' ),
+				__( 'Cancelled product image regeneration job.', 'classic-store'),
 				array(
 					'source' => 'wc-image-regeneration',
 				)

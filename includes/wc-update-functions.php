@@ -55,8 +55,8 @@ function wc_update_200_permalinks() {
 		$base_slug = $shop_page_id > 0 && get_post( $shop_page_id ) ? get_page_uri( $shop_page_id ) : 'shop';
 
 		$category_base = 'yes' === get_option( 'woocommerce_prepend_shop_page_to_urls' ) ? trailingslashit( $base_slug ) : '';
-		$category_slug = get_option( 'woocommerce_product_category_slug' ) ? get_option( 'woocommerce_product_category_slug' ) : _x( 'product-category', 'slug', 'classic-commerce' );
-		$tag_slug      = get_option( 'woocommerce_product_tag_slug' ) ? get_option( 'woocommerce_product_tag_slug' ) : _x( 'product-tag', 'slug', 'classic-commerce' );
+		$category_slug = get_option( 'woocommerce_product_category_slug' ) ? get_option( 'woocommerce_product_category_slug' ) : _x( 'product-category', 'slug', 'classic-store');
+		$tag_slug      = get_option( 'woocommerce_product_tag_slug' ) ? get_option( 'woocommerce_product_tag_slug' ) : _x( 'product-tag', 'slug', 'classic-store');
 
 		if ( 'yes' === get_option( 'woocommerce_prepend_shop_page_to_products' ) ) {
 			$product_base = trailingslashit( $base_slug );
@@ -65,7 +65,7 @@ function wc_update_200_permalinks() {
 			if ( false !== $product_slug && ! empty( $product_slug ) ) {
 				$product_base = trailingslashit( $product_slug );
 			} else {
-				$product_base = trailingslashit( _x( 'product', 'slug', 'classic-commerce' ) );
+				$product_base = trailingslashit( _x( 'product', 'slug', 'classic-store') );
 			}
 		}
 
@@ -928,7 +928,7 @@ function wc_update_240_refunds() {
 			wc_create_refund(
 				array(
 					'amount'     => $order_total - $refunded_total,
-					'reason'     => __( 'Order fully refunded', 'classic-commerce' ),
+					'reason'     => __( 'Order fully refunded', 'classic-store'),
 					'order_id'   => $refunded_order->ID,
 					'line_items' => array(),
 					'date'       => $refunded_order->post_modified,

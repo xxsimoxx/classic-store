@@ -74,7 +74,7 @@ class WC_Shipping {
 	 * @since 2.1
 	 */
 	public function __clone() {
-		wc_doing_it_wrong( __FUNCTION__, __( 'Cloning is forbidden.', 'classic-commerce' ), '2.1' );
+		wc_doing_it_wrong( __FUNCTION__, __( 'Cloning is forbidden.', 'classic-store'), '2.1' );
 	}
 
 	/**
@@ -83,7 +83,7 @@ class WC_Shipping {
 	 * @since 2.1
 	 */
 	public function __wakeup() {
-		wc_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'classic-commerce' ), '2.1' );
+		wc_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'classic-store'), '2.1' );
 	}
 
 	/**
@@ -160,7 +160,7 @@ class WC_Shipping {
 			$this->shipping_methods = $shipping_zone->get_shipping_methods( true );
 
 			// translators: %s: shipping zone name.
-			$matched_zone_notice = sprintf( __( 'Customer matched zone "%s"', 'classic-commerce' ), $shipping_zone->get_zone_name() );
+			$matched_zone_notice = sprintf( __( 'Customer matched zone "%s"', 'classic-store'), $shipping_zone->get_zone_name() );
 
 			// Debug output.
 			if ( $debug_mode && ! defined( 'WOOCOMMERCE_CHECKOUT' ) && ! defined( 'WC_DOING_AJAX' ) && ! wc_has_notice( $matched_zone_notice ) ) {

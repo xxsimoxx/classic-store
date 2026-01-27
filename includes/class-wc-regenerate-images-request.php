@@ -110,7 +110,7 @@ class WC_Regenerate_Images_Request extends WC_Background_Process {
 		$log->info(
 			sprintf(
 				// translators: %s: ID of the attachment.
-				__( 'Regenerating images for attachment ID: %s', 'classic-commerce' ),
+				__( 'Regenerating images for attachment ID: %s', 'classic-store'),
 				$this->attachment_id
 			),
 			array(
@@ -258,7 +258,7 @@ class WC_Regenerate_Images_Request extends WC_Background_Process {
 		parent::complete();
 		$log = wc_get_logger();
 		$log->info(
-			__( 'Completed product image regeneration job.', 'classic-commerce' ),
+			__( 'Completed product image regeneration job.', 'classic-store'),
 			array(
 				'source' => 'wc-image-regeneration',
 			)

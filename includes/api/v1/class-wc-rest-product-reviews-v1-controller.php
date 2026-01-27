@@ -43,11 +43,11 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 		register_rest_route( $this->namespace, '/' . $this->rest_base, array(
 			'args' => array(
 				'product_id' => array(
-					'description' => __( 'Unique identifier for the variable product.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the variable product.', 'classic-store'),
 					'type'        => 'integer',
 				),
 				'id' => array(
-					'description' => __( 'Unique identifier for the variation.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the variation.', 'classic-store'),
 					'type'        => 'integer',
 				),
 			),
@@ -65,17 +65,17 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 					'review' => array(
 						'required'    => true,
 						'type'        => 'string',
-						'description' => __( 'Review content.', 'classic-commerce' ),
+						'description' => __( 'Review content.', 'classic-store'),
 					),
 					'name' => array(
 						'required'    => true,
 						'type'        => 'string',
-						'description' => __( 'Name of the reviewer.', 'classic-commerce' ),
+						'description' => __( 'Name of the reviewer.', 'classic-store'),
 					),
 					'email' => array(
 						'required'    => true,
 						'type'        => 'string',
-						'description' => __( 'Email of the reviewer.', 'classic-commerce' ),
+						'description' => __( 'Email of the reviewer.', 'classic-store'),
 					),
 				) ),
 			),
@@ -85,11 +85,11 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 		register_rest_route( $this->namespace, '/' . $this->rest_base . '/(?P<id>[\d]+)', array(
 			'args' => array(
 				'product_id' => array(
-					'description' => __( 'Unique identifier for the variable product.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the variable product.', 'classic-store'),
 					'type'        => 'integer',
 				),
 				'id' => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 				),
 			),
@@ -115,7 +115,7 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 					'force' => array(
 						'default'     => false,
 						'type'        => 'boolean',
-						'description' => __( 'Whether to bypass trash and force deletion.', 'classic-commerce' ),
+						'description' => __( 'Whether to bypass trash and force deletion.', 'classic-store'),
 					),
 				),
 			),
@@ -131,7 +131,7 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 	 */
 	public function get_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_product_reviews_permissions( 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -150,7 +150,7 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 		}
 
 		if ( ! wc_rest_check_product_reviews_permissions( 'read', (int) $request['id'] ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -164,7 +164,7 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 	 */
 	public function create_item_permissions_check( $request ) {
 		if ( ! wc_rest_check_product_reviews_permissions( 'create' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -183,7 +183,7 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 		}
 
 		if ( ! wc_rest_check_product_reviews_permissions( 'edit', (int) $request['id'] ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_edit', __( 'Sorry, you cannot edit this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_edit', __( 'Sorry, you cannot edit this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -202,7 +202,7 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 		}
 
 		if ( ! wc_rest_check_product_reviews_permissions( 'delete', (int) $request['id'] ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Sorry, you cannot delete this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Sorry, you cannot delete this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -219,7 +219,7 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 		$product_id = (int) $request['product_id'];
 
 		if ( 'product' !== get_post_type( $product_id ) ) {
-			return new WP_Error( 'woocommerce_rest_product_invalid_id', __( 'Invalid product ID.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_product_invalid_id', __( 'Invalid product ID.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		$reviews = get_approved_comments( $product_id );
@@ -244,12 +244,12 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 	 */
 	protected function get_review( int $id, int $product_id ) {
 		if ( 0 >= $product_id || 'product' !== get_post_type( $product_id ) ) {
-			return new WP_Error( 'woocommerce_rest_product_invalid_id', __( 'Invalid product ID.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_product_invalid_id', __( 'Invalid product ID.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		$review = 0 <= $id ? get_comment( $id ) : null;
 		if ( empty( $review ) || empty( $review->comment_ID ) || 'review' !== get_comment_type( $id ) || empty( $review->comment_post_ID ) || (int) $review->comment_post_ID !== $product_id ) {
-			return new WP_Error( 'woocommerce_rest_product_review_invalid_id', __( 'Invalid product review ID.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_product_review_invalid_id', __( 'Invalid product review ID.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		return $review;
@@ -284,7 +284,7 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 		$product_id = (int) $request['product_id'];
 
 		if ( 'product' !== get_post_type( $product_id ) ) {
-			return new WP_Error( 'woocommerce_rest_product_invalid_id', __( 'Invalid product ID.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_product_invalid_id', __( 'Invalid product ID.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		$prepared_review = $this->prepare_item_for_database( $request );
@@ -301,7 +301,7 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 
 		$product_review_id = wp_insert_comment( $prepared_review );
 		if ( ! $product_review_id ) {
-			return new WP_Error( 'rest_product_review_failed_create', __( 'Creating product review failed.', 'classic-commerce' ), array( 'status' => 500 ) );
+			return new WP_Error( 'rest_product_review_failed_create', __( 'Creating product review failed.', 'classic-store'), array( 'status' => 500 ) );
 		}
 
 		update_comment_meta( $product_review_id, 'rating', ( ! empty( $request['rating'] ) ? $request['rating'] : '0' ) );
@@ -347,7 +347,7 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 
 		$updated = wp_update_comment( $prepared_review );
 		if ( 0 === $updated ) {
-			return new WP_Error( 'rest_product_review_failed_edit', __( 'Updating product review failed.', 'classic-commerce' ), array( 'status' => 500 ) );
+			return new WP_Error( 'rest_product_review_failed_edit', __( 'Updating product review failed.', 'classic-store'), array( 'status' => 500 ) );
 		}
 
 		if ( ! empty( $request['rating'] ) ) {
@@ -406,18 +406,18 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 			$result = wp_delete_comment( $product_review_id, true );
 		} else {
 			if ( ! $supports_trash ) {
-				return new WP_Error( 'rest_trash_not_supported', __( 'The product review does not support trashing.', 'classic-commerce' ), array( 'status' => 501 ) );
+				return new WP_Error( 'rest_trash_not_supported', __( 'The product review does not support trashing.', 'classic-store'), array( 'status' => 501 ) );
 			}
 
 			if ( 'trash' === $product_review->comment_approved ) {
-				return new WP_Error( 'rest_already_trashed', __( 'The comment has already been trashed.', 'classic-commerce' ), array( 'status' => 410 ) );
+				return new WP_Error( 'rest_already_trashed', __( 'The comment has already been trashed.', 'classic-store'), array( 'status' => 410 ) );
 			}
 
 			$result = wp_trash_comment( $product_review->comment_ID );
 		}
 
 		if ( ! $result ) {
-			return new WP_Error( 'rest_cannot_delete', __( 'The product review cannot be deleted.', 'classic-commerce' ), array( 'status' => 500 ) );
+			return new WP_Error( 'rest_cannot_delete', __( 'The product review cannot be deleted.', 'classic-store'), array( 'status' => 500 ) );
 		}
 
 		/**
@@ -546,38 +546,38 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'id' => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'review' => array(
-					'description' => __( 'The content of the review.', 'classic-commerce' ),
+					'description' => __( 'The content of the review.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'date_created' => array(
-					'description' => __( "The date the review was created, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the review was created, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'rating' => array(
-					'description' => __( 'Review rating (0 to 5).', 'classic-commerce' ),
+					'description' => __( 'Review rating (0 to 5).', 'classic-store' ),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'name' => array(
-					'description' => __( 'Reviewer name.', 'classic-commerce' ),
+					'description' => __( 'Reviewer name.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'email' => array(
-					'description' => __( 'Reviewer email.', 'classic-commerce' ),
+					'description' => __( 'Reviewer email.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'verified' => array(
-					'description' => __( 'Shows if the reviewer bought the product or not.', 'classic-commerce' ),
+					'description' => __( 'Shows if the reviewer bought the product or not.', 'classic-store'),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,

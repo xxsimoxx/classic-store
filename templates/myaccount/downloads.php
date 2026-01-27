@@ -32,7 +32,7 @@ do_action( 'woocommerce_before_account_downloads', $has_downloads ); ?>
 <?php else : ?>
 	<?php
 
-	wc_print_notice( esc_html__( 'No downloads available yet.', 'classic-commerce' ) . ' <a class="button wc-forward" href="' . esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ) . '">' . esc_html__( 'Browse products', 'classic-commerce' ) . '</a>', 'notice' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment 
+	wc_print_notice( esc_html__( 'No downloads available yet.', 'classic-store') . ' <a class="button wc-forward" href="' . esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ) . '">' . esc_html__( 'Browse products', 'classic-store') . '</a>', 'notice' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment 
 	?>
 <?php endif; ?>
 

@@ -70,7 +70,7 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 						$this->get_endpoint_args_for_item_schema( WP_REST_Server::CREATABLE ),
 						array(
 							'name' => array(
-								'description' => __( 'Name for the resource.', 'classic-commerce' ),
+								'description' => __( 'Name for the resource.', 'classic-store'),
 								'type'        => 'string',
 								'required'    => true,
 							),
@@ -87,7 +87,7 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 			array(
 				'args'   => array(
 					'id' => array(
-						'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+						'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 						'type'        => 'integer',
 					),
 				),
@@ -113,7 +113,7 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 						'force' => array(
 							'default'     => true,
 							'type'        => 'boolean',
-							'description' => __( 'Required to be true, as resource does not support trashing.', 'classic-commerce' ),
+							'description' => __( 'Required to be true, as resource does not support trashing.', 'classic-store'),
 						),
 					),
 				),
@@ -144,7 +144,7 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 	 */
 	public function get_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'attributes', 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -158,7 +158,7 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 	 */
 	public function create_item_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'attributes', 'create' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_create', __( 'Sorry, you cannot create new resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_create', __( 'Sorry, you cannot create new resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -172,11 +172,11 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 	 */
 	public function get_item_permissions_check( $request ) {
 		if ( ! $this->get_taxonomy( $request ) ) {
-			return new WP_Error( 'woocommerce_rest_taxonomy_invalid', __( 'Resource does not exist.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_taxonomy_invalid', __( 'Resource does not exist.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		if ( ! wc_rest_check_manager_permissions( 'attributes', 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -190,11 +190,11 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 	 */
 	public function update_item_permissions_check( $request ) {
 		if ( ! $this->get_taxonomy( $request ) ) {
-			return new WP_Error( 'woocommerce_rest_taxonomy_invalid', __( 'Resource does not exist.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_taxonomy_invalid', __( 'Resource does not exist.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		if ( ! wc_rest_check_manager_permissions( 'attributes', 'edit' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_update', __( 'Sorry, you cannot update resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_update', __( 'Sorry, you cannot update resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -208,11 +208,11 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 	 */
 	public function delete_item_permissions_check( $request ) {
 		if ( ! $this->get_taxonomy( $request ) ) {
-			return new WP_Error( 'woocommerce_rest_taxonomy_invalid', __( 'Resource does not exist.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_taxonomy_invalid', __( 'Resource does not exist.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		if ( ! wc_rest_check_manager_permissions( 'attributes', 'delete' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Sorry, you are not allowed to delete this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Sorry, you are not allowed to delete this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -227,7 +227,7 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 	 */
 	public function batch_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'attributes', 'batch' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_batch', __( 'Sorry, you are not allowed to batch manipulate this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_batch', __( 'Sorry, you are not allowed to batch manipulate this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -385,7 +385,7 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 
 		// We don't support trashing for this type, error out.
 		if ( ! $force ) {
-			return new WP_Error( 'woocommerce_rest_trash_not_supported', __( 'Resource does not support trashing.', 'classic-commerce' ), array( 'status' => 501 ) );
+			return new WP_Error( 'woocommerce_rest_trash_not_supported', __( 'Resource does not support trashing.', 'classic-store'), array( 'status' => 501 ) );
 		}
 
 		$attribute = $this->get_attribute( (int) $request['id'] );
@@ -400,7 +400,7 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 		$deleted = wc_delete_attribute( $attribute->attribute_id );
 
 		if ( false === $deleted ) {
-			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'The resource cannot be deleted.', 'classic-commerce' ), array( 'status' => 500 ) );
+			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'The resource cannot be deleted.', 'classic-store'), array( 'status' => 500 ) );
 		}
 
 		/**
@@ -484,13 +484,13 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'id'           => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'name'         => array(
-					'description' => __( 'Attribute name.', 'classic-commerce' ),
+					'description' => __( 'Attribute name.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -498,7 +498,7 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 					),
 				),
 				'slug'         => array(
-					'description' => __( 'An alphanumeric identifier for the resource unique to its type.', 'classic-commerce' ),
+					'description' => __( 'An alphanumeric identifier for the resource unique to its type.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'arg_options' => array(
@@ -506,21 +506,21 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 					),
 				),
 				'type'         => array(
-					'description' => __( 'Type of attribute.', 'classic-commerce' ),
+					'description' => __( 'Type of attribute.', 'classic-store'),
 					'type'        => 'string',
 					'default'     => 'select',
 					'enum'        => array_keys( wc_get_attribute_types() ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'order_by'     => array(
-					'description' => __( 'Default sort order.', 'classic-commerce' ),
+					'description' => __( 'Default sort order.', 'classic-store'),
 					'type'        => 'string',
 					'default'     => 'menu_order',
 					'enum'        => array( 'menu_order', 'name', 'name_num', 'id' ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'has_archives' => array(
-					'description' => __( 'Enable/Disable attribute archives.', 'classic-commerce' ),
+					'description' => __( 'Enable/Disable attribute archives.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'view', 'edit' ),
@@ -589,7 +589,7 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 		);
 
 		if ( is_wp_error( $attribute ) || is_null( $attribute ) ) {
-			return new WP_Error( 'woocommerce_rest_attribute_invalid', __( 'Resource does not exist.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_attribute_invalid', __( 'Resource does not exist.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		return $attribute;
@@ -606,13 +606,13 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 	protected function validate_attribute_slug( $slug, $new_data = true ) {
 		if ( strlen( $slug ) >= 28 ) {
 			/* translators: %s: slug being validated */
-			return new WP_Error( 'woocommerce_rest_invalid_product_attribute_slug_too_long', sprintf( __( 'Slug "%s" is too long (28 characters max). Shorten it, please.', 'classic-commerce' ), $slug ), array( 'status' => 400 ) );
+			return new WP_Error( 'woocommerce_rest_invalid_product_attribute_slug_too_long', sprintf( __( 'Slug "%s" is too long (28 characters max). Shorten it, please.', 'classic-store' ), $slug ), array( 'status' => 400 ) );
 		} elseif ( wc_check_if_attribute_name_is_reserved( $slug ) ) {
 			/* translators: %s: slug being validated */
-			return new WP_Error( 'woocommerce_rest_invalid_product_attribute_slug_reserved_name', sprintf( __( 'Slug "%s" is not allowed because it is a reserved term. Change it, please.', 'classic-commerce' ), $slug ), array( 'status' => 400 ) );
+			return new WP_Error( 'woocommerce_rest_invalid_product_attribute_slug_reserved_name', sprintf( __( 'Slug "%s" is not allowed because it is a reserved term. Change it, please.', 'classic-store'), $slug ), array( 'status' => 400 ) );
 		} elseif ( $new_data && taxonomy_exists( wc_attribute_taxonomy_name( $slug ) ) ) {
 			/* translators: %s: slug being validated */
-			return new WP_Error( 'woocommerce_rest_invalid_product_attribute_slug_already_exists', sprintf( __( 'Slug "%s" is already in use. Change it, please.', 'classic-commerce' ), $slug ), array( 'status' => 400 ) );
+			return new WP_Error( 'woocommerce_rest_invalid_product_attribute_slug_already_exists', sprintf( __( 'Slug "%s" is already in use. Change it, please.', 'classic-store'), $slug ), array( 'status' => 400 ) );
 		}
 
 		return true;

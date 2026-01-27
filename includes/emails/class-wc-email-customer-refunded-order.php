@@ -43,8 +43,8 @@ if ( ! class_exists( 'WC_Email_Customer_Refunded_Order', false ) ) :
 		public function __construct() {
 			$this->customer_email = true;
 			$this->id             = 'customer_refunded_order';
-			$this->title          = __( 'Refunded order', 'classic-commerce' );
-			$this->description    = __( 'Order refunded emails are sent to customers when their orders are refunded.', 'classic-commerce' );
+			$this->title          = __( 'Refunded order', 'classic-store');
+			$this->description    = __( 'Order refunded emails are sent to customers when their orders are refunded.', 'classic-store');
 			$this->template_html  = 'emails/customer-refunded-order.php';
 			$this->template_plain = 'emails/plain/customer-refunded-order.php';
 			$this->placeholders   = array(
@@ -69,9 +69,9 @@ if ( ! class_exists( 'WC_Email_Customer_Refunded_Order', false ) ) :
 		 */
 		public function get_default_subject( $partial = false ) {
 			if ( $partial ) {
-				return __( 'Your {site_title} order #{order_number} has been partially refunded', 'classic-commerce' );
+				return __( 'Your {site_title} order #{order_number} has been partially refunded', 'classic-store');
 			} else {
-				return __( 'Your {site_title} order #{order_number} has been refunded', 'classic-commerce' );
+				return __( 'Your {site_title} order #{order_number} has been refunded', 'classic-store');
 			}
 		}
 
@@ -84,9 +84,9 @@ if ( ! class_exists( 'WC_Email_Customer_Refunded_Order', false ) ) :
 		 */
 		public function get_default_heading( $partial = false ) {
 			if ( $partial ) {
-				return __( 'Partial Refund: Order {order_number}', 'classic-commerce' );
+				return __( 'Partial Refund: Order {order_number}', 'classic-store');
 			} else {
-				return __( 'Order Refunded: {order_number}', 'classic-commerce' );
+				return __( 'Order Refunded: {order_number}', 'classic-store');
 			}
 		}
 
@@ -227,7 +227,7 @@ if ( ! class_exists( 'WC_Email_Customer_Refunded_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content() {
-			return __( 'We hope to see you again soon.', 'classic-commerce' );
+			return __( 'We hope to see you again soon.', 'classic-store');
 		}
 
 		/**
@@ -235,16 +235,16 @@ if ( ! class_exists( 'WC_Email_Customer_Refunded_Order', false ) ) :
 		 */
 		public function init_form_fields() {
             /* translators: %s: list of placeholders */
-			$placeholder_text  = sprintf( __( 'Available placeholders: %s', 'classic-commerce' ), '<code>' . esc_html( implode( '</code>, <code>', array_keys( $this->placeholders ) ) ) . '</code>' );
+			$placeholder_text  = sprintf( __( 'Available placeholders: %s', 'classic-store'), '<code>' . esc_html( implode( '</code>, <code>', array_keys( $this->placeholders ) ) ) . '</code>' );
 			$this->form_fields = array(
 				'enabled'         => array(
-					'title'   => __( 'Enable/Disable', 'classic-commerce' ),
+					'title'   => __( 'Enable/Disable', 'classic-store'),
 					'type'    => 'checkbox',
-					'label'   => __( 'Enable this email notification', 'classic-commerce' ),
+					'label'   => __( 'Enable this email notification', 'classic-store'),
 					'default' => 'yes',
 				),
 				'subject_full'    => array(
-					'title'       => __( 'Full refund subject', 'classic-commerce' ),
+					'title'       => __( 'Full refund subject', 'classic-store'),
 					'type'        => 'text',
 					'desc_tip'    => true,
 					'description' => $placeholder_text,
@@ -252,7 +252,7 @@ if ( ! class_exists( 'WC_Email_Customer_Refunded_Order', false ) ) :
 					'default'     => '',
 				),
 				'subject_partial' => array(
-					'title'       => __( 'Partial refund subject', 'classic-commerce' ),
+					'title'       => __( 'Partial refund subject', 'classic-store'),
 					'type'        => 'text',
 					'desc_tip'    => true,
 					'description' => $placeholder_text,
@@ -260,7 +260,7 @@ if ( ! class_exists( 'WC_Email_Customer_Refunded_Order', false ) ) :
 					'default'     => '',
 				),
 				'heading_full'    => array(
-					'title'       => __( 'Full refund email heading', 'classic-commerce' ),
+					'title'       => __( 'Full refund email heading', 'classic-store'),
 					'type'        => 'text',
 					'desc_tip'    => true,
 					'description' => $placeholder_text,
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WC_Email_Customer_Refunded_Order', false ) ) :
 					'default'     => '',
 				),
 				'heading_partial' => array(
-					'title'       => __( 'Partial refund email heading', 'classic-commerce' ),
+					'title'       => __( 'Partial refund email heading', 'classic-store'),
 					'type'        => 'text',
 					'desc_tip'    => true,
 					'description' => $placeholder_text,
@@ -276,18 +276,18 @@ if ( ! class_exists( 'WC_Email_Customer_Refunded_Order', false ) ) :
 					'default'     => '',
 				),
                 'additional_content' => array(
-					'title'       => __( 'Additional content', 'classic-commerce' ),
-					'description' => __( 'Text to appear to appear below the main email content.', 'classic-commerce' ) . ' ' . $placeholder_text,
+					'title'       => __( 'Additional content', 'classic-store'),
+					'description' => __( 'Text to appear to appear below the main email content.', 'classic-store') . ' ' . $placeholder_text,
 					'css'         => 'width:400px; height: 75px;',
-					'placeholder' => __( 'N/A', 'classic-commerce' ),
+					'placeholder' => __( 'N/A', 'classic-store'),
 					'type'        => 'textarea',
 					'default'     => $this->get_default_additional_content(),
 					'desc_tip'    => true,
 				),
 				'email_type'      => array(
-					'title'       => __( 'Email type', 'classic-commerce' ),
+					'title'       => __( 'Email type', 'classic-store'),
 					'type'        => 'select',
-					'description' => __( 'Choose which format of email to send.', 'classic-commerce' ),
+					'description' => __( 'Choose which format of email to send.', 'classic-store'),
 					'default'     => 'html',
 					'class'       => 'email_type wc-enhanced-select',
 					'options'     => $this->get_email_type_options(),

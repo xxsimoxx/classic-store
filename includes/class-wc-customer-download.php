@@ -291,7 +291,7 @@ class WC_Customer_Download extends WC_Data implements ArrayAccess {
 
 		// Must have a permission_id to track download log.
 		if ( ! ( $this->get_id() > 0 ) ) {
-			throw new Exception( __( 'Invalid permission ID.', 'classic-commerce' ) );
+			throw new Exception( __( 'Invalid permission ID.', 'classic-store') );
 		}
 
 		// Increment download count, and decrement downloads remaining.
@@ -307,7 +307,7 @@ WHERE permission_id = %d",
 			$this->get_id()
 		);
         // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-		$wpdb->query( $query )
+		$wpdb->query( $query );
 
 		// Re-read this download from the data store to pull updated counts.
 		$this->data_store->read( $this );

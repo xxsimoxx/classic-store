@@ -59,8 +59,8 @@ if ( ! class_exists( 'WC_Email_Customer_Reset_Password', false ) ) :
 			$this->id             = 'customer_reset_password';
 			$this->customer_email = true;
 
-			$this->title       = __( 'Reset password', 'classic-commerce' );
-			$this->description = __( 'Customer "reset password" emails are sent when customers reset their passwords.', 'classic-commerce' );
+			$this->title       = __( 'Reset password', 'classic-store');
+			$this->description = __( 'Customer "reset password" emails are sent when customers reset their passwords.', 'classic-store');
 
 			$this->template_html  = 'emails/customer-reset-password.php';
 			$this->template_plain = 'emails/plain/customer-reset-password.php';
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WC_Email_Customer_Reset_Password', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( 'Password reset request for {site_title}', 'classic-commerce' );
+			return __( 'Password reset request for {site_title}', 'classic-store');
 		}
 
 		/**
@@ -89,7 +89,7 @@ if ( ! class_exists( 'WC_Email_Customer_Reset_Password', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Password reset request', 'classic-commerce' );
+			return __( 'Password reset request', 'classic-store');
 		}
 
 		/**
@@ -168,7 +168,7 @@ if ( ! class_exists( 'WC_Email_Customer_Reset_Password', false ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content() {
-			return __( 'Thanks for reading.', 'classic-commerce' );
+			return __( 'Thanks for reading.', 'classic-store');
 		}
 	}
 

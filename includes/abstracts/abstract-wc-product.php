@@ -782,7 +782,7 @@ class WC_Product extends WC_Abstract_Legacy_Product {
 		$visibility = in_array( $visibility, $options, true ) ? $visibility : strtolower( $visibility );
 
 		if ( ! in_array( $visibility, $options, true ) ) {
-			$this->error( 'product_invalid_catalog_visibility', __( 'Invalid catalog visibility option.', 'classic-commerce' ) );
+			$this->error( 'product_invalid_catalog_visibility', __( 'Invalid catalog visibility option.', 'classic-store') );
 		}
 		$this->set_prop( 'catalog_visibility', $visibility );
 	}
@@ -819,7 +819,7 @@ class WC_Product extends WC_Abstract_Legacy_Product {
 		if ( $this->get_object_read() && ! empty( $sku ) && ! wc_product_has_unique_sku( $this->get_id(), $sku ) ) {
 			$sku_found = wc_get_product_id_by_sku( $sku );
 
-			$this->error( 'product_invalid_sku', __( 'Invalid or duplicated SKU.', 'classic-commerce' ), 400, array( 'resource_id' => $sku_found ) );
+			$this->error( 'product_invalid_sku', __( 'Invalid or duplicated SKU.', 'classic-store'), 400, array( 'resource_id' => $sku_found ) );
 		}
 		$this->set_prop( 'sku', $sku );
 	}
@@ -905,7 +905,7 @@ class WC_Product extends WC_Abstract_Legacy_Product {
         $status = strtolower( $status );
 
 		if ( ! in_array( $status, $options, true ) ) {
-			$this->error( 'product_invalid_tax_status', __( 'Invalid product tax status.', 'classic-commerce' ) );
+			$this->error( 'product_invalid_tax_status', __( 'Invalid product tax status.', 'classic-store') );
 		}
 
 		$this->set_prop( 'tax_status', $status );
@@ -1230,7 +1230,7 @@ class WC_Product extends WC_Abstract_Legacy_Product {
 			if ( ! $download_object->is_allowed_filetype() ) {
 				if ( $this->get_object_read() ) {
 					/* translators: %1$s: Downloadable file */
-					$errors[] = sprintf( __( 'The downloadable file %1$s cannot be used as it does not have an allowed file type. Allowed types include: %2$s', 'classic-commerce' ), '<code>' . basename( $download_object->get_file() ) . '</code>', '<code>' . implode( ', ', array_keys( $download_object->get_allowed_mime_types() ) ) . '</code>' );
+					$errors[] = sprintf( __( 'The downloadable file %1$s cannot be used as it does not have an allowed file type. Allowed types include: %2$s', 'classic-store'), '<code>' . basename( $download_object->get_file() ) . '</code>', '<code>' . implode( ', ', array_keys( $download_object->get_allowed_mime_types() ) ) . '</code>' );
 				}
 				continue;
 			}
@@ -1239,7 +1239,7 @@ class WC_Product extends WC_Abstract_Legacy_Product {
 			if ( ! $download_object->file_exists() ) {
 				if ( $this->get_object_read() ) {
 					/* translators: %s: Downloadable file */
-					$errors[] = sprintf( __( 'The downloadable file %s cannot be used as it does not exist on the server.', 'classic-commerce' ), '<code>' . $download_object->get_file() . '</code>' );
+					$errors[] = sprintf( __( 'The downloadable file %s cannot be used as it does not exist on the server.', 'classic-store'), '<code>' . $download_object->get_file() . '</code>' );
 				}
 				continue;
 			}
@@ -1878,7 +1878,7 @@ class WC_Product extends WC_Abstract_Legacy_Product {
 	 * @return string
 	 */
 	public function single_add_to_cart_text() {
-		return apply_filters( 'woocommerce_product_single_add_to_cart_text', __( 'Add to cart', 'classic-commerce' ), $this );
+		return apply_filters( 'woocommerce_product_single_add_to_cart_text', __( 'Add to cart', 'classic-store'), $this );
 	}
 
     /**
@@ -1904,7 +1904,7 @@ class WC_Product extends WC_Abstract_Legacy_Product {
 	 * @return string
 	 */
 	public function add_to_cart_text() {
-		return apply_filters( 'woocommerce_product_add_to_cart_text', __( 'Read more', 'classic-commerce' ), $this );
+		return apply_filters( 'woocommerce_product_add_to_cart_text', __( 'Read more', 'classic-store'), $this );
 	}
 
 	/**
@@ -1915,7 +1915,7 @@ class WC_Product extends WC_Abstract_Legacy_Product {
 	 */
 	public function add_to_cart_description() {
 		/* translators: %s: Product title */
-		return apply_filters( 'woocommerce_product_add_to_cart_description', sprintf( __( 'Read more about &ldquo;%s&rdquo;', 'classic-commerce' ), $this->get_name() ), $this );
+		return apply_filters( 'woocommerce_product_add_to_cart_description', sprintf( __( 'Read more about &ldquo;%s&rdquo;', 'classic-store'), $this->get_name() ), $this );
 	}
 
 	/**
@@ -2080,11 +2080,11 @@ class WC_Product extends WC_Abstract_Legacy_Product {
 	 */
 	protected function get_availability_text() {
 		if ( ! $this->is_in_stock() ) {
-			$availability = __( 'Out of stock', 'classic-commerce' );
+			$availability = __( 'Out of stock', 'classic-store');
 		} elseif ( $this->managing_stock() && $this->is_on_backorder( 1 ) ) {
-			$availability = $this->backorders_require_notification() ? __( 'Available on backorder', 'classic-commerce' ) : '';
+			$availability = $this->backorders_require_notification() ? __( 'Available on backorder', 'classic-store') : '';
             } elseif ( ! $this->managing_stock() && $this->is_on_backorder( 1 ) ) {
-			$availability = __( 'Available on backorder', 'classic-commerce' );
+			$availability = __( 'Available on backorder', 'classic-store');
 		} elseif ( $this->managing_stock() ) {
 			$availability = wc_format_stock_for_display( $this );
 		} else {

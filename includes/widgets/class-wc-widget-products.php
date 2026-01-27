@@ -18,14 +18,14 @@ class WC_Widget_Products extends WC_Widget {
 	 */
 	public function __construct() {
 		$this->widget_cssclass    = 'woocommerce widget_products';
-		$this->widget_description = __( "A list of your store's products.", 'classic-commerce' );
+		$this->widget_description = __( "A list of your store's products.", 'classic-store');
 		$this->widget_id          = 'woocommerce_products';
-		$this->widget_name        = __( 'Products', 'classic-commerce' );
+		$this->widget_name        = __( 'Products', 'classic-store');
 		$this->settings           = array(
 			'title'       => array(
 				'type'  => 'text',
-				'std'   => __( 'Products', 'classic-commerce' ),
-				'label' => __( 'Title', 'classic-commerce' ),
+				'std'   => __( 'Products', 'classic-store'),
+				'label' => __( 'Title', 'classic-store'),
 			),
 			'number'      => array(
 				'type'  => 'number',
@@ -33,48 +33,48 @@ class WC_Widget_Products extends WC_Widget {
 				'min'   => 1,
 				'max'   => '',
 				'std'   => 5,
-				'label' => __( 'Number of products to show', 'classic-commerce' ),
+				'label' => __( 'Number of products to show', 'classic-store'),
 			),
 			'show'        => array(
 				'type'    => 'select',
 				'std'     => '',
-				'label'   => __( 'Show', 'classic-commerce' ),
+				'label'   => __( 'Show', 'classic-store'),
 				'options' => array(
-					''         => __( 'All products', 'classic-commerce' ),
-					'featured' => __( 'Featured products', 'classic-commerce' ),
-					'onsale'   => __( 'On-sale products', 'classic-commerce' ),
+					''         => __( 'All products', 'classic-store'),
+					'featured' => __( 'Featured products', 'classic-store'),
+					'onsale'   => __( 'On-sale products', 'classic-store'),
 				),
 			),
 			'orderby'     => array(
 				'type'    => 'select',
 				'std'     => 'date',
-				'label'   => __( 'Order by', 'classic-commerce' ),
+				'label'   => __( 'Order by', 'classic-store'),
 				'options' => array(
-                    'menu_order' => __( 'Menu order', 'classic-commerce' ),
-					'date'       => __( 'Date', 'classic-commerce' ),
-					'price'      => __( 'Price', 'classic-commerce' ),
-					'rand'       => __( 'Random', 'classic-commerce' ),
-					'sales'      => __( 'Sales', 'classic-commerce' ),
+                    'menu_order' => __( 'Menu order', 'classic-store'),
+					'date'       => __( 'Date', 'classic-store'),
+					'price'      => __( 'Price', 'classic-store'),
+					'rand'       => __( 'Random', 'classic-store'),
+					'sales'      => __( 'Sales', 'classic-store'),
 				),
 			),
 			'order'       => array(
 				'type'    => 'select',
 				'std'     => 'desc',
-				'label'   => _x( 'Order', 'Sorting order', 'classic-commerce' ),
+				'label'   => _x( 'Order', 'Sorting order', 'classic-store'),
 				'options' => array(
-					'asc'  => __( 'ASC', 'classic-commerce' ),
-					'desc' => __( 'DESC', 'classic-commerce' ),
+					'asc'  => __( 'ASC', 'classic-store'),
+					'desc' => __( 'DESC', 'classic-store'),
 				),
 			),
 			'hide_free'   => array(
 				'type'  => 'checkbox',
 				'std'   => 0,
-				'label' => __( 'Hide free products', 'classic-commerce' ),
+				'label' => __( 'Hide free products', 'classic-store'),
 			),
 			'show_hidden' => array(
 				'type'  => 'checkbox',
 				'std'   => 0,
-				'label' => __( 'Show hidden products', 'classic-commerce' ),
+				'label' => __( 'Show hidden products', 'classic-store'),
 			),
 		);
 

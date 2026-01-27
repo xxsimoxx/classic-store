@@ -13,16 +13,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 <input type="hidden" name="webhook_id" value="<?php echo esc_attr( $webhook->get_id() ); ?>" />
 
 <div id="webhook-options" class="settings-panel">
-	<h2><?php esc_html_e( 'Webhook data', 'classic-commerce' ); ?></h2>
+	<h2><?php esc_html_e( 'Webhook data', 'classic-store'); ?></h2>
 	<table class="form-table">
 		<tbody>
 			<tr valign="top">
 				<th scope="row" class="titledesc">
 					<label for="webhook_name">
-						<?php esc_html_e( 'Name', 'classic-commerce' ); ?>
+						<?php esc_html_e( 'Name', 'classic-store'); ?>
 						<?php
 						/* translators: %s: date */
-						echo wc_help_tip( sprintf( __( 'Friendly name for identifying this webhook, defaults to Webhook created on %s.', 'classic-commerce' ), (new DateTime('now'))->format( _x( 'M d, Y @ h:i A', 'Webhook created on date parsed by DateTime::format', 'classic-commerce' ) ) ) ); // @codingStandardsIgnoreLine
+						echo wc_help_tip( sprintf( __( 'Friendly name for identifying this webhook, defaults to Webhook created on %s.', 'classic-store'), (new DateTime('now'))->format( _x( 'M d, Y @ h:i A', 'Webhook created on date parsed by DateTime::format', 'classic-store') ) ) ); // @codingStandardsIgnoreLine
 						?>
 					</label>
 				</th>
@@ -33,8 +33,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<tr valign="top">
 				<th scope="row" class="titledesc">
 					<label for="webhook_status">
-						<?php esc_html_e( 'Status', 'classic-commerce' ); ?>
-						<?php echo wc_help_tip( __( 'The options are &quot;Active&quot; (delivers payload), &quot;Paused&quot; (does not deliver), or &quot;Disabled&quot; (does not deliver due delivery failures).', 'classic-commerce' ) ); ?>
+						<?php esc_html_e( 'Status', 'classic-store'); ?>
+						<?php echo wc_help_tip( __( 'The options are &quot;Active&quot; (delivers payload), &quot;Paused&quot; (does not deliver), or &quot;Disabled&quot; (does not deliver due delivery failures).', 'classic-store' ) ); ?>
 					</label>
 				</th>
 				<td class="forminp">
@@ -53,8 +53,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<tr valign="top">
 				<th scope="row" class="titledesc">
 					<label for="webhook_topic">
-						<?php esc_html_e( 'Topic', 'classic-commerce' ); ?>
-						<?php echo wc_help_tip( __( 'Select when the webhook will fire.', 'classic-commerce' ) ); ?>
+						<?php esc_html_e( 'Topic', 'classic-store'); ?>
+						<?php echo wc_help_tip( __( 'Select when the webhook will fire.', 'classic-store') ); ?>
 					</label>
 				</th>
 				<td class="forminp">
@@ -65,23 +65,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 							$topics = apply_filters(
 								'woocommerce_webhook_topics',
 								array(
-									''                 => __( 'Select an option&hellip;', 'classic-commerce' ),
-									'coupon.created'   => __( 'Coupon created', 'classic-commerce' ),
-									'coupon.updated'   => __( 'Coupon updated', 'classic-commerce' ),
-									'coupon.deleted'   => __( 'Coupon deleted', 'classic-commerce' ),
-									'coupon.restored'  => __( 'Coupon restored', 'classic-commerce' ),
-									'customer.created' => __( 'Customer created', 'classic-commerce' ),
-									'customer.updated' => __( 'Customer updated', 'classic-commerce' ),
-									'customer.deleted' => __( 'Customer deleted', 'classic-commerce' ),
-									'order.created'    => __( 'Order created', 'classic-commerce' ),
-									'order.updated'    => __( 'Order updated', 'classic-commerce' ),
-									'order.deleted'    => __( 'Order deleted', 'classic-commerce' ),
-									'order.restored'   => __( 'Order restored', 'classic-commerce' ),
-									'product.created'  => __( 'Product created', 'classic-commerce' ),
-									'product.updated'  => __( 'Product updated', 'classic-commerce' ),
-									'product.deleted'  => __( 'Product deleted', 'classic-commerce' ),
-									'product.restored' => __( 'Product restored', 'classic-commerce' ),
-									'action'           => __( 'Action', 'classic-commerce' ),
+									''                 => __( 'Select an option&hellip;', 'classic-store'),
+									'coupon.created'   => __( 'Coupon created', 'classic-store'),
+									'coupon.updated'   => __( 'Coupon updated', 'classic-store'),
+									'coupon.deleted'   => __( 'Coupon deleted', 'classic-store'),
+									'coupon.restored'  => __( 'Coupon restored', 'classic-store'),
+									'customer.created' => __( 'Customer created', 'classic-store'),
+									'customer.updated' => __( 'Customer updated', 'classic-store'),
+									'customer.deleted' => __( 'Customer deleted', 'classic-store'),
+									'order.created'    => __( 'Order created', 'classic-store'),
+									'order.updated'    => __( 'Order updated', 'classic-store'),
+									'order.deleted'    => __( 'Order deleted', 'classic-store'),
+									'order.restored'   => __( 'Order restored', 'classic-store'),
+									'product.created'  => __( 'Product created', 'classic-store'),
+									'product.updated'  => __( 'Product updated', 'classic-store'),
+									'product.deleted'  => __( 'Product deleted', 'classic-store'),
+									'product.restored' => __( 'Product restored', 'classic-store'),
+									'action'           => __( 'Action', 'classic-store'),
 								)
 							);
 
@@ -98,8 +98,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<tr valign="top" id="webhook-action-event-wrap">
 				<th scope="row" class="titledesc">
 					<label for="webhook_action_event">
-						<?php esc_html_e( 'Action event', 'classic-commerce' ); ?>
-						<?php echo wc_help_tip( __( 'Enter the action that will trigger this webhook.', 'classic-commerce' ) ); ?>
+						<?php esc_html_e( 'Action event', 'classic-store'); ?>
+						<?php echo wc_help_tip( __( 'Enter the action that will trigger this webhook.', 'classic-store') ); ?>
 					</label>
 				</th>
 				<td class="forminp">
@@ -109,8 +109,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<tr valign="top">
 				<th scope="row" class="titledesc">
 					<label for="webhook_delivery_url">
-						<?php esc_html_e( 'Delivery URL', 'classic-commerce' ); ?>
-						<?php echo wc_help_tip( __( 'URL where the webhook payload is delivered.', 'classic-commerce' ) ); ?>
+						<?php esc_html_e( 'Delivery URL', 'classic-store'); ?>
+						<?php echo wc_help_tip( __( 'URL where the webhook payload is delivered.', 'classic-store') ); ?>
 					</label>
 				</th>
 				<td class="forminp">
@@ -120,8 +120,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<tr valign="top">
 				<th scope="row" class="titledesc">
 					<label for="webhook_secret">
-						<?php esc_html_e( 'Secret', 'classic-commerce' ); ?>
-						<?php echo wc_help_tip( __( 'The secret key is used to generate a hash of the delivered webhook and provided in the request headers.', 'classic-commerce' ) ); ?>
+						<?php esc_html_e( 'Secret', 'classic-store'); ?>
+						<?php echo wc_help_tip( __( 'The secret key is used to generate a hash of the delivered webhook and provided in the request headers.', 'classic-store') ); ?>
 					</label>
 				</th>
 				<td class="forminp">
@@ -131,8 +131,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<tr valign="top">
 				<th scope="row" class="titledesc">
 					<label for="webhook_api_version">
-						<?php esc_html_e( 'API Version', 'classic-commerce' ); ?>
-						<?php echo wc_help_tip( __( 'REST API version used in the webhook deliveries.', 'classic-commerce' ) ); ?>
+						<?php esc_html_e( 'API Version', 'classic-store'); ?>
+						<?php echo wc_help_tip( __( 'REST API version used in the webhook deliveries.', 'classic-store') ); ?>
 					</label>
 				</th>
 				<td class="forminp">
@@ -141,11 +141,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<option value="<?php echo esc_attr( $version ); ?>" <?php selected( $version, $webhook->get_api_version(), true ); ?>>
 								<?php
 									/* translators: %d: rest api version number */
-									echo esc_html( sprintf( __( 'WP REST API Integration v%d', 'classic-commerce' ), str_replace( 'wp_api_v', '', $version ) ) );
+									echo esc_html( sprintf( __( 'WP REST API Integration v%d', 'classic-store'), str_replace( 'wp_api_v', '', $version ) ) );
 								?>
 							</option>
 						<?php endforeach; ?>
-						<option value="legacy_v3" <?php selected( 'legacy_v3', $webhook->get_api_version(), true ); ?>><?php esc_html_e( 'Legacy API v3 (deprecated)', 'classic-commerce' ); ?></option>
+						<option value="legacy_v3" <?php selected( 'legacy_v3', $webhook->get_api_version(), true ); ?>><?php esc_html_e( 'Legacy API v3 (deprecated)', 'classic-store' ); ?></option>
 					</select>
 				</td>
 			</tr>
@@ -163,34 +163,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 </div>
 
 <div id="webhook-actions" class="settings-panel">
-	<h2><?php esc_html_e( 'Webhook actions', 'classic-commerce' ); ?></h2>
+	<h2><?php esc_html_e( 'Webhook actions', 'classic-store'); ?></h2>
 	<table class="form-table">
 		<tbody>
 			<?php if ( $webhook->get_date_created() && '0000-00-00 00:00:00' !== $webhook->get_date_created()->date( 'Y-m-d H:i:s' ) ) : ?>
 				<?php if ( is_null( $webhook->get_date_modified() ) ) : ?>
 					<tr valign="top">
 						<th scope="row" class="titledesc">
-							<?php esc_html_e( 'Created at', 'classic-commerce' ); ?>
+							<?php esc_html_e( 'Created at', 'classic-store'); ?>
 						</th>
 						<td class="forminp">
-							<?php echo esc_html( date_i18n( __( 'M j, Y @ G:i', 'classic-commerce' ), strtotime( $webhook->get_date_created()->date( 'Y-m-d H:i:s' ) ) ) ); ?>
+							<?php echo esc_html( date_i18n( __( 'M j, Y @ G:i', 'classic-store'), strtotime( $webhook->get_date_created()->date( 'Y-m-d H:i:s' ) ) ) ); ?>
 						</td>
 					</tr>
 				<?php else : ?>
 				<tr valign="top">
 						<th scope="row" class="titledesc">
-							<?php esc_html_e( 'Created at', 'classic-commerce' ); ?>
+							<?php esc_html_e( 'Created at', 'classic-store'); ?>
 						</th>
 						<td class="forminp">
-							<?php echo esc_html( date_i18n( __( 'M j, Y @ G:i', 'classic-commerce' ), strtotime( $webhook->get_date_created()->date( 'Y-m-d H:i:s' ) ) ) ); ?>
+							<?php echo esc_html( date_i18n( __( 'M j, Y @ G:i', 'classic-store'), strtotime( $webhook->get_date_created()->date( 'Y-m-d H:i:s' ) ) ) ); ?>
 						</td>
 					</tr>
 				<tr valign="top">
 						<th scope="row" class="titledesc">
-							<?php esc_html_e( 'Updated at', 'classic-commerce' ); ?>
+							<?php esc_html_e( 'Updated at', 'classic-store'); ?>
 						</th>
 						<td class="forminp">
-							<?php echo esc_html( date_i18n( __( 'M j, Y @ G:i', 'classic-commerce' ), strtotime( $webhook->get_date_modified()->date( 'Y-m-d H:i:s' ) ) ) ); ?>
+							<?php echo esc_html( date_i18n( __( 'M j, Y @ G:i', 'classic-store'), strtotime( $webhook->get_date_modified()->date( 'Y-m-d H:i:s' ) ) ) ); ?>
 						</td>
 					</tr>
 				<?php endif; ?>
@@ -198,7 +198,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<tr valign="top">
 				<td colspan="2" scope="row" style="padding-left: 0;">
 					<p class="submit">
-						<button type="submit" class="button button-primary button-large" name="save" id="publish" accesskey="p"><?php esc_html_e( 'Save webhook', 'classic-commerce' ); ?></button>
+						<button type="submit" class="button button-primary button-large" name="save" id="publish" accesskey="p"><?php esc_html_e( 'Save webhook', 'classic-store'); ?></button>
 						<?php
 						if ( $webhook->get_id() ) :
 							$delete_url = wp_nonce_url(
@@ -211,7 +211,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								'delete-webhook'
 							);
 							?>
-							<a style="color: #a00; text-decoration: none; margin-left: 10px;" href="<?php echo esc_url( $delete_url ); ?>"><?php esc_html_e( 'Delete permanently', 'classic-commerce' ); ?></a>
+							<a style="color: #a00; text-decoration: none; margin-left: 10px;" href="<?php echo esc_url( $delete_url ); ?>"><?php esc_html_e( 'Delete permanently', 'classic-store'); ?></a>
 						<?php endif; ?>
 					</p>
 				</td>

@@ -6,7 +6,7 @@
  * Version: 2.0.6
  * Author: ClassicPress Research Team
  * Author URI: https://github.com/ClassicPress-plugins/classic-commerce
- * Text Domain: classic-commerce
+ * Text Domain: classic-store
  * Domain Path: /i18n/languages/
  *
  * @package WooCommerce
@@ -30,10 +30,10 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 function cc_wc_already_active_notice() {
 	echo '<div class="notice error is-dismissible">';
 	echo '<p><strong>';
-	echo esc_html__( 'You must deactivate WooCommerce before activating Classic Commerce.', 'classic-commerce' );
+	echo esc_html__( 'You must deactivate WooCommerce before activating Classic Commerce.', 'classic-store');
 	echo '</strong></p>';
 	echo '<p>';
-	echo esc_html__( 'Classic Commerce has not been activated.', 'classic-commerce' );
+	echo esc_html__( 'Classic Commerce has not been activated.', 'classic-store');
 	echo '</p>';
 	echo '</div>';
 }
@@ -49,10 +49,10 @@ function cc_wc_already_active_notice() {
 function cc_wc_activate_attempted_notice() {
 	echo '<div class="notice error is-dismissible">';
 	echo '<p><strong>';
-	echo esc_html__( 'You must deactivate Classic Commerce before activating WooCommerce.', 'classic-commerce' );
+	echo esc_html__( 'You must deactivate Classic Commerce before activating WooCommerce.', 'classic-store');
 	echo '</strong></p>';
 	echo '<p>';
-	echo esc_html__( 'WooCommerce has not been activated.', 'classic-commerce' );
+	echo esc_html__( 'WooCommerce has not been activated.', 'classic-store');
 	echo '</p>';
 	echo '</div>';
 }

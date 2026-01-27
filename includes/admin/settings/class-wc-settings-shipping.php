@@ -22,7 +22,7 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'shipping';
-		$this->label = __( 'Shipping', 'classic-commerce' );
+		$this->label = __( 'Shipping', 'classic-store');
 
 		parent::__construct();
 	}
@@ -44,9 +44,9 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 	 */
 	protected function get_own_sections() {
 		$sections = array(
-			''        => __( 'Shipping zones', 'classic-commerce' ),
-			'options' => __( 'Shipping options', 'classic-commerce' ),
-			'classes' => __( 'Shipping classes', 'classic-commerce' ),
+			''        => __( 'Shipping zones', 'classic-store'),
+			'options' => __( 'Shipping options', 'classic-store'),
+			'classes' => __( 'Shipping classes', 'classic-store'),
 		);
 
 		if ( ! $this->wc_is_installing() ) {
@@ -106,14 +106,14 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 		$settings =
 			array(
 				array(
-					'title' => __( 'Shipping options', 'classic-commerce' ),
+					'title' => __( 'Shipping options', 'classic-store'),
 					'type'  => 'title',
 					'id'    => 'shipping_options',
 				),
 
 				array(
-					'title'         => __( 'Calculations', 'classic-commerce' ),
-					'desc'          => __( 'Enable the shipping calculator on the cart page', 'classic-commerce' ),
+					'title'         => __( 'Calculations', 'classic-store'),
+					'desc'          => __( 'Enable the shipping calculator on the cart page', 'classic-store'),
 					'id'            => 'woocommerce_enable_shipping_calc',
 					'default'       => 'yes',
 					'type'          => 'checkbox',
@@ -122,7 +122,7 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 				),
 
 				array(
-					'desc'          => __( 'Hide shipping costs until an address is entered', 'classic-commerce' ),
+					'desc'          => __( 'Hide shipping costs until an address is entered', 'classic-store'),
 					'id'            => 'woocommerce_shipping_cost_requires_address',
 					'default'       => 'no',
 					'type'          => 'checkbox',
@@ -130,15 +130,15 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 				),
 
 				array(
-					'title'           => __( 'Shipping destination', 'classic-commerce' ),
-					'desc'            => __( 'This controls which shipping address is used by default.', 'classic-commerce' ),
+					'title'           => __( 'Shipping destination', 'classic-store'),
+					'desc'            => __( 'This controls which shipping address is used by default.', 'classic-store'),
 					'id'              => 'woocommerce_ship_to_destination',
 					'default'         => 'billing',
 					'type'            => 'radio',
 					'options'         => array(
-						'shipping'     => __( 'Default to customer shipping address', 'classic-commerce' ),
-						'billing'      => __( 'Default to customer billing address', 'classic-commerce' ),
-						'billing_only' => __( 'Force shipping to the customer billing address', 'classic-commerce' ),
+						'shipping'     => __( 'Default to customer shipping address', 'classic-store'),
+						'billing'      => __( 'Default to customer billing address', 'classic-store'),
+						'billing_only' => __( 'Force shipping to the customer billing address', 'classic-store'),
 					),
 					'autoload'        => false,
 					'desc_tip'        => true,
@@ -146,9 +146,9 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 				),
 
 				array(
-					'title'    => __( 'Debug mode', 'classic-commerce' ),
-					'desc'     => __( 'Enable debug mode', 'classic-commerce' ),
-					'desc_tip' => __( 'Enable shipping debug mode to show matching shipping zones and to bypass shipping rate cache.', 'classic-commerce' ),
+					'title'    => __( 'Debug mode', 'classic-store'),
+					'desc'     => __( 'Enable debug mode', 'classic-store'),
+					'desc_tip' => __( 'Enable shipping debug mode to show matching shipping zones and to bypass shipping rate cache.', 'classic-store'),
 					'id'       => 'woocommerce_shipping_debug_mode',
 					'default'  => 'no',
 					'type'     => 'checkbox',
@@ -258,7 +258,7 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 		}
 
 		if ( ! $zone ) {
-			wp_die( esc_html__( 'Zone does not exist!', 'classic-commerce' ) );
+			wp_die( esc_html__( 'Zone does not exist!', 'classic-store') );
 		}
 
 		$allowed_countries   = WC()->countries->get_shipping_countries();
@@ -285,13 +285,13 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 				'zone_id'                 => $zone->get_id(),
 				'wc_shipping_zones_nonce' => wp_create_nonce( 'wc_shipping_zones_nonce' ),
 				'strings'                 => array(
-					'unload_confirmation_msg' => __( 'Your changed data will be lost if you leave this page without saving.', 'classic-commerce' ),
-					'save_changes_prompt'     => __( 'Do you wish to save your changes first? Your changed data will be discarded if you choose to cancel.', 'classic-commerce' ),
-					'save_failed'             => __( 'Your changes were not saved. Please retry.', 'classic-commerce' ),
-					'add_method_failed'       => __( 'Shipping method could not be added. Please retry.', 'classic-commerce' ),
-					'yes'                     => __( 'Yes', 'classic-commerce' ),
-					'no'                      => __( 'No', 'classic-commerce' ),
-					'default_zone_name'       => __( 'Zone', 'classic-commerce' ),
+					'unload_confirmation_msg' => __( 'Your changed data will be lost if you leave this page without saving.', 'classic-store'),
+					'save_changes_prompt'     => __( 'Do you wish to save your changes first? Your changed data will be discarded if you choose to cancel.', 'classic-store'),
+					'save_failed'             => __( 'Your changes were not saved. Please retry.', 'classic-store'),
+					'add_method_failed'       => __( 'Shipping method could not be added. Please retry.', 'classic-store'),
+					'yes'                     => __( 'Yes', 'classic-store'),
+					'no'                      => __( 'No', 'classic-store'),
+					'default_zone_name'       => __( 'Zone', 'classic-store'),
 				),
 			)
 		);
@@ -318,10 +318,10 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 				),
 				'wc_shipping_zones_nonce' => wp_create_nonce( 'wc_shipping_zones_nonce' ),
 				'strings'                 => array(
-					'unload_confirmation_msg'     => __( 'Your changed data will be lost if you leave this page without saving.', 'classic-commerce' ),
-					'delete_confirmation_msg'     => __( 'Are you sure you want to delete this zone? This action cannot be undone.', 'classic-commerce' ),
-					'save_failed'                 => __( 'Your changes were not saved. Please retry.', 'classic-commerce' ),
-					'no_shipping_methods_offered' => __( 'No shipping methods offered to this zone.', 'classic-commerce' ),
+					'unload_confirmation_msg'     => __( 'Your changed data will be lost if you leave this page without saving.', 'classic-store'),
+					'delete_confirmation_msg'     => __( 'Are you sure you want to delete this zone? This action cannot be undone.', 'classic-store'),
+					'save_failed'                 => __( 'Your changes were not saved. Please retry.', 'classic-store'),
+					'no_shipping_methods_offered' => __( 'No shipping methods offered to this zone.', 'classic-store'),
 				),
 			)
 		);
@@ -340,20 +340,20 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 		$shipping_method = WC_Shipping_Zones::get_shipping_method( $instance_id );
 
 		if ( ! $shipping_method ) {
-			wp_die( esc_html__( 'Invalid shipping method!', 'classic-commerce' ) );
+			wp_die( esc_html__( 'Invalid shipping method!', 'classic-store') );
 		}
 		if ( ! $zone ) {
-			wp_die( esc_html__( 'Zone does not exist!', 'classic-commerce' ) );
+			wp_die( esc_html__( 'Zone does not exist!', 'classic-store') );
 		}
 		if ( ! $shipping_method->has_settings() ) {
-			wp_die( esc_html__( 'This shipping method does not have any settings to configure.', 'classic-commerce' ) );
+			wp_die( esc_html__( 'This shipping method does not have any settings to configure.', 'classic-store') );
 		}
 
 		if ( ! empty( $_POST['save'] ) ) {
 
 			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			if ( empty( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( wp_unslash( $_REQUEST['_wpnonce'] ), 'woocommerce-settings') ) {
-				echo '<div class="updated error"><p>' . esc_html__( 'Edit failed. Please try again.', 'classic-commerce' ) . '</p></div>';
+				echo '<div class="updated error"><p>' . esc_html__( 'Edit failed. Please try again.', 'classic-store') . '</p></div>';
 			}
 
 			$shipping_method->process_admin_options();
@@ -380,8 +380,8 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 				),
 				'wc_shipping_classes_nonce' => wp_create_nonce( 'wc_shipping_classes_nonce' ),
 				'strings'                   => array(
-					'unload_confirmation_msg' => __( 'Your changed data will be lost if you leave this page without saving.', 'classic-commerce' ),
-					'save_failed'             => __( 'Your changes were not saved. Please retry.', 'classic-commerce' ),
+					'unload_confirmation_msg' => __( 'Your changed data will be lost if you leave this page without saving.', 'classic-store'),
+					'save_failed'             => __( 'Your changes were not saved. Please retry.', 'classic-store'),
 				),
 			)
 		);
@@ -391,10 +391,10 @@ class WC_Settings_Shipping extends WC_Settings_Page {
 		$shipping_class_columns = apply_filters(
 			'woocommerce_shipping_classes_columns',
 			array(
-				'wc-shipping-class-name'        => __( 'Shipping class', 'classic-commerce' ),
-				'wc-shipping-class-slug'        => __( 'Slug', 'classic-commerce' ),
-				'wc-shipping-class-description' => __( 'Description', 'classic-commerce' ),
-				'wc-shipping-class-count'       => __( 'Product count', 'classic-commerce' ),
+				'wc-shipping-class-name'        => __( 'Shipping class', 'classic-store'),
+				'wc-shipping-class-slug'        => __( 'Slug', 'classic-store'),
+				'wc-shipping-class-description' => __( 'Description', 'classic-store'),
+				'wc-shipping-class-count'       => __( 'Product count', 'classic-store'),
 			)
 		);
 

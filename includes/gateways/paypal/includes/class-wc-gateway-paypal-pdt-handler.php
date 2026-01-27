@@ -142,13 +142,13 @@ class WC_Gateway_Paypal_PDT_Handler extends WC_Gateway_Paypal_Response {
 
 			if ( $wc_order->get_id() !== $order->get_id() ) {
 				/* translators: 1: order ID, 2: order ID. */
-				WC_Gateway_Paypal::log( sprintf( __( 'Received PDT notification for order %1$d on endpoint for order %2$d.', 'classic-commerce' ), $order->get_id(), $wc_order_id ), 'error' );
+				WC_Gateway_Paypal::log( sprintf( __( 'Received PDT notification for order %1$d on endpoint for order %2$d.', 'classic-store'), $order->get_id(), $wc_order_id ), 'error' );
 				return;
 			}
 
 			if ( 0 !== strcasecmp( trim( $transaction_result['receiver_email'] ), trim( $this->receiver_email ) ) ) {
 				/* translators: 1: email address, 2: order ID . */
-				WC_Gateway_Paypal::log( sprintf( __( 'Received PDT notification for another account: %1$s. Order ID: %2$d.', 'classic-commerce' ), $transaction_result['receiver_email'], $order->get_id() ), 'error' );
+				WC_Gateway_Paypal::log( sprintf( __( 'Received PDT notification for another account: %1$s. Order ID: %2$d.', 'classic-store'), $transaction_result['receiver_email'], $order->get_id() ), 'error' );
 				return;
 			}
 
@@ -162,7 +162,7 @@ class WC_Gateway_Paypal_PDT_Handler extends WC_Gateway_Paypal_Response {
 				if ( number_format( $order->get_total(), 2, '.', '' ) !== number_format( $amount, 2, '.', '' ) ) {
 					WC_Gateway_Paypal::log( 'Payment error: Amounts do not match (amt ' . $amount . ')', 'error' );
 					/* translators: 1: Payment amount */
-					$this->payment_on_hold( $order, sprintf( __( 'Validation error: PayPal amounts do not match (amt %s).', 'classic-commerce' ), $amount ) );
+					$this->payment_on_hold( $order, sprintf( __( 'Validation error: PayPal amounts do not match (amt %s).', 'classic-store' ), $amount ) );
 				} else {
 					// Log paypal transaction fee and payment type.
 					if ( ! empty( $transaction_result['mc_fee'] ) ) {
@@ -172,14 +172,14 @@ class WC_Gateway_Paypal_PDT_Handler extends WC_Gateway_Paypal_Response {
 						$order->add_meta_data( 'Payment type', wc_clean( $transaction_result['payment_type'] ) );
 					}
 
-					$this->payment_complete( $order, $transaction, __( 'PDT payment completed', 'classic-commerce' ) );
+					$this->payment_complete( $order, $transaction, __( 'PDT payment completed', 'classic-store') );
 				}
 			} else {
 				if ( 'authorization' === $transaction_result['pending_reason'] ) {
-					$this->payment_on_hold( $order, __( 'Payment authorized. Change payment status to processing or complete to capture funds.', 'classic-commerce' ) );
+					$this->payment_on_hold( $order, __( 'Payment authorized. Change payment status to processing or complete to capture funds.', 'classic-store') );
 				} else {
 					/* translators: 1: Pending reason */
-					$this->payment_on_hold( $order, sprintf( __( 'Payment pending (%s).', 'classic-commerce' ), $transaction_result['pending_reason'] ) );
+					$this->payment_on_hold( $order, sprintf( __( 'Payment pending (%s).', 'classic-store' ), $transaction_result['pending_reason'] ) );
 				}
 			}
 		} else {

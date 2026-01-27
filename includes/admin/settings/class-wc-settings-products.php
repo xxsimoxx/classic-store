@@ -24,7 +24,7 @@ class WC_Settings_Products extends WC_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'products';
-		$this->label = __( 'Products', 'classic-commerce' );
+		$this->label = __( 'Products', 'classic-store');
 
 		parent::__construct();
 	}
@@ -36,9 +36,9 @@ class WC_Settings_Products extends WC_Settings_Page {
 	 */
 	protected function get_own_sections() {
 		return array(
-			''             => __( 'General', 'classic-commerce' ),
-			'inventory'    => __( 'Inventory', 'classic-commerce' ),
-			'downloadable' => __( 'Downloadable products', 'classic-commerce' ),
+			''             => __( 'General', 'classic-store'),
+			'inventory'    => __( 'Inventory', 'classic-store'),
+			'downloadable' => __( 'Downloadable products', 'classic-store'),
 		);
 	}
 
@@ -51,46 +51,46 @@ class WC_Settings_Products extends WC_Settings_Page {
 		$settings =
 			array(
 				array(
-					'title' => __( 'Shop pages', 'classic-commerce' ),
+					'title' => __( 'Shop pages', 'classic-store'),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'catalog_options',
 				),
 				array(
-					'title'    => __( 'Shop page', 'classic-commerce' ),
+					'title'    => __( 'Shop page', 'classic-store'),
 					/* translators: %s: URL to settings. */
-					'desc'     => sprintf( __( 'The base page can also be used in your <a href="%s">product permalinks</a>.', 'classic-commerce' ), admin_url( 'options-permalink.php' ) ),
+					'desc'     => sprintf( __( 'The base page can also be used in your <a href="%s">product permalinks</a>.', 'classic-store'), admin_url( 'options-permalink.php' ) ),
 					'id'       => 'woocommerce_shop_page_id',
 					'type'     => 'single_select_page',
 					'default'  => '',
 					'class'    => 'wc-enhanced-select-nostd',
 					'css'      => 'min-width:300px;',
-					'desc_tip' => __( 'This sets the base page of your shop - this is where your product archive will be.', 'classic-commerce' ),
+					'desc_tip' => __( 'This sets the base page of your shop - this is where your product archive will be.', 'classic-store'),
 				),
 				array(
-					'title'         => __( 'Add to cart behaviour', 'classic-commerce' ),
-					'desc'          => __( 'Redirect to the cart page after successful addition', 'classic-commerce' ),
+					'title'         => __( 'Add to cart behaviour', 'classic-store'),
+					'desc'          => __( 'Redirect to the cart page after successful addition', 'classic-store'),
 					'id'            => 'woocommerce_cart_redirect_after_add',
 					'default'       => 'no',
 					'type'          => 'checkbox',
 					'checkboxgroup' => 'start',
 				),
 				array(
-					'desc'          => __( 'Enable AJAX add to cart buttons on archives', 'classic-commerce' ),
+					'desc'          => __( 'Enable AJAX add to cart buttons on archives', 'classic-store'),
 					'id'            => 'woocommerce_enable_ajax_add_to_cart',
 					'default'       => 'yes',
 					'type'          => 'checkbox',
 					'checkboxgroup' => 'end',
 				),
 				array(
-					'title'       => __( 'Placeholder image', 'classic-commerce' ),
+					'title'       => __( 'Placeholder image', 'classic-store'),
 					'id'          => 'woocommerce_placeholder_image',
 					'type'        => 'text',
 					'default'     => '',
 					'class'       => '',
 					'css'         => '',
-					'placeholder' => __( 'Enter attachment ID or URL to an image', 'classic-commerce' ),
-					'desc_tip'    => __( 'This is the attachment ID, or image URL, used for placeholder images in the product catalog. Products with no image will use this.', 'classic-commerce' ),
+					'placeholder' => __( 'Enter attachment ID or URL to an image', 'classic-store'),
+					'desc_tip'    => __( 'This is the attachment ID, or image URL, used for placeholder images in the product catalog. Products with no image will use this.', 'classic-store'),
 				),
 				array(
 					'type' => 'sectionend',
@@ -98,42 +98,42 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'title' => __( 'Measurements', 'classic-commerce' ),
+					'title' => __( 'Measurements', 'classic-store'),
 					'type'  => 'title',
 					'id'    => 'product_measurement_options',
 				),
 
 				array(
-					'title'    => __( 'Weight unit', 'classic-commerce' ),
-					'desc'     => __( 'This controls what unit you will define weights in.', 'classic-commerce' ),
+					'title'    => __( 'Weight unit', 'classic-store'),
+					'desc'     => __( 'This controls what unit you will define weights in.', 'classic-store'),
 					'id'       => 'woocommerce_weight_unit',
 					'class'    => 'wc-enhanced-select',
 					'css'      => 'min-width:300px;',
 					'default'  => 'kg',
 					'type'     => 'select',
 					'options'  => array(
-						'kg'  => __( 'kg', 'classic-commerce' ),
-						'g'   => __( 'g', 'classic-commerce' ),
-						'lbs' => __( 'lbs', 'classic-commerce' ),
-						'oz'  => __( 'oz', 'classic-commerce' ),
+						'kg'  => __( 'kg', 'classic-store'),
+						'g'   => __( 'g', 'classic-store'),
+						'lbs' => __( 'lbs', 'classic-store'),
+						'oz'  => __( 'oz', 'classic-store'),
 					),
 					'desc_tip' => true,
 				),
 
 				array(
-					'title'    => __( 'Dimensions unit', 'classic-commerce' ),
-					'desc'     => __( 'This controls what unit you will define lengths in.', 'classic-commerce' ),
+					'title'    => __( 'Dimensions unit', 'classic-store'),
+					'desc'     => __( 'This controls what unit you will define lengths in.', 'classic-store'),
 					'id'       => 'woocommerce_dimension_unit',
 					'class'    => 'wc-enhanced-select',
 					'css'      => 'min-width:300px;',
 					'default'  => 'cm',
 					'type'     => 'select',
 					'options'  => array(
-						'm'  => __( 'm', 'classic-commerce' ),
-						'cm' => __( 'cm', 'classic-commerce' ),
-						'mm' => __( 'mm', 'classic-commerce' ),
-						'in' => __( 'in', 'classic-commerce' ),
-						'yd' => __( 'yd', 'classic-commerce' ),
+						'm'  => __( 'm', 'classic-store'),
+						'cm' => __( 'cm', 'classic-store'),
+						'mm' => __( 'mm', 'classic-store'),
+						'in' => __( 'in', 'classic-store'),
+						'yd' => __( 'yd', 'classic-store'),
 					),
 					'desc_tip' => true,
 				),
@@ -144,15 +144,15 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'title' => __( 'Reviews', 'classic-commerce' ),
+					'title' => __( 'Reviews', 'classic-store'),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'product_rating_options',
 				),
 
 				array(
-					'title'           => __( 'Enable reviews', 'classic-commerce' ),
-					'desc'            => __( 'Enable product reviews', 'classic-commerce' ),
+					'title'           => __( 'Enable reviews', 'classic-store'),
+					'desc'            => __( 'Enable product reviews', 'classic-store'),
 					'id'              => 'woocommerce_enable_reviews',
 					'default'         => 'yes',
 					'type'            => 'checkbox',
@@ -161,7 +161,7 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'desc'            => __( 'Show "verified owner" label on customer reviews', 'classic-commerce' ),
+					'desc'            => __( 'Show "verified owner" label on customer reviews', 'classic-store'),
 					'id'              => 'woocommerce_review_rating_verification_label',
 					'default'         => 'yes',
 					'type'            => 'checkbox',
@@ -171,7 +171,7 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'desc'            => __( 'Reviews can only be left by "verified owners"', 'classic-commerce' ),
+					'desc'            => __( 'Reviews can only be left by "verified owners"', 'classic-store'),
 					'id'              => 'woocommerce_review_rating_verification_required',
 					'default'         => 'no',
 					'type'            => 'checkbox',
@@ -181,8 +181,8 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'title'           => __( 'Product ratings', 'classic-commerce' ),
-					'desc'            => __( 'Enable star rating on reviews', 'classic-commerce' ),
+					'title'           => __( 'Product ratings', 'classic-store'),
+					'desc'            => __( 'Enable star rating on reviews', 'classic-store'),
 					'id'              => 'woocommerce_enable_review_rating',
 					'default'         => 'yes',
 					'type'            => 'checkbox',
@@ -191,7 +191,7 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'desc'            => __( 'Star ratings should be required, not optional', 'classic-commerce' ),
+					'desc'            => __( 'Star ratings should be required, not optional', 'classic-store'),
 					'id'              => 'woocommerce_review_rating_required',
 					'default'         => 'yes',
 					'type'            => 'checkbox',
@@ -219,23 +219,23 @@ class WC_Settings_Products extends WC_Settings_Page {
 		$settings =
 			array(
 				array(
-					'title' => __( 'Inventory', 'classic-commerce' ),
+					'title' => __( 'Inventory', 'classic-store'),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'product_inventory_options',
 				),
 
 				array(
-					'title'   => __( 'Manage stock', 'classic-commerce' ),
-					'desc'    => __( 'Enable stock management', 'classic-commerce' ),
+					'title'   => __( 'Manage stock', 'classic-store'),
+					'desc'    => __( 'Enable stock management', 'classic-store'),
 					'id'      => 'woocommerce_manage_stock',
 					'default' => 'yes',
 					'type'    => 'checkbox',
 				),
 
 				array(
-					'title'             => __( 'Hold stock (minutes)', 'classic-commerce' ),
-					'desc'              => __( 'Hold stock (for unpaid orders) for x minutes. When this limit is reached, the pending order will be cancelled. Leave blank to disable.', 'classic-commerce' ),
+					'title'             => __( 'Hold stock (minutes)', 'classic-store' ),
+					'desc'              => __( 'Hold stock (for unpaid orders) for x minutes. When this limit is reached, the pending order will be cancelled. Leave blank to disable.', 'classic-store' ),
 					'id'                => 'woocommerce_hold_stock_minutes',
 					'type'              => 'number',
 					'custom_attributes' => array(
@@ -249,8 +249,8 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'title'         => __( 'Notifications', 'classic-commerce' ),
-					'desc'          => __( 'Enable low stock notifications', 'classic-commerce' ),
+					'title'         => __( 'Notifications', 'classic-store'),
+					'desc'          => __( 'Enable low stock notifications', 'classic-store'),
 					'id'            => 'woocommerce_notify_low_stock',
 					'default'       => 'yes',
 					'type'          => 'checkbox',
@@ -260,7 +260,7 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'desc'          => __( 'Enable out of stock notifications', 'classic-commerce' ),
+					'desc'          => __( 'Enable out of stock notifications', 'classic-store'),
 					'id'            => 'woocommerce_notify_no_stock',
 					'default'       => 'yes',
 					'type'          => 'checkbox',
@@ -270,8 +270,8 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'title'    => __( 'Notification recipient(s)', 'classic-commerce' ),
-					'desc'     => __( 'Enter recipients (comma separated) that will receive this notification.', 'classic-commerce' ),
+					'title'    => __( 'Notification recipient(s)', 'classic-store' ),
+					'desc'     => __( 'Enter recipients (comma separated) that will receive this notification.', 'classic-store' ),
 					'id'       => 'woocommerce_stock_email_recipient',
 					'type'     => 'text',
 					'default'  => get_option( 'admin_email' ),
@@ -282,8 +282,8 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'title'             => __( 'Low stock threshold', 'classic-commerce' ),
-					'desc'              => __( 'When product stock reaches this amount you will be notified via email.', 'classic-commerce' ),
+					'title'             => __( 'Low stock threshold', 'classic-store'),
+					'desc'              => __( 'When product stock reaches this amount you will be notified via email.', 'classic-store'),
 					'id'                => 'woocommerce_notify_low_stock_amount',
 					'css'               => 'width:50px;',
 					'type'              => 'number',
@@ -298,8 +298,8 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'title'             => __( 'Out of stock threshold', 'classic-commerce' ),
-					'desc'              => __( 'When product stock reaches this amount the stock status will change to "out of stock" and you will be notified via email. This setting does not affect existing "in stock" products.', 'classic-commerce' ),
+					'title'             => __( 'Out of stock threshold', 'classic-store'),
+					'desc'              => __( 'When product stock reaches this amount the stock status will change to "out of stock" and you will be notified via email. This setting does not affect existing "in stock" products.', 'classic-store'),
 					'id'                => 'woocommerce_notify_no_stock_amount',
 					'css'               => 'width:50px;',
 					'type'              => 'number',
@@ -313,25 +313,25 @@ class WC_Settings_Products extends WC_Settings_Page {
 				),
 
 				array(
-					'title'   => __( 'Out of stock visibility', 'classic-commerce' ),
-					'desc'    => __( 'Hide out of stock items from the catalog', 'classic-commerce' ),
+					'title'   => __( 'Out of stock visibility', 'classic-store'),
+					'desc'    => __( 'Hide out of stock items from the catalog', 'classic-store'),
 					'id'      => 'woocommerce_hide_out_of_stock_items',
 					'default' => 'no',
 					'type'    => 'checkbox',
 				),
 
 				array(
-					'title'    => __( 'Stock display format', 'classic-commerce' ),
-					'desc'     => __( 'This controls how stock quantities are displayed on the frontend.', 'classic-commerce' ),
+					'title'    => __( 'Stock display format', 'classic-store'),
+					'desc'     => __( 'This controls how stock quantities are displayed on the frontend.', 'classic-store'),
 					'id'       => 'woocommerce_stock_format',
 					'css'      => 'min-width:150px;',
 					'class'    => 'wc-enhanced-select',
 					'default'  => '',
 					'type'     => 'select',
 					'options'  => array(
-						''           => __( 'Always show quantity remaining in stock e.g. "12 in stock"', 'classic-commerce' ),
-						'low_amount' => __( 'Only show quantity remaining in stock when low e.g. "Only 2 left in stock"', 'classic-commerce' ),
-						'no_amount'  => __( 'Never show quantity remaining in stock', 'classic-commerce' ),
+						''           => __( 'Always show quantity remaining in stock e.g. "12 in stock"', 'classic-store'),
+						'low_amount' => __( 'Only show quantity remaining in stock when low e.g. "Only 2 left in stock"', 'classic-store'),
+						'no_amount'  => __( 'Never show quantity remaining in stock', 'classic-store'),
 					),
 					'desc_tip' => true,
 				),
@@ -354,16 +354,16 @@ class WC_Settings_Products extends WC_Settings_Page {
 		$settings =
 			array(
 				array(
-					'title' => __( 'Downloadable products', 'classic-commerce' ),
+					'title' => __( 'Downloadable products', 'classic-store'),
 					'type'  => 'title',
 					'id'    => 'digital_download_options',
 				),
 
 				array(
-					'title'    => __( 'File download method', 'classic-commerce' ),
+					'title'    => __( 'File download method', 'classic-store'),
 					'desc'     => sprintf(
 						/* translators: 1: X-Accel-Redirect 2: X-Sendfile 3: mod_xsendfile */
-						__( 'Forcing downloads will keep URLs hidden, but some servers may serve large files unreliably. If supported, %1$s / %2$s can be used to serve downloads instead (server requires %3$s).', 'classic-commerce' ),
+						__( 'Forcing downloads will keep URLs hidden, but some servers may serve large files unreliably. If supported, %1$s / %2$s can be used to serve downloads instead (server requires %3$s).', 'classic-store' ),
 						'<code>X-Accel-Redirect</code>',
 						'<code>X-Sendfile</code>',
 						'<code>mod_xsendfile</code>'
@@ -375,66 +375,66 @@ class WC_Settings_Products extends WC_Settings_Page {
 					'default'  => 'force',
 					'desc_tip' => true,
 					'options'  => array(
-						'force'     => __( 'Force downloads', 'classic-commerce' ),
-						'xsendfile' => __( 'X-Accel-Redirect/X-Sendfile', 'classic-commerce' ),
-						'redirect'  => apply_filters( 'woocommerce_redirect_only_method_is_secure', false ) ? __( 'Redirect only', 'classic-commerce' ) : __( 'Redirect only (Insecure)', 'classic-commerce' ),
+						'force'     => __( 'Force downloads', 'classic-store'),
+						'xsendfile' => __( 'X-Accel-Redirect/X-Sendfile', 'classic-store'),
+						'redirect'  => apply_filters( 'woocommerce_redirect_only_method_is_secure', false ) ? __( 'Redirect only', 'classic-store') : __( 'Redirect only (Insecure)', 'classic-store' ),
 					),
 					'autoload' => false,
 				),
 
 				array(
-					'desc'          => __( 'Allow using redirect mode (insecure) as a last resort', 'classic-commerce' ),
+					'desc'          => __( 'Allow using redirect mode (insecure) as a last resort', 'classic-store' ),
 					'id'            => 'woocommerce_downloads_redirect_fallback_allowed',
 					'type'          => 'checkbox',
 					'default'       => 'no',
 					'desc_tip'      => sprintf(
 						/* translators: %1$s is a link to the Classic Commerce documentation. */
-						__( 'If the "Force Downloads" or "X-Accel-Redirect/X-Sendfile" download method is selected but does not work, the system will use the "Redirect" method as a last resort.', 'classic-commerce' ),
+						__( 'If the "Force Downloads" or "X-Accel-Redirect/X-Sendfile" download method is selected but does not work, the system will use the "Redirect" method as a last resort.', 'classic-store'),
 					),
 					'checkboxgroup' => 'start',
 					'autoload'      => false,
 				),
 
 				array(
-					'title'         => __( 'Access restriction', 'classic-commerce' ),
-					'desc'          => __( 'Downloads require login', 'classic-commerce' ),
+					'title'         => __( 'Access restriction', 'classic-store'),
+					'desc'          => __( 'Downloads require login', 'classic-store'),
 					'id'            => 'woocommerce_downloads_require_login',
 					'type'          => 'checkbox',
 					'default'       => 'no',
-					'desc_tip'      => __( 'This setting does not apply to guest purchases.', 'classic-commerce' ),
+					'desc_tip'      => __( 'This setting does not apply to guest purchases.', 'classic-store'),
 					'checkboxgroup' => 'start',
 					'autoload'      => false,
 				),
 
 				array(
-					'desc'          => __( 'Grant access to downloadable products after payment', 'classic-commerce' ),
+					'desc'          => __( 'Grant access to downloadable products after payment', 'classic-store'),
 					'id'            => 'woocommerce_downloads_grant_access_after_payment',
 					'type'          => 'checkbox',
 					'default'       => 'yes',
-					'desc_tip'      => __( 'Enable this option to grant access to downloads when orders are "processing", rather than "completed".', 'classic-commerce' ),
+					'desc_tip'      => __( 'Enable this option to grant access to downloads when orders are "processing", rather than "completed".', 'classic-store'),
 					'checkboxgroup' => 'end',
 					'autoload'      => false,
 				),
 
                 array(
-					'title'    => __( 'Open in browser', 'woocommerce' ),
-					'desc'     => __( 'Open downloadable files in the browser, instead of saving them to the device.', 'woocommerce' ),
+					'title'    => __( 'Open in browser', 'classic-store'),
+					'desc'     => __( 'Open downloadable files in the browser, instead of saving them to the device.', 'classic-store'),
 					'id'       => 'woocommerce_downloads_deliver_inline',
 					'type'     => 'checkbox',
 					'default'  => false,
-					'desc_tip' => __( 'Customers can still save the file to their device, but by default file will be opened instead of being downloaded (does not work with redirects).', 'classic-commerce' ),
+					'desc_tip' => __( 'Customers can still save the file to their device, but by default file will be opened instead of being downloaded (does not work with redirects).', 'classic-store' ),
 					'autoload' => false,
 				),
 
 				array(
-					'title'    => __( 'Filename', 'classic-commerce' ),
-					'desc'     => __( 'Append a unique string to filename for security', 'classic-commerce' ),
+					'title'    => __( 'Filename', 'classic-store'),
+					'desc'     => __( 'Append a unique string to filename for security', 'classic-store'),
 					'id'       => 'woocommerce_downloads_add_hash_to_filename',
 					'type'     => 'checkbox',
 					'default'  => 'yes',
 					'desc_tip' => sprintf(
 					// translators: Link to Classic Commerce Docs.
-						__( "Not required if your download directory is protected. Files already uploaded will not be affected.", 'classic-commerce' ),
+						__( "Not required if your download directory is protected. Files already uploaded will not be affected.", 'classic-store'),
 					),
 				),
 

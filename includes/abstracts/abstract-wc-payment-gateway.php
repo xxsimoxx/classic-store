@@ -195,7 +195,7 @@ abstract class WC_Payment_Gateway extends WC_Settings_API {
 	 */
 	public function admin_options() {
 		echo '<h2>' . esc_html( $this->get_method_title() );
-		wc_back_link( __( 'Return to payments', 'classic-commerce' ), admin_url( 'admin.php?page=wc-settings&tab=checkout' ) );
+		wc_back_link( __( 'Return to payments', 'classic-store'), admin_url( 'admin.php?page=wc-settings&tab=checkout' ) );
 		echo '</h2>';
 		echo wp_kses_post( wpautop( $this->get_method_description() ) );
 		parent::admin_options();
@@ -585,7 +585,7 @@ abstract class WC_Payment_Gateway extends WC_Settings_API {
 		 * @param WC_Payment_Gateway $this Payment gateway instance.
 		 * @return string
 		 */
-		$label = apply_filters( 'woocommerce_payment_gateway_get_new_payment_method_option_html_label', $this->new_method_label ? $this->new_method_label : __( 'Use a new payment method', 'classic-commerce' ), $this );
+		$label = apply_filters( 'woocommerce_payment_gateway_get_new_payment_method_option_html_label', $this->new_method_label ? $this->new_method_label : __( 'Use a new payment method', 'classic-store'), $this );
 		$html  = sprintf(
 			'<li class="woocommerce-SavedPaymentMethods-new">
 				<input id="wc-%1$s-payment-token-new" type="radio" name="wc-%1$s-payment-token" value="new" style="width:auto;" class="woocommerce-SavedPaymentMethods-tokenInput" />
@@ -617,7 +617,7 @@ abstract class WC_Payment_Gateway extends WC_Settings_API {
 				<label for="wc-%1$s-new-payment-method" style="display:inline;">%2$s</label>
 			</p>',
 			esc_attr( $this->id ),
-			esc_html__( 'Save to account', 'classic-commerce' )
+			esc_html__( 'Save to account', 'classic-store')
 		);
         /**
 		 * Filter the saved payment method checkbox HTML

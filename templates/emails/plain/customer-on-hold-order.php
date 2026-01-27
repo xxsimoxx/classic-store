@@ -16,8 +16,8 @@ echo esc_html( wp_strip_all_tags( $email_heading ) );
 echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 /* translators: %s: Customer first name */
-echo sprintf( esc_html__( 'Hi %s,', 'classic-commerce' ), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
-echo esc_html__( 'Thanks for your order. It’s on-hold until we confirm that payment has been received.', 'classic-commerce' ) . "\n\n";
+echo sprintf( esc_html__( 'Hi %s,', 'classic-store'), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
+echo esc_html__( 'Thanks for your order. It’s on-hold until we confirm that payment has been received.', 'classic-store') . "\n\n";
 
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.

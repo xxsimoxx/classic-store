@@ -74,7 +74,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 		register_rest_route( $this->namespace, '/' . $this->rest_base . '/(?P<id>[\d]+)', array(
 			'args' => array(
 				'id' => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 				),
 			),
@@ -99,7 +99,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 				'args'                => array(
 					'force' => array(
 						'default'     => false,
-						'description' => __( 'Whether to bypass trash and force deletion.', 'classic-commerce' ),
+						'description' => __( 'Whether to bypass trash and force deletion.', 'classic-store'),
 						'type'        => 'boolean',
 					),
 				),
@@ -310,8 +310,8 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 				'date_created'  => wc_rest_prepare_date_response( current_time( 'mysql' ) ), // Default to now.
 				'date_modified' => wc_rest_prepare_date_response( current_time( 'mysql' ) ),
 				'src'           => wc_placeholder_img_src(),
-				'name'          => __( 'Placeholder', 'classic-commerce' ),
-				'alt'           => __( 'Placeholder', 'classic-commerce' ),
+				'name'          => __( 'Placeholder', 'classic-store'),
+				'alt'           => __( 'Placeholder', 'classic-store'),
 				'position'      => 0,
 			);
 		}
@@ -736,7 +736,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 	 */
 	public function create_item( $request ) {
 		if ( ! empty( $request['id'] ) ) {
-			return new WP_Error( "woocommerce_rest_{$this->post_type}_exists", sprintf( __( 'Cannot create existing %s.', 'classic-commerce' ), $this->post_type ), array( 'status' => 400 ) );
+			return new WP_Error( "woocommerce_rest_{$this->post_type}_exists", sprintf( __( 'Cannot create existing %s.', 'classic-store'), $this->post_type ), array( 'status' => 400 ) );
 		}
 
 		$product_id = 0;
@@ -781,7 +781,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 		$post_id = (int) $request['id'];
 
 		if ( empty( $post_id ) || get_post_type( $post_id ) !== $this->post_type ) {
-			return new WP_Error( "woocommerce_rest_{$this->post_type}_invalid_id", __( 'ID is invalid.', 'classic-commerce' ), array( 'status' => 400 ) );
+			return new WP_Error( "woocommerce_rest_{$this->post_type}_invalid_id", __( 'ID is invalid.', 'classic-store'), array( 'status' => 400 ) );
 		}
 
 		try {
@@ -864,7 +864,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 				}
 
 				if ( ! wp_attachment_is_image( $attachment_id ) ) {
-					throw new WC_REST_Exception( 'woocommerce_product_invalid_image_id', sprintf( __( '#%s is an invalid image ID.', 'classic-commerce' ), $attachment_id ), 400 );
+					throw new WC_REST_Exception( 'woocommerce_product_invalid_image_id', sprintf( __( '#%s is an invalid image ID.', 'classic-store'), $attachment_id ), 400 );
 				}
 
 				if ( isset( $image['position'] ) && 0 === absint( $image['position'] ) ) {
@@ -1369,7 +1369,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 			// Create initial name and status.
 			if ( ! $variation->get_slug() ) {
 				/* translators: 1: variation id 2: product name */
-				$variation->set_name( sprintf( __( 'Variation #%1$s of %2$s', 'classic-commerce' ), $variation->get_id(), $product->get_name() ) );
+				$variation->set_name( sprintf( __( 'Variation #%1$s of %2$s', 'classic-store'), $variation->get_id(), $product->get_name() ) );
 				$variation->set_status( isset( $data['visible'] ) && false === $data['visible'] ? 'private' : 'publish' );
 			}
 
@@ -1634,9 +1634,9 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 		$product = wc_get_product( $id );
 
 		if ( ! empty( $post->post_type ) && 'product_variation' === $post->post_type && 'product' === $this->post_type ) {
-			return new WP_Error( "woocommerce_rest_invalid_{$this->post_type}_id", __( 'To manipulate product variations you should use the /products/&lt;product_id&gt;/variations/&lt;id&gt; endpoint.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( "woocommerce_rest_invalid_{$this->post_type}_id", __( 'To manipulate product variations you should use the /products/&lt;product_id&gt;/variations/&lt;id&gt; endpoint.', 'classic-store'), array( 'status' => 404 ) );
 		} elseif ( empty( $id ) || empty( $post->ID ) || $post->post_type !== $this->post_type ) {
-			return new WP_Error( "woocommerce_rest_{$this->post_type}_invalid_id", __( 'Invalid post ID.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( "woocommerce_rest_{$this->post_type}_invalid_id", __( 'Invalid post ID.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		$supports_trash = EMPTY_TRASH_DAYS > 0;
@@ -1653,7 +1653,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 
 		if ( ! wc_rest_check_post_permissions( $this->post_type, 'delete', $post->ID ) ) {
 			/* translators: %s: post type */
-			return new WP_Error( "woocommerce_rest_user_cannot_delete_{$this->post_type}", sprintf( __( 'Sorry, you are not allowed to delete %s.', 'classic-commerce' ), $this->post_type ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( "woocommerce_rest_user_cannot_delete_{$this->post_type}", sprintf( __( 'Sorry, you are not allowed to delete %s.', 'classic-store'), $this->post_type ), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		$request->set_param( 'context', 'edit' );
@@ -1685,13 +1685,13 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 			// If we don't support trashing for this type, error out.
 			if ( ! $supports_trash ) {
 				/* translators: %s: post type */
-				return new WP_Error( 'woocommerce_rest_trash_not_supported', sprintf( __( 'The %s does not support trashing.', 'classic-commerce' ), $this->post_type ), array( 'status' => 501 ) );
+				return new WP_Error( 'woocommerce_rest_trash_not_supported', sprintf( __( 'The %s does not support trashing.', 'classic-store'), $this->post_type ), array( 'status' => 501 ) );
 			}
 
 			// Otherwise, only trash if we haven't already.
 			if ( 'trash' === $post->post_status ) {
 				/* translators: %s: post type */
-				return new WP_Error( 'woocommerce_rest_already_trashed', sprintf( __( 'The %s has already been deleted.', 'classic-commerce' ), $this->post_type ), array( 'status' => 410 ) );
+				return new WP_Error( 'woocommerce_rest_already_trashed', sprintf( __( 'The %s has already been deleted.', 'classic-store'), $this->post_type ), array( 'status' => 410 ) );
 			}
 
 			// (Note that internally this falls through to `wp_delete_post` if
@@ -1702,7 +1702,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 
 		if ( ! $result ) {
 			/* translators: %s: post type */
-			return new WP_Error( 'woocommerce_rest_cannot_delete', sprintf( __( 'The %s cannot be deleted.', 'classic-commerce' ), $this->post_type ), array( 'status' => 500 ) );
+			return new WP_Error( 'woocommerce_rest_cannot_delete', sprintf( __( 'The %s cannot be deleted.', 'classic-store'), $this->post_type ), array( 'status' => 500 ) );
 		}
 
 		// Delete parent product transients.
@@ -1736,163 +1736,163 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'id' => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'name' => array(
-					'description' => __( 'Product name.', 'classic-commerce' ),
+					'description' => __( 'Product name.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'slug' => array(
-					'description' => __( 'Product slug.', 'classic-commerce' ),
+					'description' => __( 'Product slug.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'permalink' => array(
-					'description' => __( 'Product URL.', 'classic-commerce' ),
+					'description' => __( 'Product URL.', 'classic-store'),
 					'type'        => 'string',
 					'format'      => 'uri',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_created' => array(
-					'description' => __( "The date the product was created, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the product was created, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'date_modified' => array(
-					'description' => __( "The date the product was last modified, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the product was last modified, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'type' => array(
-					'description' => __( 'Product type.', 'classic-commerce' ),
+					'description' => __( 'Product type.', 'classic-store'),
 					'type'        => 'string',
 					'default'     => 'simple',
 					'enum'        => array_keys( wc_get_product_types() ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'status' => array(
-					'description' => __( 'Product status (post status).', 'classic-commerce' ),
+					'description' => __( 'Product status (post status).', 'classic-store' ),
 					'type'        => 'string',
 					'default'     => 'publish',
 					'enum'        => array_merge( array_keys( get_post_statuses() ), array( 'future' ) ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'featured' => array(
-					'description' => __( 'Featured product.', 'classic-commerce' ),
+					'description' => __( 'Featured product.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'catalog_visibility' => array(
-					'description' => __( 'Catalog visibility.', 'classic-commerce' ),
+					'description' => __( 'Catalog visibility.', 'classic-store'),
 					'type'        => 'string',
 					'default'     => 'visible',
 					'enum'        => array( 'visible', 'catalog', 'search', 'hidden' ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'description' => array(
-					'description' => __( 'Product description.', 'classic-commerce' ),
+					'description' => __( 'Product description.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'short_description' => array(
-					'description' => __( 'Product short description.', 'classic-commerce' ),
+					'description' => __( 'Product short description.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'sku' => array(
-					'description' => __( 'Unique identifier.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'price' => array(
-					'description' => __( 'Current product price.', 'classic-commerce' ),
+					'description' => __( 'Current product price.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'regular_price' => array(
-					'description' => __( 'Product regular price.', 'classic-commerce' ),
+					'description' => __( 'Product regular price.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'sale_price' => array(
-					'description' => __( 'Product sale price.', 'classic-commerce' ),
+					'description' => __( 'Product sale price.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'date_on_sale_from' => array(
-					'description' => __( 'Start date of sale price.', 'classic-commerce' ),
+					'description' => __( 'Start date of sale price.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'date_on_sale_to' => array(
-					'description' => __( 'End date of sale price.', 'classic-commerce' ),
+					'description' => __( 'End date of sale price.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'price_html' => array(
-					'description' => __( 'Price formatted in HTML.', 'classic-commerce' ),
+					'description' => __( 'Price formatted in HTML.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'on_sale' => array(
-					'description' => __( 'Shows if the product is on sale.', 'classic-commerce' ),
+					'description' => __( 'Shows if the product is on sale.', 'classic-store'),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'purchasable' => array(
-					'description' => __( 'Shows if the product can be bought.', 'classic-commerce' ),
+					'description' => __( 'Shows if the product can be bought.', 'classic-store'),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'total_sales' => array(
-					'description' => __( 'Amount of sales.', 'classic-commerce' ),
+					'description' => __( 'Amount of sales.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'virtual' => array(
-					'description' => __( 'If the product is virtual.', 'classic-commerce' ),
+					'description' => __( 'If the product is virtual.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'downloadable' => array(
-					'description' => __( 'If the product is downloadable.', 'classic-commerce' ),
+					'description' => __( 'If the product is downloadable.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'downloads' => array(
-					'description' => __( 'List of downloadable files.', 'classic-commerce' ),
+					'description' => __( 'List of downloadable files.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id' => array(
-								'description' => __( 'File ID.', 'classic-commerce' ),
+								'description' => __( 'File ID.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'name' => array(
-								'description' => __( 'File name.', 'classic-commerce' ),
+								'description' => __( 'File name.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'file' => array(
-								'description' => __( 'File URL.', 'classic-commerce' ),
+								'description' => __( 'File URL.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
@@ -1900,163 +1900,163 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 					),
 				),
 				'download_limit' => array(
-					'description' => __( 'Number of times downloadable files can be downloaded after purchase.', 'classic-commerce' ),
+					'description' => __( 'Number of times downloadable files can be downloaded after purchase.', 'classic-store'),
 					'type'        => 'integer',
 					'default'     => -1,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'download_expiry' => array(
-					'description' => __( 'Number of days until access to downloadable files expires.', 'classic-commerce' ),
+					'description' => __( 'Number of days until access to downloadable files expires.', 'classic-store'),
 					'type'        => 'integer',
 					'default'     => -1,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'download_type' => array(
-					'description' => __( 'Download type, this controls the schema on the front-end.', 'classic-commerce' ),
+					'description' => __( 'Download type, this controls the schema on the front-end.', 'classic-store'),
 					'type'        => 'string',
 					'default'     => 'standard',
 					'enum'        => array( 'standard' ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'external_url' => array(
-					'description' => __( 'Product external URL. Only for external products.', 'classic-commerce' ),
+					'description' => __( 'Product external URL. Only for external products.', 'classic-store'),
 					'type'        => 'string',
 					'format'      => 'uri',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'button_text' => array(
-					'description' => __( 'Product external button text. Only for external products.', 'classic-commerce' ),
+					'description' => __( 'Product external button text. Only for external products.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'tax_status' => array(
-					'description' => __( 'Tax status.', 'classic-commerce' ),
+					'description' => __( 'Tax status.', 'classic-store'),
 					'type'        => 'string',
 					'default'     => 'taxable',
 					'enum'        => array( 'taxable', 'shipping', 'none' ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'tax_class' => array(
-					'description' => __( 'Tax class.', 'classic-commerce' ),
+					'description' => __( 'Tax class.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'manage_stock' => array(
-					'description' => __( 'Stock management at product level.', 'classic-commerce' ),
+					'description' => __( 'Stock management at product level.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'stock_quantity' => array(
-					'description' => __( 'Stock quantity.', 'classic-commerce' ),
+					'description' => __( 'Stock quantity.', 'classic-store'),
 					'type'        => has_filter( 'woocommerce_stock_amount', 'intval' ) ? 'integer' : 'number',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'in_stock' => array(
-					'description' => __( 'Controls whether or not the product is listed as "in stock" or "out of stock" on the frontend.', 'classic-commerce' ),
+					'description' => __( 'Controls whether or not the product is listed as "in stock" or "out of stock" on the frontend.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => true,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'backorders' => array(
-					'description' => __( 'If managing stock, this controls if backorders are allowed.', 'classic-commerce' ),
+					'description' => __( 'If managing stock, this controls if backorders are allowed.', 'classic-store'),
 					'type'        => 'string',
 					'default'     => 'no',
 					'enum'        => array( 'no', 'notify', 'yes' ),
 					'context'     => array( 'view', 'edit' ),
 				),
 				'backorders_allowed' => array(
-					'description' => __( 'Shows if backorders are allowed.', 'classic-commerce' ),
+					'description' => __( 'Shows if backorders are allowed.', 'classic-store'),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'backordered' => array(
-					'description' => __( 'Shows if the product is on backordered.', 'classic-commerce' ),
+					'description' => __( 'Shows if the product is on backordered.', 'classic-store'),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'sold_individually' => array(
-					'description' => __( 'Allow one item to be bought in a single order.', 'classic-commerce' ),
+					'description' => __( 'Allow one item to be bought in a single order.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => false,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'weight' => array(
 					/* translators: %s: weight unit */
-					'description' => sprintf( __( 'Product weight (%s).', 'classic-commerce' ), $weight_unit ),
+					'description' => sprintf( __( 'Product weight (%s).', 'classic-store' ), $weight_unit ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'dimensions' => array(
-					'description' => __( 'Product dimensions.', 'classic-commerce' ),
+					'description' => __( 'Product dimensions.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view', 'edit' ),
 					'properties'  => array(
 						'length' => array(
 							/* translators: %s: dimension unit */
-							'description' => sprintf( __( 'Product length (%s).', 'classic-commerce' ), $dimension_unit ),
+							'description' => sprintf( __( 'Product length (%s).', 'classic-store' ), $dimension_unit ),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'width' => array(
 							/* translators: %s: dimension unit */
-							'description' => sprintf( __( 'Product width (%s).', 'classic-commerce' ), $dimension_unit ),
+							'description' => sprintf( __( 'Product width (%s).', 'classic-store' ), $dimension_unit ),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 						'height' => array(
 							/* translators: %s: dimension unit */
-							'description' => sprintf( __( 'Product height (%s).', 'classic-commerce' ), $dimension_unit ),
+							'description' => sprintf( __( 'Product height (%s).', 'classic-store' ), $dimension_unit ),
 							'type'        => 'string',
 							'context'     => array( 'view', 'edit' ),
 						),
 					),
 				),
 				'shipping_required' => array(
-					'description' => __( 'Shows if the product need to be shipped.', 'classic-commerce' ),
+					'description' => __( 'Shows if the product need to be shipped.', 'classic-store'),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'shipping_taxable' => array(
-					'description' => __( 'Shows whether or not the product shipping is taxable.', 'classic-commerce' ),
+					'description' => __( 'Shows whether or not the product shipping is taxable.', 'classic-store'),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'shipping_class' => array(
-					'description' => __( 'Shipping class slug.', 'classic-commerce' ),
+					'description' => __( 'Shipping class slug.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'shipping_class_id' => array(
-					'description' => __( 'Shipping class ID.', 'classic-commerce' ),
+					'description' => __( 'Shipping class ID.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'reviews_allowed' => array(
-					'description' => __( 'Allow reviews.', 'classic-commerce' ),
+					'description' => __( 'Allow reviews.', 'classic-store'),
 					'type'        => 'boolean',
 					'default'     => true,
 					'context'     => array( 'view', 'edit' ),
 				),
 				'average_rating' => array(
-					'description' => __( 'Reviews average rating.', 'classic-commerce' ),
+					'description' => __( 'Reviews average rating.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'rating_count' => array(
-					'description' => __( 'Amount of reviews that the product have.', 'classic-commerce' ),
+					'description' => __( 'Amount of reviews that the product have.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'related_ids' => array(
-					'description' => __( 'List of related products IDs.', 'classic-commerce' ),
+					'description' => __( 'List of related products IDs.', 'classic-store'),
 					'type'        => 'array',
 					'items'       => array(
 						'type'    => 'integer',
@@ -2065,7 +2065,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 					'readonly'    => true,
 				),
 				'upsell_ids' => array(
-					'description' => __( 'List of upsell products IDs.', 'classic-commerce' ),
+					'description' => __( 'List of upsell products IDs.', 'classic-store'),
 					'type'        => 'array',
 					'items'       => array(
 						'type'    => 'integer',
@@ -2073,7 +2073,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 					'context'     => array( 'view', 'edit' ),
 				),
 				'cross_sell_ids' => array(
-					'description' => __( 'List of cross-sell products IDs.', 'classic-commerce' ),
+					'description' => __( 'List of cross-sell products IDs.', 'classic-store'),
 					'type'        => 'array',
 					'items'       => array(
 						'type'    => 'integer',
@@ -2081,35 +2081,35 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 					'context'     => array( 'view', 'edit' ),
 				),
 				'parent_id' => array(
-					'description' => __( 'Product parent ID.', 'classic-commerce' ),
+					'description' => __( 'Product parent ID.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'purchase_note' => array(
-					'description' => __( 'Optional note to send the customer after purchase.', 'classic-commerce' ),
+					'description' => __( 'Optional note to send the customer after purchase.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'categories' => array(
-					'description' => __( 'List of categories.', 'classic-commerce' ),
+					'description' => __( 'List of categories.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id' => array(
-								'description' => __( 'Category ID.', 'classic-commerce' ),
+								'description' => __( 'Category ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'name' => array(
-								'description' => __( 'Category name.', 'classic-commerce' ),
+								'description' => __( 'Category name.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'slug' => array(
-								'description' => __( 'Category slug.', 'classic-commerce' ),
+								'description' => __( 'Category slug.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
@@ -2118,25 +2118,25 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 					),
 				),
 				'tags' => array(
-					'description' => __( 'List of tags.', 'classic-commerce' ),
+					'description' => __( 'List of tags.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id' => array(
-								'description' => __( 'Tag ID.', 'classic-commerce' ),
+								'description' => __( 'Tag ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'name' => array(
-								'description' => __( 'Tag name.', 'classic-commerce' ),
+								'description' => __( 'Tag name.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'slug' => array(
-								'description' => __( 'Tag slug.', 'classic-commerce' ),
+								'description' => __( 'Tag slug.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
@@ -2145,47 +2145,47 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 					),
 				),
 				'images' => array(
-					'description' => __( 'List of images.', 'classic-commerce' ),
+					'description' => __( 'List of images.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id' => array(
-								'description' => __( 'Image ID.', 'classic-commerce' ),
+								'description' => __( 'Image ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'date_created' => array(
-								'description' => __( "The date the image was created, in the site's timezone.", 'classic-commerce' ),
+								'description' => __( "The date the image was created, in the site's timezone.", 'classic-store'),
 								'type'        => 'date-time',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'date_modified' => array(
-								'description' => __( "The date the image was last modified, in the site's timezone.", 'classic-commerce' ),
+								'description' => __( "The date the image was last modified, in the site's timezone.", 'classic-store'),
 								'type'        => 'date-time',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'src' => array(
-								'description' => __( 'Image URL.', 'classic-commerce' ),
+								'description' => __( 'Image URL.', 'classic-store'),
 								'type'        => 'string',
 								'format'      => 'uri',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'name' => array(
-								'description' => __( 'Image name.', 'classic-commerce' ),
+								'description' => __( 'Image name.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'alt' => array(
-								'description' => __( 'Image alternative text.', 'classic-commerce' ),
+								'description' => __( 'Image alternative text.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'position' => array(
-								'description' => __( 'Image position. 0 means that the image is featured.', 'classic-commerce' ),
+								'description' => __( 'Image position. 0 means that the image is featured.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 							),
@@ -2193,41 +2193,41 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 					),
 				),
 				'attributes' => array(
-					'description' => __( 'List of attributes.', 'classic-commerce' ),
+					'description' => __( 'List of attributes.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id' => array(
-								'description' => __( 'Attribute ID.', 'classic-commerce' ),
+								'description' => __( 'Attribute ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'name' => array(
-								'description' => __( 'Attribute name.', 'classic-commerce' ),
+								'description' => __( 'Attribute name.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'position' => array(
-								'description' => __( 'Attribute position.', 'classic-commerce' ),
+								'description' => __( 'Attribute position.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'visible' => array(
-								'description' => __( "Define if the attribute is visible on the \"Additional information\" tab in the product's page.", 'classic-commerce' ),
+								'description' => __( "Define if the attribute is visible on the \"Additional information\" tab in the product's page.", 'classic-store'),
 								'type'        => 'boolean',
 								'default'     => false,
 								'context'     => array( 'view', 'edit' ),
 							),
 							'variation' => array(
-								'description' => __( 'Define if the attribute can be used as variation.', 'classic-commerce' ),
+								'description' => __( 'Define if the attribute can be used as variation.', 'classic-store'),
 								'type'        => 'boolean',
 								'default'     => false,
 								'context'     => array( 'view', 'edit' ),
 							),
 							'options' => array(
-								'description' => __( 'List of available term names of the attribute.', 'classic-commerce' ),
+								'description' => __( 'List of available term names of the attribute.', 'classic-store'),
 								'type'        => 'array',
 								'context'     => array( 'view', 'edit' ),
 							),
@@ -2235,24 +2235,24 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 					),
 				),
 				'default_attributes' => array(
-					'description' => __( 'Defaults variation attributes.', 'classic-commerce' ),
+					'description' => __( 'Defaults variation attributes.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id' => array(
-								'description' => __( 'Attribute ID.', 'classic-commerce' ),
+								'description' => __( 'Attribute ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'name' => array(
-								'description' => __( 'Attribute name.', 'classic-commerce' ),
+								'description' => __( 'Attribute name.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'option' => array(
-								'description' => __( 'Selected attribute term name.', 'classic-commerce' ),
+								'description' => __( 'Selected attribute term name.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
@@ -2260,116 +2260,116 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 					),
 				),
 				'variations' => array(
-					'description' => __( 'List of variations.', 'classic-commerce' ),
+					'description' => __( 'List of variations.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view', 'edit' ),
 					'items'       => array(
 						'type'       => 'object',
 						'properties' => array(
 							'id' => array(
-								'description' => __( 'Variation ID.', 'classic-commerce' ),
+								'description' => __( 'Variation ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'date_created' => array(
-								'description' => __( "The date the variation was created, in the site's timezone.", 'classic-commerce' ),
+								'description' => __( "The date the variation was created, in the site's timezone.", 'classic-store'),
 								'type'        => 'date-time',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'date_modified' => array(
-								'description' => __( "The date the variation was last modified, in the site's timezone.", 'classic-commerce' ),
+								'description' => __( "The date the variation was last modified, in the site's timezone.", 'classic-store'),
 								'type'        => 'date-time',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'permalink' => array(
-								'description' => __( 'Variation URL.', 'classic-commerce' ),
+								'description' => __( 'Variation URL.', 'classic-store'),
 								'type'        => 'string',
 								'format'      => 'uri',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'sku' => array(
-								'description' => __( 'Unique identifier.', 'classic-commerce' ),
+								'description' => __( 'Unique identifier.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'price' => array(
-								'description' => __( 'Current variation price.', 'classic-commerce' ),
+								'description' => __( 'Current variation price.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'regular_price' => array(
-								'description' => __( 'Variation regular price.', 'classic-commerce' ),
+								'description' => __( 'Variation regular price.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'sale_price' => array(
-								'description' => __( 'Variation sale price.', 'classic-commerce' ),
+								'description' => __( 'Variation sale price.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'date_on_sale_from' => array(
-								'description' => __( 'Start date of sale price.', 'classic-commerce' ),
+								'description' => __( 'Start date of sale price.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'date_on_sale_to' => array(
-								'description' => __( 'End date of sale price.', 'classic-commerce' ),
+								'description' => __( 'End date of sale price.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'on_sale' => array(
-								'description' => __( 'Shows if the variation is on sale.', 'classic-commerce' ),
+								'description' => __( 'Shows if the variation is on sale.', 'classic-store'),
 								'type'        => 'boolean',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'purchasable' => array(
-								'description' => __( 'Shows if the variation can be bought.', 'classic-commerce' ),
+								'description' => __( 'Shows if the variation can be bought.', 'classic-store'),
 								'type'        => 'boolean',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'visible' => array(
-								'description' => __( 'If the variation is visible.', 'classic-commerce' ),
+								'description' => __( 'If the variation is visible.', 'classic-store'),
 								'type'        => 'boolean',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'virtual' => array(
-								'description' => __( 'If the variation is virtual.', 'classic-commerce' ),
+								'description' => __( 'If the variation is virtual.', 'classic-store'),
 								'type'        => 'boolean',
 								'default'     => false,
 								'context'     => array( 'view', 'edit' ),
 							),
 							'downloadable' => array(
-								'description' => __( 'If the variation is downloadable.', 'classic-commerce' ),
+								'description' => __( 'If the variation is downloadable.', 'classic-store'),
 								'type'        => 'boolean',
 								'default'     => false,
 								'context'     => array( 'view', 'edit' ),
 							),
 							'downloads' => array(
-								'description' => __( 'List of downloadable files.', 'classic-commerce' ),
+								'description' => __( 'List of downloadable files.', 'classic-store'),
 								'type'        => 'array',
 								'context'     => array( 'view', 'edit' ),
 								'items'       => array(
 									'type'       => 'object',
 									'properties' => array(
 										'id' => array(
-											'description' => __( 'File ID.', 'classic-commerce' ),
+											'description' => __( 'File ID.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'name' => array(
-											'description' => __( 'File name.', 'classic-commerce' ),
+											'description' => __( 'File name.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'file' => array(
-											'description' => __( 'File URL.', 'classic-commerce' ),
+											'description' => __( 'File URL.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
@@ -2377,171 +2377,171 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 								),
 							),
 							'download_limit' => array(
-								'description' => __( 'Number of times downloadable files can be downloaded after purchase.', 'classic-commerce' ),
+								'description' => __( 'Number of times downloadable files can be downloaded after purchase.', 'classic-store'),
 								'type'        => 'integer',
 								'default'     => null,
 								'context'     => array( 'view', 'edit' ),
 							),
 							'download_expiry' => array(
-								'description' => __( 'Number of days until access to downloadable files expires.', 'classic-commerce' ),
+								'description' => __( 'Number of days until access to downloadable files expires.', 'classic-store'),
 								'type'        => 'integer',
 								'default'     => null,
 								'context'     => array( 'view', 'edit' ),
 							),
 							'tax_status' => array(
-								'description' => __( 'Tax status.', 'classic-commerce' ),
+								'description' => __( 'Tax status.', 'classic-store'),
 								'type'        => 'string',
 								'default'     => 'taxable',
 								'enum'        => array( 'taxable', 'shipping', 'none' ),
 								'context'     => array( 'view', 'edit' ),
 							),
 							'tax_class' => array(
-								'description' => __( 'Tax class.', 'classic-commerce' ),
+								'description' => __( 'Tax class.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'manage_stock' => array(
-								'description' => __( 'Stock management at variation level.', 'classic-commerce' ),
+								'description' => __( 'Stock management at variation level.', 'classic-store'),
 								'type'        => 'boolean',
 								'default'     => false,
 								'context'     => array( 'view', 'edit' ),
 							),
 							'stock_quantity' => array(
-								'description' => __( 'Stock quantity.', 'classic-commerce' ),
+								'description' => __( 'Stock quantity.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'in_stock' => array(
-								'description' => __( 'Controls whether or not the variation is listed as "in stock" or "out of stock" on the frontend.', 'classic-commerce' ),
+								'description' => __( 'Controls whether or not the variation is listed as "in stock" or "out of stock" on the frontend.', 'classic-store'),
 								'type'        => 'boolean',
 								'default'     => true,
 								'context'     => array( 'view', 'edit' ),
 							),
 							'backorders' => array(
-								'description' => __( 'If managing stock, this controls if backorders are allowed.', 'classic-commerce' ),
+								'description' => __( 'If managing stock, this controls if backorders are allowed.', 'classic-store'),
 								'type'        => 'string',
 								'default'     => 'no',
 								'enum'        => array( 'no', 'notify', 'yes' ),
 								'context'     => array( 'view', 'edit' ),
 							),
 							'backorders_allowed' => array(
-								'description' => __( 'Shows if backorders are allowed.', 'classic-commerce' ),
+								'description' => __( 'Shows if backorders are allowed.', 'classic-store'),
 								'type'        => 'boolean',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'backordered' => array(
-								'description' => __( 'Shows if the variation is on backordered.', 'classic-commerce' ),
+								'description' => __( 'Shows if the variation is on backordered.', 'classic-store'),
 								'type'        => 'boolean',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'weight' => array(
 								/* translators: %s: weight unit */
-								'description' => sprintf( __( 'Variation weight (%s).', 'classic-commerce' ), $weight_unit ),
+								'description' => sprintf( __( 'Variation weight (%s).', 'classic-store' ), $weight_unit ),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'dimensions' => array(
-								'description' => __( 'Variation dimensions.', 'classic-commerce' ),
+								'description' => __( 'Variation dimensions.', 'classic-store'),
 								'type'        => 'object',
 								'context'     => array( 'view', 'edit' ),
 								'properties'  => array(
 									'length' => array(
 										/* translators: %s: dimension unit */
-										'description' => sprintf( __( 'Variation length (%s).', 'classic-commerce' ), $dimension_unit ),
+										'description' => sprintf( __( 'Variation length (%s).', 'classic-store' ), $dimension_unit ),
 										'type'        => 'string',
 										'context'     => array( 'view', 'edit' ),
 									),
 									'width' => array(
 										/* translators: %s: dimension unit */
-										'description' => sprintf( __( 'Variation width (%s).', 'classic-commerce' ), $dimension_unit ),
+										'description' => sprintf( __( 'Variation width (%s).', 'classic-store' ), $dimension_unit ),
 										'type'        => 'string',
 										'context'     => array( 'view', 'edit' ),
 									),
 									'height' => array(
 										/* translators: %s: dimension unit */
-										'description' => sprintf( __( 'Variation height (%s).', 'classic-commerce' ), $dimension_unit ),
+										'description' => sprintf( __( 'Variation height (%s).', 'classic-store' ), $dimension_unit ),
 										'type'        => 'string',
 										'context'     => array( 'view', 'edit' ),
 									),
 								),
 							),
 							'shipping_class' => array(
-								'description' => __( 'Shipping class slug.', 'classic-commerce' ),
+								'description' => __( 'Shipping class slug.', 'classic-store'),
 								'type'        => 'string',
 								'context'     => array( 'view', 'edit' ),
 							),
 							'shipping_class_id' => array(
-								'description' => __( 'Shipping class ID.', 'classic-commerce' ),
+								'description' => __( 'Shipping class ID.', 'classic-store'),
 								'type'        => 'integer',
 								'context'     => array( 'view', 'edit' ),
 								'readonly'    => true,
 							),
 							'image' => array(
-								'description' => __( 'Variation image data.', 'classic-commerce' ),
+								'description' => __( 'Variation image data.', 'classic-store'),
 								'type'        => 'object',
 								'context'     => array( 'view', 'edit' ),
 								'properties'  => array(
 									'id' => array(
-										'description' => __( 'Image ID.', 'classic-commerce' ),
+										'description' => __( 'Image ID.', 'classic-store'),
 										'type'        => 'integer',
 										'context'     => array( 'view', 'edit' ),
 									),
 									'date_created' => array(
-										'description' => __( "The date the image was created, in the site's timezone.", 'classic-commerce' ),
+										'description' => __( "The date the image was created, in the site's timezone.", 'classic-store'),
 										'type'        => 'date-time',
 										'context'     => array( 'view', 'edit' ),
 										'readonly'    => true,
 									),
 									'date_modified' => array(
-										'description' => __( "The date the image was last modified, in the site's timezone.", 'classic-commerce' ),
+										'description' => __( "The date the image was last modified, in the site's timezone.", 'classic-store'),
 										'type'        => 'date-time',
 										'context'     => array( 'view', 'edit' ),
 										'readonly'    => true,
 									),
 									'src' => array(
-										'description' => __( 'Image URL.', 'classic-commerce' ),
+										'description' => __( 'Image URL.', 'classic-store'),
 										'type'        => 'string',
 										'format'      => 'uri',
 										'context'     => array( 'view', 'edit' ),
 									),
 									'name' => array(
-										'description' => __( 'Image name.', 'classic-commerce' ),
+										'description' => __( 'Image name.', 'classic-store'),
 										'type'        => 'string',
 										'context'     => array( 'view', 'edit' ),
 									),
 									'alt' => array(
-										'description' => __( 'Image alternative text.', 'classic-commerce' ),
+										'description' => __( 'Image alternative text.', 'classic-store'),
 										'type'        => 'string',
 										'context'     => array( 'view', 'edit' ),
 									),
 									'position' => array(
-										'description' => __( 'Image position. 0 means that the image is featured.', 'classic-commerce' ),
+										'description' => __( 'Image position. 0 means that the image is featured.', 'classic-store'),
 										'type'        => 'integer',
 										'context'     => array( 'view', 'edit' ),
 									),
 								),
 							),
 							'attributes' => array(
-								'description' => __( 'List of attributes.', 'classic-commerce' ),
+								'description' => __( 'List of attributes.', 'classic-store'),
 								'type'        => 'array',
 								'context'     => array( 'view', 'edit' ),
 								'items'       => array(
 									'type'       => 'object',
 									'properties' => array(
 										'id' => array(
-											'description' => __( 'Attribute ID.', 'classic-commerce' ),
+											'description' => __( 'Attribute ID.', 'classic-store'),
 											'type'        => 'integer',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'name' => array(
-											'description' => __( 'Attribute name.', 'classic-commerce' ),
+											'description' => __( 'Attribute name.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
 										'option' => array(
-											'description' => __( 'Selected attribute term name.', 'classic-commerce' ),
+											'description' => __( 'Selected attribute term name.', 'classic-store'),
 											'type'        => 'string',
 											'context'     => array( 'view', 'edit' ),
 										),
@@ -2552,7 +2552,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 					),
 				),
 				'grouped_products' => array(
-					'description' => __( 'List of grouped products ID.', 'classic-commerce' ),
+					'description' => __( 'List of grouped products ID.', 'classic-store'),
 					'type'        => 'array',
 					'items'       => array(
 						'type'    => 'integer',
@@ -2561,7 +2561,7 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 					'readonly'    => true,
 				),
 				'menu_order' => array(
-					'description' => __( 'Menu order, used to custom sort products.', 'classic-commerce' ),
+					'description' => __( 'Menu order, used to custom sort products.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit' ),
 				),
@@ -2580,57 +2580,57 @@ class WC_REST_Products_V1_Controller extends WC_REST_Posts_Controller {
 		$params = parent::get_collection_params();
 
 		$params['slug'] = array(
-			'description'       => __( 'Limit result set to products with a specific slug.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to products with a specific slug.', 'classic-store'),
 			'type'              => 'string',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['status'] = array(
 			'default'           => 'any',
-			'description'       => __( 'Limit result set to products assigned a specific status.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to products assigned a specific status.', 'classic-store'),
 			'type'              => 'string',
 			'enum'              => array_merge( array( 'any', 'future' ), array_keys( get_post_statuses() ) ),
 			'sanitize_callback' => 'sanitize_key',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['type'] = array(
-			'description'       => __( 'Limit result set to products assigned a specific type.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to products assigned a specific type.', 'classic-store'),
 			'type'              => 'string',
 			'enum'              => array_keys( wc_get_product_types() ),
 			'sanitize_callback' => 'sanitize_key',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['category'] = array(
-			'description'       => __( 'Limit result set to products assigned a specific category ID.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to products assigned a specific category ID.', 'classic-store'),
 			'type'              => 'string',
 			'sanitize_callback' => 'wp_parse_id_list',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['tag'] = array(
-			'description'       => __( 'Limit result set to products assigned a specific tag ID.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to products assigned a specific tag ID.', 'classic-store'),
 			'type'              => 'string',
 			'sanitize_callback' => 'wp_parse_id_list',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['shipping_class'] = array(
-			'description'       => __( 'Limit result set to products assigned a specific shipping class ID.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to products assigned a specific shipping class ID.', 'classic-store'),
 			'type'              => 'string',
 			'sanitize_callback' => 'wp_parse_id_list',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['attribute'] = array(
-			'description'       => __( 'Limit result set to products with a specific attribute.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to products with a specific attribute.', 'classic-store'),
 			'type'              => 'string',
 			'sanitize_callback' => 'sanitize_text_field',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['attribute_term'] = array(
-			'description'       => __( 'Limit result set to products with a specific attribute term ID (required an assigned attribute).', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to products with a specific attribute term ID (required an assigned attribute).', 'classic-store' ),
 			'type'              => 'string',
 			'sanitize_callback' => 'wp_parse_id_list',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['sku'] = array(
-			'description'       => __( 'Limit result set to products with a specific SKU.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to products with a specific SKU.', 'classic-store'),
 			'type'              => 'string',
 			'sanitize_callback' => 'sanitize_text_field',
 			'validate_callback' => 'rest_validate_request_arg',

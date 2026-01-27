@@ -69,7 +69,7 @@ class WC_REST_Data_Currencies_Controller extends WC_REST_Data_Controller {
 					'permission_callback' => array( $this, 'get_item_permissions_check' ),
 					'args'                => array(
 						'location' => array(
-							'description' => __( 'ISO4217 currency code.', 'classic-commerce' ),
+							'description' => __( 'ISO4217 currency code.', 'classic-store'),
 							'type'        => 'string',
 						),
 					),
@@ -129,7 +129,7 @@ class WC_REST_Data_Currencies_Controller extends WC_REST_Data_Controller {
 	public function get_item( $request ) {
 		$data = $this->get_currency( strtoupper( $request['currency'] ), $request );
 		if ( empty( $data ) ) {
-			return new WP_Error( 'woocommerce_rest_data_invalid_currency', __( 'There are no currencies matching these parameters.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_data_invalid_currency', __( 'There are no currencies matching these parameters.', 'classic-store'), array( 'status' => 404 ) );
 		}
 		return $this->prepare_item_for_response( $data, $request );
 	}
@@ -203,19 +203,19 @@ class WC_REST_Data_Currencies_Controller extends WC_REST_Data_Controller {
 			'properties' => array(
 				'code'   => array(
 					'type'        => 'string',
-					'description' => __( 'ISO4217 currency code.', 'classic-commerce' ),
+					'description' => __( 'ISO4217 currency code.', 'classic-store'),
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'name'   => array(
 					'type'        => 'string',
-					'description' => __( 'Full name of currency.', 'classic-commerce' ),
+					'description' => __( 'Full name of currency.', 'classic-store'),
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'symbol' => array(
 					'type'        => 'string',
-					'description' => __( 'Currency symbol.', 'classic-commerce' ),
+					'description' => __( 'Currency symbol.', 'classic-store'),
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),

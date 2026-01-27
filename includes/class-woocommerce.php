@@ -140,7 +140,7 @@ final class WooCommerce {
 	 * @since WC-2.1
 	 */
 	public function __clone() {
-		wc_doing_it_wrong( __FUNCTION__, __( 'Cloning is forbidden.', 'classic-commerce' ), '2.1' );
+		wc_doing_it_wrong( __FUNCTION__, __( 'Cloning is forbidden.', 'classic-store'), '2.1' );
 	}
 
 	/**
@@ -149,7 +149,7 @@ final class WooCommerce {
 	 * @since WC-2.1
 	 */
 	public function __wakeup() {
-		wc_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'classic-commerce' ), '2.1' );
+		wc_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'classic-store'), '2.1' );
 	}
 
 	/**
@@ -229,7 +229,7 @@ final class WooCommerce {
 			$logger = wc_get_logger();
 			$logger->critical(
 				/* translators: 1: error message 2: file name and path 3: line number */
-				sprintf( __( '%1$s in %2$s on line %3$s', 'classic-commerce' ), $error['message'], $error['file'], $error['line'] ) . PHP_EOL,
+				sprintf( __( '%1$s in %2$s on line %3$s', 'classic-store'), $error['message'], $error['file'], $error['line'] ) . PHP_EOL,
 				array(
 					'source' => 'fatal-errors',
 				)

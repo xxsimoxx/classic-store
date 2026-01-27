@@ -16,8 +16,8 @@ echo esc_html( wp_strip_all_tags( $email_heading ) );
 echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 /* translators: %s: Customer first name */
-echo sprintf( esc_html__( 'Hi %s,', 'classic-commerce' ), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
-echo esc_html__( 'The following note has been added to your order:', 'classic-commerce' ) . "\n\n";
+echo sprintf( esc_html__( 'Hi %s,', 'classic-store'), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
+echo esc_html__( 'The following note has been added to your order:', 'classic-store') . "\n\n";
 
 echo "----------\n\n";
 
@@ -25,7 +25,7 @@ echo wptexturize( $customer_note ) . "\n\n"; // phpcs:ignore WordPress.XSS.Escap
 
 echo "----------\n\n";
 
-echo esc_html__( 'As a reminder, here are your order details:', 'classic-commerce' ) . "\n\n";
+echo esc_html__( 'As a reminder, here are your order details:', 'classic-store') . "\n\n";
 
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.

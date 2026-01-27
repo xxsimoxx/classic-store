@@ -61,7 +61,7 @@ class WC_API extends WC_Legacy_API {
 	 */
 	public function get_endpoint_data( $endpoint, $params = array() ) {
 		if ( ! $this->rest_api_init() ) {
-			return new WP_Error( 'rest_api_unavailable', __( 'The Rest API is unavailable.', 'classic-commerce' ) );
+			return new WP_Error( 'rest_api_unavailable', __( 'The Rest API is unavailable.', 'classic-store') );
 		}
 		$request = new \WP_REST_Request( 'GET', $endpoint );
 		if ( $params ) {

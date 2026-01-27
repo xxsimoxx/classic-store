@@ -16,8 +16,8 @@ class ActionScheduler_wpPostStore_PostTypeRegistrar {
 	 */
 	protected function post_type_args() {
 		$args = array(
-			'label' => __( 'Scheduled Actions', 'action-scheduler' ),
-			'description' => __( 'Scheduled actions are hooks triggered on a cetain date and time.', 'action-scheduler' ),
+			'label' => __( 'Scheduled Actions', 'classic-store'),
+			'description' => __( 'Scheduled actions are hooks triggered on a cetain date and time.', 'classic-store'),
 			'public' => false,
 			'map_meta_cap' => true,
 			'hierarchical' => false,
@@ -27,19 +27,19 @@ class ActionScheduler_wpPostStore_PostTypeRegistrar {
 			'can_export' => true,
 			'ep_mask' => EP_NONE,
 			'labels' => array(
-				'name' => __( 'Scheduled Actions', 'action-scheduler' ),
-				'singular_name' => __( 'Scheduled Action', 'action-scheduler' ),
-				'menu_name' => _x( 'Scheduled Actions', 'Admin menu name', 'action-scheduler' ),
-				'add_new' => __( 'Add', 'action-scheduler' ),
-				'add_new_item' => __( 'Add New Scheduled Action', 'action-scheduler' ),
-				'edit' => __( 'Edit', 'action-scheduler' ),
-				'edit_item' => __( 'Edit Scheduled Action', 'action-scheduler' ),
-				'new_item' => __( 'New Scheduled Action', 'action-scheduler' ),
-				'view' => __( 'View Action', 'action-scheduler' ),
-				'view_item' => __( 'View Action', 'action-scheduler' ),
-				'search_items' => __( 'Search Scheduled Actions', 'action-scheduler' ),
-				'not_found' => __( 'No actions found', 'action-scheduler' ),
-				'not_found_in_trash' => __( 'No actions found in trash', 'action-scheduler' ),
+				'name' => __( 'Scheduled Actions', 'classic-store'),
+				'singular_name' => __( 'Scheduled Action', 'classic-store'),
+				'menu_name' => _x( 'Scheduled Actions', 'Admin menu name', 'classic-store'),
+				'add_new' => __( 'Add', 'classic-store'),
+				'add_new_item' => __( 'Add New Scheduled Action', 'classic-store'),
+				'edit' => __( 'Edit', 'classic-store'),
+				'edit_item' => __( 'Edit Scheduled Action', 'classic-store'),
+				'new_item' => __( 'New Scheduled Action', 'classic-store'),
+				'view' => __( 'View Action', 'classic-store'),
+				'view_item' => __( 'View Action', 'classic-store'),
+				'search_items' => __( 'Search Scheduled Actions', 'classic-store'),
+				'not_found' => __( 'No actions found', 'classic-store'),
+				'not_found_in_trash' => __( 'No actions found in trash', 'classic-store'),
 			),
 		);
 

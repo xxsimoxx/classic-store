@@ -24,7 +24,7 @@ class WC_Settings_Tax extends WC_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'tax';
-		$this->label = __( 'Tax', 'classic-commerce' );
+		$this->label = __( 'Tax', 'classic-store');
 
 		add_filter( 'woocommerce_settings_tabs_array', array( $this, 'add_settings_page' ), 20 );
 
@@ -56,8 +56,8 @@ class WC_Settings_Tax extends WC_Settings_Page {
 	 */
 	protected function get_own_sections() {
 		$sections = array(
-			''         => __( 'Tax options', 'classic-commerce' ),
-			'standard' => __( 'Standard rates', 'classic-commerce' ),
+			''         => __( 'Tax options', 'classic-store'),
+			'standard' => __( 'Standard rates', 'classic-store'),
 		);
 
 		// Get tax classes and display as links.
@@ -65,7 +65,7 @@ class WC_Settings_Tax extends WC_Settings_Page {
 
 		foreach ( $tax_classes as $class ) {
 			/* translators: $s tax rate section name */
-			$sections[ sanitize_title( $class ) ] = sprintf( __( '%s rates', 'classic-commerce' ), $class );
+			$sections[ sanitize_title( $class ) ] = sprintf( __( '%s rates', 'classic-store'), $class );
 		}
 
 		return $sections;
@@ -146,7 +146,7 @@ class WC_Settings_Tax extends WC_Settings_Page {
 				WC_Admin_Settings::add_error(
 					sprintf(
 						/* translators: 1: tax class name 2: error message */
-						esc_html__( 'Additional tax class "%1$s" couldn\'t be saved. %2$s.', 'classic-commerce' ),
+						esc_html__( 'Additional tax class "%1$s" couldn\'t be saved. %2$s.', 'classic-store'),
 						esc_html( $name ),
 						$tax_class->get_error_message()
 					)
@@ -220,19 +220,19 @@ class WC_Settings_Tax extends WC_Settings_Page {
 					'tax_rate_class'    => $current_class,
 				),
 				'strings'       => array(
-					'no_rows_selected'        => __( 'No row(s) selected', 'classic-commerce' ),
-					'unload_confirmation_msg' => __( 'Your changed data will be lost if you leave this page without saving.', 'classic-commerce' ),
+					'no_rows_selected'        => __( 'No row(s) selected', 'classic-store' ),
+					'unload_confirmation_msg' => __( 'Your changed data will be lost if you leave this page without saving.', 'classic-store'),
 					'csv_data_cols'           => array(
-						__( 'Country code', 'classic-commerce' ),
-						__( 'State code', 'classic-commerce' ),
-						__( 'Postcode / ZIP', 'classic-commerce' ),
-						__( 'City', 'classic-commerce' ),
-						__( 'Rate %', 'classic-commerce' ),
-						__( 'Tax name', 'classic-commerce' ),
-						__( 'Priority', 'classic-commerce' ),
-						__( 'Compound', 'classic-commerce' ),
-						__( 'Shipping', 'classic-commerce' ),
-						__( 'Tax class', 'classic-commerce' ),
+						__( 'Country code', 'classic-store'),
+						__( 'State code', 'classic-store'),
+						__( 'Postcode / ZIP', 'classic-store'),
+						__( 'City', 'classic-store'),
+						__( 'Rate %', 'classic-store'),
+						__( 'Tax name', 'classic-store'),
+						__( 'Priority', 'classic-store'),
+						__( 'Compound', 'classic-store'),
+						__( 'Shipping', 'classic-store'),
+						__( 'Tax class', 'classic-store'),
 					),
 				),
 			)

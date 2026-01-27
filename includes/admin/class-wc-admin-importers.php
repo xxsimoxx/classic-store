@@ -36,7 +36,7 @@ class WC_Admin_Importers {
 		// Register Classic Commerce importers.
 		$this->importers['product_importer'] = array(
 			'menu'       => 'edit.php?post_type=product',
-			'name'       => __( 'Product Import', 'classic-commerce' ),
+			'name'       => __( 'Product Import', 'classic-store'),
 			'capability' => 'import',
 			'callback'   => array( $this, 'product_importer' ),
 		);
@@ -110,8 +110,8 @@ class WC_Admin_Importers {
 	public function register_importers() {
 		if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
 			add_action( 'import_start', array( $this, 'post_importer_compatibility' ) );
-			register_importer( 'woocommerce_product_csv', __( 'Classic Commerce products (CSV)', 'classic-commerce' ), __( 'Import <strong>products</strong> to your store via a csv file.', 'classic-commerce' ), array( $this, 'product_importer' ) );
-			register_importer( 'woocommerce_tax_rate_csv', __( 'Classic Commerce tax rates (CSV)', 'classic-commerce' ), __( 'Import <strong>tax rates</strong> to your store via a csv file.', 'classic-commerce' ), array( $this, 'tax_rates_importer' ) );
+			register_importer( 'woocommerce_product_csv', __( 'Classic Commerce products (CSV)', 'classic-store' ), __( 'Import <strong>products</strong> to your store via a csv file.', 'classic-store'), array( $this, 'product_importer' ) );
+			register_importer( 'woocommerce_tax_rate_csv', __( 'Classic Commerce tax rates (CSV)', 'classic-store' ), __( 'Import <strong>tax rates</strong> to your store via a csv file.', 'classic-store'), array( $this, 'tax_rates_importer' ) );
 		}
 	}
 
@@ -206,7 +206,7 @@ class WC_Admin_Importers {
 		check_ajax_referer( 'wc-product-import', 'security' );
 
 		if ( ! $this->import_allowed() || ! isset( $_POST['file'] ) ) { // PHPCS: input var ok.
-			wp_send_json_error( array( 'message' => __( 'Insufficient privileges to import products.', 'classic-commerce' ) ) );
+			wp_send_json_error( array( 'message' => __( 'Insufficient privileges to import products.', 'classic-store') ) );
 		}
 
 		include_once WC_ABSPATH . 'includes/admin/importers/class-wc-product-csv-importer-controller.php';

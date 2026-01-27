@@ -11,10 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 				array(
 					'id'          => '_weight',
 					'value'       => $product_object->get_weight( 'edit' ),
-					'label'       => __( 'Weight', 'classic-commerce' ) . ' (' . get_option( 'woocommerce_weight_unit' ) . ')',
+					'label'       => __( 'Weight', 'classic-store') . ' (' . get_option( 'woocommerce_weight_unit' ) . ')',
 					'placeholder' => wc_format_localized_decimal( 0 ),
 					'desc_tip'    => true,
-					'description' => __( 'Weight in decimal form', 'classic-commerce' ),
+					'description' => __( 'Weight in decimal form', 'classic-store'),
 					'type'        => 'text',
 					'data_type'   => 'decimal',
 				)
@@ -25,13 +25,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 			<p class="form-field dimensions_field">
 				<?php /* translators: Classic Commerce dimension unit*/ ?>
-				<label for="product_length"><?php printf( __( 'Dimensions (%s)', 'classic-commerce' ), get_option( 'woocommerce_dimension_unit' ) ); ?></label>
+				<label for="product_length"><?php printf( __( 'Dimensions (%s)', 'classic-store' ), get_option( 'woocommerce_dimension_unit' ) ); ?></label>
 				<span class="wrap">
-					<input id="product_length" placeholder="<?php esc_attr_e( 'Length', 'classic-commerce' ); ?>" class="input-text wc_input_decimal" size="6" type="text" name="_length" value="<?php echo esc_attr( wc_format_localized_decimal( $product_object->get_length( 'edit' ) ) ); ?>" />
-					<input placeholder="<?php esc_attr_e( 'Width', 'classic-commerce' ); ?>" class="input-text wc_input_decimal" size="6" type="text" name="_width" value="<?php echo esc_attr( wc_format_localized_decimal( $product_object->get_width( 'edit' ) ) ); ?>" />
-					<input placeholder="<?php esc_attr_e( 'Height', 'classic-commerce' ); ?>" class="input-text wc_input_decimal last" size="6" type="text" name="_height" value="<?php echo esc_attr( wc_format_localized_decimal( $product_object->get_height( 'edit' ) ) ); ?>" />
+					<input id="product_length" placeholder="<?php esc_attr_e( 'Length', 'classic-store'); ?>" class="input-text wc_input_decimal" size="6" type="text" name="_length" value="<?php echo esc_attr( wc_format_localized_decimal( $product_object->get_length( 'edit' ) ) ); ?>" />
+					<input placeholder="<?php esc_attr_e( 'Width', 'classic-store'); ?>" class="input-text wc_input_decimal" size="6" type="text" name="_width" value="<?php echo esc_attr( wc_format_localized_decimal( $product_object->get_width( 'edit' ) ) ); ?>" />
+					<input placeholder="<?php esc_attr_e( 'Height', 'classic-store'); ?>" class="input-text wc_input_decimal last" size="6" type="text" name="_height" value="<?php echo esc_attr( wc_format_localized_decimal( $product_object->get_height( 'edit' ) ) ); ?>" />
 				</span>
-				<?php echo wc_help_tip( __( 'LxWxH in decimal form', 'classic-commerce' ) ); ?>
+				<?php echo wc_help_tip( __( 'LxWxH in decimal form', 'classic-store') ); ?>
 			</p>
 			<?php
 		}
@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		$args = array(
 			'taxonomy'         => 'product_shipping_class',
 			'hide_empty'       => 0,
-			'show_option_none' => __( 'No shipping class', 'classic-commerce' ),
+			'show_option_none' => __( 'No shipping class', 'classic-store'),
 			'name'             => 'product_shipping_class',
 			'id'               => 'product_shipping_class',
 			'selected'         => $product_object->get_shipping_class_id( 'edit' ),
@@ -54,9 +54,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 		);
 		?>
 		<p class="form-field shipping_class_field">
-			<label for="product_shipping_class"><?php esc_html_e( 'Shipping class', 'classic-commerce' ); ?></label>
+			<label for="product_shipping_class"><?php esc_html_e( 'Shipping class', 'classic-store'); ?></label>
 			<?php wp_dropdown_categories( $args ); ?>
-			<?php echo wc_help_tip( __( 'Shipping classes are used by certain shipping methods to group similar products.', 'classic-commerce' ) ); ?>
+			<?php echo wc_help_tip( __( 'Shipping classes are used by certain shipping methods to group similar products.', 'classic-store') ); ?>
 		</p>
 		<?php
 

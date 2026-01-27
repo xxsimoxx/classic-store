@@ -810,7 +810,7 @@ class WC_Tax {
 		global $wpdb;
 
 		if ( empty( $name ) ) {
-			return new WP_Error( 'tax_class_invalid_name', __( 'Tax class requires a valid name', 'classic-commerce' ) );
+			return new WP_Error( 'tax_class_invalid_name', __( 'Tax class requires a valid name', 'classic-store') );
 		}
 
 		$existing       = self::get_tax_classes();
@@ -818,7 +818,7 @@ class WC_Tax {
 		$name           = wc_clean( $name );
 
 		if ( in_array( $name, $existing, true ) ) {
-			return new WP_Error( 'tax_class_exists', __( 'Tax class already exists', 'classic-commerce' ) );
+			return new WP_Error( 'tax_class_exists', __( 'Tax class already exists', 'classic-store') );
 		}
 
 		if ( ! $slug ) {
@@ -827,11 +827,11 @@ class WC_Tax {
 
 		// Stop if there's no slug.
 		if ( ! $slug ) {
-			return new WP_Error( 'tax_class_slug_invalid', __( 'Tax class slug is invalid', 'classic-commerce' ) );
+			return new WP_Error( 'tax_class_slug_invalid', __( 'Tax class slug is invalid', 'classic-store') );
 		}
 
 		if ( in_array( $slug, $existing_slugs, true ) ) {
-			return new WP_Error( 'tax_class_slug_exists', __( 'Tax class slug already exists', 'classic-commerce' ) );
+			return new WP_Error( 'tax_class_slug_exists', __( 'Tax class slug already exists', 'classic-store') );
 		}
 
 		$insert = $wpdb->insert(
@@ -864,7 +864,7 @@ class WC_Tax {
 	 */
 	public static function get_tax_class_by( $field, $item ) {
 		if ( ! in_array( $field, array( 'id', 'name', 'slug' ), true ) ) {
-			return new WP_Error( 'invalid_field', __( 'Invalid field', 'classic-commerce' ) );
+			return new WP_Error( 'invalid_field', __( 'Invalid field', 'classic-store') );
 		}
 
 		if ( 'id' === $field ) {
@@ -902,13 +902,13 @@ class WC_Tax {
 		global $wpdb;
 
 		if ( ! in_array( $field, array( 'id', 'name', 'slug' ), true ) ) {
-			return new WP_Error( 'invalid_field', __( 'Invalid field', 'classic-commerce' ) );
+			return new WP_Error( 'invalid_field', __( 'Invalid field', 'classic-store') );
 		}
 
 		$tax_class = self::get_tax_class_by( $field, $item );
 
 		if ( ! $tax_class ) {
-			return new WP_Error( 'invalid_tax_class', __( 'Invalid tax class', 'classic-commerce' ) );
+			return new WP_Error( 'invalid_tax_class', __( 'Invalid tax class', 'classic-store') );
 		}
 
 		if ( 'id' === $field ) {
@@ -973,7 +973,7 @@ class WC_Tax {
 	 * @return string
 	 */
 	private static function format_tax_rate_name( $name ) {
-		return $name ? $name : __( 'Tax', 'classic-commerce' );
+		return $name ? $name : __( 'Tax', 'classic-store');
 	}
 
 	/**

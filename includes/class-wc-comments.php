@@ -149,7 +149,7 @@ class WC_Comments {
 	 */
 	public static function check_comment_rating( $comment_data ) {
 		if ( ! is_admin() && isset( $_POST['comment_post_ID'], $_POST['rating'], $comment_data['comment_type'] ) && 'product' === get_post_type( absint( $_POST['comment_post_ID'] ) ) && empty( $_POST['rating'] ) && self::is_default_comment_type( $comment_data['comment_type'] ) && wc_review_ratings_enabled() && wc_review_ratings_required() ) { // WPCS: input var ok, CSRF ok.
-			wp_die( esc_html__( 'Please rate the product.', 'classic-commerce' ) );
+			wp_die( esc_html__( 'Please rate the product.', 'classic-store') );
 			exit;
 		}
 		return $comment_data;
@@ -303,7 +303,7 @@ class WC_Comments {
 	 * @return array
 	 */
 	public static function add_review_comment_filter( array $comment_types ): array {
-		$comment_types['review'] = __( 'Product Reviews', 'classic-commerce' );
+		$comment_types['review'] = __( 'Product Reviews', 'classic-store');
 		return $comment_types;
 	}
 

@@ -101,49 +101,49 @@ class WC_Product_CSV_Exporter extends WC_CSV_Batch_Exporter {
 	public function get_default_column_names() {
 		return apply_filters( "woocommerce_product_export_{$this->export_type}_default_columns",
             array(
-                'id'                 => __( 'ID', 'classic-commerce' ),
-                'type'               => __( 'Type', 'classic-commerce' ),
-                'sku'                => __( 'SKU', 'classic-commerce' ),
-                'name'               => __( 'Name', 'classic-commerce' ),
-                'published'          => __( 'Published', 'classic-commerce' ),
-                'featured'           => __( 'Is featured?', 'classic-commerce' ),
-                'catalog_visibility' => __( 'Visibility in catalog', 'classic-commerce' ),
-                'short_description'  => __( 'Short description', 'classic-commerce' ),
-                'description'        => __( 'Description', 'classic-commerce' ),
-                'date_on_sale_from'  => __( 'Date sale price starts', 'classic-commerce' ),
-                'date_on_sale_to'    => __( 'Date sale price ends', 'classic-commerce' ),
-                'tax_status'         => __( 'Tax status', 'classic-commerce' ),
-                'tax_class'          => __( 'Tax class', 'classic-commerce' ),
-                'stock_status'       => __( 'In stock?', 'classic-commerce' ),
-                'stock'              => __( 'Stock', 'classic-commerce' ),
-                'low_stock_amount'   => __( 'Low stock amount', 'classic-commerce' ),
-                'backorders'         => __( 'Backorders allowed?', 'classic-commerce' ),
-                'sold_individually'  => __( 'Sold individually?', 'classic-commerce' ),
+                'id'                 => __( 'ID', 'classic-store'),
+                'type'               => __( 'Type', 'classic-store'),
+                'sku'                => __( 'SKU', 'classic-store'),
+                'name'               => __( 'Name', 'classic-store'),
+                'published'          => __( 'Published', 'classic-store'),
+                'featured'           => __( 'Is featured?', 'classic-store'),
+                'catalog_visibility' => __( 'Visibility in catalog', 'classic-store'),
+                'short_description'  => __( 'Short description', 'classic-store'),
+                'description'        => __( 'Description', 'classic-store'),
+                'date_on_sale_from'  => __( 'Date sale price starts', 'classic-store'),
+                'date_on_sale_to'    => __( 'Date sale price ends', 'classic-store'),
+                'tax_status'         => __( 'Tax status', 'classic-store'),
+                'tax_class'          => __( 'Tax class', 'classic-store'),
+                'stock_status'       => __( 'In stock?', 'classic-store'),
+                'stock'              => __( 'Stock', 'classic-store'),
+                'low_stock_amount'   => __( 'Low stock amount', 'classic-store'),
+                'backorders'         => __( 'Backorders allowed?', 'classic-store'),
+                'sold_individually'  => __( 'Sold individually?', 'classic-store'),
                 /* translators: %s: weight */
-                'weight'             => sprintf( __( 'Weight (%s)', 'classic-commerce' ), get_option( 'woocommerce_weight_unit' ) ),
+                'weight'             => sprintf( __( 'Weight (%s)', 'classic-store' ), get_option( 'woocommerce_weight_unit' ) ),
                 /* translators: %s: length */
-                'length'             => sprintf( __( 'Length (%s)', 'classic-commerce' ), get_option( 'woocommerce_dimension_unit' ) ),
+                'length'             => sprintf( __( 'Length (%s)', 'classic-store' ), get_option( 'woocommerce_dimension_unit' ) ),
                 /* translators: %s: width */
-                'width'              => sprintf( __( 'Width (%s)', 'classic-commerce' ), get_option( 'woocommerce_dimension_unit' ) ),
+                'width'              => sprintf( __( 'Width (%s)', 'classic-store' ), get_option( 'woocommerce_dimension_unit' ) ),
                 /* translators: %s: Height */
-                'height'             => sprintf( __( 'Height (%s)', 'classic-commerce' ), get_option( 'woocommerce_dimension_unit' ) ),
-                'reviews_allowed'    => __( 'Allow customer reviews?', 'classic-commerce' ),
-                'purchase_note'      => __( 'Purchase note', 'classic-commerce' ),
-                'sale_price'         => __( 'Sale price', 'classic-commerce' ),
-                'regular_price'      => __( 'Regular price', 'classic-commerce' ),
-                'category_ids'       => __( 'Categories', 'classic-commerce' ),
-                'tag_ids'            => __( 'Tags', 'classic-commerce' ),
-                'shipping_class_id'  => __( 'Shipping class', 'classic-commerce' ),
-                'images'             => __( 'Images', 'classic-commerce' ),
-                'download_limit'     => __( 'Download limit', 'classic-commerce' ),
-                'download_expiry'    => __( 'Download expiry days', 'classic-commerce' ),
-                'parent_id'          => __( 'Parent', 'classic-commerce' ),
-                'grouped_products'   => __( 'Grouped products', 'classic-commerce' ),
-                'upsell_ids'         => __( 'Upsells', 'classic-commerce' ),
-                'cross_sell_ids'     => __( 'Cross-sells', 'classic-commerce' ),
-                'product_url'        => __( 'External URL', 'classic-commerce' ),
-                'button_text'        => __( 'Button text', 'classic-commerce' ),
-                'menu_order'         => __( 'Position', 'classic-commerce' ),
+                'height'             => sprintf( __( 'Height (%s)', 'classic-store' ), get_option( 'woocommerce_dimension_unit' ) ),
+                'reviews_allowed'    => __( 'Allow customer reviews?', 'classic-store'),
+                'purchase_note'      => __( 'Purchase note', 'classic-store'),
+                'sale_price'         => __( 'Sale price', 'classic-store'),
+                'regular_price'      => __( 'Regular price', 'classic-store'),
+                'category_ids'       => __( 'Categories', 'classic-store'),
+                'tag_ids'            => __( 'Tags', 'classic-store'),
+                'shipping_class_id'  => __( 'Shipping class', 'classic-store'),
+                'images'             => __( 'Images', 'classic-store'),
+                'download_limit'     => __( 'Download limit', 'classic-store'),
+                'download_expiry'    => __( 'Download expiry days', 'classic-store'),
+                'parent_id'          => __( 'Parent', 'classic-store'),
+                'grouped_products'   => __( 'Grouped products', 'classic-store'),
+                'upsell_ids'         => __( 'Upsells', 'classic-store'),
+                'cross_sell_ids'     => __( 'Cross-sells', 'classic-store'),
+                'product_url'        => __( 'External URL', 'classic-store'),
+                'button_text'        => __( 'Button text', 'classic-store'),
+                'menu_order'         => __( 'Position', 'classic-store'),
             )
         );
 	}
@@ -249,7 +249,7 @@ class WC_Product_CSV_Exporter extends WC_CSV_Batch_Exporter {
 		$this->prepare_downloads_for_export( $product, $row );
 		$this->prepare_attributes_for_export( $product, $row );
 		$this->prepare_meta_for_export( $product, $row );
-		
+
         /**
 		 * Allow third-party plugins to filter the data in a single row of the exported CSV file.
 		 *
@@ -611,11 +611,11 @@ class WC_Product_CSV_Exporter extends WC_CSV_Batch_Exporter {
 				$i = 1;
 				foreach ( $downloads as $download ) {
                     /* translators: %s: download number */
-					$this->column_names[ 'downloads:id' . $i ] = sprintf( __( 'Download %d ID', 'classic-commerce' ), $i );
+					$this->column_names[ 'downloads:id' . $i ] = sprintf( __( 'Download %d ID', 'classic-store'), $i );
 					/* translators: %s: download number */
-					$this->column_names[ 'downloads:name' . $i ] = sprintf( __( 'Download %d name', 'classic-commerce' ), $i );
+					$this->column_names[ 'downloads:name' . $i ] = sprintf( __( 'Download %d name', 'classic-store'), $i );
 					/* translators: %s: download number */
-					$this->column_names[ 'downloads:url' . $i ] = sprintf( __( 'Download %d URL', 'classic-commerce' ), $i );
+					$this->column_names[ 'downloads:url' . $i ] = sprintf( __( 'Download %d URL', 'classic-store'), $i );
                     $row[ 'downloads:id' . $i ]                 = $download->get_id();
 					$row[ 'downloads:name' . $i ]               = $download->get_name();
 					$row[ 'downloads:url' . $i ]                = $download->get_file();
@@ -642,13 +642,13 @@ class WC_Product_CSV_Exporter extends WC_CSV_Batch_Exporter {
 				$i = 1;
 				foreach ( $attributes as $attribute_name => $attribute ) {
 					/* translators: %s: attribute number */
-					$this->column_names[ 'attributes:name' . $i ] = sprintf( __( 'Attribute %d name', 'classic-commerce' ), $i );
+					$this->column_names[ 'attributes:name' . $i ] = sprintf( __( 'Attribute %d name', 'classic-store'), $i );
 					/* translators: %s: attribute number */
-					$this->column_names[ 'attributes:value' . $i ] = sprintf( __( 'Attribute %d value(s)', 'classic-commerce' ), $i );
+					$this->column_names[ 'attributes:value' . $i ] = sprintf( __( 'Attribute %d value(s)', 'classic-store' ), $i );
 					/* translators: %s: attribute number */
-					$this->column_names[ 'attributes:visible' . $i ] = sprintf( __( 'Attribute %d visible', 'classic-commerce' ), $i );
+					$this->column_names[ 'attributes:visible' . $i ] = sprintf( __( 'Attribute %d visible', 'classic-store'), $i );
 					/* translators: %s: attribute number */
-					$this->column_names[ 'attributes:taxonomy' . $i ] = sprintf( __( 'Attribute %d global', 'classic-commerce' ), $i );
+					$this->column_names[ 'attributes:taxonomy' . $i ] = sprintf( __( 'Attribute %d global', 'classic-store'), $i );
 
 					if ( is_a( $attribute, 'WC_Product_Attribute' ) ) {
 						$row[ 'attributes:name' . $i ] = html_entity_decode( wc_attribute_label( $attribute->get_name(), $product ), ENT_QUOTES );
@@ -686,7 +686,7 @@ class WC_Product_CSV_Exporter extends WC_CSV_Batch_Exporter {
 
 					if ( $product->is_type( 'variable' ) && isset( $default_attributes[ sanitize_title( $attribute_name ) ] ) ) {
 						/* translators: %s: attribute number */
-						$this->column_names[ 'attributes:default' . $i ] = sprintf( __( 'Attribute %d default', 'classic-commerce' ), $i );
+						$this->column_names[ 'attributes:default' . $i ] = sprintf( __( 'Attribute %d default', 'classic-store'), $i );
 						$default_value                                   = $default_attributes[ sanitize_title( $attribute_name ) ];
 
 						if ( 0 === strpos( $attribute_name, 'pa_' ) ) {
@@ -732,7 +732,7 @@ class WC_Product_CSV_Exporter extends WC_CSV_Batch_Exporter {
 
 					$column_key = 'meta:' . esc_attr( $meta->key );
 					/* translators: %s: meta data name */
-					$this->column_names[ $column_key ] = sprintf( __( 'Meta: %s', 'classic-commerce' ), $meta->key );
+					$this->column_names[ $column_key ] = sprintf( __( 'Meta: %s', 'classic-store'), $meta->key );
 					$row[ $column_key ]                = $meta_value;
 					$i ++;
 				}

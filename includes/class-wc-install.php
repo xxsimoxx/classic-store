@@ -521,11 +521,11 @@ class WC_Install {
 	public static function cron_schedules( $schedules ) {
 		$schedules['monthly']      = array(
 			'interval' => 2635200,
-			'display'  => __( 'Monthly', 'classic-commerce' ),
+			'display'  => __( 'Monthly', 'classic-store'),
 		);
         $schedules['fifteendays'] = array(
 			'interval' => 1296000,
-			'display'  => __( 'Every 15 Days', 'classic-commerce' ),
+			'display'  => __( 'Every 15 Days', 'classic-store'),
 		);
 		return $schedules;
 	}
@@ -569,23 +569,23 @@ class WC_Install {
 		$pages = apply_filters(
 			'woocommerce_create_pages', array(
 				'shop'      => array(
-					'name'    => _x( 'shop', 'Page slug', 'classic-commerce' ),
-					'title'   => _x( 'Shop', 'Page title', 'classic-commerce' ),
+					'name'    => _x( 'shop', 'Page slug', 'classic-store'),
+					'title'   => _x( 'Shop', 'Page title', 'classic-store'),
 					'content' => '',
 				),
 				'cart'      => array(
-					'name'    => _x( 'cart', 'Page slug', 'classic-commerce' ),
-					'title'   => _x( 'Cart', 'Page title', 'classic-commerce' ),
+					'name'    => _x( 'cart', 'Page slug', 'classic-store'),
+					'title'   => _x( 'Cart', 'Page title', 'classic-store'),
 					'content' => '[' . apply_filters( 'woocommerce_cart_shortcode_tag', 'woocommerce_cart' ) . ']',
 				),
 				'checkout'  => array(
-					'name'    => _x( 'checkout', 'Page slug', 'classic-commerce' ),
-					'title'   => _x( 'Checkout', 'Page title', 'classic-commerce' ),
+					'name'    => _x( 'checkout', 'Page slug', 'classic-store'),
+					'title'   => _x( 'Checkout', 'Page title', 'classic-store'),
 					'content' => '[' . apply_filters( 'woocommerce_checkout_shortcode_tag', 'woocommerce_checkout' ) . ']',
 				),
 				'myaccount' => array(
-					'name'    => _x( 'my-account', 'Page slug', 'classic-commerce' ),
-					'title'   => _x( 'My account', 'Page title', 'classic-commerce' ),
+					'name'    => _x( 'my-account', 'Page slug', 'classic-store'),
+					'title'   => _x( 'My account', 'Page title', 'classic-store'),
 					'content' => '[' . apply_filters( 'woocommerce_my_account_shortcode_tag', 'woocommerce_my_account' ) . ']',
 				),
 			)
@@ -636,8 +636,8 @@ class WC_Install {
 
         if ( self::is_new_install() ) {
 			// Define initial tax classes.
-			WC_Tax::create_tax_class( __( 'Reduced rate', 'classic-commerce' ) );
-			WC_Tax::create_tax_class( __( 'Zero rate', 'classic-commerce' ) );
+			WC_Tax::create_tax_class( __( 'Reduced rate', 'classic-store') );
+			WC_Tax::create_tax_class( __( 'Zero rate', 'classic-store') );
 		}
 	}
 
@@ -677,13 +677,13 @@ class WC_Install {
 
 		if ( ! $woocommerce_default_category || ! term_exists( $woocommerce_default_category, 'product_cat' ) ) {
 			$default_product_cat_id   = 0;
-			$default_product_cat_slug = sanitize_title( _x( 'Uncategorized', 'Default category slug', 'classic-commerce' ) );
+			$default_product_cat_slug = sanitize_title( _x( 'Uncategorized', 'Default category slug', 'classic-store') );
 			$default_product_cat      = get_term_by( 'slug', $default_product_cat_slug, 'product_cat' ); // @codingStandardsIgnoreLine.
 
 			if ( $default_product_cat ) {
 				$default_product_cat_id = absint( $default_product_cat->term_taxonomy_id );
 			} else {
-				$result = wp_insert_term( _x( 'Uncategorized', 'Default category slug', 'classic-commerce' ), 'product_cat', array( 'slug' => $default_product_cat_slug ) );
+				$result = wp_insert_term( _x( 'Uncategorized', 'Default category slug', 'classic-store'), 'product_cat', array( 'slug' => $default_product_cat_slug ) );
 
 				if ( ! is_wp_error( $result ) && ! empty( $result['term_taxonomy_id'] ) ) {
 					$default_product_cat_id = absint( $result['term_taxonomy_id'] );
@@ -1104,9 +1104,9 @@ CREATE TABLE {$wpdb->prefix}wc_rate_limits (
 
 		// Dummy gettext calls to get strings in the catalog.
 		/* translators: user role */
-		_x( 'Customer', 'User role', 'classic-commerce' );
+		_x( 'Customer', 'User role', 'classic-store');
 		/* translators: user role */
-		_x( 'Shop manager', 'User role', 'classic-commerce' );
+		_x( 'Shop manager', 'User role', 'classic-store');
 
 		// Customer role.
 		add_role(
@@ -1360,7 +1360,7 @@ CREATE TABLE {$wpdb->prefix}wc_rate_limits (
 	 */
 	public static function plugin_action_links( $links ) {
 		$action_links = array(
-			'settings' => '<a href="' . admin_url( 'admin.php?page=wc-settings' ) . '" aria-label="' . esc_attr__( 'View Classic Commerce settings', 'classic-commerce' ) . '">' . esc_html__( 'Settings', 'classic-commerce' ) . '</a>',
+			'settings' => '<a href="' . admin_url( 'admin.php?page=wc-settings' ) . '" aria-label="' . esc_attr__( 'View Classic Commerce settings', 'classic-store') . '">' . esc_html__( 'Settings', 'classic-store') . '</a>',
 		);
 
 		return array_merge( $action_links, $links );
@@ -1377,9 +1377,9 @@ CREATE TABLE {$wpdb->prefix}wc_rate_limits (
 	public static function plugin_row_meta( $links, $file ) {
 		if ( WC_PLUGIN_BASENAME === $file ) {
 			$row_meta = array(
-				'docs'    => '<a href="' . esc_url( apply_filters( 'woocommerce_docs_url', 'https://classiccommerce.cc/docs/' ) ) . '" aria-label="' . esc_attr__( 'View Classic Commerce documentation', 'classic-commerce' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Docs', 'classic-commerce' ) . '</a>',
-				'apidocs' => '<a href="' . esc_url( apply_filters( 'woocommerce_apidocs_url', 'https://docs.woocommerce.com/wc-apidocs/' ) ) . '" aria-label="' . esc_attr__( 'View Classic Commerce API docs', 'classic-commerce' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'API docs', 'classic-commerce' ) . '</a>',
-				'support' => '<a href="' . esc_url( apply_filters( 'woocommerce_support_url', 'https://github.com/ClassicPress-plugins/classic-commerce/issues' ) ) . '" aria-label="' . esc_attr__( 'Visit issues  support section on github', 'classic-commerce' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Support', 'classic-commerce' ) . '</a>',
+				'docs'    => '<a href="' . esc_url( apply_filters( 'woocommerce_docs_url', 'https://classiccommerce.cc/docs/' ) ) . '" aria-label="' . esc_attr__( 'View Classic Commerce documentation', 'classic-store') . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Docs', 'classic-store') . '</a>',
+				'apidocs' => '<a href="' . esc_url( apply_filters( 'woocommerce_apidocs_url', 'https://docs.woocommerce.com/wc-apidocs/' ) ) . '" aria-label="' . esc_attr__( 'View Classic Commerce API docs', 'classic-store') . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'API docs', 'classic-store') . '</a>',
+				'support' => '<a href="' . esc_url( apply_filters( 'woocommerce_support_url', 'https://github.com/ClassicPress-plugins/classic-commerce/issues' ) ) . '" aria-label="' . esc_attr__( 'Visit issues  support section on github', 'classic-store') . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Support', 'classic-store') . '</a>',
 			);
 
 			return array_merge( $links, $row_meta );

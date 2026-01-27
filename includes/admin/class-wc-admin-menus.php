@@ -68,9 +68,9 @@ class WC_Admin_Menus {
 			$menu[] = array( '', 'read', 'separator-woocommerce', '', 'wp-menu-separator woocommerce' ); // WPCS: override ok.
 		}
 
-		add_menu_page( __( 'Classic Commerce', 'classic-commerce' ), __( 'WooCommerce', 'classic-commerce' ), 'edit_others_shop_orders', 'woocommerce', null, $cc_icon, '55.5' );  // A default icon will be used if $cc_icon is empty
+		add_menu_page( __( 'Classic Commerce', 'classic-store'), __( 'WooCommerce', 'classic-store'), 'edit_others_shop_orders', 'woocommerce', null, $cc_icon, '55.5' );  // A default icon will be used if $cc_icon is empty
 
-		add_submenu_page( 'edit.php?post_type=product', __( 'Attributes', 'classic-commerce' ), __( 'Attributes', 'classic-commerce' ), 'manage_product_terms', 'product_attributes', array( $this, 'attributes_page' ) );
+		add_submenu_page( 'edit.php?post_type=product', __( 'Attributes', 'classic-store'), __( 'Attributes', 'classic-store'), 'manage_product_terms', 'product_attributes', array( $this, 'attributes_page' ) );
 	}
 
 	/**
@@ -78,9 +78,9 @@ class WC_Admin_Menus {
 	 */
 	public function reports_menu() {
 		if ( self::can_view_woocommerce_menu_item() ) {
-			add_submenu_page( 'woocommerce', __( 'Reports', 'classic-commerce' ), __( 'Reports', 'classic-commerce' ), 'view_woocommerce_reports', 'wc-reports', array( $this, 'reports_page' ) );
+			add_submenu_page( 'woocommerce', __( 'Reports', 'classic-store'), __( 'Reports', 'classic-store'), 'view_woocommerce_reports', 'wc-reports', array( $this, 'reports_page' ) );
 		} else {
-			add_menu_page( __( 'Sales reports', 'classic-commerce' ), __( 'Sales reports', 'classic-commerce' ), 'view_woocommerce_reports', 'wc-reports', array( $this, 'reports_page' ), null, '55.6' );
+			add_menu_page( __( 'Sales reports', 'classic-store'), __( 'Sales reports', 'classic-store'), 'view_woocommerce_reports', 'wc-reports', array( $this, 'reports_page' ), null, '55.6' );
 		}
 	}
 
@@ -88,7 +88,7 @@ class WC_Admin_Menus {
 	 * Add menu item.
 	 */
 	public function settings_menu() {
-		$settings_page = add_submenu_page( 'woocommerce', __( 'Classic Commerce settings', 'classic-commerce' ), __( 'Settings', 'classic-commerce' ), 'manage_woocommerce', 'wc-settings', array( $this, 'settings_page' ) );
+		$settings_page = add_submenu_page( 'woocommerce', __( 'Classic Commerce settings', 'classic-store'), __( 'Settings', 'classic-store'), 'manage_woocommerce', 'wc-settings', array( $this, 'settings_page' ) );
 
 		add_action( 'load-' . $settings_page, array( $this, 'settings_page_init' ) );
 	}
@@ -155,15 +155,15 @@ class WC_Admin_Menus {
 	 * Add menu item.
 	 */
 	public function status_menu() {
-		add_submenu_page( 'woocommerce', __( 'Classic Commerce status', 'classic-commerce' ), __( 'Status', 'classic-commerce' ), 'manage_woocommerce', 'wc-status', array( $this, 'status_page' ) );
+		add_submenu_page( 'woocommerce', __( 'Classic Commerce status', 'classic-store'), __( 'Status', 'classic-store'), 'manage_woocommerce', 'wc-status', array( $this, 'status_page' ) );
 	}
 
 	/**
 	 * Addons menu item.
 	 */
 	public function addons_menu() {
-		$menu_title = __( 'Extensions', 'classic-commerce' );
-		add_submenu_page( 'woocommerce', __( 'Classic Commerce extensions', 'classic-commerce' ), $menu_title, 'manage_woocommerce', 'wc-addons', array( $this, 'addons_page' ) );
+		$menu_title = __( 'Extensions', 'classic-store');
+		add_submenu_page( 'woocommerce', __( 'Classic Commerce extensions', 'classic-store'), $menu_title, 'manage_woocommerce', 'wc-addons', array( $this, 'addons_page' ) );
 	}
 
 	/**
@@ -184,7 +184,7 @@ class WC_Admin_Menus {
 		global $menu;
 		foreach ( $menu as $key => &$value ) {
 			if ( isset( $value[5] ) && $value[5] === 'toplevel_page_woocommerce' ) {
-				$value[0] = esc_html__( 'Commerce', 'classic-commerce' );
+				$value[0] = esc_html__( 'Commerce', 'classic-store');
 				break;
 			}
 		}
@@ -227,7 +227,7 @@ class WC_Admin_Menus {
 
 				if ( $order_count ) {
 					foreach ( $submenu['woocommerce'] as $key => $menu_item ) {
-						if ( 0 === strpos( $menu_item[0], _x( 'Orders', 'Admin menu name', 'classic-commerce' ) ) ) {
+						if ( 0 === strpos( $menu_item[0], _x( 'Orders', 'Admin menu name', 'classic-store') ) ) {
 							$submenu['woocommerce'][ $key ][0] .= ' <span class="awaiting-mod update-plugins count-' . esc_attr( $order_count ) . '"><span class="processing-count">' . number_format_i18n( $order_count ) . '</span></span>'; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 							break;
 						}
@@ -339,7 +339,7 @@ class WC_Admin_Menus {
 	 * Adapted from http://www.johnmorrisonline.com/how-to-add-a-fully-functional-custom-meta-box-to-wordpress-navigation-menus/.
 	 */
 	public function add_nav_menu_meta_boxes() {
-		add_meta_box( 'woocommerce_endpoints_nav_link', __( 'Classic Commerce endpoints', 'classic-commerce' ), array( $this, 'nav_menu_links' ), 'nav-menus', 'side', 'low' );
+		add_meta_box( 'woocommerce_endpoints_nav_link', __( 'Classic Commerce endpoints', 'classic-store'), array( $this, 'nav_menu_links' ), 'nav-menus', 'side', 'low' );
 	}
 
 	/**
@@ -355,7 +355,7 @@ class WC_Admin_Menus {
 		}
 
 		// Include missing lost password.
-		$endpoints['lost-password'] = __( 'Lost password', 'classic-commerce' );
+		$endpoints['lost-password'] = __( 'Lost password', 'classic-store');
 
 		$endpoints = apply_filters( 'woocommerce_custom_nav_menu_items', $endpoints );
 
@@ -386,11 +386,11 @@ class WC_Admin_Menus {
 				<span class="list-controls">
 					<<label>
 						<input type="checkbox" class="select-all" />
-						<?php esc_html_e( 'Select all', 'classic-commerce' ); ?>
+						<?php esc_html_e( 'Select all', 'classic-store'); ?>
 					</label>
 				</span>
 				<span class="add-to-menu">
-					<button type="submit" class="button-secondary submit-add-to-menu right" value="<?php esc_attr_e( 'Add to menu', 'classic-commerce' ); ?>" name="add-post-type-menu-item" id="submit-posttype-woocommerce-endpoints"><?php esc_html_e( 'Add to menu', 'classic-commerce' ); ?></button>
+					<button type="submit" class="button-secondary submit-add-to-menu right" value="<?php esc_attr_e( 'Add to menu', 'classic-store'); ?>" name="add-post-type-menu-item" id="submit-posttype-woocommerce-endpoints"><?php esc_html_e( 'Add to menu', 'classic-store'); ?></button>
 					<span class="spinner"></span>
 				</span>
 			</p>
@@ -425,7 +425,7 @@ class WC_Admin_Menus {
 			array(
 				'parent' => 'site-name',
 				'id'     => 'view-store',
-				'title'  => __( 'Visit Store', 'classic-commerce' ),
+				'title'  => __( 'Visit Store', 'classic-store'),
 				'href'   => wc_get_page_permalink( 'shop' ),
 			)
 		);

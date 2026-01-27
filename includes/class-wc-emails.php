@@ -58,7 +58,7 @@ class WC_Emails {
 	 * @since WC-2.1
 	 */
 	public function __clone() {
-		wc_doing_it_wrong( __FUNCTION__, __( 'Cloning is forbidden.', 'classic-commerce' ), '2.1' );
+		wc_doing_it_wrong( __FUNCTION__, __( 'Cloning is forbidden.', 'classic-store'), '2.1' );
 	}
 
 	/**
@@ -67,7 +67,7 @@ class WC_Emails {
 	 * @since WC-2.1
 	 */
 	public function __wakeup() {
-		wc_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'classic-commerce' ), '2.1' );
+		wc_doing_it_wrong( __FUNCTION__, __( 'Unserializing instances of this class is forbidden.', 'classic-store'), '2.1' );
 	}
 
 	/**
@@ -439,9 +439,9 @@ class WC_Emails {
 		$columns   = apply_filters(
 			'woocommerce_email_downloads_columns',
             array(
-				'download-product' => __( 'Product', 'classic-commerce' ),
-				'download-expires' => __( 'Expires', 'classic-commerce' ),
-				'download-file'    => __( 'Download', 'classic-commerce' ),
+				'download-product' => __( 'Product', 'classic-store'),
+				'download-expires' => __( 'Expires', 'classic-store'),
+				'download-file'    => __( 'Download', 'classic-store'),
 			)
 		);
 
@@ -617,10 +617,10 @@ class WC_Emails {
 			return;
 		}
 
-		$subject = sprintf( '[%s] %s', $this->get_blogname(), __( 'Product low in stock', 'classic-commerce' ) );
+		$subject = sprintf( '[%s] %s', $this->get_blogname(), __( 'Product low in stock', 'classic-store') );
 		$message = sprintf(
 			/* translators: 1: product name 2: items in stock */
-			__( '%1$s is low in stock. There are %2$d left.', 'classic-commerce' ),
+			__( '%1$s is low in stock. There are %2$d left.', 'classic-store'),
 			html_entity_decode( wp_strip_all_tags( $product->get_formatted_name() ), ENT_QUOTES, get_bloginfo( 'charset' ) ),
 			html_entity_decode( wp_strip_all_tags( $product->get_stock_quantity() ) )
 		);
@@ -644,9 +644,9 @@ class WC_Emails {
 			return;
 		}
 
-		$subject = sprintf( '[%s] %s', $this->get_blogname(), __( 'Product out of stock', 'classic-commerce' ) );
+		$subject = sprintf( '[%s] %s', $this->get_blogname(), __( 'Product out of stock', 'classic-store') );
 		/* translators: %s: product name */
-		$message = sprintf( __( '%s is out of stock.', 'classic-commerce' ), html_entity_decode( wp_strip_all_tags( $product->get_formatted_name() ), ENT_QUOTES, get_bloginfo( 'charset' ) ) );
+		$message = sprintf( __( '%s is out of stock.', 'classic-store'), html_entity_decode( wp_strip_all_tags( $product->get_formatted_name() ), ENT_QUOTES, get_bloginfo( 'charset' ) ) );
 
 		wp_mail(
 			apply_filters( 'woocommerce_email_recipient_no_stock', get_option( 'woocommerce_stock_email_recipient' ), $product, null ),
@@ -682,9 +682,9 @@ class WC_Emails {
 			return;
 		}
 
-		$subject = sprintf( '[%s] %s', $this->get_blogname(), __( 'Product backorder', 'classic-commerce' ) );
+		$subject = sprintf( '[%s] %s', $this->get_blogname(), __( 'Product backorder', 'classic-store') );
 		/* translators: 1: product quantity 2: product name 3: order number */
-		$message = sprintf( __( '%1$s units of %2$s have been backordered in order #%3$s.', 'classic-commerce' ), $args['quantity'], html_entity_decode( wp_strip_all_tags( $args['product']->get_formatted_name() ), ENT_QUOTES, get_bloginfo( 'charset' ) ), $order->get_order_number() );
+		$message = sprintf( __( '%1$s units of %2$s have been backordered in order #%3$s.', 'classic-store'), $args['quantity'], html_entity_decode( wp_strip_all_tags( $args['product']->get_formatted_name() ), ENT_QUOTES, get_bloginfo( 'charset' ) ), $order->get_order_number() );
 
 		wp_mail(
 			apply_filters( 'woocommerce_email_recipient_backorder', get_option( 'woocommerce_stock_email_recipient' ), $args, null ),

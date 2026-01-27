@@ -20,7 +20,7 @@ if ( ! class_exists( 'WC_Settings_Integrations', false ) ) :
 		 */
 		public function __construct() {
 			$this->id    = 'integration';
-			$this->label = __( 'Integration', 'classic-commerce' );
+			$this->label = __( 'Integration', 'classic-store');
 
 			if ( isset( WC()->integrations ) && WC()->integrations->get_integrations() ) {
 				parent::__construct();

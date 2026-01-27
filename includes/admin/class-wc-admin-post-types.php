@@ -125,44 +125,44 @@ class WC_Admin_Post_Types {
 		$messages['product'] = array(
 			0  => '', // Unused. Messages start at index 1.
 			/* translators: %1$s: Product link opening tag. %2$s: Product link closing tag.*/
-			1  => sprintf( __( 'Product updated. %1$sView Product%2$s', 'classic-commerce' ), '<a id="woocommerce-product-updated-message-view-product__link" href="' . esc_url( get_permalink( $post->ID ) ) . '">', '</a>' ),
-			2  => __( 'Custom field updated.', 'classic-commerce' ),
-			3  => __( 'Custom field deleted.', 'classic-commerce' ),
-			4  => __( 'Product updated.', 'classic-commerce' ),
-			5  => __( 'Revision restored.', 'classic-commerce' ),
+			1  => sprintf( __( 'Product updated. %1$sView Product%2$s', 'classic-store'), '<a id="woocommerce-product-updated-message-view-product__link" href="' . esc_url( get_permalink( $post->ID ) ) . '">', '</a>' ),
+			2  => __( 'Custom field updated.', 'classic-store'),
+			3  => __( 'Custom field deleted.', 'classic-store'),
+			4  => __( 'Product updated.', 'classic-store'),
+			5  => __( 'Revision restored.', 'classic-store'),
 			/* translators: %1$s: Product link opening tag. %2$s: Product link closing tag.*/
-			6  => sprintf( __( 'Product published. %1$sView Product%2$s', 'classic-commerce' ), '<a id="woocommerce-product-updated-message-view-product__link" href="' . esc_url( get_permalink( $post->ID ) ) . '">', '</a>' ),
-			7  => __( 'Product saved.', 'classic-commerce' ),
+			6  => sprintf( __( 'Product published. %1$sView Product%2$s', 'classic-store'), '<a id="woocommerce-product-updated-message-view-product__link" href="' . esc_url( get_permalink( $post->ID ) ) . '">', '</a>' ),
+			7  => __( 'Product saved.', 'classic-store'),
 			/* translators: %s: product url */
-			8  => sprintf( __( 'Product submitted. <a target="_blank" href="%s">Preview product</a>', 'classic-commerce' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post->ID ) ) ) ),
+			8  => sprintf( __( 'Product submitted. <a target="_blank" href="%s">Preview product</a>', 'classic-store'), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post->ID ) ) ) ),
 			9  => sprintf(
 				/* translators: 1: date 2: product url */
-				__( 'Product scheduled for: %1$s. <a target="_blank" href="%2$s">Preview product</a>', 'classic-commerce' ),
-				'<strong>' . date_i18n( __( 'M j, Y @ G:i', 'classic-commerce' ), strtotime( $post->post_date ) ) . '</strong>',
+				__( 'Product scheduled for: %1$s. <a target="_blank" href="%2$s">Preview product</a>', 'classic-store'),
+				'<strong>' . date_i18n( __( 'M j, Y @ G:i', 'classic-store'), strtotime( $post->post_date ) ) . '</strong>',
 				esc_url( get_permalink( $post->ID ) )
 			),
 			/* translators: %s: product url */
-			10 => sprintf( __( 'Product draft updated. <a target="_blank" href="%s">Preview product</a>', 'classic-commerce' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post->ID ) ) ) ),
+			10 => sprintf( __( 'Product draft updated. <a target="_blank" href="%s">Preview product</a>', 'classic-store'), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post->ID ) ) ) ),
 		);
 
 		$messages = $this->order_updated_messages( $messages );
 
 		$messages['shop_coupon'] = array(
 			0  => '', // Unused. Messages start at index 1.
-			1  => __( 'Coupon updated.', 'classic-commerce' ),
-			2  => __( 'Custom field updated.', 'classic-commerce' ),
-			3  => __( 'Custom field deleted.', 'classic-commerce' ),
-			4  => __( 'Coupon updated.', 'classic-commerce' ),
-			5  => __( 'Revision restored.', 'classic-commerce' ),
-			6  => __( 'Coupon updated.', 'classic-commerce' ),
-			7  => __( 'Coupon saved.', 'classic-commerce' ),
-			8  => __( 'Coupon submitted.', 'classic-commerce' ),
+			1  => __( 'Coupon updated.', 'classic-store'),
+			2  => __( 'Custom field updated.', 'classic-store'),
+			3  => __( 'Custom field deleted.', 'classic-store'),
+			4  => __( 'Coupon updated.', 'classic-store'),
+			5  => __( 'Revision restored.', 'classic-store'),
+			6  => __( 'Coupon updated.', 'classic-store'),
+			7  => __( 'Coupon saved.', 'classic-store'),
+			8  => __( 'Coupon submitted.', 'classic-store'),
 			9  => sprintf(
 				/* translators: %s: date */
-				__( 'Coupon scheduled for: %s.', 'classic-commerce' ),
-				'<strong>' . date_i18n( __( 'M j, Y @ G:i', 'classic-commerce' ), strtotime( $post->post_date ) ) . '</strong>'
+				__( 'Coupon scheduled for: %s.', 'classic-store'),
+				'<strong>' . date_i18n( __( 'M j, Y @ G:i', 'classic-store'), strtotime( $post->post_date ) ) . '</strong>'
 			),
-			10 => __( 'Coupon draft updated.', 'classic-commerce' ),
+			10 => __( 'Coupon draft updated.', 'classic-store'),
 		);
 
 		return $messages;
@@ -186,16 +186,16 @@ class WC_Admin_Post_Types {
 
 		$messages['shop_order'] = array(
 			0  => '', // Unused. Messages start at index 1.
-			1  => __( 'Order updated.', 'classic-commerce' ),
-			2  => __( 'Custom field updated.', 'classic-commerce' ),
-			3  => __( 'Custom field deleted.', 'classic-commerce' ),
-			4  => __( 'Order updated.', 'classic-commerce' ),
-			5  => __( 'Revision restored.', 'classic-commerce' ),
-			6  => __( 'Order updated.', 'classic-commerce' ),
-			7  => __( 'Order saved.', 'classic-commerce' ),
-			8  => __( 'Order submitted.', 'classic-commerce' ),
-			10 => __( 'Order draft updated.', 'classic-commerce' ),
-			11 => __( 'Order updated and sent.', 'classic-commerce' ),
+			1  => __( 'Order updated.', 'classic-store'),
+			2  => __( 'Custom field updated.', 'classic-store'),
+			3  => __( 'Custom field deleted.', 'classic-store'),
+			4  => __( 'Order updated.', 'classic-store'),
+			5  => __( 'Revision restored.', 'classic-store'),
+			6  => __( 'Order updated.', 'classic-store'),
+			7  => __( 'Order saved.', 'classic-store'),
+			8  => __( 'Order submitted.', 'classic-store'),
+			10 => __( 'Order draft updated.', 'classic-store'),
+			11 => __( 'Order updated and sent.', 'classic-store'),
 		);
 
 		return $messages;
@@ -211,41 +211,41 @@ class WC_Admin_Post_Types {
 	public function bulk_post_updated_messages( $bulk_messages, $bulk_counts ) {
 		$bulk_messages['product'] = array(
 			/* translators: %s: product count */
-			'updated'   => _n( '%s product updated.', '%s products updated.', $bulk_counts['updated'], 'classic-commerce' ),
+			'updated'   => _n( '%s product updated.', '%s products updated.', $bulk_counts['updated'], 'classic-store' ),
 			/* translators: %s: product count */
-			'locked'    => _n( '%s product not updated, somebody is editing it.', '%s products not updated, somebody is editing them.', $bulk_counts['locked'], 'classic-commerce' ),
+			'locked'    => _n( '%s product not updated, somebody is editing it.', '%s products not updated, somebody is editing them.', $bulk_counts['locked'], 'classic-store' ),
 			/* translators: %s: product count */
-			'deleted'   => _n( '%s product permanently deleted.', '%s products permanently deleted.', $bulk_counts['deleted'], 'classic-commerce' ),
+			'deleted'   => _n( '%s product permanently deleted.', '%s products permanently deleted.', $bulk_counts['deleted'], 'classic-store' ),
 			/* translators: %s: product count */
-			'trashed'   => _n( '%s product moved to the Trash.', '%s products moved to the Trash.', $bulk_counts['trashed'], 'classic-commerce' ),
+			'trashed'   => _n( '%s product moved to the Trash.', '%s products moved to the Trash.', $bulk_counts['trashed'], 'classic-store' ),
 			/* translators: %s: product count */
-			'untrashed' => _n( '%s product restored from the Trash.', '%s products restored from the Trash.', $bulk_counts['untrashed'], 'classic-commerce' ),
+			'untrashed' => _n( '%s product restored from the Trash.', '%s products restored from the Trash.', $bulk_counts['untrashed'], 'classic-store' ),
 		);
 
 		$bulk_messages['shop_order'] = array(
 			/* translators: %s: order count */
-			'updated'   => _n( '%s order updated.', '%s orders updated.', $bulk_counts['updated'], 'classic-commerce' ),
+			'updated'   => _n( '%s order updated.', '%s orders updated.', $bulk_counts['updated'], 'classic-store' ),
 			/* translators: %s: order count */
-			'locked'    => _n( '%s order not updated, somebody is editing it.', '%s orders not updated, somebody is editing them.', $bulk_counts['locked'], 'classic-commerce' ),
+			'locked'    => _n( '%s order not updated, somebody is editing it.', '%s orders not updated, somebody is editing them.', $bulk_counts['locked'], 'classic-store' ),
 			/* translators: %s: order count */
-			'deleted'   => _n( '%s order permanently deleted.', '%s orders permanently deleted.', $bulk_counts['deleted'], 'classic-commerce' ),
+			'deleted'   => _n( '%s order permanently deleted.', '%s orders permanently deleted.', $bulk_counts['deleted'], 'classic-store' ),
 			/* translators: %s: order count */
-			'trashed'   => _n( '%s order moved to the Trash.', '%s orders moved to the Trash.', $bulk_counts['trashed'], 'classic-commerce' ),
+			'trashed'   => _n( '%s order moved to the Trash.', '%s orders moved to the Trash.', $bulk_counts['trashed'], 'classic-store' ),
 			/* translators: %s: order count */
-			'untrashed' => _n( '%s order restored from the Trash.', '%s orders restored from the Trash.', $bulk_counts['untrashed'], 'classic-commerce' ),
+			'untrashed' => _n( '%s order restored from the Trash.', '%s orders restored from the Trash.', $bulk_counts['untrashed'], 'classic-store' ),
 		);
 
 		$bulk_messages['shop_coupon'] = array(
 			/* translators: %s: coupon count */
-			'updated'   => _n( '%s coupon updated.', '%s coupons updated.', $bulk_counts['updated'], 'classic-commerce' ),
+			'updated'   => _n( '%s coupon updated.', '%s coupons updated.', $bulk_counts['updated'], 'classic-store' ),
 			/* translators: %s: coupon count */
-			'locked'    => _n( '%s coupon not updated, somebody is editing it.', '%s coupons not updated, somebody is editing them.', $bulk_counts['locked'], 'classic-commerce' ),
+			'locked'    => _n( '%s coupon not updated, somebody is editing it.', '%s coupons not updated, somebody is editing them.', $bulk_counts['locked'], 'classic-store' ),
 			/* translators: %s: coupon count */
-			'deleted'   => _n( '%s coupon permanently deleted.', '%s coupons permanently deleted.', $bulk_counts['deleted'], 'classic-commerce' ),
+			'deleted'   => _n( '%s coupon permanently deleted.', '%s coupons permanently deleted.', $bulk_counts['deleted'], 'classic-store' ),
 			/* translators: %s: coupon count */
-			'trashed'   => _n( '%s coupon moved to the Trash.', '%s coupons moved to the Trash.', $bulk_counts['trashed'], 'classic-commerce' ),
+			'trashed'   => _n( '%s coupon moved to the Trash.', '%s coupons moved to the Trash.', $bulk_counts['trashed'], 'classic-store' ),
 			/* translators: %s: coupon count */
-			'untrashed' => _n( '%s coupon restored from the Trash.', '%s coupons restored from the Trash.', $bulk_counts['untrashed'], 'classic-commerce' ),
+			'untrashed' => _n( '%s coupon restored from the Trash.', '%s coupons restored from the Trash.', $bulk_counts['untrashed'], 'classic-store' ),
 		);
 
 		return $bulk_messages;
@@ -641,10 +641,10 @@ class WC_Admin_Post_Types {
 	public function enter_title_here( $text, $post ) {
 		switch ( $post->post_type ) {
 			case 'product':
-				$text = esc_html__( 'Product name', 'classic-commerce' );
+				$text = esc_html__( 'Product name', 'classic-store');
 				break;
 			case 'shop_coupon':
-				$text = esc_html__( 'Coupon code', 'classic-commerce' );
+				$text = esc_html__( 'Coupon code', 'classic-store');
 				break;
 		}
 		return $text;
@@ -659,7 +659,7 @@ class WC_Admin_Post_Types {
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		if ( 'shop_coupon' === $post->post_type ) {
 			?>
-			<textarea id="woocommerce-coupon-description" name="excerpt" cols="5" rows="2" placeholder="<?php esc_attr_e( 'Description (optional)', 'classic-commerce' ); ?>"><?php echo $post->post_excerpt; ?></textarea>
+			<textarea id="woocommerce-coupon-description" name="excerpt" cols="5" rows="2" placeholder="<?php esc_attr_e( 'Description (optional)', 'classic-store' ); ?>"><?php echo $post->post_excerpt; ?></textarea>
 			<?php
 		}
 		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -697,19 +697,19 @@ class WC_Admin_Post_Types {
 		$visibility_options = wc_get_product_visibility_options();
 		?>
 		<div class="misc-pub-section" id="catalog-visibility">
-			<?php esc_html_e( 'Catalog visibility:', 'classic-commerce' ); ?>
+			<?php esc_html_e( 'Catalog visibility:', 'classic-store'); ?>
 			<strong id="catalog-visibility-display">
 				<?php
 
 				echo isset( $visibility_options[ $current_visibility ] ) ? esc_html( $visibility_options[ $current_visibility ] ) : esc_html( $current_visibility );
 
 				if ( 'yes' === $current_featured ) {
-					echo ', ' . esc_html__( 'Featured', 'classic-commerce' );
+					echo ', ' . esc_html__( 'Featured', 'classic-store');
 				}
 				?>
 			</strong>
 
-			<a href="#catalog-visibility" class="edit-catalog-visibility hide-if-no-js"><?php esc_html_e( 'Edit', 'classic-commerce' ); ?></a>
+			<a href="#catalog-visibility" class="edit-catalog-visibility hide-if-no-js"><?php esc_html_e( 'Edit', 'classic-store'); ?></a>
 
 			<div id="catalog-visibility-select" class="hide-if-js">
 
@@ -717,17 +717,17 @@ class WC_Admin_Post_Types {
 				<input type="hidden" name="current_featured" id="current_featured" value="<?php echo esc_attr( $current_featured ); ?>" />
 
 				<?php
-				echo '<p>' . esc_html__( 'This setting determines which shop pages products will be listed on.', 'classic-commerce' ) . '</p>';
+				echo '<p>' . esc_html__( 'This setting determines which shop pages products will be listed on.', 'classic-store') . '</p>';
 
 				foreach ( $visibility_options as $name => $label ) {
 					echo '<input type="radio" name="_visibility" id="_visibility_' . esc_attr( $name ) . '" value="' . esc_attr( $name ) . '" ' . checked( $current_visibility, $name, false ) . ' data-label="' . esc_attr( $label ) . '" /> <label for="_visibility_' . esc_attr( $name ) . '" class="selectit">' . esc_html( $label ) . '</label><br />';
 				}
 
-				echo '<br /><input type="checkbox" name="_featured" id="_featured" ' . checked( $current_featured, 'yes', false ) . ' /> <label for="_featured">' . esc_html__( 'This is a featured product', 'classic-commerce' ) . '</label><br />';
+				echo '<br /><input type="checkbox" name="_featured" id="_featured" ' . checked( $current_featured, 'yes', false ) . ' /> <label for="_featured">' . esc_html__( 'This is a featured product', 'classic-store') . '</label><br />';
 				?>
 				<p>
-					<a href="#catalog-visibility" class="save-post-visibility hide-if-no-js button"><?php esc_html_e( 'OK', 'classic-commerce' ); ?></a>
-					<a href="#catalog-visibility" class="cancel-post-visibility hide-if-no-js"><?php esc_html_e( 'Cancel', 'classic-commerce' ); ?></a>
+					<a href="#catalog-visibility" class="save-post-visibility hide-if-no-js button"><?php esc_html_e( 'OK', 'classic-store'); ?></a>
+					<a href="#catalog-visibility" class="cancel-post-visibility hide-if-no-js"><?php esc_html_e( 'Cancel', 'classic-store'); ?></a>
 				</p>
 			</div>
 		</div>
@@ -871,7 +871,7 @@ class WC_Admin_Post_Types {
 		if ( $post && absint( $post->ID ) === $shop_page_id ) {
 			echo '<div class="notice notice-info">';
 			/* translators: %s: URL to read more about the shop page. */
-			echo '<p>' . sprintf( wp_kses_post( __( 'This is the Classic Commerce shop page. The shop page is a special archive that lists your products. <a href="%s">You can read more about this here</a>.', 'classic-commerce' ) ), 'https://docs.woocommerce.com/document/woocommerce-pages/#section-4' ) . '</p>';
+			echo '<p>' . sprintf( wp_kses_post( __( 'This is the Classic Commerce shop page. The shop page is a special archive that lists your products. <a href="%s">You can read more about this here</a>.', 'classic-store') ), 'https://docs.woocommerce.com/document/woocommerce-pages/#section-4' ) . '</p>';
 			echo '</div>';
 		}
 	}
@@ -884,23 +884,23 @@ class WC_Admin_Post_Types {
 	 */
 	public function add_display_post_states( $post_states, $post ) {
 		if ( wc_get_page_id( 'shop' ) === $post->ID ) {
-			$post_states['wc_page_for_shop'] = __( 'Shop Page', 'classic-commerce' );
+			$post_states['wc_page_for_shop'] = __( 'Shop Page', 'classic-store');
 		}
 
 		if ( wc_get_page_id( 'cart' ) === $post->ID ) {
-			$post_states['wc_page_for_cart'] = __( 'Cart Page', 'classic-commerce' );
+			$post_states['wc_page_for_cart'] = __( 'Cart Page', 'classic-store');
 		}
 
 		if ( wc_get_page_id( 'checkout' ) === $post->ID ) {
-			$post_states['wc_page_for_checkout'] = __( 'Checkout Page', 'classic-commerce' );
+			$post_states['wc_page_for_checkout'] = __( 'Checkout Page', 'classic-store');
 		}
 
 		if ( wc_get_page_id( 'myaccount' ) === $post->ID ) {
-			$post_states['wc_page_for_myaccount'] = __( 'My Account Page', 'classic-commerce' );
+			$post_states['wc_page_for_myaccount'] = __( 'My Account Page', 'classic-store');
 		}
 
 		if ( wc_get_page_id( 'terms' ) === $post->ID ) {
-			$post_states['wc_page_for_terms'] = __( 'Terms and Conditions Page', 'classic-commerce' );
+			$post_states['wc_page_for_terms'] = __( 'Terms and Conditions Page', 'classic-store');
 		}
 
 		return $post_states;

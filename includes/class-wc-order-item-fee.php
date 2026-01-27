@@ -130,7 +130,7 @@ class WC_Order_Item_Fee extends WC_Order_Item {
 	 */
 	public function set_tax_class( $value ) {
 		if ( $value && ! in_array( $value, WC_Tax::get_tax_class_slugs(), true ) ) {
-			$this->error( 'order_item_fee_invalid_tax_class', __( 'Invalid tax class', 'classic-commerce' ) );
+			$this->error( 'order_item_fee_invalid_tax_class', __( 'Invalid tax class', 'classic-store') );
 		}
 		$this->set_prop( 'tax_class', $value );
 	}
@@ -214,7 +214,7 @@ class WC_Order_Item_Fee extends WC_Order_Item {
 	public function get_name( $context = 'view' ) {
 		$name = $this->get_prop( 'name', $context );
 		if ( 'view' === $context ) {
-			return $name ? $name : __( 'Fee', 'classic-commerce' );
+			return $name ? $name : __( 'Fee', 'classic-store');
 		} else {
 			return $name;
 		}

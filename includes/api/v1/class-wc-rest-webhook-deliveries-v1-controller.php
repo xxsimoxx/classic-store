@@ -44,7 +44,7 @@ class WC_REST_Webhook_Deliveries_V1_Controller extends WC_REST_Controller {
 		register_rest_route( $this->namespace, '/' . $this->rest_base, array(
 			'args' => array(
 				'webhook_id' => array(
-					'description' => __( 'Unique identifier for the webhook.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the webhook.', 'classic-store'),
 					'type'        => 'integer',
 				),
 			),
@@ -60,11 +60,11 @@ class WC_REST_Webhook_Deliveries_V1_Controller extends WC_REST_Controller {
 		register_rest_route( $this->namespace, '/' . $this->rest_base . '/(?P<id>[\d]+)', array(
 			'args' => array(
 				'webhook_id' => array(
-					'description' => __( 'Unique identifier for the webhook.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the webhook.', 'classic-store'),
 					'type'        => 'integer',
 				),
 				'id' => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 				),
 			),
@@ -88,7 +88,7 @@ class WC_REST_Webhook_Deliveries_V1_Controller extends WC_REST_Controller {
 	 */
 	public function get_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'webhooks', 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -102,7 +102,7 @@ class WC_REST_Webhook_Deliveries_V1_Controller extends WC_REST_Controller {
 	 */
 	public function get_item_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'webhooks', 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -119,7 +119,7 @@ class WC_REST_Webhook_Deliveries_V1_Controller extends WC_REST_Controller {
 		$webhook = wc_get_webhook( (int) $request['webhook_id'] );
 
 		if ( empty( $webhook ) || is_null( $webhook ) ) {
-			return new WP_Error( 'woocommerce_rest_webhook_invalid_id', __( 'Invalid webhook ID.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_webhook_invalid_id', __( 'Invalid webhook ID.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		$logs = array();
@@ -144,13 +144,13 @@ class WC_REST_Webhook_Deliveries_V1_Controller extends WC_REST_Controller {
 		$webhook = wc_get_webhook( (int) $request['webhook_id'] );
 
 		if ( empty( $webhook ) || is_null( $webhook ) ) {
-			return new WP_Error( 'woocommerce_rest_webhook_invalid_id', __( 'Invalid webhook ID.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_webhook_invalid_id', __( 'Invalid webhook ID.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		$log = array();
 
 		if ( empty( $id ) || empty( $log ) ) {
-			return new WP_Error( 'woocommerce_rest_invalid_id', __( 'Invalid resource ID.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_invalid_id', __( 'Invalid resource ID.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		$delivery = $this->prepare_item_for_response( (object) $log, $request );
@@ -223,32 +223,32 @@ class WC_REST_Webhook_Deliveries_V1_Controller extends WC_REST_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'id' => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'duration' => array(
-					'description' => __( 'The delivery duration, in seconds.', 'classic-commerce' ),
+					'description' => __( 'The delivery duration, in seconds.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'summary' => array(
-					'description' => __( 'A friendly summary of the response including the HTTP response code, message, and body.', 'classic-commerce' ),
+					'description' => __( 'A friendly summary of the response including the HTTP response code, message, and body.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'request_url' => array(
-					'description' => __( 'The URL where the webhook was delivered.', 'classic-commerce' ),
+					'description' => __( 'The URL where the webhook was delivered.', 'classic-store'),
 					'type'        => 'string',
 					'format'      => 'uri',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'request_headers' => array(
-					'description' => __( 'Request headers.', 'classic-commerce' ),
+					'description' => __( 'Request headers.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
@@ -257,25 +257,25 @@ class WC_REST_Webhook_Deliveries_V1_Controller extends WC_REST_Controller {
 					),
 				),
 				'request_body' => array(
-					'description' => __( 'Request body.', 'classic-commerce' ),
+					'description' => __( 'Request body.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'response_code' => array(
-					'description' => __( 'The HTTP response code from the receiving server.', 'classic-commerce' ),
+					'description' => __( 'The HTTP response code from the receiving server.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'response_message' => array(
-					'description' => __( 'The HTTP response message from the receiving server.', 'classic-commerce' ),
+					'description' => __( 'The HTTP response message from the receiving server.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'response_headers' => array(
-					'description' => __( 'Array of the response headers from the receiving server.', 'classic-commerce' ),
+					'description' => __( 'Array of the response headers from the receiving server.', 'classic-store'),
 					'type'        => 'array',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
@@ -284,13 +284,13 @@ class WC_REST_Webhook_Deliveries_V1_Controller extends WC_REST_Controller {
 					),
 				),
 				'response_body' => array(
-					'description' => __( 'The response body from the receiving server.', 'classic-commerce' ),
+					'description' => __( 'The response body from the receiving server.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'date_created' => array(
-					'description' => __( "The date the webhook delivery was logged, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date the webhook delivery was logged, in the site's timezone.", 'classic-store'),
 					'type'        => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,

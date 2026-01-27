@@ -61,7 +61,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 						array(
 							'name' => array(
 								'type'        => 'string',
-								'description' => __( 'Name for the resource.', 'classic-commerce' ),
+								'description' => __( 'Name for the resource.', 'classic-store'),
 								'required'    => true,
 							),
 						)
@@ -77,7 +77,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 			array(
 				'args'   => array(
 					'id' => array(
-						'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+						'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 						'type'        => 'integer',
 					),
 				),
@@ -103,7 +103,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 						'force' => array(
 							'default'     => false,
 							'type'        => 'boolean',
-							'description' => __( 'Required to be true, as resource does not support trashing.', 'classic-commerce' ),
+							'description' => __( 'Required to be true, as resource does not support trashing.', 'classic-store'),
 						),
 					),
 				),
@@ -139,7 +139,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 		}
 
 		if ( ! $permissions ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -158,7 +158,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 		}
 
 		if ( ! $permissions ) {
-			return new WP_Error( 'woocommerce_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -177,7 +177,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 		}
 
 		if ( ! $permissions ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot view this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -196,7 +196,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 		}
 
 		if ( ! $permissions ) {
-			return new WP_Error( 'woocommerce_rest_cannot_edit', __( 'Sorry, you are not allowed to edit this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_edit', __( 'Sorry, you are not allowed to edit this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -215,7 +215,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 		}
 
 		if ( ! $permissions ) {
-			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Sorry, you are not allowed to delete this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Sorry, you are not allowed to delete this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -234,7 +234,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 		}
 
 		if ( ! $permissions ) {
-			return new WP_Error( 'woocommerce_rest_cannot_batch', __( 'Sorry, you are not allowed to batch manipulate this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_batch', __( 'Sorry, you are not allowed to batch manipulate this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -251,7 +251,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 		// Get taxonomy.
 		$taxonomy = $this->get_taxonomy( $request );
 		if ( ! $taxonomy || ! taxonomy_exists( $taxonomy ) ) {
-			return new WP_Error( 'woocommerce_rest_taxonomy_invalid', __( 'Taxonomy does not exist.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_taxonomy_invalid', __( 'Taxonomy does not exist.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		// Check permissions for a single term.
@@ -260,7 +260,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 			$term = get_term( $id, $taxonomy );
 
 			if ( is_wp_error( $term ) || ! $term || $term->taxonomy !== $taxonomy ) {
-				return new WP_Error( 'woocommerce_rest_term_invalid', __( 'Resource does not exist.', 'classic-commerce' ), array( 'status' => 404 ) );
+				return new WP_Error( 'woocommerce_rest_term_invalid', __( 'Resource does not exist.', 'classic-store'), array( 'status' => 404 ) );
 			}
 
 			return wc_rest_check_product_term_permissions( $taxonomy, $context, $term->term_id );
@@ -399,7 +399,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 		}
 		if ( isset( $request['parent'] ) ) {
 			if ( ! is_taxonomy_hierarchical( $taxonomy ) ) {
-				return new WP_Error( 'woocommerce_rest_taxonomy_not_hierarchical', __( 'Can not set resource parent, taxonomy is not hierarchical.', 'classic-commerce' ), array( 'status' => 400 ) );
+				return new WP_Error( 'woocommerce_rest_taxonomy_not_hierarchical', __( 'Can not set resource parent, taxonomy is not hierarchical.', 'classic-store'), array( 'status' => 400 ) );
 			}
 			$args['parent'] = $request['parent'];
 		}
@@ -496,7 +496,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 		}
 		if ( isset( $request['parent'] ) ) {
 			if ( ! is_taxonomy_hierarchical( $taxonomy ) ) {
-				return new WP_Error( 'woocommerce_rest_taxonomy_not_hierarchical', __( 'Can not set resource parent, taxonomy is not hierarchical.', 'classic-commerce' ), array( 'status' => 400 ) );
+				return new WP_Error( 'woocommerce_rest_taxonomy_not_hierarchical', __( 'Can not set resource parent, taxonomy is not hierarchical.', 'classic-store'), array( 'status' => 400 ) );
 			}
 			$prepared_args['parent'] = $request['parent'];
 		}
@@ -545,7 +545,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 
 		// We don't support trashing for this type, error out.
 		if ( ! $force ) {
-			return new WP_Error( 'woocommerce_rest_trash_not_supported', __( 'Resource does not support trashing.', 'classic-commerce' ), array( 'status' => 501 ) );
+			return new WP_Error( 'woocommerce_rest_trash_not_supported', __( 'Resource does not support trashing.', 'classic-store'), array( 'status' => 501 ) );
 		}
 
 		$term = get_term( (int) $request['id'], $taxonomy );
@@ -554,7 +554,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 
 		// Prevent deleting the default product category.
 		if ( $default_category_id === (int) $request['id'] ) {
-			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Default product category cannot be deleted.', 'classic-commerce' ), array( 'status' => 500 ) );
+			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Default product category cannot be deleted.', 'classic-store'), array( 'status' => 500 ) );
 		}
 
 		$request->set_param( 'context', 'edit' );
@@ -562,7 +562,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 
 		$retval = wp_delete_term( $term->term_id, $term->taxonomy );
 		if ( ! $retval ) {
-			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'The resource cannot be deleted.', 'classic-commerce' ), array( 'status' => 500 ) );
+			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'The resource cannot be deleted.', 'classic-store'), array( 'status' => 500 ) );
 		}
 
 		// Schedule action to assign default category.
@@ -706,7 +706,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 		$params['context']['default'] = 'view';
 
 		$params['exclude']    = array(
-			'description'       => __( 'Ensure result set excludes specific IDs.', 'classic-commerce' ),
+			'description'       => __( 'Ensure result set excludes specific IDs.', 'classic-store'),
 			'type'              => 'array',
 			'items'             => array(
 				'type' => 'integer',
@@ -715,7 +715,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 			'sanitize_callback' => 'wp_parse_id_list',
 		);
 		$params['include']    = array(
-			'description'       => __( 'Limit result set to specific ids.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to specific ids.', 'classic-store'),
 			'type'              => 'array',
 			'items'             => array(
 				'type' => 'integer',
@@ -724,13 +724,13 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 			'sanitize_callback' => 'wp_parse_id_list',
 		);
 		$params['offset']     = array(
-			'description'       => __( 'Offset the result set by a specific number of items. Applies to hierarchical taxonomies only.', 'classic-commerce' ),
+			'description'       => __( 'Offset the result set by a specific number of items. Applies to hierarchical taxonomies only.', 'classic-store'),
 			'type'              => 'integer',
 			'sanitize_callback' => 'absint',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['order']      = array(
-			'description'       => __( 'Order sort attribute ascending or descending.', 'classic-commerce' ),
+			'description'       => __( 'Order sort attribute ascending or descending.', 'classic-store'),
 			'type'              => 'string',
 			'sanitize_callback' => 'sanitize_key',
 			'default'           => 'asc',
@@ -741,7 +741,7 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['orderby']    = array(
-			'description'       => __( 'Sort collection by resource attribute.', 'classic-commerce' ),
+			'description'       => __( 'Sort collection by resource attribute.', 'classic-store'),
 			'type'              => 'string',
 			'sanitize_callback' => 'sanitize_key',
 			'default'           => 'name',
@@ -757,25 +757,25 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['hide_empty'] = array(
-			'description'       => __( 'Whether to hide resources not assigned to any products.', 'classic-commerce' ),
+			'description'       => __( 'Whether to hide resources not assigned to any products.', 'classic-store'),
 			'type'              => 'boolean',
 			'default'           => false,
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['parent']     = array(
-			'description'       => __( 'Limit result set to resources assigned to a specific parent. Applies to hierarchical taxonomies only.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to resources assigned to a specific parent. Applies to hierarchical taxonomies only.', 'classic-store'),
 			'type'              => 'integer',
 			'sanitize_callback' => 'absint',
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['product']    = array(
-			'description'       => __( 'Limit result set to resources assigned to a specific product.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to resources assigned to a specific product.', 'classic-store'),
 			'type'              => 'integer',
 			'default'           => null,
 			'validate_callback' => 'rest_validate_request_arg',
 		);
 		$params['slug']       = array(
-			'description'       => __( 'Limit result set to resources with a specific slug.', 'classic-commerce' ),
+			'description'       => __( 'Limit result set to resources with a specific slug.', 'classic-store'),
 			'type'              => 'string',
 			'validate_callback' => 'rest_validate_request_arg',
 		);

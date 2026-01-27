@@ -53,7 +53,7 @@ class WC_Meta_Box_Product_Images {
 						<li class="image" data-attachment_id="<?php echo esc_attr( $attachment_id ); ?>">
 							<?php echo $attachment; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<ul class="actions">
-								<li><a href="#" class="delete tips" data-tip="<?php esc_attr_e( 'Delete image', 'classic-commerce' ); ?>"><?php esc_html_e( 'Delete', 'classic-commerce' ); ?></a></li>
+								<li><a href="#" class="delete tips" data-tip="<?php esc_attr_e( 'Delete image', 'classic-store'); ?>"><?php esc_html_e( 'Delete', 'classic-store'); ?></a></li>
 							</ul>
 							<?php
 							// Allow for extra info to be exposed or extra action to be executed for this attachment.
@@ -78,7 +78,7 @@ class WC_Meta_Box_Product_Images {
 
 		</div>
 		<p class="add_product_images hide-if-no-js">
-			<a href="#" data-choose="<?php esc_attr_e( 'Add images to product gallery', 'classic-commerce' ); ?>" data-update="<?php esc_attr_e( 'Add to gallery', 'classic-commerce' ); ?>" data-delete="<?php esc_attr_e( 'Delete image', 'classic-commerce' ); ?>" data-text="<?php esc_attr_e( 'Delete', 'classic-commerce' ); ?>"><?php esc_html_e( 'Add product gallery images', 'classic-commerce' ); ?></a>
+			<a href="#" data-choose="<?php esc_attr_e( 'Add images to product gallery', 'classic-store'); ?>" data-update="<?php esc_attr_e( 'Add to gallery', 'classic-store'); ?>" data-delete="<?php esc_attr_e( 'Delete image', 'classic-store'); ?>" data-text="<?php esc_attr_e( 'Delete', 'classic-store'); ?>"><?php esc_html_e( 'Add product gallery images', 'classic-store'); ?></a>
 		</p>
 		<?php
 	}

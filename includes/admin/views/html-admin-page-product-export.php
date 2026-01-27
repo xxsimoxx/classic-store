@@ -14,55 +14,55 @@ wp_enqueue_script( 'wc-product-export' );
 $exporter = new WC_Product_CSV_Exporter();
 ?>
 <div class="wrap woocommerce">
-	<h1><?php esc_html_e( 'Export Products', 'classic-commerce' ); ?></h1>
+	<h1><?php esc_html_e( 'Export Products', 'classic-store'); ?></h1>
 
 	<div class="woocommerce-exporter-wrapper">
 		<form class="woocommerce-exporter">
 			<header>
 				<span class="spinner is-active"></span>
-				<h2><?php esc_html_e( 'Export products to a CSV file', 'classic-commerce' ); ?></h2>
-				<p><?php esc_html_e( 'This tool allows you to generate and download a CSV file containing a list of all products.', 'classic-commerce' ); ?></p>
+				<h2><?php esc_html_e( 'Export products to a CSV file', 'classic-store'); ?></h2>
+				<p><?php esc_html_e( 'This tool allows you to generate and download a CSV file containing a list of all products.', 'classic-store'); ?></p>
 			</header>
 			<section>
 				<table class="form-table woocommerce-exporter-options">
 					<tbody>
 						<tr>
 							<th scope="row">
-								<label for="woocommerce-exporter-columns"><?php esc_html_e( 'Which columns should be exported?', 'classic-commerce' ); ?></label>
+								<label for="woocommerce-exporter-columns"><?php esc_html_e( 'Which columns should be exported?', 'classic-store'); ?></label>
 							</th>
 							<td>
-								<select id="woocommerce-exporter-columns" class="woocommerce-exporter-columns wc-enhanced-select" style="width:100%;" multiple data-placeholder="<?php esc_attr_e( 'Export all columns', 'classic-commerce' ); ?>">
+								<select id="woocommerce-exporter-columns" class="woocommerce-exporter-columns wc-enhanced-select" style="width:100%;" multiple data-placeholder="<?php esc_attr_e( 'Export all columns', 'classic-store'); ?>">
 									<?php
 									foreach ( $exporter->get_default_column_names() as $column_id => $column_name ) {
 										echo '<option value="' . esc_attr( $column_id ) . '">' . esc_html( $column_name ) . '</option>';
 									}
 									?>
-									<option value="downloads"><?php esc_html_e( 'Downloads', 'classic-commerce' ); ?></option>
-									<option value="attributes"><?php esc_html_e( 'Attributes', 'classic-commerce' ); ?></option>
+									<option value="downloads"><?php esc_html_e( 'Downloads', 'classic-store'); ?></option>
+									<option value="attributes"><?php esc_html_e( 'Attributes', 'classic-store'); ?></option>
 								</select>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row">
-								<label for="woocommerce-exporter-types"><?php esc_html_e( 'Which product types should be exported?', 'classic-commerce' ); ?></label>
+								<label for="woocommerce-exporter-types"><?php esc_html_e( 'Which product types should be exported?', 'classic-store'); ?></label>
 							</th>
 							<td>
-								<select id="woocommerce-exporter-types" class="woocommerce-exporter-types wc-enhanced-select" style="width:100%;" multiple data-placeholder="<?php esc_attr_e( 'Export all products', 'classic-commerce' ); ?>">
+								<select id="woocommerce-exporter-types" class="woocommerce-exporter-types wc-enhanced-select" style="width:100%;" multiple data-placeholder="<?php esc_attr_e( 'Export all products', 'classic-store'); ?>">
 									<?php
 									foreach (  WC_Admin_Exporters::get_product_types() as $value => $label ) {
 										echo '<option value="' . esc_attr( $value ) . '">' . esc_html( $label ) . '</option>';
 									}
 									?>
-									<option value="variation"><?php esc_html_e( 'Product variations', 'classic-commerce' ); ?></option>
+									<option value="variation"><?php esc_html_e( 'Product variations', 'classic-store'); ?></option>
 								</select>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row">
-								<label for="woocommerce-exporter-category"><?php esc_html_e( 'Which product category should be exported?', 'classic-commerce' ); ?></label>
+								<label for="woocommerce-exporter-category"><?php esc_html_e( 'Which product category should be exported?', 'classic-store'); ?></label>
 							</th>
 							<td>
-								<select id="woocommerce-exporter-category" class="woocommerce-exporter-category wc-enhanced-select" style="width:100%;" multiple data-placeholder="<?php esc_attr_e( 'Export all categories', 'classic-commerce' ); ?>">
+								<select id="woocommerce-exporter-category" class="woocommerce-exporter-category wc-enhanced-select" style="width:100%;" multiple data-placeholder="<?php esc_attr_e( 'Export all categories', 'classic-store'); ?>">
 								<?php
 								$categories = get_categories(
 									array(
@@ -79,11 +79,11 @@ $exporter = new WC_Product_CSV_Exporter();
 						</tr>
 						<tr>
 							<th scope="row">
-								<label for="woocommerce-exporter-meta"><?php esc_html_e( 'Export custom meta?', 'classic-commerce' ); ?></label>
+								<label for="woocommerce-exporter-meta"><?php esc_html_e( 'Export custom meta?', 'classic-store'); ?></label>
 							</th>
 							<td>
 								<input type="checkbox" id="woocommerce-exporter-meta" value="1" />
-								<label for="woocommerce-exporter-meta"><?php esc_html_e( 'Yes, export all custom meta', 'classic-commerce' ); ?></label>
+								<label for="woocommerce-exporter-meta"><?php esc_html_e( 'Yes, export all custom meta', 'classic-store'); ?></label>
 							</td>
 						</tr>
 						<?php do_action( 'woocommerce_product_export_row' ); ?>
@@ -92,7 +92,7 @@ $exporter = new WC_Product_CSV_Exporter();
 				<progress class="woocommerce-exporter-progress" max="100" value="0"></progress>
 			</section>
 			<div class="wc-actions">
-				<button type="submit" class="woocommerce-exporter-button button button-primary" value="<?php esc_attr_e( 'Generate CSV', 'classic-commerce' ); ?>"><?php esc_html_e( 'Generate CSV', 'classic-commerce' ); ?></button>
+				<button type="submit" class="woocommerce-exporter-button button button-primary" value="<?php esc_attr_e( 'Generate CSV', 'classic-store'); ?>"><?php esc_html_e( 'Generate CSV', 'classic-store'); ?></button>
 			</div>
 		</form>
 	</div>

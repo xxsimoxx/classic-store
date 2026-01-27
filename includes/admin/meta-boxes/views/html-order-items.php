@@ -37,19 +37,19 @@ if ( wc_tax_enabled() ) {
 	<table cellpadding="0" cellspacing="0" class="woocommerce_order_items">
 		<thead>
 			<tr>
-				<th class="item sortable" colspan="2" data-sort="string-ins"><?php esc_html_e( 'Item', 'classic-commerce' ); ?></th>
+				<th class="item sortable" colspan="2" data-sort="string-ins"><?php esc_html_e( 'Item', 'classic-store'); ?></th>
 				<?php do_action( 'woocommerce_admin_order_item_headers', $order ); ?>
-				<th class="item_cost sortable" data-sort="float"><?php esc_html_e( 'Cost', 'classic-commerce' ); ?></th>
-				<th class="quantity sortable" data-sort="int"><?php esc_html_e( 'Qty', 'classic-commerce' ); ?></th>
-				<th class="line_cost sortable" data-sort="float"><?php esc_html_e( 'Total', 'classic-commerce' ); ?></th>
+				<th class="item_cost sortable" data-sort="float"><?php esc_html_e( 'Cost', 'classic-store'); ?></th>
+				<th class="quantity sortable" data-sort="int"><?php esc_html_e( 'Qty', 'classic-store'); ?></th>
+				<th class="line_cost sortable" data-sort="float"><?php esc_html_e( 'Total', 'classic-store'); ?></th>
 				<?php
 				if ( ! empty( $order_taxes ) ) :
 					foreach ( $order_taxes as $tax_id => $tax_item ) :
 						$tax_class      = wc_get_tax_class_by_tax_id( $tax_item['rate_id'] );
-						$tax_class_name = isset( $classes_options[ $tax_class ] ) ? $classes_options[ $tax_class ] : __( 'Tax', 'classic-commerce' );
-						$column_label   = ! empty( $tax_item['label'] ) ? $tax_item['label'] : __( 'Tax', 'classic-commerce' );
+						$tax_class_name = isset( $classes_options[ $tax_class ] ) ? $classes_options[ $tax_class ] : __( 'Tax', 'classic-store');
+						$column_label   = ! empty( $tax_item['label'] ) ? $tax_item['label'] : __( 'Tax', 'classic-store');
 						/* translators: %1$s: tax item name %2$s: tax class name  */
-						$column_tip = sprintf( esc_html__( '%1$s (%2$s)', 'classic-commerce' ), $tax_item['name'], $tax_class_name );
+						$column_tip = sprintf( esc_html__( '%1$s (%2$s)', 'classic-store' ), $tax_item['name'], $tax_class_name );
 						?>
 						<th class="line_tax tips" data-tip="<?php echo esc_attr( $column_tip ); ?>">
 							<?php echo esc_attr( $column_label ); ?>
@@ -115,7 +115,7 @@ if ( wc_tax_enabled() ) {
 		?>
 		<div class="wc-used-coupons">
 			<ul class="wc_coupon_list">
-				<li><strong><?php esc_html_e( 'Coupon(s)', 'classic-commerce' ); ?></strong></li>
+				<li><strong><?php esc_html_e( 'Coupon(s)', 'classic-store' ); ?></strong></li>
 				<?php
 				foreach ( $coupons as $item_id => $item ) :
 					$coupon_info = $item->get_meta( 'coupon_info' );
@@ -161,7 +161,7 @@ if ( wc_tax_enabled() ) {
 	<?php endif; ?>
 	<table class="wc-order-totals">
 			<tr>
-				<td class="label"><?php esc_html_e( 'Items Subtotal:', 'classic-commerce' ); ?></td>
+				<td class="label"><?php esc_html_e( 'Items Subtotal:', 'classic-store'); ?></td>
 				<td width="1%"></td>
 				<td class="total">
                 <?php echo wc_price( $order->get_subtotal(), array( 'currency' => $order->get_currency() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -169,7 +169,7 @@ if ( wc_tax_enabled() ) {
 			</tr>
 		<?php if ( 0 < $order->get_total_discount() ) : ?>
 			<tr>
-				<td class="label"><?php esc_html_e( 'Coupon(s):', 'classic-commerce' ); ?></td>
+				<td class="label"><?php esc_html_e( 'Coupon(s):', 'classic-store' ); ?></td>
 				<td width="1%"></td>
 				<td class="total">-
 					<?php echo wc_price( $order->get_total_discount(), array( 'currency' => $order->get_currency() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -178,7 +178,7 @@ if ( wc_tax_enabled() ) {
 		<?php endif; ?>
         <?php if ( 0 < $order->get_total_fees() ) : ?>
 			<tr>
-				<td class="label"><?php esc_html_e( 'Fees:', 'classic-commerce' ); ?></td>
+				<td class="label"><?php esc_html_e( 'Fees:', 'classic-store'); ?></td>
 				<td width="1%"></td>
 				<td class="total">
 					<?php echo wc_price( $order->get_total_fees(), array( 'currency' => $order->get_currency() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -190,7 +190,7 @@ if ( wc_tax_enabled() ) {
 
 		<?php if ( $order->get_shipping_methods() ) : ?>
 			<tr>
-				<td class="label"><?php esc_html_e( 'Shipping:', 'classic-commerce' ); ?></td>
+				<td class="label"><?php esc_html_e( 'Shipping:', 'classic-store'); ?></td>
 				<td width="1%"></td>
 				<td class="total">
 					<?php echo wc_price( $order->get_shipping_total(), array( 'currency' => $order->get_currency() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -218,7 +218,7 @@ if ( wc_tax_enabled() ) {
 		<?php do_action( 'woocommerce_admin_order_totals_after_tax', $order->get_id() ); ?>
 
 		<tr>
-			<td class="label"><?php esc_html_e( 'Order Total', 'classic-commerce' ); ?>:</td>
+			<td class="label"><?php esc_html_e( 'Order Total', 'classic-store'); ?>:</td>
 			<td width="1%"></td>
 			<td class="total">
 				<?php echo wc_price( $order->get_total(), array( 'currency' => $order->get_currency() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -233,7 +233,7 @@ if ( wc_tax_enabled() ) {
 
 		<table class="wc-order-totals" style="border-top: 1px solid #999; margin-top:12px; padding-top:12px">
 			<tr>
-				<td class="<?php echo $order->get_total_refunded() ? 'label' : 'label label-highlight'; ?>"><?php esc_html_e( 'Paid', 'classic-commerce' ); ?>: <br /></td>
+				<td class="<?php echo $order->get_total_refunded() ? 'label' : 'label label-highlight'; ?>"><?php esc_html_e( 'Paid', 'classic-store'); ?>: <br /></td>
                 <td width="1%"></td>
 				<td class="total">
 					<?php echo wc_price( $order->get_total(), array( 'currency' => $order->get_currency() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -245,7 +245,7 @@ if ( wc_tax_enabled() ) {
 					<?php
 					if ( $order->get_payment_method_title() ) {
 						/* translators: 1: payment date. 2: payment method */
-						echo esc_html( sprintf( __( '%1$s via %2$s', 'classic-commerce' ), $order->get_date_paid()->date_i18n( get_option( 'date_format' ) ), $order->get_payment_method_title() ) );
+						echo esc_html( sprintf( __( '%1$s via %2$s', 'classic-store'), $order->get_date_paid()->date_i18n( get_option( 'date_format' ) ), $order->get_payment_method_title() ) );
                         } else {
 						echo esc_html( $order->get_date_paid()->date_i18n( get_option( 'date_format' ) ) );
 					}
@@ -263,14 +263,14 @@ if ( wc_tax_enabled() ) {
 		<?php if ( $order->get_total_refunded() ) : ?>
 		<table class="wc-order-totals" style="border-top: 1px solid #999; margin-top:12px; padding-top:12px">
 			<tr>
-				<td class="label refunded-total"><?php esc_html_e( 'Refunded', 'classic-commerce' ); ?>:</td>
+				<td class="label refunded-total"><?php esc_html_e( 'Refunded', 'classic-store'); ?>:</td>
 				<td width="1%"></td>
 				<td class="total refunded-total">-<?php echo wc_price( $order->get_total_refunded(), array( 'currency' => $order->get_currency() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
 			</tr>
 		<?php do_action( 'woocommerce_admin_order_totals_after_refunded', $order->get_id() ); ?>
 
 			<tr>
-								<td class="label label-highlight"><?php esc_html_e( 'Net Payment', 'classic-commerce' ); ?>:</td>
+								<td class="label label-highlight"><?php esc_html_e( 'Net Payment', 'classic-store'); ?>:</td>
 				<td width="1%"></td>
 				<td class="total">
 				<?php echo wc_price( $order->get_total() - $order->get_total_refunded(), array( 'currency' => $order->get_currency() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -291,61 +291,61 @@ if ( wc_tax_enabled() ) {
 <div class="wc-order-data-row wc-order-bulk-actions wc-order-data-row-toggle">
 	<p class="add-items">
 		<?php if ( $order->is_editable() ) : ?>
-			<button type="button" class="button add-line-item"><?php esc_html_e( 'Add item(s)', 'classic-commerce' ); ?></button>
+			<button type="button" class="button add-line-item"><?php esc_html_e( 'Add item(s)', 'classic-store' ); ?></button>
 			<?php if ( wc_coupons_enabled() ) : ?>
-				<button type="button" class="button add-coupon"><?php esc_html_e( 'Apply coupon', 'classic-commerce' ); ?></button>
+				<button type="button" class="button add-coupon"><?php esc_html_e( 'Apply coupon', 'classic-store'); ?></button>
 			<?php endif; ?>
 		<?php else : ?>
-			<span class="description"><?php echo wc_help_tip( __( 'To edit this order change the status back to "Pending"', 'classic-commerce' ) ); ?> <?php esc_html_e( 'This order is no longer editable.', 'classic-commerce' ); ?></span>
+			<span class="description"><?php echo wc_help_tip( __( 'To edit this order change the status back to "Pending"', 'classic-store') ); ?> <?php esc_html_e( 'This order is no longer editable.', 'classic-store'); ?></span>
 		<?php endif; ?>
 		<?php if ( $render_refunds ) : ?>
-			<button type="button" class="button refund-items"><?php esc_html_e( 'Refund', 'classic-commerce' ); ?></button>
+			<button type="button" class="button refund-items"><?php esc_html_e( 'Refund', 'classic-store'); ?></button>
 		<?php endif; ?>
 		<?php
 			// Allow adding custom buttons.
 			do_action( 'woocommerce_order_item_add_action_buttons', $order );
 		?>
 		<?php if ( $order->is_editable() ) : ?>
-			<button type="button" class="button button-primary calculate-action"><?php esc_html_e( 'Recalculate', 'classic-commerce' ); ?></button>
+			<button type="button" class="button button-primary calculate-action"><?php esc_html_e( 'Recalculate', 'classic-store'); ?></button>
 		<?php endif; ?>
 	</p>
 </div>
 <div class="wc-order-data-row wc-order-add-item wc-order-data-row-toggle" style="display:none;">
-	<button type="button" class="button add-order-item"><?php esc_html_e( 'Add product(s)', 'classic-commerce' ); ?></button>
-	<button type="button" class="button add-order-fee"><?php esc_html_e( 'Add fee', 'classic-commerce' ); ?></button>
-	<button type="button" class="button add-order-shipping"><?php esc_html_e( 'Add shipping', 'classic-commerce' ); ?></button>
+	<button type="button" class="button add-order-item"><?php esc_html_e( 'Add product(s)', 'classic-store' ); ?></button>
+	<button type="button" class="button add-order-fee"><?php esc_html_e( 'Add fee', 'classic-store'); ?></button>
+	<button type="button" class="button add-order-shipping"><?php esc_html_e( 'Add shipping', 'classic-store'); ?></button>
 	<?php if ( wc_tax_enabled() ) : ?>
-		<button type="button" class="button add-order-tax"><?php esc_html_e( 'Add tax', 'classic-commerce' ); ?></button>
+		<button type="button" class="button add-order-tax"><?php esc_html_e( 'Add tax', 'classic-store'); ?></button>
 	<?php endif; ?>
 	<?php
 		// Allow adding custom buttons.
 		do_action( 'woocommerce_order_item_add_line_buttons', $order );
 	?>
-	<button type="button" class="button cancel-action"><?php esc_html_e( 'Cancel', 'classic-commerce' ); ?></button>
-	<button type="button" class="button button-primary save-action"><?php esc_html_e( 'Save', 'classic-commerce' ); ?></button>
+	<button type="button" class="button cancel-action"><?php esc_html_e( 'Cancel', 'classic-store'); ?></button>
+	<button type="button" class="button button-primary save-action"><?php esc_html_e( 'Save', 'classic-store'); ?></button>
 </div>
 <?php if ( $render_refunds ) : ?>
 <div class="wc-order-data-row wc-order-refund-items wc-order-data-row-toggle" style="display: none;">
 	<table class="wc-order-totals">
 		<?php if ( 'yes' === get_option( 'woocommerce_manage_stock' ) ) : ?>
 			<tr>
-				<td class="label"><label for="restock_refunded_items"><?php esc_html_e( 'Restock refunded items', 'classic-commerce' ); ?>:</label></td>
+				<td class="label"><label for="restock_refunded_items"><?php esc_html_e( 'Restock refunded items', 'classic-store'); ?>:</label></td>
 				<td class="total"><input type="checkbox" id="restock_refunded_items" name="restock_refunded_items" <?php checked( apply_filters( 'woocommerce_restock_refunded_items', true ) ); ?> /></td>
 			</tr>
 		<?php endif; ?>
 		<tr>
-			<td class="label"><?php esc_html_e( 'Amount already refunded', 'classic-commerce' ); ?>:</td>
+			<td class="label"><?php esc_html_e( 'Amount already refunded', 'classic-store'); ?>:</td>
 			<td class="total">-<?php echo wc_price( $order->get_total_refunded(), array( 'currency' => $order->get_currency() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
 		</tr>
 		<tr>
-			<td class="label"><?php esc_html_e( 'Total available to refund', 'classic-commerce' ); ?>:</td>
+			<td class="label"><?php esc_html_e( 'Total available to refund', 'classic-store'); ?>:</td>
 			<td class="total"><?php echo wc_price( $order->get_total() - $order->get_total_refunded(), array( 'currency' => $order->get_currency() ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
 		</tr>
 		<tr>
 			<td class="label">
 				<label for="refund_amount">
-					<?php echo wc_help_tip( __( 'Refund the line items above. This will show the total amount to be refunded', 'classic-commerce' ) ); ?>
-					<?php esc_html_e( 'Refund amount', 'classic-commerce' ); ?>:
+					<?php echo wc_help_tip( __( 'Refund the line items above. This will show the total amount to be refunded', 'classic-store') ); ?>
+					<?php esc_html_e( 'Refund amount', 'classic-store'); ?>:
 				</label>
 			</td>
 			<td class="total">
@@ -364,8 +364,8 @@ if ( wc_tax_enabled() ) {
 		<tr>
             <td class="label">
 				<label for="refund_reason">
-					<?php echo wc_help_tip( __( 'Note: the refund reason will be visible by the customer.', 'classic-commerce' ) ); ?>
-					<?php esc_html_e( 'Reason for refund (optional):', 'classic-commerce' ); ?>
+					<?php echo wc_help_tip( __( 'Note: the refund reason will be visible by the customer.', 'classic-store') ); ?>
+					<?php esc_html_e( 'Reason for refund (optional):', 'classic-store' ); ?>
 				</label>
 			</td>
 			<td class="total">
@@ -378,16 +378,16 @@ if ( wc_tax_enabled() ) {
 	<div class="refund-actions">
 		<?php
 		$refund_amount = '<span class="wc-order-refund-amount">' . wc_price( 0, array( 'currency' => $order->get_currency() ) ) . '</span>';
-		$gateway_name  = false !== $payment_gateway ? ( ! empty( $payment_gateway->method_title ) ? $payment_gateway->method_title : $payment_gateway->get_title() ) : __( 'Payment gateway', 'classic-commerce' );
+		$gateway_name  = false !== $payment_gateway ? ( ! empty( $payment_gateway->method_title ) ? $payment_gateway->method_title : $payment_gateway->get_title() ) : __( 'Payment gateway', 'classic-store');
 
 		if ( false !== $payment_gateway && $payment_gateway->can_refund_order( $order ) ) {
 			/* translators: refund amount, gateway name */
-			echo '<button type="button" class="button button-primary do-api-refund">' . sprintf( esc_html__( 'Refund %1$s via %2$s', 'classic-commerce' ), wp_kses_post( $refund_amount ), esc_html( $gateway_name ) ) . '</button>';
+			echo '<button type="button" class="button button-primary do-api-refund">' . sprintf( esc_html__( 'Refund %1$s via %2$s', 'classic-store'), wp_kses_post( $refund_amount ), esc_html( $gateway_name ) ) . '</button>';
 		}
 		?>
 		<?php /* translators: refund amount  */ ?>
-		<button type="button" class="button button-primary do-manual-refund tips" data-tip="<?php esc_attr_e( 'You will need to manually issue a refund through your payment gateway after using this.', 'classic-commerce' ); ?>"><?php printf( esc_html__( 'Refund %s manually', 'classic-commerce' ), wp_kses_post( $refund_amount ) ); ?></button>
-		<button type="button" class="button cancel-action"><?php esc_html_e( 'Cancel', 'classic-commerce' ); ?></button>
+		<button type="button" class="button button-primary do-manual-refund tips" data-tip="<?php esc_attr_e( 'You will need to manually issue a refund through your payment gateway after using this.', 'classic-store'); ?>"><?php printf( esc_html__( 'Refund %s manually', 'classic-store'), wp_kses_post( $refund_amount ) ); ?></button>
+		<button type="button" class="button cancel-action"><?php esc_html_e( 'Cancel', 'classic-store'); ?></button>
 		<input type="hidden" id="refunded_amount" name="refunded_amount" value="<?php echo esc_attr( $order->get_total_refunded() ); ?>" />
 		<div class="clear"></div>
 	</div>
@@ -399,7 +399,7 @@ if ( wc_tax_enabled() ) {
 		<div class="wc-backbone-modal-content">
 			<section class="wc-backbone-modal-main" role="main">
 				<header class="wc-backbone-modal-header">
-					<h1><?php esc_html_e( 'Add products', 'classic-commerce' ); ?></h1>
+					<h1><?php esc_html_e( 'Add products', 'classic-store'); ?></h1>
 					<button class="modal-close modal-close-link dashicons dashicons-no-alt">
 						<span class="screen-reader-text">Close modal panel</span>
 					</button>
@@ -409,13 +409,13 @@ if ( wc_tax_enabled() ) {
 						<table class="widefat">
 							<thead>
 								<tr>
-									<th><?php esc_html_e( 'Product', 'classic-commerce' ); ?></th>
-									<th><?php esc_html_e( 'Quantity', 'classic-commerce' ); ?></th>
+									<th><?php esc_html_e( 'Product', 'classic-store'); ?></th>
+									<th><?php esc_html_e( 'Quantity', 'classic-store'); ?></th>
 								</tr>
 							</thead>
 							<?php
 								$row = '
-									<td><select class="wc-product-search" name="item_id" data-allow_clear="true" data-display_stock="true" data-exclude_type="variable" data-placeholder="' . esc_attr__( 'Search for a product&hellip;', 'classic-commerce' ) . '"></select></td>
+									<td><select class="wc-product-search" name="item_id" data-allow_clear="true" data-display_stock="true" data-exclude_type="variable" data-placeholder="' . esc_attr__( 'Search for a product&hellip;', 'classic-store') . '"></select></td>
 									<td><input type="number" step="1" min="0" max="9999" autocomplete="off" name="item_qty" placeholder="1" size="4" class="quantity" /></td>';
 							?>
 							<tbody data-row="<?php echo esc_attr( $row ); ?>">
@@ -428,7 +428,7 @@ if ( wc_tax_enabled() ) {
 				</article>
 				<footer>
 					<div class="inner">
-						<button id="btn-ok" class="button button-primary button-large"><?php esc_html_e( 'Add', 'classic-commerce' ); ?></button>
+						<button id="btn-ok" class="button button-primary button-large"><?php esc_html_e( 'Add', 'classic-store'); ?></button>
 					</div>
 				</footer>
 			</section>
@@ -442,7 +442,7 @@ if ( wc_tax_enabled() ) {
 		<div class="wc-backbone-modal-content">
 			<section class="wc-backbone-modal-main" role="main">
 				<header class="wc-backbone-modal-header">
-					<h1><?php esc_html_e( 'Add tax', 'classic-commerce' ); ?></h1>
+					<h1><?php esc_html_e( 'Add tax', 'classic-store'); ?></h1>
 					<button class="modal-close modal-close-link dashicons dashicons-no-alt">
 						<span class="screen-reader-text">Close modal panel</span>
 					</button>
@@ -453,10 +453,10 @@ if ( wc_tax_enabled() ) {
 							<thead>
 								<tr>
 									<th>&nbsp;</th>
-									<th><?php esc_html_e( 'Rate name', 'classic-commerce' ); ?></th>
-									<th><?php esc_html_e( 'Tax class', 'classic-commerce' ); ?></th>
-									<th><?php esc_html_e( 'Rate code', 'classic-commerce' ); ?></th>
-									<th><?php esc_html_e( 'Rate %', 'classic-commerce' ); ?></th>
+									<th><?php esc_html_e( 'Rate name', 'classic-store'); ?></th>
+									<th><?php esc_html_e( 'Tax class', 'classic-store'); ?></th>
+									<th><?php esc_html_e( 'Rate code', 'classic-store'); ?></th>
+									<th><?php esc_html_e( 'Rate %', 'classic-store'); ?></th>
 								</tr>
 							</thead>
 						<?php
@@ -477,15 +477,15 @@ if ( wc_tax_enabled() ) {
 						</table>
 						<?php if ( absint( $wpdb->get_var( "SELECT COUNT(tax_rate_id) FROM {$wpdb->prefix}woocommerce_tax_rates;" ) ) > 100 ) : ?>
 							<p>
-								<label for="manual_tax_rate_id"><?php esc_html_e( 'Or, enter tax rate ID:', 'classic-commerce' ); ?></label><br/>
-								<input type="number" name="manual_tax_rate_id" id="manual_tax_rate_id" step="1" placeholder="<?php esc_attr_e( 'Optional', 'classic-commerce' ); ?>" />
+								<label for="manual_tax_rate_id"><?php esc_html_e( 'Or, enter tax rate ID:', 'classic-store'); ?></label><br/>
+								<input type="number" name="manual_tax_rate_id" id="manual_tax_rate_id" step="1" placeholder="<?php esc_attr_e( 'Optional', 'classic-store'); ?>" />
 							</p>
 						<?php endif; ?>
 					</form>
 				</article>
 				<footer>
 					<div class="inner">
-						<button id="btn-ok" class="button button-primary button-large"><?php esc_html_e( 'Add', 'classic-commerce' ); ?></button>
+						<button id="btn-ok" class="button button-primary button-large"><?php esc_html_e( 'Add', 'classic-store'); ?></button>
 					</div>
 				</footer>
 			</section>

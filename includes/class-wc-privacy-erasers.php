@@ -41,27 +41,27 @@ class WC_Privacy_Erasers {
 		}
 
 		$props_to_erase = apply_filters( 'woocommerce_privacy_erase_customer_personal_data_props', array(
-			'billing_first_name'  => __( 'Billing First Name', 'classic-commerce' ),
-			'billing_last_name'   => __( 'Billing Last Name', 'classic-commerce' ),
-			'billing_company'     => __( 'Billing Company', 'classic-commerce' ),
-			'billing_address_1'   => __( 'Billing Address 1', 'classic-commerce' ),
-			'billing_address_2'   => __( 'Billing Address 2', 'classic-commerce' ),
-			'billing_city'        => __( 'Billing City', 'classic-commerce' ),
-			'billing_postcode'    => __( 'Billing Postal/Zip Code', 'classic-commerce' ),
-			'billing_state'       => __( 'Billing State', 'classic-commerce' ),
-			'billing_country'     => __( 'Billing Country / Region', 'classic-commerce' ),
-			'billing_phone'       => __( 'Billing Phone Number', 'classic-commerce' ),
-			'billing_email'       => __( 'Email Address', 'classic-commerce' ),
-			'shipping_first_name' => __( 'Shipping First Name', 'classic-commerce' ),
-			'shipping_last_name'  => __( 'Shipping Last Name', 'classic-commerce' ),
-			'shipping_company'    => __( 'Shipping Company', 'classic-commerce' ),
-			'shipping_address_1'  => __( 'Shipping Address 1', 'classic-commerce' ),
-			'shipping_address_2'  => __( 'Shipping Address 2', 'classic-commerce' ),
-			'shipping_city'       => __( 'Shipping City', 'classic-commerce' ),
-			'shipping_postcode'   => __( 'Shipping Postal/Zip Code', 'classic-commerce' ),
-			'shipping_state'      => __( 'Shipping State', 'classic-commerce' ),
-			'shipping_country'    => __( 'Shipping Country / Region', 'classic-commerce' ),
-            'shipping_phone'      => __( 'Shipping Phone Number', 'classic-commerce' ),
+			'billing_first_name'  => __( 'Billing First Name', 'classic-store'),
+			'billing_last_name'   => __( 'Billing Last Name', 'classic-store'),
+			'billing_company'     => __( 'Billing Company', 'classic-store'),
+			'billing_address_1'   => __( 'Billing Address 1', 'classic-store'),
+			'billing_address_2'   => __( 'Billing Address 2', 'classic-store'),
+			'billing_city'        => __( 'Billing City', 'classic-store'),
+			'billing_postcode'    => __( 'Billing Postal/Zip Code', 'classic-store'),
+			'billing_state'       => __( 'Billing State', 'classic-store'),
+			'billing_country'     => __( 'Billing Country / Region', 'classic-store'),
+			'billing_phone'       => __( 'Billing Phone Number', 'classic-store'),
+			'billing_email'       => __( 'Email Address', 'classic-store'),
+			'shipping_first_name' => __( 'Shipping First Name', 'classic-store'),
+			'shipping_last_name'  => __( 'Shipping Last Name', 'classic-store'),
+			'shipping_company'    => __( 'Shipping Company', 'classic-store'),
+			'shipping_address_1'  => __( 'Shipping Address 1', 'classic-store'),
+			'shipping_address_2'  => __( 'Shipping Address 2', 'classic-store'),
+			'shipping_city'       => __( 'Shipping City', 'classic-store'),
+			'shipping_postcode'   => __( 'Shipping Postal/Zip Code', 'classic-store'),
+			'shipping_state'      => __( 'Shipping State', 'classic-store'),
+			'shipping_country'    => __( 'Shipping Country / Region', 'classic-store'),
+            'shipping_phone'      => __( 'Shipping Phone Number', 'classic-store'),
 		), $customer );
 
 		foreach ( $props_to_erase as $prop => $label ) {
@@ -80,7 +80,7 @@ class WC_Privacy_Erasers {
 
 			if ( $erased ) {
 				/* Translators: %s Prop name. */
-				$response['messages'][]    = sprintf( __( 'Removed customer "%s"', 'classic-commerce' ), $label );
+				$response['messages'][]    = sprintf( __( 'Removed customer "%s"', 'classic-store'), $label );
 				$response['items_removed'] = true;
 			}
 		}
@@ -136,11 +136,11 @@ class WC_Privacy_Erasers {
 					self::remove_order_personal_data( $order );
 
 					/* Translators: %s Order number. */
-					$response['messages'][]    = sprintf( __( 'Removed personal data from order %s.', 'classic-commerce' ), $order->get_order_number() );
+					$response['messages'][]    = sprintf( __( 'Removed personal data from order %s.', 'classic-store'), $order->get_order_number() );
 					$response['items_removed'] = true;
 				} else {
 					/* Translators: %s Order number. */
-					$response['messages'][]     = sprintf( __( 'Personal data within order %s has been retained.', 'classic-commerce' ), $order->get_order_number() );
+					$response['messages'][]     = sprintf( __( 'Personal data within order %s has been retained.', 'classic-store'), $order->get_order_number() );
 					$response['items_retained'] = true;
 				}
 			}
@@ -193,11 +193,11 @@ class WC_Privacy_Erasers {
 				$result = $customer_download_data_store->delete_by_user_email( $email_address );
 			}
 			if ( $result ) {
-				$response['messages'][]    = __( 'Removed access to downloadable files.', 'classic-commerce' );
+				$response['messages'][]    = __( 'Removed access to downloadable files.', 'classic-store');
 				$response['items_removed'] = true;
 			}
 		} else {
-			$response['messages'][]     = __( 'Customer download permissions have been retained.', 'classic-commerce' );
+			$response['messages'][]     = __( 'Customer download permissions have been retained.', 'classic-store');
 			$response['items_retained'] = true;
 		}
 
@@ -338,7 +338,7 @@ class WC_Privacy_Erasers {
 		}
 
 		// Add note that this event occured.
-		$order->add_order_note( __( 'Personal data removed.', 'classic-commerce' ) );
+		$order->add_order_note( __( 'Personal data removed.', 'classic-store') );
 
 		/**
 		 * Allow extensions to remove their own personal data for this order.
@@ -383,7 +383,7 @@ class WC_Privacy_Erasers {
 			WC_Payment_Tokens::delete( $token->get_id() );
 
 			/* Translators: %s Prop name. */
-			$response['messages'][]    = sprintf( __( 'Removed payment token "%d"', 'classic-commerce' ), $token->get_id() );
+			$response['messages'][]    = sprintf( __( 'Removed payment token "%d"', 'classic-store'), $token->get_id() );
 			$response['items_removed'] = true;
 		}
 

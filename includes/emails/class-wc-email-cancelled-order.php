@@ -28,8 +28,8 @@ if ( ! class_exists( 'WC_Email_Cancelled_Order', false ) ) :
 		 */
 		public function __construct() {
 			$this->id             = 'cancelled_order';
-			$this->title          = __( 'Cancelled order', 'classic-commerce' );
-			$this->description    = __( 'Cancelled order emails are sent to chosen recipient(s) when orders have been marked cancelled (if they were previously processing or on-hold).', 'classic-commerce' );
+			$this->title          = __( 'Cancelled order', 'classic-store');
+			$this->description    = __( 'Cancelled order emails are sent to chosen recipient(s) when orders have been marked cancelled (if they were previously processing or on-hold).', 'classic-store' );
 			$this->template_html  = 'emails/admin-cancelled-order.php';
 			$this->template_plain = 'emails/plain/admin-cancelled-order.php';
 			$this->placeholders   = array(
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WC_Email_Cancelled_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( '[{site_title}]: {order_billing_full_name} has cancelled order #{order_number}', 'classic-commerce' );
+			return __( '[{site_title}]: {order_billing_full_name} has cancelled order #{order_number}', 'classic-store');
 		}
 
 		/**
@@ -66,7 +66,7 @@ if ( ! class_exists( 'WC_Email_Cancelled_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Order Cancelled: #{order_number}', 'classic-commerce' );
+			return __( 'Order Cancelled: #{order_number}', 'classic-store');
 		}
 
 		/**
@@ -139,7 +139,7 @@ if ( ! class_exists( 'WC_Email_Cancelled_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content() {
-			return __( 'Thanks for reading.', 'classic-commerce' );
+			return __( 'Thanks for reading.', 'classic-store');
 		}
 
 		/**
@@ -147,25 +147,25 @@ if ( ! class_exists( 'WC_Email_Cancelled_Order', false ) ) :
 		 */
 		public function init_form_fields() {
             /* translators: %s: list of placeholders */
-			$placeholder_text  = sprintf( __( 'Available placeholders: %s', 'classic-commerce' ), '<code>' . esc_html( implode( '</code>, <code>', array_keys( $this->placeholders ) ) ) . '</code>' );
+			$placeholder_text  = sprintf( __( 'Available placeholders: %s', 'classic-store'), '<code>' . esc_html( implode( '</code>, <code>', array_keys( $this->placeholders ) ) ) . '</code>' );
 			$this->form_fields = array(
                 'enabled'     => array(
-					'title'     => __( 'Enable/Disable', 'classic-commerce' ),
+					'title'     => __( 'Enable/Disable', 'classic-store'),
 					'type'      => 'checkbox',
-					'label'     => __( 'Enable this email notification', 'classic-commerce' ),
+					'label'     => __( 'Enable this email notification', 'classic-store'),
 					'default'   => 'yes',
 				),
 				'recipient'     => array(
-					'title'       => __( 'Recipient(s)', 'classic-commerce' ),
+					'title'       => __( 'Recipient(s)', 'classic-store' ),
 					'type'        => 'text',
 					/* translators: %s: admin email */
-                'description'     => sprintf( __( 'Enter recipients (comma separated) for this email. Defaults to %s.', 'classic-commerce' ), '<code>' . esc_attr( get_option( 'admin_email' ) ) . '</code>' ),
+                'description'     => sprintf( __( 'Enter recipients (comma separated) for this email. Defaults to %s.', 'classic-store' ), '<code>' . esc_attr( get_option( 'admin_email' ) ) . '</code>' ),
 					'placeholder' => '',
 					'default'     => '',
 					'desc_tip'    => true,
 				),
 				'subject'        => array(
-					'title'       => __( 'Subject', 'classic-commerce' ),
+					'title'       => __( 'Subject', 'classic-store'),
 					'type'        => 'text',
 					'desc_tip'    => true,
 					'description' => $placeholder_text,
@@ -173,7 +173,7 @@ if ( ! class_exists( 'WC_Email_Cancelled_Order', false ) ) :
 					'default'     => '',
 				),
 				'heading'       => array(
-					'title'       => __( 'Email heading', 'classic-commerce' ),
+					'title'       => __( 'Email heading', 'classic-store'),
 					'type'        => 'text',
 					'desc_tip'    => true,
 					'description' => $placeholder_text,
@@ -181,18 +181,18 @@ if ( ! class_exists( 'WC_Email_Cancelled_Order', false ) ) :
 					'default'     => '',
 				),
 				'additional_content' => array(
-					'title'       => __( 'Additional content', 'classic-commerce' ),
-					'description' => __( 'Text to appear to appear below the main email content.', 'classic-commerce' ) . ' ' . $placeholder_text,
+					'title'       => __( 'Additional content', 'classic-store'),
+					'description' => __( 'Text to appear to appear below the main email content.', 'classic-store') . ' ' . $placeholder_text,
 					'css'         => 'width:400px; height: 75px;',
-					'placeholder' => __( 'N/A', 'classic-commerce' ),
+					'placeholder' => __( 'N/A', 'classic-store'),
 					'type'        => 'textarea',
 					'default'     => $this->get_default_additional_content(),
 					'desc_tip'    => true,
 				),
 				'email_type'         => array(
-					'title'       => __( 'Email type', 'classic-commerce' ),
+					'title'       => __( 'Email type', 'classic-store'),
 					'type'        => 'select',
-					'description' => __( 'Choose which format of email to send.', 'classic-commerce' ),
+					'description' => __( 'Choose which format of email to send.', 'classic-store'),
 					'default'     => 'html',
 					'class'       => 'email_type wc-enhanced-select',
 					'options'     => $this->get_email_type_options(),

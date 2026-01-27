@@ -26,11 +26,11 @@ if ( is_user_logged_in() ) {
 	<?php echo ( $message ) ? wpautop( wptexturize( $message ) ) : ''; // @codingStandardsIgnoreLine ?>
 
 	<p class="form-row form-row-first">
-		<label for="username"><?php esc_html_e( 'Username or email', 'classic-commerce' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span><span class="screen-reader-text"><?php esc_html_e( 'Required', 'classic-commerce' ); ?></span></label>
+		<label for="username"><?php esc_html_e( 'Username or email', 'classic-store'); ?>&nbsp;<span class="required" aria-hidden="true">*</span><span class="screen-reader-text"><?php esc_html_e( 'Required', 'classic-store'); ?></span></label>
 		<input type="text" class="input-text" name="username" id="username" autocomplete="username" required aria-required="true" />
 	</p>
 	<p class="form-row form-row-last">
-		<label for="password"><?php esc_html_e( 'Password', 'classic-commerce' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span><span class="screen-reader-text"><?php esc_html_e( 'Required', 'classic-commerce' ); ?></span></label>
+		<label for="password"><?php esc_html_e( 'Password', 'classic-store'); ?>&nbsp;<span class="required" aria-hidden="true">*</span><span class="screen-reader-text"><?php esc_html_e( 'Required', 'classic-store'); ?></span></label>
 		<input class="input-text woocommerce-Input" type="password" name="password" id="password" autocomplete="current-password" required aria-required="true" />
 	</p>
 	<div class="clear"></div>
@@ -39,14 +39,14 @@ if ( is_user_logged_in() ) {
 
 	<p class="form-row">
 		<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
-		<button type="submit" class="button" name="login" value="<?php esc_attr_e( 'Login', 'classic-commerce' ); ?>"><?php esc_html_e( 'Login', 'classic-commerce' ); ?></button>
+		<button type="submit" class="button" name="login" value="<?php esc_attr_e( 'Login', 'classic-store'); ?>"><?php esc_html_e( 'Login', 'classic-store'); ?></button>
 		<input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ) ?>" />
 		<label class="woocommerce-form__label woocommerce-form__label-for-checkbox inline">
-			<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span><?php esc_html_e( 'Remember me', 'classic-commerce' ); ?></span>
+			<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span><?php esc_html_e( 'Remember me', 'classic-store'); ?></span>
 		</label>
 	</p>
 	<p class="lost_password">
-		<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Lost your password?', 'classic-commerce' ); ?></a>
+		<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Lost your password?', 'classic-store'); ?></a>
 	</p>
 
 	<div class="clear"></div>

@@ -13,16 +13,16 @@ defined( 'ABSPATH' ) || exit;
 
 return array(
 	'weight'     => array(
-		'kg'  => __( 'kg', 'classic-commerce' ),
-		'g'   => __( 'g', 'classic-commerce' ),
-		'lbs' => __( 'lbs', 'classic-commerce' ),
-		'oz'  => __( 'oz', 'classic-commerce' ),
+		'kg'  => __( 'kg', 'classic-store'),
+		'g'   => __( 'g', 'classic-store'),
+		'lbs' => __( 'lbs', 'classic-store'),
+		'oz'  => __( 'oz', 'classic-store'),
 	),
 	'dimensions' => array(
-		'm'  => __( 'm', 'classic-commerce' ),
-		'cm' => __( 'cm', 'classic-commerce' ),
-		'mm' => __( 'mm', 'classic-commerce' ),
-		'in' => __( 'in', 'classic-commerce' ),
-		'yd' => __( 'yd', 'classic-commerce' ),
+		'm'  => __( 'm', 'classic-store'),
+		'cm' => __( 'cm', 'classic-store'),
+		'mm' => __( 'mm', 'classic-store'),
+		'in' => __( 'in', 'classic-store'),
+		'yd' => __( 'yd', 'classic-store'),
 	),
 );

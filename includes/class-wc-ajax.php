@@ -213,7 +213,7 @@ class WC_AJAX {
         if ( is_string( $billing_email ) && is_email( $billing_email ) ) {
 			wc()->customer->set_billing_email( $billing_email );
 		}
-        
+
 		if ( ! StringUtil::is_null_or_whitespace( $coupon_code ) ) {
 			WC()->cart->add_discount( wc_format_coupon_code( wp_unslash( $coupon_code ) ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		} else {
@@ -233,10 +233,10 @@ class WC_AJAX {
 		$coupon = isset( $_POST['coupon'] ) ? wc_format_coupon_code( wp_unslash( $_POST['coupon'] ) ) : false; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		if ( StringUtil::is_null_or_whitespace( $coupon ) ) {
-			wc_add_notice( __( 'Sorry there was a problem removing this coupon.', 'classic-commerce' ), 'error' );
+			wc_add_notice( __( 'Sorry there was a problem removing this coupon.', 'classic-store'), 'error' );
 		} else {
 			WC()->cart->remove_coupon( $coupon );
-			wc_add_notice( __( 'Coupon has been removed.', 'classic-commerce' ) );
+			wc_add_notice( __( 'Coupon has been removed.', 'classic-store') );
 		}
 
 		wc_print_notices();
@@ -288,7 +288,7 @@ class WC_AJAX {
 					'woocommerce_update_order_review_fragments',
 					array(
                             'form.woocommerce-checkout' => wc_print_notice(
-							esc_html__( 'Sorry, your session has expired.', 'classic-commerce' ) . ' <a href="' . esc_url( wc_get_page_permalink( 'shop' ) ) . '" class="wc-backward">' . esc_html__( 'Return to shop', 'classic-commerce' ) . '</a>',
+							esc_html__( 'Sorry, your session has expired.', 'classic-store') . ' <a href="' . esc_url( wc_get_page_permalink( 'shop' ) ) . '" class="wc-backward">' . esc_html__( 'Return to shop', 'classic-store') . '</a>',
 							'error',
 							array(),
 							true
@@ -861,7 +861,7 @@ class WC_AJAX {
 							$file_count = $file->get_name();
 						} else {
 							/* translators: %d file count */
-							$file_count = sprintf( __( 'File %d', 'classic-commerce' ), $file_counter );
+							$file_count = sprintf( __( 'File %d', 'classic-store'), $file_counter );
 						}
 						include __DIR__ . '/admin/meta-boxes/views/html-order-download-permission.php';
 					}
@@ -911,7 +911,7 @@ class WC_AJAX {
 		}
 
 		if ( ! isset( $_POST['order_id'] ) ) {
-			throw new Exception( __( 'Invalid order', 'classic-commerce' ) );
+			throw new Exception( __( 'Invalid order', 'classic-store') );
 		}
 		$order_id = absint( wp_unslash( $_POST['order_id'] ) );
 
@@ -943,7 +943,7 @@ class WC_AJAX {
 			$order = wc_get_order( $order_id );
 
 			if ( ! $order ) {
-				throw new Exception( __( 'Invalid order', 'classic-commerce' ) );
+				throw new Exception( __( 'Invalid order', 'classic-store') );
 			}
 
 			if ( ! empty( $items ) ) {
@@ -965,18 +965,18 @@ class WC_AJAX {
 				$product    = wc_get_product( $product_id );
 
 				if ( ! $product ) {
-					throw new Exception( __( 'Invalid product ID', 'classic-commerce' ) . ' ' . $product_id );
+					throw new Exception( __( 'Invalid product ID', 'classic-store') . ' ' . $product_id );
 				}
 				if ( 'variable' === $product->get_type() ) {
 					/* translators: %s product name */
-					throw new Exception( sprintf( __( '%s is a variable product parent and cannot be added.', 'classic-commerce' ), $product->get_name() ) );
+					throw new Exception( sprintf( __( '%s is a variable product parent and cannot be added.', 'classic-store'), $product->get_name() ) );
 				}
 				$validation_error = new WP_Error();
 				$validation_error = apply_filters( 'woocommerce_ajax_add_order_item_validation', $validation_error, $product, $order, $qty );
 
 				if ( $validation_error->get_error_code() ) {
 					/* translators: %s: error message */
-					throw new Exception( sprintf( __( 'Error: %s', 'classic-commerce' ), $validation_error->get_error_message() ) );
+					throw new Exception( sprintf( __( 'Error: %s', 'classic-store'), $validation_error->get_error_message() ) );
 				}
 				$item_id                 = $order->add_product( $product, $qty, array( 'order' => $order ) );
 				$item                    = apply_filters( 'woocommerce_ajax_order_item', $order->get_item( $item_id ), $item_id, $order, $product );
@@ -989,7 +989,7 @@ class WC_AJAX {
 			}
 
 			/* translators: %s item name. */
-			$order->add_order_note( sprintf( __( 'Added line items: %s', 'classic-commerce' ), implode( ', ', $order_notes ) ), false, true );
+			$order->add_order_note( sprintf( __( 'Added line items: %s', 'classic-store'), implode( ', ', $order_notes ) ), false, true );
 
 			do_action( 'woocommerce_ajax_order_items_added', $added_items, $order );
 
@@ -1033,7 +1033,7 @@ class WC_AJAX {
 			$order    = wc_get_order( $order_id );
 
 			if ( ! $order ) {
-				throw new Exception( __( 'Invalid order', 'classic-commerce' ) );
+				throw new Exception( __( 'Invalid order', 'classic-store') );
 			}
 
 			$amount = isset( $_POST['amount'] ) ? wc_clean( wp_unslash( $_POST['amount'] ) ) : 0;
@@ -1060,7 +1060,7 @@ class WC_AJAX {
 			$fee->set_amount( $amount );
 			$fee->set_total( $amount );
 			/* translators: %s fee amount */
-			$fee->set_name( sprintf( __( '%s fee', 'classic-commerce' ), wc_clean( $formatted_amount ) ) );
+			$fee->set_name( sprintf( __( '%s fee', 'classic-store'), wc_clean( $formatted_amount ) ) );
 
 			$order->add_item( $fee );
 			$order->calculate_taxes( $calculate_tax_args );
@@ -1097,7 +1097,7 @@ class WC_AJAX {
 			$order    = wc_get_order( $order_id );
 
 			if ( ! $order ) {
-				throw new Exception( __( 'Invalid order', 'classic-commerce' ) );
+				throw new Exception( __( 'Invalid order', 'classic-store') );
 			}
 
 			$order_taxes      = $order->get_taxes();
@@ -1139,13 +1139,13 @@ class WC_AJAX {
 			$order    = wc_get_order( $order_id );
 
 			if ( ! $order ) {
-				throw new Exception( __( 'Invalid order', 'classic-commerce' ) );
+				throw new Exception( __( 'Invalid order', 'classic-store') );
 			}
 
 			$rate_id = isset( $_POST['rate_id'] ) ? absint( $_POST['rate_id'] ) : '';
 
 			if ( ! $rate_id ) {
-				throw new Exception( __( 'Invalid rate', 'classic-commerce' ) );
+				throw new Exception( __( 'Invalid rate', 'classic-store') );
 			}
 
 			$data = get_post_meta( $order_id );
@@ -1192,11 +1192,11 @@ class WC_AJAX {
 			);
 
 			if ( ! $order ) {
-				throw new Exception( __( 'Invalid order', 'classic-commerce' ) );
+				throw new Exception( __( 'Invalid order', 'classic-store') );
 			}
 
 			if ( empty( $_POST['coupon'] ) ) {
-                throw new Exception( __( 'Invalid coupon', 'classic-commerce' ) );
+                throw new Exception( __( 'Invalid coupon', 'classic-store') );
 			}
 
 			// Add user ID and/or email so validation for coupon limits works.
@@ -1255,18 +1255,18 @@ class WC_AJAX {
 			);
 
 			if ( ! $order ) {
-				throw new Exception( __( 'Invalid order', 'classic-commerce' ) );
+				throw new Exception( __( 'Invalid order', 'classic-store') );
 			}
 
 			$coupon = ArrayUtil::get_value_or_default( $_POST, 'coupon' );
 			if ( StringUtil::is_null_or_whitespace( $coupon ) ) {
-				throw new Exception( __( 'Invalid coupon', 'classic-commerce' ) );
+				throw new Exception( __( 'Invalid coupon', 'classic-store') );
 			}
 
 			$code = wc_format_coupon_code( wp_unslash( $coupon ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			if ( $order->remove_coupon( $code ) ) {
 				// translators: %s coupon code.
-				$order->add_order_note( esc_html( sprintf( __( 'Coupon removed: "%s".', 'classic-commerce' ), $code ) ), 0, true );
+				$order->add_order_note( esc_html( sprintf( __( 'Coupon removed: "%s".', 'classic-store'), $code ) ), 0, true );
 			}
 			$order->calculate_taxes( $calculate_tax_args );
 			$order->calculate_totals( false );
@@ -1279,7 +1279,7 @@ class WC_AJAX {
 			$notes = wc_get_order_notes( array( 'order_id' => $order_id ) );
 			include __DIR__ . '/admin/meta-boxes/views/html-order-notes.php';
 			$response['notes_html'] = ob_get_clean();
-            
+
 		} catch ( Exception $e ) {
 			wp_send_json_error( array( 'error' => $e->getMessage() ) );
 		}
@@ -1307,11 +1307,11 @@ class WC_AJAX {
 			$order    = wc_get_order( $order_id );
 
 			if ( ! $order ) {
-				throw new Exception( __( 'Invalid order', 'classic-commerce' ) );
+				throw new Exception( __( 'Invalid order', 'classic-store') );
 			}
 
 			if ( ! isset( $_POST['order_item_ids'] ) ) {
-				throw new Exception( __( 'Invalid items', 'classic-commerce' ) );
+				throw new Exception( __( 'Invalid items', 'classic-store') );
 			}
 
 			$order_item_ids     = wp_unslash( $_POST['order_item_ids'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -1350,10 +1350,10 @@ class WC_AJAX {
 
 						if ( $changed_stock && ! is_wp_error( $changed_stock ) ) {
 							/* translators: %1$s: item name %2$s: stock change */
-							$order->add_order_note( sprintf( __( 'Deleted %1$s and adjusted stock (%2$s)', 'classic-commerce' ), $item->get_name(), $changed_stock['from'] . '&rarr;' . $changed_stock['to'] ), false, true );
+							$order->add_order_note( sprintf( __( 'Deleted %1$s and adjusted stock (%2$s)', 'classic-store' ), $item->get_name(), $changed_stock['from'] . '&rarr;' . $changed_stock['to'] ), false, true );
 						} else {
 							/* translators: %s item name. */
-							$order->add_order_note( sprintf( __( 'Deleted %s', 'classic-commerce' ), $item->get_name() ), false, true );
+							$order->add_order_note( sprintf( __( 'Deleted %s', 'classic-store'), $item->get_name() ), false, true );
 						}
 					}
 
@@ -1421,7 +1421,7 @@ class WC_AJAX {
 
 			$order = wc_get_order( $order_id );
 			if ( ! $order->is_editable() ) {
-				throw new Exception( __( 'Order not editable', 'classic-commerce' ) );
+				throw new Exception( __( 'Order not editable', 'classic-store') );
 			}
 
 			wc_delete_order_item( $rate_id );
@@ -1567,16 +1567,16 @@ class WC_AJAX {
 					<abbr class="exact-date" title="<?php echo esc_attr( $note->date_created->date( 'y-m-d h:i:s' ) ); ?>">
 						<?php
 						/* translators: $1: Date created, $2 Time created */
-						printf( esc_html__( 'added on %1$s at %2$s', 'classic-commerce' ), esc_html( $note->date_created->date_i18n( wc_date_format() ) ), esc_html( $note->date_created->date_i18n( wc_time_format() ) ) );
+						printf( esc_html__( 'added on %1$s at %2$s', 'classic-store'), esc_html( $note->date_created->date_i18n( wc_date_format() ) ), esc_html( $note->date_created->date_i18n( wc_time_format() ) ) );
 						?>
 					</abbr>
 					<?php
 					if ( 'system' !== $note->added_by ) :
 						/* translators: %s: note author */
-						printf( ' ' . esc_html__( 'by %s', 'classic-commerce' ), esc_html( $note->added_by ) );
+						printf( ' ' . esc_html__( 'by %s', 'classic-store'), esc_html( $note->added_by ) );
 					endif;
 					?>
-					<a href="#" class="delete_note" role="button"><?php esc_html_e( 'Delete note', 'classic-commerce' ); ?></a>
+					<a href="#" class="delete_note" role="button"><?php esc_html_e( 'Delete note', 'classic-store'); ?></a>
 				</p>
 			</li>
 			<?php
@@ -1668,7 +1668,7 @@ class WC_AJAX {
 			if ( $managing_stock && ! empty( $_GET['display_stock'] ) ) {
 				$stock_amount = $product_object->get_stock_quantity();
 				/* Translators: %d stock amount */
-				$formatted_name .= ' &ndash; ' . sprintf( __( 'Stock: %d', 'classic-commerce' ), wc_format_stock_quantity_for_display( $stock_amount, $product_object ) );
+				$formatted_name .= ' &ndash; ' . sprintf( __( 'Stock: %d', 'classic-store'), wc_format_stock_quantity_for_display( $stock_amount, $product_object ) );
 			}
 
 			$products[ $product_object->get_id() ] = rawurldecode( wp_strip_all_tags( $formatted_name ) );
@@ -1770,7 +1770,7 @@ class WC_AJAX {
 			/* translators: 1: user display name 2: user ID 3: user email */
 			$found_customers[ $id ] = sprintf(
 				/* translators: $1: customer name, $2 customer id, $3: customer email */
-				esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'classic-commerce' ),
+				esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'classic-store' ),
 				$customer->get_first_name() . ' ' . $customer->get_last_name(),
 				$customer->get_id(),
 				$customer->get_email()
@@ -1955,7 +1955,7 @@ class WC_AJAX {
 		foreach ( $search_results_query->get_posts() as $post ) {
 			$pages_results[ $post->ID ] = sprintf(
 				/* translators: 1: page name 2: page ID */
-				__( '%1$s (ID: %2$s)', 'classic-commerce' ),
+				__( '%1$s (ID: %2$s)', 'classic-store' ),
 				get_the_title( $post ),
 				$post->ID
 			);
@@ -2087,11 +2087,11 @@ class WC_AJAX {
 			$max_refund = wc_format_decimal( $order->get_total() - $order->get_total_refunded(), wc_get_price_decimals() );
 
 			if ( ( ! $refund_amount && ( wc_format_decimal( 0, wc_get_price_decimals() ) !== $refund_amount ) ) || $max_refund < $refund_amount || 0 > $refund_amount ) {
-				throw new Exception( __( 'Invalid refund amount', 'classic-commerce' ) );
+				throw new Exception( __( 'Invalid refund amount', 'classic-store') );
 			}
 
 			if ( wc_format_decimal( $order->get_total_refunded(), wc_get_price_decimals() ) !== $refunded_amount ) {
-				throw new Exception( __( 'Error processing refund. Please try again.', 'classic-commerce' ) );
+				throw new Exception( __( 'Error processing refund. Please try again.', 'classic-store') );
 			}
 
 			// Prepare line items which we are refunding.
@@ -2195,17 +2195,17 @@ class WC_AJAX {
 
 		try {
 			if ( empty( $_POST['description'] ) ) {
-				throw new Exception( __( 'Description is missing.', 'classic-commerce' ) );
+				throw new Exception( __( 'Description is missing.', 'classic-store') );
 			}
 			if ( empty( $_POST['user'] ) ) {
-				throw new Exception( __( 'User is missing.', 'classic-commerce' ) );
+				throw new Exception( __( 'User is missing.', 'classic-store') );
 			}
 			if ( empty( $_POST['permissions'] ) ) {
-				throw new Exception( __( 'Permissions is missing.', 'classic-commerce' ) );
+				throw new Exception( __( 'Permissions is missing.', 'classic-store') );
 			}
 
             if ( 0 === $wpdb->insert_id ) {
-                throw new Exception( __( 'There was an error generating your API Key.', 'classic-commerce' ) );
+                throw new Exception( __( 'There was an error generating your API Key.', 'classic-store') );
             }
 
 			$key_id      = isset( $_POST['key_id'] ) ? absint( $_POST['key_id'] ) : 0;
@@ -2216,7 +2216,7 @@ class WC_AJAX {
 			// Check if current user can edit other users.
 			if ( $user_id && ! current_user_can( 'edit_user', $user_id ) ) {
 				if ( get_current_user_id() !== $user_id ) {
-					throw new Exception( __( 'You do not have permission to assign API Keys to the selected user.', 'classic-commerce' ) );
+					throw new Exception( __( 'You do not have permission to assign API Keys to the selected user.', 'classic-store') );
 				}
 			}
 
@@ -2242,7 +2242,7 @@ class WC_AJAX {
 				$response                    = $data;
 				$response['consumer_key']    = '';
 				$response['consumer_secret'] = '';
-				$response['message']         = __( 'API Key updated successfully.', 'classic-commerce' );
+				$response['message']         = __( 'API Key updated successfully.', 'classic-store');
 			} else {
 				$consumer_key    = 'ck_' . wc_rand_hash();
 				$consumer_secret = 'cs_' . wc_rand_hash();
@@ -2270,15 +2270,15 @@ class WC_AJAX {
 				);
 
 				if ( 0 === $wpdb->insert_id ) {
-					throw new Exception( __( 'There was an error generating your API Key.', 'classic-commerce' ) );
+					throw new Exception( __( 'There was an error generating your API Key.', 'classic-store') );
 				}
 
 				$key_id                      = $wpdb->insert_id;
 				$response                    = $data;
 				$response['consumer_key']    = $consumer_key;
 				$response['consumer_secret'] = $consumer_secret;
-				$response['message']         = __( 'API Key generated successfully. Make sure to copy your new keys now as the secret key will be hidden once you leave this page.', 'classic-commerce' );
-				$response['revoke_url']      = '<a style="color: #a00; text-decoration: none;" href="' . esc_url( wp_nonce_url( add_query_arg( array( 'revoke-key' => $key_id ), admin_url( 'admin.php?page=wc-settings&tab=advanced&section=keys' ) ), 'revoke' ) ) . '">' . __( 'Revoke key', 'classic-commerce' ) . '</a>';
+				$response['message']         = __( 'API Key generated successfully. Make sure to copy your new keys now as the secret key will be hidden once you leave this page.', 'classic-store');
+				$response['revoke_url']      = '<a style="color: #a00; text-decoration: none;" href="' . esc_url( wp_nonce_url( add_query_arg( array( 'revoke-key' => $key_id ), admin_url( 'admin.php?page=wc-settings&tab=advanced&section=keys' ) ), 'revoke' ) ) . '">' . __( 'Revoke key', 'classic-store') . '</a>';
 			}
 		} catch ( Exception $e ) {
 			wp_send_json_error( array( 'message' => $e->getMessage() ) );
@@ -2366,7 +2366,7 @@ class WC_AJAX {
 				echo '<p>' . wp_kses_post( $error ) . '</p>';
 			}
 
-			echo '<button type="button" class="notice-dismiss"><span class="screen-reader-text">' . esc_html__( 'Dismiss this notice.', 'classic-commerce' ) . '</span></button>';
+			echo '<button type="button" class="notice-dismiss"><span class="screen-reader-text">' . esc_html__( 'Dismiss this notice.', 'classic-store') . '</span></button>';
 			echo '</div>';
 
 			delete_option( WC_Admin_Meta_Boxes::ERROR_STORE );

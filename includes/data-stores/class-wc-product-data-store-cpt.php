@@ -140,7 +140,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 		if ( ! is_null( $locked ) ) {
 			return boolval( $locked );
 		}
-        
+
 		// The insert query can potentially result in a deadlock if there is high concurrency
 		// when trying to insert products, which will result in a false negative for SKU lock
 		// and incorrectly products not being created.
@@ -197,7 +197,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 					'post_type'      => 'product',
 					'post_status'    => $product->get_status() ? $product->get_status() : 'publish',
 					'post_author'    => get_current_user_id(),
-					'post_title'     => $product->get_name() ? $product->get_name() : __( 'Product', 'classic-commerce' ),
+					'post_title'     => $product->get_name() ? $product->get_name() : __( 'Product', 'classic-store'),
 					'post_content'   => $product->get_description(),
 					'post_excerpt'   => $product->get_short_description(),
 					'post_parent'    => $product->get_parent_id(),
@@ -226,7 +226,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 			if ( ! empty( $sku ) && WC()->is_rest_api_request() && ! $this->obtain_lock_on_sku_for_concurrent_requests( $product ) ) {
 				$product->delete( true );
 				// translators: 1: SKU.
-				throw new Exception( esc_html( sprintf( __( 'The SKU (%1$s) you are trying to insert is already under processing', 'classic-commerce' ), $sku ) ) );
+				throw new Exception( esc_html( sprintf( __( 'The SKU (%1$s) you are trying to insert is already under processing', 'classic-store' ), $sku ) ) );
 			}
 
             // get the post object so that we can set the status
@@ -261,7 +261,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 		$post_object = get_post( $product->get_id() );
 
 		if ( ! $product->get_id() || ! $post_object || 'product' !== $post_object->post_type ) {
-			throw new Exception( __( 'Invalid product.', 'classic-commerce' ) );
+			throw new Exception( __( 'Invalid product.', 'classic-store') );
 		}
 
 		$product->set_props(
@@ -1222,7 +1222,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 			// Can't get a variation of a variation.
 			return 0;
 		}
-        
+
 		global $wpdb;
 
 		$meta_attribute_names = array();
@@ -1344,7 +1344,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 			do_action( 'product_variation_linked', $variation_id );
 
 			$count ++;
-            
+
 			if ( $limit > 0 && $count >= $limit ) {
 				break;
 			}

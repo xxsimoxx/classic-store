@@ -124,16 +124,16 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 				'wc-enhanced-select',
 				'wc_enhanced_select_params',
 				array(
-					'i18n_no_matches'                 => _x( 'No matches found', 'enhanced select', 'classic-commerce' ),
-					'i18n_ajax_error'                 => _x( 'Loading failed', 'enhanced select', 'classic-commerce' ),
-					'i18n_input_too_short_1'          => _x( 'Please enter 1 or more characters', 'enhanced select', 'classic-commerce' ),
-					'i18n_input_too_short_n'          => _x( 'Please enter %qty% or more characters', 'enhanced select', 'classic-commerce' ),
-					'i18n_input_too_long_1'           => _x( 'Please delete 1 character', 'enhanced select', 'classic-commerce' ),
-					'i18n_input_too_long_n'           => _x( 'Please delete %qty% characters', 'enhanced select', 'classic-commerce' ),
-					'i18n_selection_too_long_1'       => _x( 'You can only select 1 item', 'enhanced select', 'classic-commerce' ),
-					'i18n_selection_too_long_n'       => _x( 'You can only select %qty% items', 'enhanced select', 'classic-commerce' ),
-					'i18n_load_more'                  => _x( 'Loading more results&hellip;', 'enhanced select', 'classic-commerce' ),
-					'i18n_searching'                  => _x( 'Searching&hellip;', 'enhanced select', 'classic-commerce' ),
+					'i18n_no_matches'                 => _x( 'No matches found', 'enhanced select', 'classic-store'),
+					'i18n_ajax_error'                 => _x( 'Loading failed', 'enhanced select', 'classic-store'),
+					'i18n_input_too_short_1'          => _x( 'Please enter 1 or more characters', 'enhanced select', 'classic-store'),
+					'i18n_input_too_short_n'          => _x( 'Please enter %qty% or more characters', 'enhanced select', 'classic-store'),
+					'i18n_input_too_long_1'           => _x( 'Please delete 1 character', 'enhanced select', 'classic-store'),
+					'i18n_input_too_long_n'           => _x( 'Please delete %qty% characters', 'enhanced select', 'classic-store'),
+					'i18n_selection_too_long_1'       => _x( 'You can only select 1 item', 'enhanced select', 'classic-store'),
+					'i18n_selection_too_long_n'       => _x( 'You can only select %qty% items', 'enhanced select', 'classic-store'),
+					'i18n_load_more'                  => _x( 'Loading more results&hellip;', 'enhanced select', 'classic-store'),
+					'i18n_searching'                  => _x( 'Searching&hellip;', 'enhanced select', 'classic-store'),
 					'ajax_url'                        => admin_url( 'admin-ajax.php' ),
 					'search_products_nonce'           => wp_create_nonce( 'search-products' ),
 					'search_customers_nonce'          => wp_create_nonce( 'search-customers' ),
@@ -178,20 +178,20 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 
 				$params = array(
 					/* translators: %s: decimal */
-					'i18n_decimal_error'                => sprintf( __( 'Please enter a value with one decimal point (%s) without thousand separators.', 'classic-commerce' ), $decimal ),
+					'i18n_decimal_error'                => sprintf( __( 'Please enter a value with one decimal point (%s) without thousand separators.', 'classic-store' ), $decimal ),
 					/* translators: %s: price decimal separator */
-					'i18n_mon_decimal_error'            => sprintf( __( 'Please enter a value with one monetary decimal point (%s) without thousand separators and currency symbols.', 'classic-commerce' ), wc_get_price_decimal_separator() ),
-					'i18n_country_iso_error'            => __( 'Please enter in country code with two capital letters.', 'classic-commerce' ),
-					'i18n_sale_less_than_regular_error' => __( 'Please enter in a value less than the regular price.', 'classic-commerce' ),
-					'i18n_delete_product_notice'        => __( 'This product has produced sales and may be linked to existing orders. Are you sure you want to delete it?', 'classic-commerce' ),
-					'i18n_remove_personal_data_notice'  => __( 'This action cannot be reversed. Are you sure you wish to erase personal data from the selected orders?', 'classic-commerce' ),
-					'i18n_confirm_delete'               => __( 'Are you sure you wish to delete this item?', 'classic-commerce' ),
+					'i18n_mon_decimal_error'            => sprintf( __( 'Please enter a value with one monetary decimal point (%s) without thousand separators and currency symbols.', 'classic-store' ), wc_get_price_decimal_separator() ),
+					'i18n_country_iso_error'            => __( 'Please enter in country code with two capital letters.', 'classic-store'),
+					'i18n_sale_less_than_regular_error' => __( 'Please enter in a value less than the regular price.', 'classic-store'),
+					'i18n_delete_product_notice'        => __( 'This product has produced sales and may be linked to existing orders. Are you sure you want to delete it?', 'classic-store'),
+					'i18n_remove_personal_data_notice'  => __( 'This action cannot be reversed. Are you sure you wish to erase personal data from the selected orders?', 'classic-store'),
+					'i18n_confirm_delete'               => __( 'Are you sure you wish to delete this item?', 'classic-store'),
 					'decimal_point'                     => $decimal,
 					'mon_decimal_point'                 => wc_get_price_decimal_separator(),
 					'ajax_url'                          => admin_url( 'admin-ajax.php' ),
 					'strings'                           => array(
-						'import_products' => __( 'Import', 'classic-commerce' ),
-						'export_products' => __( 'Export', 'classic-commerce' ),
+						'import_products' => __( 'Import', 'classic-store'),
+						'export_products' => __( 'Export', 'classic-store'),
 					),
 					'nonces'                            => array(
 						'gateway_toggle' => current_user_can( 'manage_woocommerce' ) ? wp_create_nonce( 'woocommerce-toggle-payment-gateway-enabled' ) : null,
@@ -216,7 +216,7 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 
 				$params = array(
 					'strings' => array(
-						'allow_reviews' => esc_js( __( 'Enable reviews', 'classic-commerce' ) ),
+						'allow_reviews' => esc_js( __( 'Enable reviews', 'classic-store') ),
 					),
 				);
 
@@ -231,7 +231,7 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 					'wc-admin-product-editor',
 					'woocommerce_admin_product_editor',
 					array(
-						'i18n_description' => esc_js( __( 'Product description', 'classic-commerce' ) ),
+						'i18n_description' => esc_js( __( 'Product description', 'classic-store') ),
 					)
 				);
 			}
@@ -258,22 +258,22 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 					'save_variations_nonce'               => wp_create_nonce( 'save-variations' ),
 					'bulk_edit_variations_nonce'          => wp_create_nonce( 'bulk-edit-variations' ),
 					/* translators: %d: Number of variations */
-					'i18n_link_all_variations'            => esc_js( sprintf( __( 'Do you want to generate all variations? This will create a new variation for each and every possible combination of variation attributes (max %d per run).', 'classic-commerce' ), defined( 'WC_MAX_LINKED_VARIATIONS' ) ? Constants::get_constant( 'WC_MAX_LINKED_VARIATIONS' ) : 50 ) ),
-					'i18n_enter_a_value'                  => esc_js( __( 'Enter a value', 'classic-commerce' ) ),
-					'i18n_enter_menu_order'               => esc_js( __( 'Variation menu order (determines position in the list of variations)', 'classic-commerce' ) ),
-					'i18n_enter_a_value_fixed_or_percent' => esc_js( __( 'Enter a value (fixed or %)', 'classic-commerce' ) ),
-					'i18n_delete_all_variations'          => esc_js( __( 'Are you sure you want to delete all variations? This cannot be undone.', 'classic-commerce' ) ),
-					'i18n_last_warning'                   => esc_js( __( 'Last warning, are you sure?', 'classic-commerce' ) ),
-					'i18n_choose_image'                   => esc_js( __( 'Choose an image', 'classic-commerce' ) ),
-					'i18n_set_image'                      => esc_js( __( 'Set variation image', 'classic-commerce' ) ),
-					'i18n_variation_added'                => esc_js( __( '1 variation added', 'classic-commerce' ) ),
-					'i18n_variations_added'               => esc_js( __( '%qty% variations added', 'classic-commerce' ) ),
-					'i18n_remove_variation'               => esc_js( __( 'Are you sure you want to remove this variation?', 'classic-commerce' ) ),
-					'i18n_scheduled_sale_start'           => esc_js( __( 'Sale start date (YYYY-MM-DD format or leave blank)', 'classic-commerce' ) ),
-					'i18n_scheduled_sale_end'             => esc_js( __( 'Sale end date (YYYY-MM-DD format or leave blank)', 'classic-commerce' ) ),
-					'i18n_edited_variations'              => esc_js( __( 'Save changes before changing page?', 'classic-commerce' ) ),
-					'i18n_variation_count_single'         => esc_js( __( '1 variation', 'classic-commerce' ) ),
-					'i18n_variation_count_plural'         => esc_js( __( '%qty% variations', 'classic-commerce' ) ),
+					'i18n_link_all_variations'            => esc_js( sprintf( __( 'Do you want to generate all variations? This will create a new variation for each and every possible combination of variation attributes (max %d per run).', 'classic-store' ), defined( 'WC_MAX_LINKED_VARIATIONS' ) ? Constants::get_constant( 'WC_MAX_LINKED_VARIATIONS' ) : 50 ) ),
+					'i18n_enter_a_value'                  => esc_js( __( 'Enter a value', 'classic-store') ),
+					'i18n_enter_menu_order'               => esc_js( __( 'Variation menu order (determines position in the list of variations)', 'classic-store' ) ),
+					'i18n_enter_a_value_fixed_or_percent' => esc_js( __( 'Enter a value (fixed or %)', 'classic-store' ) ),
+					'i18n_delete_all_variations'          => esc_js( __( 'Are you sure you want to delete all variations? This cannot be undone.', 'classic-store') ),
+					'i18n_last_warning'                   => esc_js( __( 'Last warning, are you sure?', 'classic-store') ),
+					'i18n_choose_image'                   => esc_js( __( 'Choose an image', 'classic-store') ),
+					'i18n_set_image'                      => esc_js( __( 'Set variation image', 'classic-store') ),
+					'i18n_variation_added'                => esc_js( __( '1 variation added', 'classic-store') ),
+					'i18n_variations_added'               => esc_js( __( '%qty% variations added', 'classic-store') ),
+					'i18n_remove_variation'               => esc_js( __( 'Are you sure you want to remove this variation?', 'classic-store') ),
+					'i18n_scheduled_sale_start'           => esc_js( __( 'Sale start date (YYYY-MM-DD format or leave blank)', 'classic-store' ) ),
+					'i18n_scheduled_sale_end'             => esc_js( __( 'Sale end date (YYYY-MM-DD format or leave blank)', 'classic-store' ) ),
+					'i18n_edited_variations'              => esc_js( __( 'Save changes before changing page?', 'classic-store') ),
+					'i18n_variation_count_single'         => esc_js( __( '1 variation', 'classic-store') ),
+					'i18n_variation_count_plural'         => esc_js( __( '%qty% variations', 'classic-store') ),
 					'variations_per_page'                 => absint( apply_filters( 'woocommerce_admin_meta_boxes_variations_per_page', 15 ) ),
 				);
 
@@ -289,11 +289,11 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 					'woocommerce_admin_meta_boxes_order',
 					array(
 						'countries'              => wp_json_encode( array_merge( WC()->countries->get_allowed_country_states(), WC()->countries->get_shipping_country_states() ) ),
-						'i18n_select_state_text' => esc_attr__( 'Select an option&hellip;', 'classic-commerce' ),
+						'i18n_select_state_text' => esc_attr__( 'Select an option&hellip;', 'classic-store'),
 						'default_country'        => isset( $default_location['country'] ) ? $default_location['country'] : '',
 						'default_state'          => isset( $default_location['state'] ) ? $default_location['state'] : '',
-						'placeholder_name'       => esc_attr__( 'Name (required)', 'classic-commerce' ),
-						'placeholder_value'      => esc_attr__( 'Value (required)', 'classic-commerce' ),
+						'placeholder_name'       => esc_attr__( 'Name (required)', 'classic-store' ),
+						'placeholder_value'      => esc_attr__( 'Value (required)', 'classic-store' ),
 					)
 				);
 			}
@@ -304,7 +304,7 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 					'wc-admin-coupon-meta-boxes',
 					'woocommerce_admin_meta_boxes_coupon',
 					array(
-						'generate_button_text' => esc_html__( 'Generate coupon code', 'classic-commerce' ),
+						'generate_button_text' => esc_html__( 'Generate coupon code', 'classic-store'),
 						'characters'           => apply_filters( 'woocommerce_coupon_code_generator_characters', 'ABCDEFGHJKMNPQRSTUVWXYZ23456789' ),
 						'char_length'          => apply_filters( 'woocommerce_coupon_code_generator_character_length', 8 ),
 						'prefix'               => apply_filters( 'woocommerce_coupon_code_generator_prefix', '' ),
@@ -316,9 +316,9 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 			if ( in_array( str_replace( 'edit-', '', $screen_id ), array( 'shop_coupon', 'product' ), true ) || $this->is_order_meta_box_screen( $screen_id ) ) {
 				$post_id                = isset( $post->ID ) ? $post->ID : '';
 				$currency               = '';
-				$remove_item_notice     = __( 'Are you sure you want to remove the selected items?', 'classic-commerce' );
-				$remove_fee_notice      = __( 'Are you sure you want to remove the selected fees?', 'classic-commerce' );
-				$remove_shipping_notice = __( 'Are you sure you want to remove the selected shipping?', 'classic-commerce' );
+				$remove_item_notice     = __( 'Are you sure you want to remove the selected items?', 'classic-store');
+				$remove_fee_notice      = __( 'Are you sure you want to remove the selected fees?', 'classic-store');
+				$remove_shipping_notice = __( 'Are you sure you want to remove the selected shipping?', 'classic-store');
 				$product                = wc_get_product( $post_id );
 
 				// Eventually this will become wc_data_or_post object as we implement more custom tables.
@@ -329,7 +329,7 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 						$currency = $order_or_post_object->get_currency();
 
 						if ( ! $order_or_post_object->has_status( array( 'pending', 'failed', 'cancelled' ) ) ) {
-							$remove_item_notice = $remove_item_notice . ' ' . __( "You may need to manually restore the item's stock.", 'classic-commerce' );
+							$remove_item_notice = $remove_item_notice . ' ' . __( "You may need to manually restore the item's stock.", 'classic-store');
 						}
 					}
 				}
@@ -338,28 +338,28 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 					'remove_item_notice'                              => $remove_item_notice,
 					'remove_fee_notice'                               => $remove_fee_notice,
 					'remove_shipping_notice'                          => $remove_shipping_notice,
-					'i18n_select_items'                               => __( 'Please select some items.', 'classic-commerce' ),
-					'i18n_do_refund'                                  => __( 'Are you sure you wish to process this refund? This action cannot be undone.', 'classic-commerce' ),
-					'i18n_delete_refund'                              => __( 'Are you sure you wish to delete this refund? This action cannot be undone.', 'classic-commerce' ),
-					'i18n_delete_tax'                                 => __( 'Are you sure you wish to delete this tax column? This action cannot be undone.', 'classic-commerce' ),
-					'remove_item_meta'                                => __( 'Remove this item meta?', 'classic-commerce' ),
-					'name_label'                                      => __( 'Name', 'classic-commerce' ),
-					'remove_label'                                    => __( 'Remove', 'classic-commerce' ),
-					'click_to_toggle'                                 => __( 'Click to toggle', 'classic-commerce' ),
-					'values_label'                                    => __( 'Value(s)', 'classic-commerce' ),
-					'text_attribute_tip'                              => __( 'Enter some text, or some attributes by pipe (|) separating values.', 'classic-commerce' ),
-					'visible_label'                                   => __( 'Visible on the product page', 'classic-commerce' ),
-					'used_for_variations_label'                       => __( 'Used for variations', 'classic-commerce' ),
-					'new_attribute_prompt'                            => __( 'Enter a name for the new attribute term:', 'classic-commerce' ),
-					'calc_totals'                                     => __( 'Recalculate totals? This will calculate taxes based on the customers country (or the store base country) and update totals.', 'classic-commerce' ),
-					'copy_billing'                                    => __( 'Copy billing information to shipping information? This will remove any currently entered shipping information.', 'classic-commerce' ),
-					'load_billing'                                    => __( "Load the customer's billing information? This will remove any currently entered billing information.", 'classic-commerce' ),
-					'load_shipping'                                   => __( "Load the customer's shipping information? This will remove any currently entered shipping information.", 'classic-commerce' ),
-					'featured_label'                                  => __( 'Featured', 'classic-commerce' ),
+					'i18n_select_items'                               => __( 'Please select some items.', 'classic-store'),
+					'i18n_do_refund'                                  => __( 'Are you sure you wish to process this refund? This action cannot be undone.', 'classic-store'),
+					'i18n_delete_refund'                              => __( 'Are you sure you wish to delete this refund? This action cannot be undone.', 'classic-store'),
+					'i18n_delete_tax'                                 => __( 'Are you sure you wish to delete this tax column? This action cannot be undone.', 'classic-store'),
+					'remove_item_meta'                                => __( 'Remove this item meta?', 'classic-store'),
+					'name_label'                                      => __( 'Name', 'classic-store'),
+					'remove_label'                                    => __( 'Remove', 'classic-store'),
+					'click_to_toggle'                                 => __( 'Click to toggle', 'classic-store'),
+					'values_label'                                    => __( 'Value(s)', 'classic-store' ),
+					'text_attribute_tip'                              => __( 'Enter some text, or some attributes by pipe (|) separating values.', 'classic-store' ),
+					'visible_label'                                   => __( 'Visible on the product page', 'classic-store'),
+					'used_for_variations_label'                       => __( 'Used for variations', 'classic-store'),
+					'new_attribute_prompt'                            => __( 'Enter a name for the new attribute term:', 'classic-store'),
+					'calc_totals'                                     => __( 'Recalculate totals? This will calculate taxes based on the customers country (or the store base country) and update totals.', 'classic-store' ),
+					'copy_billing'                                    => __( 'Copy billing information to shipping information? This will remove any currently entered shipping information.', 'classic-store'),
+					'load_billing'                                    => __( "Load the customer's billing information? This will remove any currently entered billing information.", 'classic-store'),
+					'load_shipping'                                   => __( "Load the customer's shipping information? This will remove any currently entered shipping information.", 'classic-store'),
+					'featured_label'                                  => __( 'Featured', 'classic-store'),
 					'prices_include_tax'                              => esc_attr( get_option( 'woocommerce_prices_include_tax' ) ),
 					'tax_based_on'                                    => esc_attr( get_option( 'woocommerce_tax_based_on' ) ),
 					'round_at_subtotal'                               => esc_attr( get_option( 'woocommerce_tax_round_at_subtotal' ) ),
-					'no_customer_selected'                            => __( 'No customer selected', 'classic-commerce' ),
+					'no_customer_selected'                            => __( 'No customer selected', 'classic-store'),
 					'plugin_url'                                      => WC()->plugin_url(),
 					'ajax_url'                                        => admin_url( 'admin-ajax.php' ),
 					'order_item_nonce'                                => wp_create_nonce( 'order-item' ),
@@ -385,28 +385,28 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 					'tax_rounding_mode'                               => wc_get_tax_rounding_mode(),
 					'product_types'                                   => array_unique( array_merge( array( 'simple', 'grouped', 'variable', 'external' ), array_keys( wc_get_product_types() ) ) ),
                     'has_attributes'                                  => ! empty( wc_get_attribute_taxonomies() ) || ! empty( $product ? $product->get_attributes( 'edit' ) : array() ),
-					'i18n_download_permission_fail'                   => __( 'Could not grant access - the user may already have permission for this file or billing email is not set. Ensure the billing email is set, and the order has been saved.', 'classic-commerce' ),
-					'i18n_permission_revoke'                          => __( 'Are you sure you want to revoke access to this download?', 'classic-commerce' ),
-					'i18n_tax_rate_already_exists'                    => __( 'You cannot add the same tax rate twice!', 'classic-commerce' ),
-					'i18n_delete_note'                                => __( 'Are you sure you wish to delete this note? This action cannot be undone.', 'classic-commerce' ),
-					'i18n_apply_coupon'                               => __( 'Enter a coupon code to apply. Discounts are applied to line totals, before taxes.', 'classic-commerce' ),
-					'i18n_add_fee'                                    => __( 'Enter a fixed amount or percentage to apply as a fee.', 'classic-commerce' ),
-					'i18n_attribute_name_placeholder'                 => __( 'New attribute', 'classic-commerce' ),
-					'i18n_product_simple_tip'                         => __( '<b>Simple –</b> covers the vast majority of any products you may sell. Simple products are shipped and have no options. For example, a book.', 'classic-commerce' ),
-					'i18n_product_grouped_tip'                        => __( '<b>Grouped –</b> a collection of related products that can be purchased individually and only consist of simple products. For example, a set of six drinking glasses.', 'classic-commerce' ),
-					'i18n_product_external_tip'                       => __( '<b>External or Affiliate –</b> one that you list and describe on your website but is sold elsewhere.', 'classic-commerce' ),
-					'i18n_product_variable_tip'                       => __( '<b>Variable –</b> a product with variations, each of which may have a different SKU, price, stock option, etc. For example, a t-shirt available in different colors and/or sizes.', 'classic-commerce' ),
-					'i18n_product_other_tip'                          => __( 'Product types define available product details and attributes, such as downloadable files and variations. They’re also used for analytics and inventory management.', 'classic-commerce' ),
-					'i18n_product_description_tip'                    => __( 'Describe this product. What makes it unique? What are its most important features?', 'classic-commerce' ),
-					'i18n_product_short_description_tip'              => __( 'Summarize this product in 1-2 short sentences. We’ll show it at the top of the page.', 'classic-commerce' ),
-					'i18n_save_attribute_variation_tip'               => __( 'Make sure you enter the name and values for each attribute.', 'classic-commerce' ),
+					'i18n_download_permission_fail'                   => __( 'Could not grant access - the user may already have permission for this file or billing email is not set. Ensure the billing email is set, and the order has been saved.', 'classic-store'),
+					'i18n_permission_revoke'                          => __( 'Are you sure you want to revoke access to this download?', 'classic-store'),
+					'i18n_tax_rate_already_exists'                    => __( 'You cannot add the same tax rate twice!', 'classic-store'),
+					'i18n_delete_note'                                => __( 'Are you sure you wish to delete this note? This action cannot be undone.', 'classic-store'),
+					'i18n_apply_coupon'                               => __( 'Enter a coupon code to apply. Discounts are applied to line totals, before taxes.', 'classic-store'),
+					'i18n_add_fee'                                    => __( 'Enter a fixed amount or percentage to apply as a fee.', 'classic-store'),
+					'i18n_attribute_name_placeholder'                 => __( 'New attribute', 'classic-store'),
+					'i18n_product_simple_tip'                         => __( '<b>Simple –</b> covers the vast majority of any products you may sell. Simple products are shipped and have no options. For example, a book.', 'classic-store'),
+					'i18n_product_grouped_tip'                        => __( '<b>Grouped –</b> a collection of related products that can be purchased individually and only consist of simple products. For example, a set of six drinking glasses.', 'classic-store'),
+					'i18n_product_external_tip'                       => __( '<b>External or Affiliate –</b> one that you list and describe on your website but is sold elsewhere.', 'classic-store'),
+					'i18n_product_variable_tip'                       => __( '<b>Variable –</b> a product with variations, each of which may have a different SKU, price, stock option, etc. For example, a t-shirt available in different colors and/or sizes.', 'classic-store'),
+					'i18n_product_other_tip'                          => __( 'Product types define available product details and attributes, such as downloadable files and variations. They’re also used for analytics and inventory management.', 'classic-store'),
+					'i18n_product_description_tip'                    => __( 'Describe this product. What makes it unique? What are its most important features?', 'classic-store'),
+					'i18n_product_short_description_tip'              => __( 'Summarize this product in 1-2 short sentences. We’ll show it at the top of the page.', 'classic-store'),
+					'i18n_save_attribute_variation_tip'               => __( 'Make sure you enter the name and values for each attribute.', 'classic-store'),
 					/* translators: %1$s: maximum file size */
-					'i18n_product_image_tip'                          => sprintf( __( 'For best results, upload JPEG or PNG files that are 1000 by 1000 pixels or larger. Maximum upload file size: %1$s.', 'classic-commerce' ), size_format( wp_max_upload_size() ) ),
-					'i18n_remove_used_attribute_confirmation_message' => __( 'If you remove this attribute, customers will no longer be able to purchase some variations of this product.', 'classic-commerce' ),
-					'i18n_add_attribute_error_notice'                 => __( 'Adding new attribute failed.', 'classic-commerce' ),
+					'i18n_product_image_tip'                          => sprintf( __( 'For best results, upload JPEG or PNG files that are 1000 by 1000 pixels or larger. Maximum upload file size: %1$s.', 'classic-store'), size_format( wp_max_upload_size() ) ),
+					'i18n_remove_used_attribute_confirmation_message' => __( 'If you remove this attribute, customers will no longer be able to purchase some variations of this product.', 'classic-store'),
+					'i18n_add_attribute_error_notice'                 => __( 'Adding new attribute failed.', 'classic-store'),
 					/* translators: %s: WC_DELIMITER */
-					'i18n_attributes_default_placeholder'             => sprintf( esc_attr__( 'Enter some descriptive text. Use “%s” to separate different values.', 'classic-commerce' ), esc_attr( WC_DELIMITER ) ),
-					'i18n_attributes_used_for_variations_placeholder' => sprintf( esc_attr__( 'Enter options for customers to choose from, f.e. “Blue” or “Large”. Use “%s” to separate different options.', 'classic-commerce' ), esc_attr( WC_DELIMITER ) )
+					'i18n_attributes_default_placeholder'             => sprintf( esc_attr__( 'Enter some descriptive text. Use “%s” to separate different values.', 'classic-store'), esc_attr( WC_DELIMITER ) ),
+					'i18n_attributes_used_for_variations_placeholder' => sprintf( esc_attr__( 'Enter options for customers to choose from, f.e. “Blue” or “Large”. Use “%s” to separate different options.', 'classic-store'), esc_attr( WC_DELIMITER ) )
 				);
 
 				wp_localize_script( 'wc-admin-meta-boxes', 'woocommerce_admin_meta_boxes', $params );
@@ -459,7 +459,7 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 					array(
 						'ajax_url'         => admin_url( 'admin-ajax.php' ),
 						'update_api_nonce' => wp_create_nonce( 'update-api-key' ),
-						'clipboard_failed' => esc_html__( 'Copying to clipboard failed. Please press Ctrl/Cmd+C to copy.', 'classic-commerce' ),
+						'clipboard_failed' => esc_html__( 'Copying to clipboard failed. Please press Ctrl/Cmd+C to copy.', 'classic-store'),
 					)
 				);
 			}
@@ -472,8 +472,8 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 					'wc-admin-system-status',
 					'woocommerce_admin_system_status',
 					array(
-						'delete_log_confirmation' => esc_js( __( 'Are you sure you want to delete this log?', 'classic-commerce' ) ),
-						'run_tool_confirmation'   => esc_js( __( 'Are you sure you want to run this tool?', 'classic-commerce' ) ),
+						'delete_log_confirmation' => esc_js( __( 'Are you sure you want to delete this log?', 'classic-store') ),
+						'run_tool_confirmation'   => esc_js( __( 'Are you sure you want to run this tool?', 'classic-store') ),
 					)
 				);
 			}
@@ -486,7 +486,7 @@ if ( ! class_exists( 'WC_Admin_Assets', false ) ) :
 					'wc_users_params',
 					array(
 						'countries'              => wp_json_encode( array_merge( WC()->countries->get_allowed_country_states(), WC()->countries->get_shipping_country_states() ) ),
-						'i18n_select_state_text' => esc_attr__( 'Select an option&hellip;', 'classic-commerce' ),
+						'i18n_select_state_text' => esc_attr__( 'Select an option&hellip;', 'classic-store'),
 					)
 				);
 			}

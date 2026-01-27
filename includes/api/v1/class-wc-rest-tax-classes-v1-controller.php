@@ -64,7 +64,7 @@ class WC_REST_Tax_Classes_V1_Controller extends WC_REST_Controller {
 			array(
 				'args' => array(
 					'slug' => array(
-						'description' => __( 'Unique slug for the resource.', 'classic-commerce' ),
+						'description' => __( 'Unique slug for the resource.', 'classic-store'),
 						'type'        => 'string',
 					),
 				),
@@ -76,7 +76,7 @@ class WC_REST_Tax_Classes_V1_Controller extends WC_REST_Controller {
 						'force' => array(
 							'default'     => false,
 							'type'        => 'boolean',
-							'description' => __( 'Required to be true, as resource does not support trashing.', 'classic-commerce' ),
+							'description' => __( 'Required to be true, as resource does not support trashing.', 'classic-store'),
 						),
 					),
 				),
@@ -93,7 +93,7 @@ class WC_REST_Tax_Classes_V1_Controller extends WC_REST_Controller {
 	 */
 	public function get_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'settings', 'read' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -108,7 +108,7 @@ class WC_REST_Tax_Classes_V1_Controller extends WC_REST_Controller {
 	 */
 	public function create_item_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'settings', 'create' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_create', __( 'Sorry, you are not allowed to create resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -123,7 +123,7 @@ class WC_REST_Tax_Classes_V1_Controller extends WC_REST_Controller {
 	 */
 	public function delete_item_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'settings', 'delete' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Sorry, you are not allowed to delete this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_delete', __( 'Sorry, you are not allowed to delete this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -141,7 +141,7 @@ class WC_REST_Tax_Classes_V1_Controller extends WC_REST_Controller {
 		// Add standard class.
 		$tax_classes[] = array(
 			'slug' => 'standard',
-			'name' => __( 'Standard rate', 'classic-commerce' ),
+			'name' => __( 'Standard rate', 'classic-store'),
 		);
 
 		$classes = WC_Tax::get_tax_classes();
@@ -209,18 +209,18 @@ class WC_REST_Tax_Classes_V1_Controller extends WC_REST_Controller {
 
 		// We don't support trashing for this type, error out.
 		if ( ! $force ) {
-			return new WP_Error( 'woocommerce_rest_trash_not_supported', __( 'Taxes do not support trashing.', 'classic-commerce' ), array( 'status' => 501 ) );
+			return new WP_Error( 'woocommerce_rest_trash_not_supported', __( 'Taxes do not support trashing.', 'classic-store'), array( 'status' => 501 ) );
 		}
 
 		$tax_class = WC_Tax::get_tax_class_by( 'slug', sanitize_title( $request['slug'] ) );
 		if ( ! $tax_class ) {
-			return new WP_Error( 'woocommerce_rest_tax_class_invalid_slug', __( 'Invalid slug.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_tax_class_invalid_slug', __( 'Invalid slug.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		$deleted = WC_Tax::delete_tax_class_by( 'slug', sanitize_title( $request['slug'] ) );
 
 		if ( ! $deleted ) {
-			return new WP_Error( 'woocommerce_rest_invalid_id', __( 'Invalid resource id.', 'classic-commerce' ), array( 'status' => 400 ) );
+			return new WP_Error( 'woocommerce_rest_invalid_id', __( 'Invalid resource id.', 'classic-store'), array( 'status' => 400 ) );
 		}
 
 		if ( is_wp_error( $deleted ) ) {
@@ -298,13 +298,13 @@ class WC_REST_Tax_Classes_V1_Controller extends WC_REST_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'slug' => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
 				'name' => array(
-					'description' => __( 'Tax class name.', 'classic-commerce' ),
+					'description' => __( 'Tax class name.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'required'    => true,

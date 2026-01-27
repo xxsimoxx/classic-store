@@ -22,7 +22,7 @@ if ( $total <= 1 ) {
 	return;
 }
 ?>
-<nav class="woocommerce-pagination" aria-label="<?php esc_attr_e( 'Product Pagination', 'classic-commerce' ); ?>">
+<nav class="woocommerce-pagination" aria-label="<?php esc_attr_e( 'Product Pagination', 'classic-store'); ?>">
 	<?php
 		echo paginate_links( apply_filters( 'woocommerce_pagination_args', array( // WPCS: XSS ok.
 			'base'         => $base,

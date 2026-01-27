@@ -48,7 +48,7 @@ class WC_REST_Settings_Controller extends WC_REST_Settings_V2_Controller {
 	 */
 	public function update_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'settings', 'edit' ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_edit', __( 'Sorry, you cannot edit this resource.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_edit', __( 'Sorry, you cannot edit this resource.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -80,27 +80,27 @@ class WC_REST_Settings_Controller extends WC_REST_Settings_V2_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'id'          => array(
-					'description' => __( 'A unique identifier that can be used to link settings together.', 'classic-commerce' ),
+					'description' => __( 'A unique identifier that can be used to link settings together.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'label'       => array(
-					'description' => __( 'A human readable label for the setting used in interfaces.', 'classic-commerce' ),
+					'description' => __( 'A human readable label for the setting used in interfaces.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'description' => array(
-					'description' => __( 'A human readable description for the setting used in interfaces.', 'classic-commerce' ),
+					'description' => __( 'A human readable description for the setting used in interfaces.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'parent_id'   => array(
-					'description' => __( 'ID of parent grouping.', 'classic-commerce' ),
+					'description' => __( 'ID of parent grouping.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
 				'sub_groups'  => array(
-					'description' => __( 'IDs for settings sub groups.', 'classic-commerce' ),
+					'description' => __( 'IDs for settings sub groups.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),

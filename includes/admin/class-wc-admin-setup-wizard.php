@@ -126,16 +126,16 @@ class WC_Admin_Setup_Wizard {
 			'wc-enhanced-select',
 			'wc_enhanced_select_params',
 			array(
-				'i18n_no_matches'           => _x( 'No matches found', 'enhanced select', 'classic-commerce' ),
-				'i18n_ajax_error'           => _x( 'Loading failed', 'enhanced select', 'classic-commerce' ),
-				'i18n_input_too_short_1'    => _x( 'Please enter 1 or more characters', 'enhanced select', 'classic-commerce' ),
-				'i18n_input_too_short_n'    => _x( 'Please enter %qty% or more characters', 'enhanced select', 'classic-commerce' ),
-				'i18n_input_too_long_1'     => _x( 'Please delete 1 character', 'enhanced select', 'classic-commerce' ),
-				'i18n_input_too_long_n'     => _x( 'Please delete %qty% characters', 'enhanced select', 'classic-commerce' ),
-				'i18n_selection_too_long_1' => _x( 'You can only select 1 item', 'enhanced select', 'classic-commerce' ),
-				'i18n_selection_too_long_n' => _x( 'You can only select %qty% items', 'enhanced select', 'classic-commerce' ),
-				'i18n_load_more'            => _x( 'Loading more results&hellip;', 'enhanced select', 'classic-commerce' ),
-				'i18n_searching'            => _x( 'Searching&hellip;', 'enhanced select', 'classic-commerce' ),
+				'i18n_no_matches'           => _x( 'No matches found', 'enhanced select', 'classic-store'),
+				'i18n_ajax_error'           => _x( 'Loading failed', 'enhanced select', 'classic-store'),
+				'i18n_input_too_short_1'    => _x( 'Please enter 1 or more characters', 'enhanced select', 'classic-store'),
+				'i18n_input_too_short_n'    => _x( 'Please enter %qty% or more characters', 'enhanced select', 'classic-store'),
+				'i18n_input_too_long_1'     => _x( 'Please delete 1 character', 'enhanced select', 'classic-store'),
+				'i18n_input_too_long_n'     => _x( 'Please delete %qty% characters', 'enhanced select', 'classic-store'),
+				'i18n_selection_too_long_1' => _x( 'You can only select 1 item', 'enhanced select', 'classic-store'),
+				'i18n_selection_too_long_n' => _x( 'You can only select %qty% items', 'enhanced select', 'classic-store'),
+				'i18n_load_more'            => _x( 'Loading more results&hellip;', 'enhanced select', 'classic-store'),
+				'i18n_searching'            => _x( 'Searching&hellip;', 'enhanced select', 'classic-store'),
 				'ajax_url'                  => admin_url( 'admin-ajax.php' ),
 				'search_products_nonce'     => wp_create_nonce( 'search-products' ),
 				'search_customers_nonce'    => wp_create_nonce( 'search-customers' ),
@@ -169,22 +169,22 @@ class WC_Admin_Setup_Wizard {
 		}
 		$default_steps = array(
 			'store_setup' => array(
-				'name'    => __( 'Store setup', 'classic-commerce' ),
+				'name'    => __( 'Store setup', 'classic-store'),
 				'view'    => array( $this, 'wc_setup_store_setup' ),
 				'handler' => array( $this, 'wc_setup_store_setup_save' ),
 			),
 			'payment'     => array(
-				'name'    => __( 'Payment', 'classic-commerce' ),
+				'name'    => __( 'Payment', 'classic-store'),
 				'view'    => array( $this, 'wc_setup_payment' ),
 				'handler' => array( $this, 'wc_setup_payment_save' ),
 			),
 			'shipping'    => array(
-				'name'    => __( 'Shipping', 'classic-commerce' ),
+				'name'    => __( 'Shipping', 'classic-store'),
 				'view'    => array( $this, 'wc_setup_shipping' ),
 				'handler' => array( $this, 'wc_setup_shipping_save' ),
 			),
 			'next_steps'  => array(
-				'name'    => __( 'Ready!', 'classic-commerce' ),
+				'name'    => __( 'Ready!', 'classic-store'),
 				'view'    => array( $this, 'wc_setup_ready' ),
 				'handler' => '',
 			),
@@ -263,14 +263,14 @@ class WC_Admin_Setup_Wizard {
 		<head>
 			<meta name="viewport" content="width=device-width" />
 			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-			<title><?php esc_html_e( 'Classic Commerce &rsaquo; Setup Wizard', 'classic-commerce' ); ?></title>
+			<title><?php esc_html_e( 'Classic Commerce &rsaquo; Setup Wizard', 'classic-store'); ?></title>
 			<?php do_action( 'admin_enqueue_scripts' ); ?>
 			<?php wp_print_scripts( 'wc-setup' ); ?>
 			<?php do_action( 'admin_print_styles' ); ?>
 			<?php do_action( 'admin_head' ); ?>
 		</head>
 		<body class="wc-setup wp-core-ui  <?php echo esc_attr( $wp_version_class ); ?>">
-			<h1 id="wc-logo"><a href="https://github.com/ClassicPress-plugins/classic-commerce/"><img src="<?php echo esc_url( WC()->plugin_url() ); ?>/assets/images/classic-commerce-logo.png" alt="<?php esc_attr_e( 'Classic Commerce', 'classic-commerce' ); ?>" /></a></h1>
+			<h1 id="wc-logo"><a href="https://github.com/ClassicPress-plugins/classic-commerce/"><img src="<?php echo esc_url( WC()->plugin_url() ); ?>/assets/images/classic-commerce-logo.png" alt="<?php esc_attr_e( 'Classic Commerce', 'classic-store'); ?>" /></a></h1>
 		<?php
 	}
 
@@ -280,9 +280,9 @@ class WC_Admin_Setup_Wizard {
 	public function setup_wizard_footer() {
 		?>
 			<?php if ( 'store_setup' === $this->step ) : ?>
-				<a class="wc-setup-footer-links" href="<?php echo esc_url( admin_url() ); ?>"><?php esc_html_e( 'Not right now', 'classic-commerce' ); ?></a>
+				<a class="wc-setup-footer-links" href="<?php echo esc_url( admin_url() ); ?>"><?php esc_html_e( 'Not right now', 'classic-store'); ?></a>
 			<?php elseif ( 'recommended' === $this->step || 'activate' === $this->step ) : ?>
-				<a class="wc-setup-footer-links" href="<?php echo esc_url( $this->get_next_step_link() ); ?>"><?php esc_html_e( 'Skip this step', 'classic-commerce' ); ?></a>
+				<a class="wc-setup-footer-links" href="<?php echo esc_url( $this->get_next_step_link() ); ?>"><?php esc_html_e( 'Skip this step', 'classic-store'); ?></a>
 			<?php endif; ?>
 			</body>
 		</html>
@@ -359,36 +359,36 @@ class WC_Admin_Setup_Wizard {
 		?>
 		<form method="post" class="address-step">
 			<?php wp_nonce_field( 'wc-setup' ); ?>
-			<p class="store-setup"><?php esc_html_e( 'The following wizard will help you configure your store and get you started quickly.', 'classic-commerce' ); ?></p>
+			<p class="store-setup"><?php esc_html_e( 'The following wizard will help you configure your store and get you started quickly.', 'classic-store'); ?></p>
 
 			<div class="store-address-container">
 
-				<label for="store_country" class="location-prompt"><?php esc_html_e( 'Where is your store based?', 'classic-commerce' ); ?></label>
-				<select id="store_country" name="store_country" required data-placeholder="<?php esc_attr_e( 'Choose a country / region&hellip;', 'classic-commerce' ); ?>" aria-label="<?php esc_attr_e( 'Country / Region', 'classic-commerce' ); ?>" class="location-input wc-enhanced-select dropdown">
+				<label for="store_country" class="location-prompt"><?php esc_html_e( 'Where is your store based?', 'classic-store'); ?></label>
+				<select id="store_country" name="store_country" required data-placeholder="<?php esc_attr_e( 'Choose a country / region&hellip;', 'classic-store'); ?>" aria-label="<?php esc_attr_e( 'Country / Region', 'classic-store'); ?>" class="location-input wc-enhanced-select dropdown">
 					<?php foreach ( WC()->countries->get_countries() as $code => $label ) : ?>
 						<option <?php selected( $code, $country ); ?> value="<?php echo esc_attr( $code ); ?>"><?php echo esc_html( $label ); ?></option>
 					<?php endforeach; ?>
 				</select>
 
-				<label class="location-prompt" for="store_address"><?php esc_html_e( 'Address', 'classic-commerce' ); ?></label>
+				<label class="location-prompt" for="store_address"><?php esc_html_e( 'Address', 'classic-store'); ?></label>
 				<input type="text" id="store_address" class="location-input" name="store_address" required value="<?php echo esc_attr( $address ); ?>" />
 
-				<label class="location-prompt" for="store_address_2"><?php esc_html_e( 'Address line 2', 'classic-commerce' ); ?></label>
+				<label class="location-prompt" for="store_address_2"><?php esc_html_e( 'Address line 2', 'classic-store'); ?></label>
 				<input type="text" id="store_address_2" class="location-input" name="store_address_2" value="<?php echo esc_attr( $address_2 ); ?>" />
 
 				<div class="city-and-postcode">
 					<div>
-						<label class="location-prompt" for="store_city"><?php esc_html_e( 'City', 'classic-commerce' ); ?></label>
+						<label class="location-prompt" for="store_city"><?php esc_html_e( 'City', 'classic-store'); ?></label>
 						<input type="text" id="store_city" class="location-input" name="store_city" required value="<?php echo esc_attr( $city ); ?>" />
 					</div>
 					<div class="store-state-container hidden">
 						<label for="store_state" class="location-prompt">
-							<?php esc_html_e( 'State', 'classic-commerce' ); ?>
+							<?php esc_html_e( 'State', 'classic-store'); ?>
 						</label>
-						<select id="store_state" name="store_state" data-placeholder="<?php esc_attr_e( 'Choose a state&hellip;', 'classic-commerce' ); ?>" aria-label="<?php esc_attr_e( 'State', 'classic-commerce' ); ?>" class="location-input wc-enhanced-select dropdown"></select>
+						<select id="store_state" name="store_state" data-placeholder="<?php esc_attr_e( 'Choose a state&hellip;', 'classic-store'); ?>" aria-label="<?php esc_attr_e( 'State', 'classic-store'); ?>" class="location-input wc-enhanced-select dropdown"></select>
 					</div>
 					<div>
-						<label class="location-prompt" for="store_postcode"><?php esc_html_e( 'Postcode / ZIP', 'classic-commerce' ); ?></label>
+						<label class="location-prompt" for="store_postcode"><?php esc_html_e( 'Postcode / ZIP', 'classic-store'); ?></label>
 						<input type="text" id="store_postcode" class="location-input" name="store_postcode" required value="<?php echo esc_attr( $postcode ); ?>" />
 					</div>
 				</div>
@@ -396,16 +396,16 @@ class WC_Admin_Setup_Wizard {
 
 			<div class="store-currency-container">
 			<label class="location-prompt" for="currency_code">
-				<?php esc_html_e( 'What currency do you accept payments in?', 'classic-commerce' ); ?>
+				<?php esc_html_e( 'What currency do you accept payments in?', 'classic-store'); ?>
 			</label>
 			<select
 				id="currency_code"
 				name="currency_code"
 				required
-				data-placeholder="<?php esc_attr_e( 'Choose a currency&hellip;', 'classic-commerce' ); ?>"
+				data-placeholder="<?php esc_attr_e( 'Choose a currency&hellip;', 'classic-store'); ?>"
 				class="location-input wc-enhanced-select dropdown"
 			>
-				<option value=""><?php esc_html_e( 'Choose a currency&hellip;', 'classic-commerce' ); ?></option>
+				<option value=""><?php esc_html_e( 'Choose a currency&hellip;', 'classic-store'); ?></option>
 				<?php foreach ( get_woocommerce_currencies() as $code => $name ) : ?>
 					<option value="<?php echo esc_attr( $code ); ?>" <?php selected( $currency, $code ); ?>>
 						<?php
@@ -413,10 +413,10 @@ class WC_Admin_Setup_Wizard {
 
 						if ( $symbol === $code ) {
 							/* translators: 1: currency name 2: currency code */
-							echo esc_html( sprintf( __( '%1$s (%2$s)', 'classic-commerce' ), $name, $code ) );
+							echo esc_html( sprintf( __( '%1$s (%2$s)', 'classic-store' ), $name, $code ) );
 						} else {
 							/* translators: 1: currency name 2: currency symbol, 3: currency code */
-							echo esc_html( sprintf( __( '%1$s (%2$s %3$s)', 'classic-commerce' ), $name, get_woocommerce_currency_symbol( $code ), $code ) );
+							echo esc_html( sprintf( __( '%1$s (%2$s %3$s)', 'classic-store' ), $name, get_woocommerce_currency_symbol( $code ), $code ) );
 						}
 						?>
 					</option>
@@ -430,12 +430,12 @@ class WC_Admin_Setup_Wizard {
 
 			<div class="product-type-container">
 			<label class="location-prompt" for="product_type">
-				<?php esc_html_e( 'What type of products do you plan to sell?', 'classic-commerce' ); ?>
+				<?php esc_html_e( 'What type of products do you plan to sell?', 'classic-store'); ?>
 			</label>
 			<select id="product_type" name="product_type" required class="location-input wc-enhanced-select dropdown">
-				<option value="both" <?php selected( $product_type, 'both' ); ?>><?php esc_html_e( 'I plan to sell both physical and digital products', 'classic-commerce' ); ?></option>
-				<option value="physical" <?php selected( $product_type, 'physical' ); ?>><?php esc_html_e( 'I plan to sell physical products', 'classic-commerce' ); ?></option>
-				<option value="virtual" <?php selected( $product_type, 'virtual' ); ?>><?php esc_html_e( 'I plan to sell digital products', 'classic-commerce' ); ?></option>
+				<option value="both" <?php selected( $product_type, 'both' ); ?>><?php esc_html_e( 'I plan to sell both physical and digital products', 'classic-store'); ?></option>
+				<option value="physical" <?php selected( $product_type, 'physical' ); ?>><?php esc_html_e( 'I plan to sell physical products', 'classic-store'); ?></option>
+				<option value="virtual" <?php selected( $product_type, 'virtual' ); ?>><?php esc_html_e( 'I plan to sell digital products', 'classic-store'); ?></option>
 			</select>
 			</div>
 
@@ -447,11 +447,11 @@ class WC_Admin_Setup_Wizard {
 				<?php checked( $sell_in_person, true ); ?>
 			/>
 			<label class="location-prompt" for="woocommerce_sell_in_person">
-				<?php esc_html_e( 'I will also be selling products or services in person.', 'classic-commerce' ); ?>
+				<?php esc_html_e( 'I will also be selling products or services in person.', 'classic-store'); ?>
 			</label>
 
 			<p class="wc-setup-actions step">
-				<button type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( "Let's go!", 'classic-commerce' ); ?>" name="save_step"><?php esc_html_e( "Let's go!", 'classic-commerce' ); ?></button>
+				<button type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( "Let's go!", 'classic-store'); ?>" name="save_step"><?php esc_html_e( "Let's go!", 'classic-store'); ?></button>
 			</p>
 		</form>
 		<?php
@@ -630,20 +630,20 @@ class WC_Admin_Setup_Wizard {
 	protected function get_wizard_shipping_methods( $country_code, $currency_code ) {
 		$shipping_methods = array(
 			'flat_rate'     => array(
-				'name'        => __( 'Flat Rate', 'classic-commerce' ),
-				'description' => __( 'Set a fixed price to cover shipping costs.', 'classic-commerce' ),
+				'name'        => __( 'Flat Rate', 'classic-store'),
+				'description' => __( 'Set a fixed price to cover shipping costs.', 'classic-store'),
 				'settings'    => array(
 					'cost' => array(
 						'type'          => 'text',
-						'default_value' => __( 'Cost', 'classic-commerce' ),
-						'description'   => __( 'What would you like to charge for flat rate shipping?', 'classic-commerce' ),
+						'default_value' => __( 'Cost', 'classic-store'),
+						'description'   => __( 'What would you like to charge for flat rate shipping?', 'classic-store'),
 						'required'      => true,
 					),
 				),
 			),
 			'free_shipping' => array(
-				'name'        => __( 'Free Shipping', 'classic-commerce' ),
-				'description' => __( "Don't charge for shipping.", 'classic-commerce' ),
+				'name'        => __( 'Free Shipping', 'classic-store'),
+				'description' => __( "Don't charge for shipping.", 'classic-store'),
 			),
 		);
 
@@ -722,10 +722,10 @@ class WC_Admin_Setup_Wizard {
 		?>
 		<span class="wc-setup-shipping-unit">
 			<select id="weight_unit" name="weight_unit" class="wc-enhanced-select">
-				<option value="kg" <?php selected( $weight_unit, 'kg' ); ?>><?php esc_html_e( 'Kilograms', 'classic-commerce' ); ?></option>
-				<option value="g" <?php selected( $weight_unit, 'g' ); ?>><?php esc_html_e( 'Grams', 'classic-commerce' ); ?></option>
-				<option value="lbs" <?php selected( $weight_unit, 'lbs' ); ?>><?php esc_html_e( 'Pounds', 'classic-commerce' ); ?></option>
-				<option value="oz" <?php selected( $weight_unit, 'oz' ); ?>><?php esc_html_e( 'Ounces', 'classic-commerce' ); ?></option>
+				<option value="kg" <?php selected( $weight_unit, 'kg' ); ?>><?php esc_html_e( 'Kilograms', 'classic-store'); ?></option>
+				<option value="g" <?php selected( $weight_unit, 'g' ); ?>><?php esc_html_e( 'Grams', 'classic-store'); ?></option>
+				<option value="lbs" <?php selected( $weight_unit, 'lbs' ); ?>><?php esc_html_e( 'Pounds', 'classic-store'); ?></option>
+				<option value="oz" <?php selected( $weight_unit, 'oz' ); ?>><?php esc_html_e( 'Ounces', 'classic-store'); ?></option>
 			</select>
 		</span>
 		<?php
@@ -744,11 +744,11 @@ class WC_Admin_Setup_Wizard {
 		?>
 		<span class="wc-setup-shipping-unit">
 			<select id="dimension_unit" name="dimension_unit" class="wc-enhanced-select">
-				<option value="m" <?php selected( $dimension_unit, 'm' ); ?>><?php esc_html_e( 'Meters', 'classic-commerce' ); ?></option>
-				<option value="cm" <?php selected( $dimension_unit, 'cm' ); ?>><?php esc_html_e( 'Centimeters', 'classic-commerce' ); ?></option>
-				<option value="mm" <?php selected( $dimension_unit, 'mm' ); ?>><?php esc_html_e( 'Millimeters', 'classic-commerce' ); ?></option>
-				<option value="in" <?php selected( $dimension_unit, 'in' ); ?>><?php esc_html_e( 'Inches', 'classic-commerce' ); ?></option>
-				<option value="yd" <?php selected( $dimension_unit, 'yd' ); ?>><?php esc_html_e( 'Yards', 'classic-commerce' ); ?></option>
+				<option value="m" <?php selected( $dimension_unit, 'm' ); ?>><?php esc_html_e( 'Meters', 'classic-store'); ?></option>
+				<option value="cm" <?php selected( $dimension_unit, 'cm' ); ?>><?php esc_html_e( 'Centimeters', 'classic-store'); ?></option>
+				<option value="mm" <?php selected( $dimension_unit, 'mm' ); ?>><?php esc_html_e( 'Millimeters', 'classic-store'); ?></option>
+				<option value="in" <?php selected( $dimension_unit, 'in' ); ?>><?php esc_html_e( 'Inches', 'classic-store'); ?></option>
+				<option value="yd" <?php selected( $dimension_unit, 'yd' ); ?>><?php esc_html_e( 'Yards', 'classic-store'); ?></option>
 			</select>
 		</span>
 		<?php
@@ -770,13 +770,13 @@ class WC_Admin_Setup_Wizard {
 		if ( empty( $existing_zones ) ) {
 			$intro_text = sprintf(
 				/* translators: %s: country name including the 'the' prefix if needed */
-				__( "We've created two Shipping Zones - for %s and for the rest of the world. Below you can set Flat Rate shipping costs for these Zones or offer Free Shipping.", 'classic-commerce' ),
+				__( "We've created two Shipping Zones - for %s and for the rest of the world. Below you can set Flat Rate shipping costs for these Zones or offer Free Shipping.", 'classic-store'),
 				$prefixed_country_name
 			);
 		}
 
 		?>
-		<h1><?php esc_html_e( 'Shipping', 'classic-commerce' ); ?></h1>
+		<h1><?php esc_html_e( 'Shipping', 'classic-store'); ?></h1>
 		<?php if ( $intro_text ) : ?>
 			<p><?php echo wp_kses_post( $intro_text ); ?></p>
 		<?php endif; ?>
@@ -785,10 +785,10 @@ class WC_Admin_Setup_Wizard {
 				<ul class="wc-wizard-services shipping">
 					<li class="wc-wizard-service-item">
 						<div class="wc-wizard-service-name">
-							<p><?php echo esc_html_e( 'Shipping Zone', 'classic-commerce' ); ?></p>
+							<p><?php echo esc_html_e( 'Shipping Zone', 'classic-store'); ?></p>
 						</div>
 						<div class="wc-wizard-service-description">
-							<p><?php echo esc_html_e( 'Shipping Method', 'classic-commerce' ); ?></p>
+							<p><?php echo esc_html_e( 'Shipping Method', 'classic-store'); ?></p>
 						</div>
 					</li>
 					<li class="wc-wizard-service-item">
@@ -807,7 +807,7 @@ class WC_Admin_Setup_Wizard {
 					</li>
 					<li class="wc-wizard-service-item">
 						<div class="wc-wizard-service-name">
-							<p><?php echo esc_html_e( 'Locations not covered by your other zones', 'classic-commerce' ); ?></p>
+							<p><?php echo esc_html_e( 'Locations not covered by your other zones', 'classic-store'); ?></p>
 						</div>
 						<div class="wc-wizard-service-description">
 							<?php $this->shipping_method_selection_form( $country_code, $currency_code, 'shipping_zones[intl]' ); ?>
@@ -830,7 +830,7 @@ class WC_Admin_Setup_Wizard {
 						echo wp_kses(
 							sprintf(
 								/* translators: %1$s: weight unit dropdown, %2$s: dimension unit dropdown */
-								esc_html__( 'We\'ll use %1$s for product weight and %2$s for product dimensions.', 'classic-commerce' ),
+								esc_html__( 'We\'ll use %1$s for product weight and %2$s for product dimensions.', 'classic-store'),
 								$this->get_product_weight_selection(),
 								$this->get_product_dimension_selection()
 							),
@@ -854,7 +854,7 @@ class WC_Admin_Setup_Wizard {
 			</div>
 
 			<p class="wc-setup-actions step">
-				<button type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'classic-commerce' ); ?>" name="save_step"><?php esc_html_e( 'Continue', 'classic-commerce' ); ?></button>
+				<button type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'classic-store'); ?>" name="save_step"><?php esc_html_e( 'Continue', 'classic-store'); ?></button>
 				<?php wp_nonce_field( 'wc-setup' ); ?>
 			</p>
 		</form>
@@ -960,20 +960,20 @@ class WC_Admin_Setup_Wizard {
 	protected function get_wizard_manual_payment_gateways() {
 		$gateways = array(
 			'cheque' => array(
-				'name'        => _x( 'Check payments', 'Check payment method', 'classic-commerce' ),
-				'description' => __( 'A simple offline gateway that lets you accept a check as method of payment.', 'classic-commerce' ),
+				'name'        => _x( 'Check payments', 'Check payment method', 'classic-store'),
+				'description' => __( 'A simple offline gateway that lets you accept a check as method of payment.', 'classic-store'),
 				'image'       => '',
 				'class'       => '',
 			),
 			'bacs'   => array(
-				'name'        => __( 'Bank transfer (BACS) payments', 'classic-commerce' ),
-				'description' => __( 'A simple offline gateway that lets you accept BACS payment.', 'classic-commerce' ),
+				'name'        => __( 'Bank transfer (BACS) payments', 'classic-store' ),
+				'description' => __( 'A simple offline gateway that lets you accept BACS payment.', 'classic-store'),
 				'image'       => '',
 				'class'       => '',
 			),
 			'cod'    => array(
-				'name'        => __( 'Cash on delivery', 'classic-commerce' ),
-				'description' => __( 'A simple offline gateway that lets you accept cash on delivery.', 'classic-commerce' ),
+				'name'        => __( 'Cash on delivery', 'classic-store'),
+				'description' => __( 'A simple offline gateway that lets you accept cash on delivery.', 'classic-store'),
 				'image'       => '',
 				'class'       => '',
 			),
@@ -1093,14 +1093,14 @@ class WC_Admin_Setup_Wizard {
 	public function wc_setup_payment() {
 		$manual_gateways   = $this->get_wizard_manual_payment_gateways();
 		?>
-		<h1><?php esc_html_e( 'Payment', 'classic-commerce' ); ?></h1>
+		<h1><?php esc_html_e( 'Payment', 'classic-store'); ?></h1>
 		<form method="post" class="wc-wizard-payment-gateway-form">
 			<p>
 				<?php
 				printf(
 					wp_kses(
 						/* translators: %s: Link */
-						__( 'Classic Commerce can accept both online and offline payments. A <a href="%1$s" target="_blank">basic PayPal option</a> is already included. This can be enabled and configured from the Payments tab under Settings. <a href="%2$s" target="_blank">Additional payment methods</a> can be installed later.', 'classic-commerce' ),
+						__( 'Classic Commerce can accept both online and offline payments. A <a href="%1$s" target="_blank">basic PayPal option</a> is already included. This can be enabled and configured from the Payments tab under Settings. <a href="%2$s" target="_blank">Additional payment methods</a> can be installed later.', 'classic-store'),
 						array(
 							'a' => array(
 								'href'   => array(),
@@ -1116,10 +1116,10 @@ class WC_Admin_Setup_Wizard {
 			<ul class="wc-wizard-services manual">
 				<li class="wc-wizard-services-list-toggle closed">
 					<div class="wc-wizard-service-name">
-						<?php esc_html_e( 'Offline Payments', 'classic-commerce' ); ?>
+						<?php esc_html_e( 'Offline Payments', 'classic-store'); ?>
 					</div>
 					<div class="wc-wizard-service-description">
-						<?php esc_html_e( 'Collect payments from customers offline.', 'classic-commerce' ); ?>
+						<?php esc_html_e( 'Collect payments from customers offline.', 'classic-store'); ?>
 					</div>
 					<div class="wc-wizard-service-enable" tabindex="0">
 						<input class="wc-wizard-service-list-toggle" id="wc-wizard-service-list-toggle" type="checkbox">
@@ -1133,7 +1133,7 @@ class WC_Admin_Setup_Wizard {
 				?>
 			</ul>
 			<p class="wc-setup-actions step">
-				<button type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'classic-commerce' ); ?>" name="save_step"><?php esc_html_e( 'Continue', 'classic-commerce' ); ?></button>
+				<button type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'classic-store'); ?>" name="save_step"><?php esc_html_e( 'Continue', 'classic-store'); ?></button>
 				<?php wp_nonce_field( 'wc-setup' ); ?>
 			</p>
 		</form>
@@ -1216,11 +1216,11 @@ class WC_Admin_Setup_Wizard {
 	 */
 	public function wc_setup_recommended() {
 		?>
-		<h1><?php esc_html_e( 'Recommended for all Classic Commerce stores', 'classic-commerce' ); ?></h1>
+		<h1><?php esc_html_e( 'Recommended for all Classic Commerce stores', 'classic-store'); ?></h1>
 
 		<form method="post">
 			<p class="wc-setup-actions step">
-				<button type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'classic-commerce' ); ?>" name="save_step"><?php esc_html_e( 'Continue', 'classic-commerce' ); ?></button>
+				<button type="submit" class="button-primary button button-large button-next" value="<?php esc_attr_e( 'Continue', 'classic-store'); ?>" name="save_step"><?php esc_html_e( 'Continue', 'classic-store'); ?></button>
 				<?php wp_nonce_field( 'wc-setup' ); ?>
 			</p>
 		</form>
@@ -1236,55 +1236,55 @@ class WC_Admin_Setup_Wizard {
 		$docs_url     = 'https://classiccommerce.cc/docs/installation-and-setup/';
 		$help_text    = sprintf(
 			/* translators: %1$s: link to docs */
-			__( 'Visit classiccommerce.cc to learn more about <a href="%1$s" target="_blank">getting started</a>.', 'classic-commerce' ),
+			__( 'Visit classiccommerce.cc to learn more about <a href="%1$s" target="_blank">getting started</a>.', 'classic-store'),
 			$docs_url
 		);
 		?>
-		<h1><?php esc_html_e( "You're ready to start selling!", 'classic-commerce' ); ?></h1>
+		<h1><?php esc_html_e( "You're ready to start selling!", 'classic-store'); ?></h1>
 
 		<ul class="wc-wizard-next-steps">
 			<li class="wc-wizard-next-step-item">
 				<div class="wc-wizard-next-step-description">
-					<p class="next-step-heading"><?php esc_html_e( 'Next step', 'classic-commerce' ); ?></p>
-					<h3 class="next-step-description"><?php esc_html_e( 'Create some products', 'classic-commerce' ); ?></h3>
-					<p class="next-step-extra-info"><?php esc_html_e( "You're ready to add products to your store.", 'classic-commerce' ); ?></p>
+					<p class="next-step-heading"><?php esc_html_e( 'Next step', 'classic-store'); ?></p>
+					<h3 class="next-step-description"><?php esc_html_e( 'Create some products', 'classic-store'); ?></h3>
+					<p class="next-step-extra-info"><?php esc_html_e( "You're ready to add products to your store.", 'classic-store'); ?></p>
 				</div>
 				<div class="wc-wizard-next-step-action">
 					<p class="wc-setup-actions step">
 						<a class="button button-primary button-large" href="<?php echo esc_url( admin_url( 'post-new.php?post_type=product&tutorial=true' ) ); ?>">
-							<?php esc_html_e( 'Create a product', 'classic-commerce' ); ?>
+							<?php esc_html_e( 'Create a product', 'classic-store'); ?>
 						</a>
 					</p>
 				</div>
 			</li>
 			<li class="wc-wizard-next-step-item">
 				<div class="wc-wizard-next-step-description">
-					<p class="next-step-heading"><?php esc_html_e( 'Have an existing store?', 'classic-commerce' ); ?></p>
-					<h3 class="next-step-description"><?php esc_html_e( 'Import products', 'classic-commerce' ); ?></h3>
-					<p class="next-step-extra-info"><?php esc_html_e( 'Transfer existing products to your new store — just import a CSV file.', 'classic-commerce' ); ?></p>
+					<p class="next-step-heading"><?php esc_html_e( 'Have an existing store?', 'classic-store'); ?></p>
+					<h3 class="next-step-description"><?php esc_html_e( 'Import products', 'classic-store'); ?></h3>
+					<p class="next-step-extra-info"><?php esc_html_e( 'Transfer existing products to your new store — just import a CSV file.', 'classic-store'); ?></p>
 				</div>
 				<div class="wc-wizard-next-step-action">
 					<p class="wc-setup-actions step">
 						<a class="button button-large" href="<?php echo esc_url( admin_url( 'edit.php?post_type=product&page=product_importer' ) ); ?>">
-							<?php esc_html_e( 'Import products', 'classic-commerce' ); ?>
+							<?php esc_html_e( 'Import products', 'classic-store'); ?>
 						</a>
 					</p>
 				</div>
 			</li>
 			<li class="wc-wizard-additional-steps">
 				<div class="wc-wizard-next-step-description">
-					<p class="next-step-heading"><?php esc_html_e( 'You can also:', 'classic-commerce' ); ?></p>
+					<p class="next-step-heading"><?php esc_html_e( 'You can also:', 'classic-store'); ?></p>
 				</div>
 				<div class="wc-wizard-next-step-action">
 					<p class="wc-setup-actions step">
 						<a class="button button-large" href="<?php echo esc_url( admin_url() ); ?>">
-							<?php esc_html_e( 'Visit Dashboard', 'classic-commerce' ); ?>
+							<?php esc_html_e( 'Visit Dashboard', 'classic-store'); ?>
 						</a>
 						<a class="button button-large" href="<?php echo esc_url( admin_url( 'admin.php?page=wc-settings' ) ); ?>">
-							<?php esc_html_e( 'Review Settings', 'classic-commerce' ); ?>
+							<?php esc_html_e( 'Review Settings', 'classic-store'); ?>
 						</a>
 						<a class="button button-large" href="<?php echo esc_url( add_query_arg( array( 'autofocus' => array( 'panel' => 'woocommerce' ), 'url' => wc_get_page_permalink( 'shop' ) ), admin_url( 'customize.php' ) ) ); ?>">
-							<?php esc_html_e( 'View &amp; Customize', 'classic-commerce' ); ?>
+							<?php esc_html_e( 'View &amp; Customize', 'classic-store'); ?>
 						</a>
 					</p>
 				</div>

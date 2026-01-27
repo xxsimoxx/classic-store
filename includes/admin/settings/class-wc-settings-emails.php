@@ -22,7 +22,7 @@ class WC_Settings_Emails extends WC_Settings_Page {
 	 */
 	public function __construct() {
 		$this->id    = 'email';
-		$this->label = __( 'Emails', 'classic-commerce' );
+		$this->label = __( 'Emails', 'classic-store');
 
 		add_action( 'woocommerce_admin_field_email_notification', array( $this, 'email_notification_setting' ) );
 		parent::__construct();
@@ -35,7 +35,7 @@ class WC_Settings_Emails extends WC_Settings_Page {
 	 */
 	protected function get_own_sections() {
 		return array(
-			'' => __( 'Email options', 'classic-commerce' ),
+			'' => __( 'Email options', 'classic-store'),
 		);
 	}
 
@@ -47,16 +47,16 @@ class WC_Settings_Emails extends WC_Settings_Page {
 	protected function get_settings_for_default_section() {
 		$desc_help_text = sprintf(
 		/* translators: %1$s: Link to WP Mail Logging plugin, %2$s: Link to Email FAQ support page. */
-			__( 'To ensure your store&rsquo;s notifications arrive in your and your customers&rsquo; inboxes, we recommend connecting your email address to your domain and setting up a dedicated SMTP server. If something doesn&rsquo;t seem to be sending correctly, install the <a href="%1$s">WP Mail Logging Plugin</a> or check the <a href="%2$s">Email Settings page</a>.', 'classic-commerce' ),
+			__( 'To ensure your store&rsquo;s notifications arrive in your and your customers&rsquo; inboxes, we recommend connecting your email address to your domain and setting up a dedicated SMTP server. If something doesn&rsquo;t seem to be sending correctly, install the <a href="%1$s">WP Mail Logging Plugin</a> or check the <a href="%2$s">Email Settings page</a>.', 'classic-store'),
 			'https://wordpress.org/plugins/wp-mail-logging/',
 			'https://classiccommerce.cc/docs/installation-and-setup/email-settings/'
 		);
 		$settings =
 			array(
 				array(
-					'title' => __( 'Email notifications', 'classic-commerce' ),
+					'title' => __( 'Email notifications', 'classic-store'),
 					/* translators: %s: help description with link to WP Mail logging and support page. */
-					'desc'  => sprintf( __( 'Email notifications sent from Classic Commerce are listed below. Click on an email to configure it.<br>%s', 'classic-commerce' ), $desc_help_text ),
+					'desc'  => sprintf( __( 'Email notifications sent from Classic Commerce are listed below. Click on an email to configure it.<br>%s', 'classic-store'), $desc_help_text ),
 					'type'  => 'title',
 					'id'    => 'email_notification_settings',
 				),
@@ -74,15 +74,15 @@ class WC_Settings_Emails extends WC_Settings_Page {
 				),
 
 				array(
-					'title' => __( 'Email sender options', 'classic-commerce' ),
+					'title' => __( 'Email sender options', 'classic-store'),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'email_options',
 				),
 
 				array(
-					'title'    => __( '"From" name', 'classic-commerce' ),
-					'desc'     => __( 'How the sender name appears in outgoing Classic Commerce emails.', 'classic-commerce' ),
+					'title'    => __( '"From" name', 'classic-store'),
+					'desc'     => __( 'How the sender name appears in outgoing Classic Commerce emails.', 'classic-store'),
 					'id'       => 'woocommerce_email_from_name',
 					'type'     => 'text',
 					'css'      => 'min-width:400px;',
@@ -92,8 +92,8 @@ class WC_Settings_Emails extends WC_Settings_Page {
 				),
 
 				array(
-					'title'             => __( '"From" address', 'classic-commerce' ),
-					'desc'              => __( 'How the sender email appears in outgoing Classic Commerce emails.', 'classic-commerce' ),
+					'title'             => __( '"From" address', 'classic-store'),
+					'desc'              => __( 'How the sender email appears in outgoing Classic Commerce emails.', 'classic-store'),
 					'id'                => 'woocommerce_email_from_address',
 					'type'              => 'email',
 					'custom_attributes' => array(
@@ -111,29 +111,29 @@ class WC_Settings_Emails extends WC_Settings_Page {
 				),
 
 				array(
-					'title' => __( 'Email template', 'classic-commerce' ),
+					'title' => __( 'Email template', 'classic-store'),
 					'type'  => 'title',
 					/* translators: %s: Nonced email preview link */
-					'desc'  => sprintf( __( 'This section lets you customize the Classic Commerce emails. <a href="%s" target="_blank">Click here to preview your email template</a>.', 'classic-commerce' ), wp_nonce_url( admin_url( '?preview_woocommerce_mail=true' ), 'preview-mail' ) ),
+					'desc'  => sprintf( __( 'This section lets you customize the Classic Commerce emails. <a href="%s" target="_blank">Click here to preview your email template</a>.', 'classic-store'), wp_nonce_url( admin_url( '?preview_woocommerce_mail=true' ), 'preview-mail' ) ),
 					'id'    => 'email_template_options',
 				),
 
 				array(
-					'title'       => __( 'Header image', 'classic-commerce' ),
-					'desc'        => __( 'URL to an image you want to show in the email header. Upload images using the media uploader (Admin > Media).', 'classic-commerce' ),
+					'title'       => __( 'Header image', 'classic-store'),
+					'desc'        => __( 'URL to an image you want to show in the email header. Upload images using the media uploader (Admin > Media).', 'classic-store' ),
 					'id'          => 'woocommerce_email_header_image',
 					'type'        => 'text',
 					'css'         => 'min-width:400px;',
-					'placeholder' => __( 'N/A', 'classic-commerce' ),
+					'placeholder' => __( 'N/A', 'classic-store'),
 					'default'     => '',
 					'autoload'    => false,
 					'desc_tip'    => true,
 				),
 
 				array(
-					'title'    => __( 'Base color', 'classic-commerce' ),
+					'title'    => __( 'Base color', 'classic-store'),
 					/* translators: %s: default color */
-					'desc'     => sprintf( __( 'The base color for Classic Commerce email templates. Default %s.', 'classic-commerce' ), '<code>#338084</code>' ),
+					'desc'     => sprintf( __( 'The base color for Classic Commerce email templates. Default %s.', 'classic-store'), '<code>#338084</code>' ),
 					'id'       => 'woocommerce_email_base_color',
 					'type'     => 'color',
 					'css'      => 'width:6em;',
@@ -143,9 +143,9 @@ class WC_Settings_Emails extends WC_Settings_Page {
 				),
 
 				array(
-					'title'    => __( 'Background color', 'classic-commerce' ),
+					'title'    => __( 'Background color', 'classic-store'),
 					/* translators: %s: default color */
-					'desc'     => sprintf( __( 'The background color for Classic Commerce email templates. Default %s.', 'classic-commerce' ), '<code>#f7f7f7</code>' ),
+					'desc'     => sprintf( __( 'The background color for Classic Commerce email templates. Default %s.', 'classic-store'), '<code>#f7f7f7</code>' ),
 					'id'       => 'woocommerce_email_background_color',
 					'type'     => 'color',
 					'css'      => 'width:6em;',
@@ -155,9 +155,9 @@ class WC_Settings_Emails extends WC_Settings_Page {
 				),
 
 				array(
-					'title'    => __( 'Body background color', 'classic-commerce' ),
+					'title'    => __( 'Body background color', 'classic-store'),
 					/* translators: %s: default color */
-					'desc'     => sprintf( __( 'The main body background color. Default %s.', 'classic-commerce' ), '<code>#ffffff</code>' ),
+					'desc'     => sprintf( __( 'The main body background color. Default %s.', 'classic-store'), '<code>#ffffff</code>' ),
 					'id'       => 'woocommerce_email_body_background_color',
 					'type'     => 'color',
 					'css'      => 'width:6em;',
@@ -167,9 +167,9 @@ class WC_Settings_Emails extends WC_Settings_Page {
 				),
 
 				array(
-					'title'    => __( 'Body text color', 'classic-commerce' ),
+					'title'    => __( 'Body text color', 'classic-store'),
 					/* translators: %s: default color */
-					'desc'     => sprintf( __( 'The main body text color. Default %s.', 'classic-commerce' ), '<code>#3c3c3c</code>' ),
+					'desc'     => sprintf( __( 'The main body text color. Default %s.', 'classic-store'), '<code>#3c3c3c</code>' ),
 					'id'       => 'woocommerce_email_text_color',
 					'type'     => 'color',
 					'css'      => 'width:6em;',
@@ -179,12 +179,12 @@ class WC_Settings_Emails extends WC_Settings_Page {
 				),
 
                 array(
-					'title'       => __( 'Footer text', 'classic-commerce' ),
+					'title'       => __( 'Footer text', 'classic-store'),
 					/* translators: %s: Available placeholders for use */
-					'desc'        => __( 'The text to appear in the footer of all Classic Commerce emails.', 'classic-commerce' ) . ' ' . sprintf( __( 'Available placeholders: %s', 'classic-commerce' ), '{site_title} {site_url}' ),
+					'desc'        => __( 'The text to appear in the footer of all Classic Commerce emails.', 'classic-store') . ' ' . sprintf( __( 'Available placeholders: %s', 'classic-store'), '{site_title} {site_url}' ),
 					'id'          => 'woocommerce_email_footer_text',
 					'css'         => 'width:400px; height: 75px;',
-					'placeholder' => __( 'N/A', 'classic-commerce' ),
+					'placeholder' => __( 'N/A', 'classic-store'),
 					'type'        => 'textarea',
 					'default'     => '{site_title} &mdash; Built with {Classic Commerce}',
 					'autoload'    => false,
@@ -192,9 +192,9 @@ class WC_Settings_Emails extends WC_Settings_Page {
 				),
 
 				array(
-					'title'    => __( 'Footer text color', 'classic-commerce' ),
+					'title'    => __( 'Footer text color', 'classic-store'),
 					/* translators: %s: footer default color */
-					'desc'     => sprintf( __( 'The footer text color. Default %s.', 'classic-commerce' ), '<code>#3c3c3c</code>' ),
+					'desc'     => sprintf( __( 'The footer text color. Default %s.', 'classic-store'), '<code>#3c3c3c</code>' ),
 					'id'       => 'woocommerce_email_footer_text_color',
                     'type'     => 'color',
 					'css'      => 'width:6em;',
@@ -288,9 +288,9 @@ class WC_Settings_Emails extends WC_Settings_Page {
 							'woocommerce_email_setting_columns',
 							array(
 								'status'     => '',
-								'name'       => __( 'Email', 'classic-commerce' ),
-								'email_type' => __( 'Content type', 'classic-commerce' ),
-								'recipient'  => __( 'Recipient(s)', 'classic-commerce' ),
+								'name'       => __( 'Email', 'classic-store'),
+								'email_type' => __( 'Content type', 'classic-store'),
+								'recipient'  => __( 'Recipient(s)', 'classic-store' ),
 								'actions'    => '',
 							)
 						);
@@ -316,18 +316,18 @@ class WC_Settings_Emails extends WC_Settings_Page {
 										break;
 									case 'recipient':
 										echo '<td class="wc-email-settings-table-' . esc_attr( $key ) . '">
-										' . esc_html( $email->is_customer_email() ? __( 'Customer', 'classic-commerce' ) : $email->get_recipient() ) . '
+										' . esc_html( $email->is_customer_email() ? __( 'Customer', 'classic-store') : $email->get_recipient() ) . '
 									</td>';
 										break;
 									case 'status':
 										echo '<td class="wc-email-settings-table-' . esc_attr( $key ) . '">';
 
 										if ( $email->is_manual() ) {
-											echo '<span class="status-manual tips" data-tip="' . esc_attr__( 'Manually sent', 'classic-commerce' ) . '">' . esc_html__( 'Manual', 'classic-commerce' ) . '</span>';
+											echo '<span class="status-manual tips" data-tip="' . esc_attr__( 'Manually sent', 'classic-store') . '">' . esc_html__( 'Manual', 'classic-store') . '</span>';
 										} elseif ( $email->is_enabled() ) {
-											echo '<span class="status-enabled tips" data-tip="' . esc_attr__( 'Enabled', 'classic-commerce' ) . '">' . esc_html__( 'Yes', 'classic-commerce' ) . '</span>';
+											echo '<span class="status-enabled tips" data-tip="' . esc_attr__( 'Enabled', 'classic-store') . '">' . esc_html__( 'Yes', 'classic-store') . '</span>';
 										} else {
-											echo '<span class="status-disabled tips" data-tip="' . esc_attr__( 'Disabled', 'classic-commerce' ) . '">-</span>';
+											echo '<span class="status-disabled tips" data-tip="' . esc_attr__( 'Disabled', 'classic-store') . '">-</span>';
 										}
 
 										echo '</td>';
@@ -339,7 +339,7 @@ class WC_Settings_Emails extends WC_Settings_Page {
 										break;
 									case 'actions':
 										echo '<td class="wc-email-settings-table-' . esc_attr( $key ) . '">
-										<a class="button alignright" href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=email&section=' . strtolower( $email_key ) ) ) . '">' . esc_html__( 'Manage', 'classic-commerce' ) . '</a>
+										<a class="button alignright" href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=email&section=' . strtolower( $email_key ) ) ) . '">' . esc_html__( 'Manage', 'classic-store') . '</a>
 									</td>';
 										break;
 									default:

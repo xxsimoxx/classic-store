@@ -114,7 +114,7 @@ class WC_Breadcrumb {
 	 * 404 trail.
 	 */
 	private function add_crumbs_404() {
-		$this->add_crumb( __( 'Error 404', 'classic-commerce' ) );
+		$this->add_crumb( __( 'Error 404', 'classic-store') );
 	}
 
 	/**
@@ -228,7 +228,7 @@ class WC_Breadcrumb {
 		$this->prepend_shop_page();
 
 		/* translators: %s: product tag */
-		$this->add_crumb( sprintf( __( 'Products tagged &ldquo;%s&rdquo;', 'classic-commerce' ), $current_term->name ), get_term_link( $current_term, 'product_tag' ) );
+		$this->add_crumb( sprintf( __( 'Products tagged &ldquo;%s&rdquo;', 'classic-store'), $current_term->name ), get_term_link( $current_term, 'product_tag' ) );
 	}
 
 	/**
@@ -280,7 +280,7 @@ class WC_Breadcrumb {
 		$queried_object = $GLOBALS['wp_query']->get_queried_object();
 
 		/* translators: %s: tag name */
-		$this->add_crumb( sprintf( __( 'Posts tagged &ldquo;%s&rdquo;', 'classic-commerce' ), single_tag_title( '', false ) ), get_tag_link( $queried_object->term_id ) );
+		$this->add_crumb( sprintf( __( 'Posts tagged &ldquo;%s&rdquo;', 'classic-store'), single_tag_title( '', false ) ), get_tag_link( $queried_object->term_id ) );
 	}
 
 	/**
@@ -323,7 +323,7 @@ class WC_Breadcrumb {
 		$userdata = get_userdata( $author );
 
 		/* translators: %s: author name */
-		$this->add_crumb( sprintf( __( 'Author: %s', 'classic-commerce' ), $userdata->display_name ) );
+		$this->add_crumb( sprintf( __( 'Author: %s', 'classic-store'), $userdata->display_name ) );
 	}
 
 	/**
@@ -364,7 +364,7 @@ class WC_Breadcrumb {
 	private function search_trail() {
 		if ( is_search() ) {
 			/* translators: %s: search term */
-			$this->add_crumb( sprintf( __( 'Search results for &ldquo;%s&rdquo;', 'classic-commerce' ), get_search_query() ), remove_query_arg( 'paged' ) );
+			$this->add_crumb( sprintf( __( 'Search results for &ldquo;%s&rdquo;', 'classic-store'), get_search_query() ), remove_query_arg( 'paged' ) );
 		}
 	}
 
@@ -374,7 +374,7 @@ class WC_Breadcrumb {
 	private function paged_trail() {
 		if ( get_query_var( 'paged' ) ) {
 			/* translators: %d: page number */
-			$this->add_crumb( sprintf( __( 'Page %d', 'classic-commerce' ), get_query_var( 'paged' ) ) );
+			$this->add_crumb( sprintf( __( 'Page %d', 'classic-store'), get_query_var( 'paged' ) ) );
 		}
 	}
 }

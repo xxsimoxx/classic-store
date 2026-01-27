@@ -43,7 +43,7 @@ class WC_REST_Customer_Downloads_V1_Controller extends WC_REST_Controller {
 		register_rest_route( $this->namespace, '/' . $this->rest_base, array(
 			'args' => array(
 				'customer_id' => array(
-					'description' => __( 'Unique identifier for the resource.', 'classic-commerce' ),
+					'description' => __( 'Unique identifier for the resource.', 'classic-store'),
 					'type'        => 'integer',
 				),
 			),
@@ -68,11 +68,11 @@ class WC_REST_Customer_Downloads_V1_Controller extends WC_REST_Controller {
 		$customer_id = $customer->get_id();
 
 		if ( ! $customer_id ) {
-			return new WP_Error( 'woocommerce_rest_customer_invalid', __( 'Resource does not exist.', 'classic-commerce' ), array( 'status' => 404 ) );
+			return new WP_Error( 'woocommerce_rest_customer_invalid', __( 'Resource does not exist.', 'classic-store'), array( 'status' => 404 ) );
 		}
 
 		if ( ! wc_rest_check_user_permissions( 'read', $customer_id() ) ) {
-			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-commerce' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'woocommerce_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'classic-store'), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -167,67 +167,67 @@ class WC_REST_Customer_Downloads_V1_Controller extends WC_REST_Controller {
 			'type'       => 'object',
 			'properties' => array(
 				'download_url' => array(
-					'description' => __( 'Download file URL.', 'classic-commerce' ),
+					'description' => __( 'Download file URL.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'download_id' => array(
-					'description' => __( 'Download ID (MD5).', 'classic-commerce' ),
+					'description' => __( 'Download ID (MD5).', 'classic-store' ),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'product_id' => array(
-					'description' => __( 'Downloadable product ID.', 'classic-commerce' ),
+					'description' => __( 'Downloadable product ID.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'download_name' => array(
-					'description' => __( 'Downloadable file name.', 'classic-commerce' ),
+					'description' => __( 'Downloadable file name.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'order_id' => array(
-					'description' => __( 'Order ID.', 'classic-commerce' ),
+					'description' => __( 'Order ID.', 'classic-store'),
 					'type'        => 'integer',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'order_key' => array(
-					'description' => __( 'Order key.', 'classic-commerce' ),
+					'description' => __( 'Order key.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'downloads_remaining' => array(
-					'description' => __( 'Number of downloads remaining.', 'classic-commerce' ),
+					'description' => __( 'Number of downloads remaining.', 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'access_expires' => array(
-					'description' => __( "The date when download access expires, in the site's timezone.", 'classic-commerce' ),
+					'description' => __( "The date when download access expires, in the site's timezone.", 'classic-store'),
 					'type'        => 'string',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 				),
 				'file' => array(
-					'description' => __( 'File details.', 'classic-commerce' ),
+					'description' => __( 'File details.', 'classic-store'),
 					'type'        => 'object',
 					'context'     => array( 'view' ),
 					'readonly'    => true,
 					'properties' => array(
 						'name' => array(
-							'description' => __( 'File name.', 'classic-commerce' ),
+							'description' => __( 'File name.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,
 						),
 						'file' => array(
-							'description' => __( 'File URL.', 'classic-commerce' ),
+							'description' => __( 'File URL.', 'classic-store'),
 							'type'        => 'string',
 							'context'     => array( 'view' ),
 							'readonly'    => true,

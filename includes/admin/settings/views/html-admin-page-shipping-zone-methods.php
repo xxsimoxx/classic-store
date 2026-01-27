@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <h2>
-	<a href="<?php echo esc_url( admin_url( 'admin.php?page=wc-settings&tab=shipping' ) ); ?>"><?php esc_html_e( 'Shipping zones', 'classic-commerce' ); ?></a> &gt;
-	<span class="wc-shipping-zone-name"><?php echo esc_html( $zone->get_zone_name() ? $zone->get_zone_name() : __( 'Zone', 'classic-commerce' ) ); ?></span>
+	<a href="<?php echo esc_url( admin_url( 'admin.php?page=wc-settings&tab=shipping' ) ); ?>"><?php esc_html_e( 'Shipping zones', 'classic-store'); ?></a> &gt;
+	<span class="wc-shipping-zone-name"><?php echo esc_html( $zone->get_zone_name() ? $zone->get_zone_name() : __( 'Zone', 'classic-store') ); ?></span>
 </h2>
 
 <?php do_action( 'woocommerce_shipping_zone_before_methods_table', $zone ); ?>
@@ -23,23 +23,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<tr valign="top" class="">
 				<th scope="row" class="titledesc">
 					<label for="zone_name">
-						<?php esc_html_e( 'Zone name', 'classic-commerce' ); ?>
-						<?php echo wc_help_tip( __( 'This is the name of the zone for your reference.', 'classic-commerce' ) ); // @codingStandardsIgnoreLine ?>
+						<?php esc_html_e( 'Zone name', 'classic-store'); ?>
+						<?php echo wc_help_tip( __( 'This is the name of the zone for your reference.', 'classic-store') ); // @codingStandardsIgnoreLine ?>
 					</label>
 				</th>
 				<td class="forminp">
-					<input type="text" data-attribute="zone_name" name="zone_name" id="zone_name" value="<?php echo esc_attr( $zone->get_zone_name( 'edit' ) ); ?>" placeholder="<?php esc_attr_e( 'Zone name', 'classic-commerce' ); ?>">
+					<input type="text" data-attribute="zone_name" name="zone_name" id="zone_name" value="<?php echo esc_attr( $zone->get_zone_name( 'edit' ) ); ?>" placeholder="<?php esc_attr_e( 'Zone name', 'classic-store'); ?>">
 				</td>
 			</tr>
 			<tr valign="top" class="">
 				<th scope="row" class="titledesc">
 					<label for="zone_locations">
-						<?php esc_html_e( 'Zone regions', 'classic-commerce' ); ?>
-						<?php echo wc_help_tip( __( 'These are regions inside this zone. Customers will be matched against these regions.', 'classic-commerce' ) ); // @codingStandardsIgnoreLine ?>
+						<?php esc_html_e( 'Zone regions', 'classic-store'); ?>
+						<?php echo wc_help_tip( __( 'These are regions inside this zone. Customers will be matched against these regions.', 'classic-store') ); // @codingStandardsIgnoreLine ?>
 					</label>
 				</th>
 				<td class="forminp">
-					<select multiple="multiple" data-attribute="zone_locations" id="zone_locations" name="zone_locations" data-placeholder="<?php esc_attr_e( 'Select regions within this zone', 'classic-commerce' ); ?>" class="wc-shipping-zone-region-select chosen_select">
+					<select multiple="multiple" data-attribute="zone_locations" id="zone_locations" name="zone_locations" data-placeholder="<?php esc_attr_e( 'Select regions within this zone', 'classic-store'); ?>" class="wc-shipping-zone-region-select chosen_select">
 						<?php
 						foreach ( $shipping_continents as $continent_code => $continent ) {
 							echo '<option value="continent:' . esc_attr( $continent_code ) . '"' . wc_selected( "continent:$continent_code", $locations ) . '>' . esc_html( $continent['name'] ) . '</option>';
@@ -61,10 +61,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 						?>
 					</select>
 					<?php if ( empty( $postcodes ) ) : ?>
-						<a class="wc-shipping-zone-postcodes-toggle" href="#"><?php esc_html_e( 'Limit to specific ZIP/postcodes', 'classic-commerce' ); ?></a>
+						<a class="wc-shipping-zone-postcodes-toggle" href="#"><?php esc_html_e( 'Limit to specific ZIP/postcodes', 'classic-store'); ?></a>
 					<?php endif; ?>
 					<div class="wc-shipping-zone-postcodes">
-						<textarea name="zone_postcodes" data-attribute="zone_postcodes" id="zone_postcodes" placeholder="<?php esc_attr_e( 'List 1 postcode per line', 'classic-commerce' ); ?>" class="input-text large-text" cols="25" rows="5"><?php echo esc_textarea( implode( "\n", $postcodes ) ); ?></textarea>
+						<textarea name="zone_postcodes" data-attribute="zone_postcodes" id="zone_postcodes" placeholder="<?php esc_attr_e( 'List 1 postcode per line', 'classic-store'); ?>" class="input-text large-text" cols="25" rows="5"><?php echo esc_textarea( implode( "\n", $postcodes ) ); ?></textarea>
 						<?php /* translators: Classic Commerce link to setting up shipping zones */ ?>
 						<span class="description"><?php printf( __( 'Postcodes containing wildcards (e.g. CB23*) or fully numeric ranges (e.g. <code>90210...99000</code>) are also supported. Please see the shipping zones <a href="%s" target="_blank">documentation</a> for more information.', 'classic-commerce' ), 'https://classiccommerce.cc/docs/installation-and-setup/shipping/' ); ?></span><?php // @codingStandardsIgnoreLine. ?>
 					</div>
@@ -74,8 +74,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<tr valign="top" class="">
 			<th scope="row" class="titledesc">
 				<label>
-					<?php esc_html_e( 'Shipping methods', 'classic-commerce' ); ?>
-					<?php echo wc_help_tip( __( 'The following shipping methods apply to customers with shipping addresses within this zone.', 'classic-commerce' ) ); // @codingStandardsIgnoreLine ?>
+					<?php esc_html_e( 'Shipping methods', 'classic-store'); ?>
+					<?php echo wc_help_tip( __( 'The following shipping methods apply to customers with shipping addresses within this zone.', 'classic-store') ); // @codingStandardsIgnoreLine ?>
 				</label>
 			</th>
 			<td class="">
@@ -83,15 +83,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<thead>
 						<tr>
 							<th class="wc-shipping-zone-method-sort"></th>
-							<th class="wc-shipping-zone-method-title"><?php esc_html_e( 'Title', 'classic-commerce' ); ?></th>
-							<th class="wc-shipping-zone-method-enabled"><?php esc_html_e( 'Enabled', 'classic-commerce' ); ?></th>
-							<th class="wc-shipping-zone-method-description"><?php esc_html_e( 'Description', 'classic-commerce' ); ?></th>
+							<th class="wc-shipping-zone-method-title"><?php esc_html_e( 'Title', 'classic-store'); ?></th>
+							<th class="wc-shipping-zone-method-enabled"><?php esc_html_e( 'Enabled', 'classic-store'); ?></th>
+							<th class="wc-shipping-zone-method-description"><?php esc_html_e( 'Description', 'classic-store'); ?></th>
 						</tr>
 					</thead>
 					<tfoot>
 						<tr>
 							<td colspan="4">
-								<button type="submit" class="button wc-shipping-zone-add-method" value="<?php esc_attr_e( 'Add shipping method', 'classic-commerce' ); ?>"><?php esc_html_e( 'Add shipping method', 'classic-commerce' ); ?></button>
+								<button type="submit" class="button wc-shipping-zone-add-method" value="<?php esc_attr_e( 'Add shipping method', 'classic-store'); ?>"><?php esc_html_e( 'Add shipping method', 'classic-store'); ?></button>
 							</td>
 						</tr>
 					</tfoot>
@@ -105,13 +105,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php do_action( 'woocommerce_shipping_zone_after_methods_table', $zone ); ?>
 
 <p class="submit">
-	<button type="submit" name="submit" id="submit" class="button button-primary button-large wc-shipping-zone-method-save" value="<?php esc_attr_e( 'Save changes', 'classic-commerce' ); ?>" disabled><?php esc_html_e( 'Save changes', 'classic-commerce' ); ?></button>
+	<button type="submit" name="submit" id="submit" class="button button-primary button-large wc-shipping-zone-method-save" value="<?php esc_attr_e( 'Save changes', 'classic-store'); ?>" disabled><?php esc_html_e( 'Save changes', 'classic-store'); ?></button>
 </p>
 
 <script type="text/html" id="tmpl-wc-shipping-zone-method-row-blank">
 	<tr>
 		<td class="wc-shipping-zone-method-blank-state" colspan="4">
-			<p><?php esc_html_e( 'You can add multiple shipping methods within this zone. Only customers within the zone will see them.', 'classic-commerce' ); ?></p>
+			<p><?php esc_html_e( 'You can add multiple shipping methods within this zone. Only customers within the zone will see them.', 'classic-store'); ?></p>
 		</td>
 	</tr>
 </script>
@@ -122,7 +122,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<td class="wc-shipping-zone-method-title">
 			<a class="wc-shipping-zone-method-settings" href="admin.php?page=wc-settings&amp;tab=shipping&amp;instance_id={{ data.instance_id }}">{{{ data.title }}}</a>
 			<div class="row-actions">
-				<a class="wc-shipping-zone-method-settings" href="admin.php?page=wc-settings&amp;tab=shipping&amp;instance_id={{ data.instance_id }}"><?php esc_html_e( 'Edit', 'classic-commerce' ); ?></a> | <a href="#" class="wc-shipping-zone-method-delete"><?php esc_html_e( 'Delete', 'classic-commerce' ); ?></a>
+				<a class="wc-shipping-zone-method-settings" href="admin.php?page=wc-settings&amp;tab=shipping&amp;instance_id={{ data.instance_id }}"><?php esc_html_e( 'Edit', 'classic-store'); ?></a> | <a href="#" class="wc-shipping-zone-method-delete"><?php esc_html_e( 'Delete', 'classic-store'); ?></a>
 			</div>
 		</td>
 		<td width="1%" class="wc-shipping-zone-method-enabled"><a href="#">{{{ data.enabled_icon }}}</a></td>
@@ -142,13 +142,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php
 						/* translators: %s: shipping method title */
 						printf(
-							esc_html__( '%s Settings', 'classic-commerce' ),
+							esc_html__( '%s Settings', 'classic-store'),
 							'{{{ data.method.method_title }}}'
 						);
 						?>
 					</h1>
 					<button class="modal-close modal-close-link dashicons dashicons-no-alt">
-						<span class="screen-reader-text"><?php esc_html_e( 'Close modal panel', 'classic-commerce' ); ?></span>
+						<span class="screen-reader-text"><?php esc_html_e( 'Close modal panel', 'classic-store'); ?></span>
 					</button>
 				</header>
 				<article class="wc-modal-shipping-method-settings">
@@ -159,7 +159,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</article>
 				<footer>
 					<div class="inner">
-						<button id="btn-ok" class="button button-primary button-large"><?php esc_html_e( 'Save changes', 'classic-commerce' ); ?></button>
+						<button id="btn-ok" class="button button-primary button-large"><?php esc_html_e( 'Save changes', 'classic-store'); ?></button>
 					</div>
 				</footer>
 			</section>
@@ -173,15 +173,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="wc-backbone-modal-content">
 			<section class="wc-backbone-modal-main" role="main">
 				<header class="wc-backbone-modal-header">
-					<h1><?php esc_html_e( 'Add shipping method', 'classic-commerce' ); ?></h1>
+					<h1><?php esc_html_e( 'Add shipping method', 'classic-store'); ?></h1>
 					<button class="modal-close modal-close-link dashicons dashicons-no-alt">
-						<span class="screen-reader-text"><?php esc_html_e( 'Close modal panel', 'classic-commerce' ); ?></span>
+						<span class="screen-reader-text"><?php esc_html_e( 'Close modal panel', 'classic-store'); ?></span>
 					</button>
 				</header>
 				<article>
 					<form action="" method="post">
 						<div class="wc-shipping-zone-method-selector">
-							<p><?php esc_html_e( 'Choose the shipping method you wish to add. Only shipping methods which support zones are listed.', 'classic-commerce' ); ?></p>
+							<p><?php esc_html_e( 'Choose the shipping method you wish to add. Only shipping methods which support zones are listed.', 'classic-store'); ?></p>
 
 							<select name="add_method_id">
 								<?php
@@ -198,7 +198,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</article>
 				<footer>
 					<div class="inner">
-						<button id="btn-ok" class="button button-primary button-large"><?php esc_html_e( 'Add shipping method', 'classic-commerce' ); ?></button>
+						<button id="btn-ok" class="button button-primary button-large"><?php esc_html_e( 'Add shipping method', 'classic-store'); ?></button>
 					</div>
 				</footer>
 			</section>

@@ -32,9 +32,9 @@ class WC_Shipping_Legacy_Local_Pickup extends WC_Shipping_Method {
 	 */
 	public function __construct() {
 		$this->id           = 'legacy_local_pickup';
-		$this->method_title = __( 'Local pickup (legacy)', 'classic-commerce' );
+		$this->method_title = __( 'Local pickup (legacy)', 'classic-store' );
 		/* translators: %s: Admin shipping settings URL */
-		$this->method_description = '<strong>' . sprintf( __( 'This method is deprecated in 2.6.0 and will be removed in future versions - we recommend disabling it and instead setting up a new rate within your <a href="%s">Shipping zones</a>.', 'classic-commerce' ), admin_url( 'admin.php?page=wc-settings&tab=shipping' ) ) . '</strong>';
+		$this->method_description = '<strong>' . sprintf( __( 'This method is deprecated in 2.6.0 and will be removed in future versions - we recommend disabling it and instead setting up a new rate within your <a href="%s">Shipping zones</a>.', 'classic-store'), admin_url( 'admin.php?page=wc-settings&tab=shipping' ) ) . '</strong>';
 		$this->init();
 	}
 
@@ -100,45 +100,45 @@ class WC_Shipping_Legacy_Local_Pickup extends WC_Shipping_Method {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'enabled'      => array(
-				'title'   => __( 'Enable', 'classic-commerce' ),
+				'title'   => __( 'Enable', 'classic-store'),
 				'type'    => 'checkbox',
-				'label'   => __( 'Once disabled, this legacy method will no longer be available.', 'classic-commerce' ),
+				'label'   => __( 'Once disabled, this legacy method will no longer be available.', 'classic-store'),
 				'default' => 'no',
 			),
 			'title'        => array(
-				'title'       => __( 'Title', 'classic-commerce' ),
+				'title'       => __( 'Title', 'classic-store'),
 				'type'        => 'text',
-				'description' => __( 'This controls the title which the user sees during checkout.', 'classic-commerce' ),
-				'default'     => __( 'Local pickup', 'classic-commerce' ),
+				'description' => __( 'This controls the title which the user sees during checkout.', 'classic-store'),
+				'default'     => __( 'Local pickup', 'classic-store'),
 				'desc_tip'    => true,
 			),
 			'codes'        => array(
-				'title'       => __( 'Allowed ZIP/post codes', 'classic-commerce' ),
+				'title'       => __( 'Allowed ZIP/post codes', 'classic-store'),
 				'type'        => 'text',
-				'desc_tip'    => __( 'What ZIP/post codes are available for local pickup?', 'classic-commerce' ),
+				'desc_tip'    => __( 'What ZIP/post codes are available for local pickup?', 'classic-store'),
 				'default'     => '',
-				'description' => __( 'Separate codes with a comma. Accepts wildcards, e.g. <code>P*</code> will match a postcode of PE30. Also accepts a pattern, e.g. <code>NG1___</code> would match NG1 1AA but not NG10 1AA', 'classic-commerce' ),
+				'description' => __( 'Separate codes with a comma. Accepts wildcards, e.g. <code>P*</code> will match a postcode of PE30. Also accepts a pattern, e.g. <code>NG1___</code> would match NG1 1AA but not NG10 1AA', 'classic-store'),
 				'placeholder' => 'e.g. 12345, 56789',
 			),
 			'availability' => array(
-				'title'   => __( 'Method availability', 'classic-commerce' ),
+				'title'   => __( 'Method availability', 'classic-store'),
 				'type'    => 'select',
 				'default' => 'all',
 				'class'   => 'availability wc-enhanced-select',
 				'options' => array(
-					'all'      => __( 'All allowed countries', 'classic-commerce' ),
-					'specific' => __( 'Specific countries', 'classic-commerce' ),
+					'all'      => __( 'All allowed countries', 'classic-store'),
+					'specific' => __( 'Specific countries', 'classic-store'),
 				),
 			),
 			'countries'    => array(
-				'title'             => __( 'Specific countries', 'classic-commerce' ),
+				'title'             => __( 'Specific countries', 'classic-store'),
 				'type'              => 'multiselect',
 				'class'             => 'wc-enhanced-select',
 				'css'               => 'width: 400px;',
 				'default'           => '',
 				'options'           => WC()->countries->get_shipping_countries(),
 				'custom_attributes' => array(
-					'data-placeholder' => __( 'Select some countries', 'classic-commerce' ),
+					'data-placeholder' => __( 'Select some countries', 'classic-store'),
 				),
 			),
 		);

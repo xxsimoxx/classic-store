@@ -16,9 +16,9 @@ echo esc_html( wp_strip_all_tags( $email_heading ) );
 echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 /* translators: %s: Customer first name */
-echo sprintf( esc_html__( 'Hi %s,', 'classic-commerce' ), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
+echo sprintf( esc_html__( 'Hi %s,', 'classic-store'), esc_html( $order->get_billing_first_name() ) ) . "\n\n";
 /* translators: %s: Site title */
-echo sprintf( esc_html__( 'Your %s order has been marked complete on our side.', 'classic-commerce' ), esc_html( wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ) ) . "\n\n";
+echo sprintf( esc_html__( 'Your %s order has been marked complete on our side.', 'classic-store'), esc_html( wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ) ) . "\n\n";
 
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.

@@ -71,7 +71,7 @@ function wc_get_page_screen_id( $for ) {
 	$for       = str_replace( '-', '_', $for );
 
 	if ( in_array( $for, wc_get_order_types( 'admin-menu' ), true ) ) {
-		
+
 		$screen_id = $for;
 	}
 
@@ -431,7 +431,7 @@ function wc_save_order_items( $order_id, $items ) {
 
     if ( ! empty( $qty_change_order_notes ) ) {
 		/* translators: %s item name. */
-		$order->add_order_note( sprintf( __( 'Adjusted stock: %s', 'classic-commerce' ), implode( ', ', $qty_change_order_notes ) ), false, true );
+		$order->add_order_note( sprintf( __( 'Adjusted stock: %s', 'classic-store'), implode( ', ', $qty_change_order_notes ) ), false, true );
 	}
 
 	$order->update_taxes();
@@ -507,10 +507,10 @@ function wc_render_invalid_variation_notice( $product_object ) {
 			echo wp_kses_post(
 				sprintf(
 					/* Translators: %d variation count. */
-					_n( '%d variation does not have a price.', '%d variations do not have prices.', $invalid_variation_count, 'classic-commerce' ),
+					_n( '%d variation does not have a price.', '%d variations do not have prices.', $invalid_variation_count, 'classic-store' ),
 					$invalid_variation_count
 				) . '&nbsp;' .
-				__( 'Variations (and their attributes) that do not have prices will not be shown in your store.', 'classic-commerce' )
+				__( 'Variations (and their attributes) that do not have prices will not be shown in your store.', 'classic-store' )
 			);
 			?>
 			</p>
@@ -524,15 +524,15 @@ function wc_get_default_product_type_options() {
 		'virtual'      => array(
 			'id'            => '_virtual',
 			'wrapper_class' => 'show_if_simple',
-			'label'         => __( 'Virtual', 'classic-commerce' ),
-			'description'   => __( 'Virtual products are intangible and are not shipped.', 'classic-commerce' ),
+			'label'         => __( 'Virtual', 'classic-store'),
+			'description'   => __( 'Virtual products are intangible and are not shipped.', 'classic-store'),
 			'default'       => 'no',
 		),
 		'downloadable' => array(
 			'id'            => '_downloadable',
 			'wrapper_class' => 'show_if_simple',
-			'label'         => __( 'Downloadable', 'classic-commerce' ),
-			'description'   => __( 'Downloadable products give access to a file upon purchase.', 'classic-commerce' ),
+			'label'         => __( 'Downloadable', 'classic-store'),
+			'description'   => __( 'Downloadable products give access to a file upon purchase.', 'classic-store'),
 			'default'       => 'no',
 		),
 	);

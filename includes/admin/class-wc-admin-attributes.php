@@ -181,14 +181,14 @@ class WC_Admin_Attributes {
 
 		?>
 		<div class="wrap woocommerce">
-			<h1><?php esc_html_e( 'Edit attribute', 'classic-commerce' ); ?></h1>
+			<h1><?php esc_html_e( 'Edit attribute', 'classic-store'); ?></h1>
 
 			<?php
 			if ( ! $attribute_to_edit ) {
-				echo '<div id="woocommerce_errors" class="error"><p>' . esc_html__( 'Error: non-existing attribute ID.', 'classic-commerce' ) . '</p></div>';
+				echo '<div id="woocommerce_errors" class="error"><p>' . esc_html__( 'Error: non-existing attribute ID.', 'classic-store') . '</p></div>';
 			} else {
 				if ( self::$edited_attribute_id > 0 ) {
-					echo '<div id="message" class="updated"><p>' . esc_html__( 'Attribute updated successfully', 'classic-commerce' ) . '</p><p><a href="' . esc_url( admin_url( 'edit.php?post_type=product&amp;page=product_attributes' ) ) . '">' . esc_html__( 'Back to Attributes', 'classic-commerce' ) . '</a></p></div>';
+					echo '<div id="message" class="updated"><p>' . esc_html__( 'Attribute updated successfully', 'classic-store') . '</p><p><a href="' . esc_url( admin_url( 'edit.php?post_type=product&amp;page=product_attributes' ) ) . '">' . esc_html__( 'Back to Attributes', 'classic-store') . '</a></p></div>';
 					self::$edited_attribute_id = null;
 				}
 				$att_type    = $attribute_to_edit->attribute_type;
@@ -203,29 +203,29 @@ class WC_Admin_Attributes {
 							<?php do_action( 'woocommerce_before_edit_attribute_fields' ); ?>
 							<tr class="form-field form-required">
 								<th scope="row" valign="top">
-									<label for="attribute_label"><?php esc_html_e( 'Name', 'classic-commerce' ); ?></label>
+									<label for="attribute_label"><?php esc_html_e( 'Name', 'classic-store'); ?></label>
 								</th>
 								<td>
 									<input name="attribute_label" id="attribute_label" type="text" value="<?php echo esc_attr( $att_label ); ?>" />
-									<p class="description"><?php esc_html_e( 'Name for the attribute (shown on the front-end).', 'classic-commerce' ); ?></p>
+									<p class="description"><?php esc_html_e( 'Name for the attribute (shown on the front-end).', 'classic-store' ); ?></p>
 								</td>
 							</tr>
 							<tr class="form-field form-required">
 								<th scope="row" valign="top">
-									<label for="attribute_name"><?php esc_html_e( 'Slug', 'classic-commerce' ); ?></label>
+									<label for="attribute_name"><?php esc_html_e( 'Slug', 'classic-store'); ?></label>
 								</th>
 								<td>
 									<input name="attribute_name" id="attribute_name" type="text" value="<?php echo esc_attr( $att_name ); ?>" maxlength="28" />
-									<p class="description"><?php esc_html_e( 'Unique slug/reference for the attribute; must be no more than 28 characters.', 'classic-commerce' ); ?></p>
+									<p class="description"><?php esc_html_e( 'Unique slug/reference for the attribute; must be no more than 28 characters.', 'classic-store'); ?></p>
 								</td>
 							</tr>
 							<tr class="form-field form-required">
 								<th scope="row" valign="top">
-									<label for="attribute_public"><?php esc_html_e( 'Enable archives?', 'classic-commerce' ); ?></label>
+									<label for="attribute_public"><?php esc_html_e( 'Enable archives?', 'classic-store'); ?></label>
 								</th>
 								<td>
 									<input name="attribute_public" id="attribute_public" type="checkbox" value="1" <?php checked( $att_public, 1 ); ?> />
-									<p class="description"><?php esc_html_e( 'Enable this if you want this attribute to have product archives in your store.', 'classic-commerce' ); ?></p>
+									<p class="description"><?php esc_html_e( 'Enable this if you want this attribute to have product archives in your store.', 'classic-store'); ?></p>
 								</td>
 							</tr>
 							<?php
@@ -240,7 +240,7 @@ class WC_Admin_Attributes {
 								?>
 								<tr class="form-field form-required">
 									<th scope="row" valign="top">
-										<label for="attribute_type"><?php esc_html_e( 'Type', 'classic-commerce' ); ?></label>
+										<label for="attribute_type"><?php esc_html_e( 'Type', 'classic-store'); ?></label>
 									</th>
 									<td>
 										<select name="attribute_type" id="attribute_type">
@@ -257,7 +257,7 @@ class WC_Admin_Attributes {
 												do_action( 'woocommerce_admin_attribute_types' );
 											?>
 										</select>
-										<p class="description"><?php esc_html_e( "Determines how this attribute's values are displayed.", 'classic-commerce' ); ?></p>
+										<p class="description"><?php esc_html_e( "Determines how this attribute's values are displayed.", 'classic-store'); ?></p>
 									</td>
 								</tr>
 								<?php
@@ -265,22 +265,22 @@ class WC_Admin_Attributes {
 							?>
 							<tr class="form-field form-required">
 								<th scope="row" valign="top">
-									<label for="attribute_orderby"><?php esc_html_e( 'Default sort order', 'classic-commerce' ); ?></label>
+									<label for="attribute_orderby"><?php esc_html_e( 'Default sort order', 'classic-store'); ?></label>
 								</th>
 								<td>
 									<select name="attribute_orderby" id="attribute_orderby">
-										<option value="menu_order" <?php selected( $att_orderby, 'menu_order' ); ?>><?php esc_html_e( 'Custom ordering', 'classic-commerce' ); ?></option>
-										<option value="name" <?php selected( $att_orderby, 'name' ); ?>><?php esc_html_e( 'Name', 'classic-commerce' ); ?></option>
-										<option value="name_num" <?php selected( $att_orderby, 'name_num' ); ?>><?php esc_html_e( 'Name (numeric)', 'classic-commerce' ); ?></option>
-										<option value="id" <?php selected( $att_orderby, 'id' ); ?>><?php esc_html_e( 'Term ID', 'classic-commerce' ); ?></option>
+										<option value="menu_order" <?php selected( $att_orderby, 'menu_order' ); ?>><?php esc_html_e( 'Custom ordering', 'classic-store'); ?></option>
+										<option value="name" <?php selected( $att_orderby, 'name' ); ?>><?php esc_html_e( 'Name', 'classic-store'); ?></option>
+										<option value="name_num" <?php selected( $att_orderby, 'name_num' ); ?>><?php esc_html_e( 'Name (numeric)', 'classic-store' ); ?></option>
+										<option value="id" <?php selected( $att_orderby, 'id' ); ?>><?php esc_html_e( 'Term ID', 'classic-store'); ?></option>
 									</select>
-									<p class="description"><?php esc_html_e( 'Determines the sort order of the terms on the frontend shop product pages. If using custom ordering, you can drag and drop the terms in this attribute.', 'classic-commerce' ); ?></p>
+									<p class="description"><?php esc_html_e( 'Determines the sort order of the terms on the frontend shop product pages. If using custom ordering, you can drag and drop the terms in this attribute.', 'classic-store'); ?></p>
 								</td>
 							</tr>
 							<?php do_action( 'woocommerce_after_edit_attribute_fields' ); ?>
 						</tbody>
 					</table>
-					<p class="submit"><button type="submit" name="save_attribute" id="submit" class="button-primary" value="<?php esc_attr_e( 'Update', 'classic-commerce' ); ?>"><?php esc_html_e( 'Update', 'classic-commerce' ); ?></button></p>
+					<p class="submit"><button type="submit" name="save_attribute" id="submit" class="button-primary" value="<?php esc_attr_e( 'Update', 'classic-store'); ?>"><?php esc_html_e( 'Update', 'classic-store'); ?></button></p>
 					<?php wp_nonce_field( 'woocommerce-save-attribute_' . $edit ); ?>
 				</form>
 			<?php } ?>
@@ -305,13 +305,13 @@ class WC_Admin_Attributes {
 						<table class="widefat attributes-table wp-list-table ui-sortable" style="width:100%">
 							<thead>
 								<tr>
-									<th scope="col"><?php esc_html_e( 'Name', 'classic-commerce' ); ?></th>
-									<th scope="col"><?php esc_html_e( 'Slug', 'classic-commerce' ); ?></th>
+									<th scope="col"><?php esc_html_e( 'Name', 'classic-store'); ?></th>
+									<th scope="col"><?php esc_html_e( 'Slug', 'classic-store'); ?></th>
 									<?php if ( wc_has_custom_attribute_types() ) : ?>
-										<th scope="col"><?php esc_html_e( 'Type', 'classic-commerce' ); ?></th>
+										<th scope="col"><?php esc_html_e( 'Type', 'classic-store'); ?></th>
 									<?php endif; ?>
-									<th scope="col"><?php esc_html_e( 'Order by', 'classic-commerce' ); ?></th>
-									<th scope="col"><?php esc_html_e( 'Terms', 'classic-commerce' ); ?></th>
+									<th scope="col"><?php esc_html_e( 'Order by', 'classic-store'); ?></th>
+									<th scope="col"><?php esc_html_e( 'Terms', 'classic-store'); ?></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -333,26 +333,26 @@ class WC_Admin_Attributes {
 												<td>
 													<strong><a href="edit-tags.php?taxonomy=<?php echo esc_attr( wc_attribute_taxonomy_name( $tax->attribute_name ) ); ?>&amp;post_type=product"><?php echo esc_html( $tax->attribute_label ); ?></a></strong>
 
-													<div class="row-actions"><span class="edit"><a href="<?php echo esc_url( add_query_arg( 'edit', $tax->attribute_id, 'edit.php?post_type=product&amp;page=product_attributes' ) ); ?>"><?php esc_html_e( 'Edit', 'classic-commerce' ); ?></a> | </span><span class="delete"><a class="delete" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'delete', $tax->attribute_id, 'edit.php?post_type=product&amp;page=product_attributes' ), 'woocommerce-delete-attribute_' . $tax->attribute_id ) ); ?>"><?php esc_html_e( 'Delete', 'classic-commerce' ); ?></a></span></div>
+													<div class="row-actions"><span class="edit"><a href="<?php echo esc_url( add_query_arg( 'edit', $tax->attribute_id, 'edit.php?post_type=product&amp;page=product_attributes' ) ); ?>"><?php esc_html_e( 'Edit', 'classic-store'); ?></a> | </span><span class="delete"><a class="delete" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'delete', $tax->attribute_id, 'edit.php?post_type=product&amp;page=product_attributes' ), 'woocommerce-delete-attribute_' . $tax->attribute_id ) ); ?>"><?php esc_html_e( 'Delete', 'classic-store'); ?></a></span></div>
 												</td>
 												<td><?php echo esc_html( $tax->attribute_name ); ?></td>
 												<?php if ( wc_has_custom_attribute_types() ) : ?>
-													<td><?php echo esc_html( wc_get_attribute_type_label( $tax->attribute_type ) ); ?> <?php echo $tax->attribute_public ? esc_html__( '(Public)', 'classic-commerce' ) : ''; ?></td>
+													<td><?php echo esc_html( wc_get_attribute_type_label( $tax->attribute_type ) ); ?> <?php echo $tax->attribute_public ? esc_html__( '(Public)', 'classic-store' ) : ''; ?></td>
 												<?php endif; ?>
 												<td>
 													<?php
 													switch ( $tax->attribute_orderby ) {
 														case 'name':
-															esc_html_e( 'Name', 'classic-commerce' );
+															esc_html_e( 'Name', 'classic-store');
 															break;
 														case 'name_num':
-															esc_html_e( 'Name (numeric)', 'classic-commerce' );
+															esc_html_e( 'Name (numeric)', 'classic-store' );
 															break;
 														case 'id':
-															esc_html_e( 'Term ID', 'classic-commerce' );
+															esc_html_e( 'Term ID', 'classic-store');
 															break;
 														default:
-															esc_html_e( 'Custom ordering', 'classic-commerce' );
+															esc_html_e( 'Custom ordering', 'classic-store');
 															break;
 													}
 													?>
@@ -384,20 +384,20 @@ class WC_Admin_Attributes {
 															if ( $total_count > $max_terms_to_display ) {
 																$remaining = $total_count - $max_terms_to_display;
 																/* translators: 1: Comma-separated terms list, 2: how many terms are hidden */
-																$terms_string = sprintf( __( '%1$s... (%2$s more)', 'classic-commerce' ), $terms_string, $remaining );
+																$terms_string = sprintf( __( '%1$s... (%2$s more)', 'classic-store' ), $terms_string, $remaining );
 															}
 															echo esc_html( $terms_string );
 														} elseif ( 1 === $total_count ) {
-															echo esc_html( __( '1 term', 'classic-commerce' ) );
+															echo esc_html( __( '1 term', 'classic-store') );
 														} else {
 															/* translators: %s: Total count of terms available for the attribute */
-															echo esc_html( sprintf( __( '%s terms', 'classic-commerce' ), $total_count ) );
+															echo esc_html( sprintf( __( '%s terms', 'classic-store'), $total_count ) );
 														}
 													} else {
 															echo '<span class="na">&ndash;</span><br />';
 													}
 													?>
-													<br /><a href="edit-tags.php?taxonomy=<?php echo esc_attr( wc_attribute_taxonomy_name( $tax->attribute_name ) ); ?>&amp;post_type=product" class="configure-terms"><?php esc_html_e( 'Configure terms', 'classic-commerce' ); ?></a>
+													<br /><a href="edit-tags.php?taxonomy=<?php echo esc_attr( wc_attribute_taxonomy_name( $tax->attribute_name ) ); ?>&amp;post_type=product" class="configure-terms"><?php esc_html_e( 'Configure terms', 'classic-store'); ?></a>
 												</td>
 											</tr>
 											<?php
@@ -405,7 +405,7 @@ class WC_Admin_Attributes {
 								} else {
 									?>
 										<tr>
-											<td colspan="6"><?php esc_html_e( 'No attributes currently exist.', 'classic-commerce' ); ?></td>
+											<td colspan="6"><?php esc_html_e( 'No attributes currently exist.', 'classic-store'); ?></td>
 										</tr>
 										<?php
 								}
@@ -417,27 +417,27 @@ class WC_Admin_Attributes {
 				<div id="col-left">
 					<div class="col-wrap">
 						<div class="form-wrap">
-							<h2><?php esc_html_e( 'Add new attribute', 'classic-commerce' ); ?></h2>
-							<p><?php esc_html_e( 'Attributes let you define extra product data, such as size or color. You can use these attributes in the shop sidebar using the "layered nav" widgets.', 'classic-commerce' ); ?></p>
+							<h2><?php esc_html_e( 'Add new attribute', 'classic-store'); ?></h2>
+							<p><?php esc_html_e( 'Attributes let you define extra product data, such as size or color. You can use these attributes in the shop sidebar using the "layered nav" widgets.', 'classic-store'); ?></p>
 							<form action="edit.php?post_type=product&amp;page=product_attributes" method="post">
 								<?php do_action( 'woocommerce_before_add_attribute_fields' ); ?>
 
 								<div class="form-field">
-									<label for="attribute_label"><?php esc_html_e( 'Name', 'classic-commerce' ); ?></label>
+									<label for="attribute_label"><?php esc_html_e( 'Name', 'classic-store'); ?></label>
 									<input name="attribute_label" id="attribute_label" type="text" value="" />
-									<p class="description"><?php esc_html_e( 'Name for the attribute (shown on the front-end).', 'classic-commerce' ); ?></p>
+									<p class="description"><?php esc_html_e( 'Name for the attribute (shown on the front-end).', 'classic-store' ); ?></p>
 								</div>
 
 								<div class="form-field">
-									<label for="attribute_name"><?php esc_html_e( 'Slug', 'classic-commerce' ); ?></label>
+									<label for="attribute_name"><?php esc_html_e( 'Slug', 'classic-store'); ?></label>
 									<input name="attribute_name" id="attribute_name" type="text" value="" maxlength="28" />
-									<p class="description"><?php esc_html_e( 'Unique slug/reference for the attribute; must be no more than 28 characters.', 'classic-commerce' ); ?></p>
+									<p class="description"><?php esc_html_e( 'Unique slug/reference for the attribute; must be no more than 28 characters.', 'classic-store'); ?></p>
 								</div>
 
 								<div class="form-field">
-									<label for="attribute_public"><input name="attribute_public" id="attribute_public" type="checkbox" value="1" /> <?php esc_html_e( 'Enable Archives?', 'classic-commerce' ); ?></label>
+									<label for="attribute_public"><input name="attribute_public" id="attribute_public" type="checkbox" value="1" /> <?php esc_html_e( 'Enable Archives?', 'classic-store'); ?></label>
 
-									<p class="description"><?php esc_html_e( 'Enable this if you want this attribute to have product archives in your store.', 'classic-commerce' ); ?></p>
+									<p class="description"><?php esc_html_e( 'Enable this if you want this attribute to have product archives in your store.', 'classic-store'); ?></p>
 								</div>
 
 								<?php
@@ -451,7 +451,7 @@ class WC_Admin_Attributes {
 								if ( wc_has_custom_attribute_types() ) {
 									?>
 									<div class="form-field">
-										<label for="attribute_type"><?php esc_html_e( 'Type', 'classic-commerce' ); ?></label>
+										<label for="attribute_type"><?php esc_html_e( 'Type', 'classic-store'); ?></label>
 										<select name="attribute_type" id="attribute_type">
 											<?php foreach ( wc_get_attribute_types() as $key => $value ) : ?>
 												<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $value ); ?></option>
@@ -466,26 +466,26 @@ class WC_Admin_Attributes {
 												do_action( 'woocommerce_admin_attribute_types' );
 											?>
 										</select>
-										<p class="description"><?php esc_html_e( "Determines how this attribute's values are displayed.", 'classic-commerce' ); ?></p>
+										<p class="description"><?php esc_html_e( "Determines how this attribute's values are displayed.", 'classic-store'); ?></p>
 									</div>
 									<?php
 								}
 								?>
 
 								<div class="form-field">
-									<label for="attribute_orderby"><?php esc_html_e( 'Default sort order', 'classic-commerce' ); ?></label>
+									<label for="attribute_orderby"><?php esc_html_e( 'Default sort order', 'classic-store'); ?></label>
 									<select name="attribute_orderby" id="attribute_orderby">
-										<option value="menu_order"><?php esc_html_e( 'Custom ordering', 'classic-commerce' ); ?></option>
-										<option value="name"><?php esc_html_e( 'Name', 'classic-commerce' ); ?></option>
-										<option value="name_num"><?php esc_html_e( 'Name (numeric)', 'classic-commerce' ); ?></option>
-										<option value="id"><?php esc_html_e( 'Term ID', 'classic-commerce' ); ?></option>
+										<option value="menu_order"><?php esc_html_e( 'Custom ordering', 'classic-store'); ?></option>
+										<option value="name"><?php esc_html_e( 'Name', 'classic-store'); ?></option>
+										<option value="name_num"><?php esc_html_e( 'Name (numeric)', 'classic-store' ); ?></option>
+										<option value="id"><?php esc_html_e( 'Term ID', 'classic-store'); ?></option>
 									</select>
-									<p class="description"><?php esc_html_e( 'Determines the sort order of the terms on the frontend shop product pages. If using custom ordering, you can drag and drop the terms in this attribute.', 'classic-commerce' ); ?></p>
+									<p class="description"><?php esc_html_e( 'Determines the sort order of the terms on the frontend shop product pages. If using custom ordering, you can drag and drop the terms in this attribute.', 'classic-store'); ?></p>
 								</div>
 
 								<?php do_action( 'woocommerce_after_add_attribute_fields' ); ?>
 
-								<p class="submit"><button type="submit" name="add_new_attribute" id="submit" class="button button-primary" value="<?php esc_attr_e( 'Add attribute', 'classic-commerce' ); ?>"><?php esc_html_e( 'Add attribute', 'classic-commerce' ); ?></button></p>
+								<p class="submit"><button type="submit" name="add_new_attribute" id="submit" class="button button-primary" value="<?php esc_attr_e( 'Add attribute', 'classic-store'); ?>"><?php esc_html_e( 'Add attribute', 'classic-store'); ?></button></p>
 								<?php wp_nonce_field( 'woocommerce-add-new_attribute' ); ?>
 							</form>
 						</div>
@@ -496,7 +496,7 @@ class WC_Admin_Attributes {
 			/* <![CDATA[ */
 
 				jQuery( 'a.delete' ).on( 'click', function() {
-					if ( window.confirm( '<?php esc_html_e( 'Are you sure you want to delete this attribute?', 'classic-commerce' ); ?>' ) ) {
+					if ( window.confirm( '<?php esc_html_e( 'Are you sure you want to delete this attribute?', 'classic-store'); ?>' ) ) {
 						return true;
 					}
 					return false;

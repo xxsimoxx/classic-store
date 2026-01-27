@@ -146,7 +146,7 @@ class WC_Shipping_Zone extends WC_Legacy_Shipping_Zone {
 		} elseif ( ! empty( $location_parts ) ) {
 			return implode( ', ', $location_parts );
 		} else {
-			return __( 'Everywhere', 'classic-commerce' );
+			return __( 'Everywhere', 'classic-store');
 		}
 	}
 
@@ -282,7 +282,7 @@ class WC_Shipping_Zone extends WC_Legacy_Shipping_Zone {
 		$zone_name = $this->get_formatted_location();
 
 		if ( empty( $zone_name ) ) {
-			$zone_name = __( 'Zone', 'classic-commerce' );
+			$zone_name = __( 'Zone', 'classic-store');
 		}
 
 		return $zone_name;

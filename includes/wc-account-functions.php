@@ -68,8 +68,8 @@ function wc_edit_address_i18n( $id, $flip = false ) {
 	$slugs = apply_filters(
 		'woocommerce_edit_address_slugs',
         array(
-			'billing'  => sanitize_title( _x( 'billing', 'edit-address-slug', 'classic-commerce' ) ),
-			'shipping' => sanitize_title( _x( 'shipping', 'edit-address-slug', 'classic-commerce' ) ),
+			'billing'  => sanitize_title( _x( 'billing', 'edit-address-slug', 'classic-store') ),
+			'shipping' => sanitize_title( _x( 'shipping', 'edit-address-slug', 'classic-store') ),
 		)
 	);
 
@@ -101,13 +101,13 @@ function wc_get_account_menu_items() {
 	);
 
 	$items = array(
-		'dashboard'       => __( 'Dashboard', 'classic-commerce' ),
-		'orders'          => __( 'Orders', 'classic-commerce' ),
-		'downloads'       => __( 'Downloads', 'classic-commerce' ),
-		'edit-address'    => _n( 'Address', 'Addresses', ( 1 + (int) wc_shipping_enabled() ), 'classic-commerce' ),
-		'payment-methods' => __( 'Payment methods', 'classic-commerce' ),
-		'edit-account'    => __( 'Account details', 'classic-commerce' ),
-		'customer-logout' => __( 'Log out', 'classic-commerce' ),
+		'dashboard'       => __( 'Dashboard', 'classic-store'),
+		'orders'          => __( 'Orders', 'classic-store'),
+		'downloads'       => __( 'Downloads', 'classic-store'),
+		'edit-address'    => _n( 'Address', 'Addresses', ( 1 + (int) wc_shipping_enabled() ), 'classic-store' ),
+		'payment-methods' => __( 'Payment methods', 'classic-store'),
+		'edit-account'    => __( 'Account details', 'classic-store'),
+		'customer-logout' => __( 'Log out', 'classic-store'),
 	);
 
 	// Remove missing endpoints.
@@ -214,11 +214,11 @@ function wc_get_account_orders_columns() {
 	return apply_filters(
 		'woocommerce_account_orders_columns',
         array(
-			'order-number'  => __( 'Order', 'classic-commerce' ),
-			'order-date'    => __( 'Date', 'classic-commerce' ),
-			'order-status'  => __( 'Status', 'classic-commerce' ),
-			'order-total'   => __( 'Total', 'classic-commerce' ),
-			'order-actions' => __( 'Actions', 'classic-commerce' ),
+			'order-number'  => __( 'Order', 'classic-store'),
+			'order-date'    => __( 'Date', 'classic-store'),
+			'order-status'  => __( 'Status', 'classic-store'),
+			'order-total'   => __( 'Total', 'classic-store'),
+			'order-actions' => __( 'Actions', 'classic-store'),
 		)
 	);
 }
@@ -233,10 +233,10 @@ function wc_get_account_downloads_columns() {
 	$columns = apply_filters(
 		'woocommerce_account_downloads_columns',
         array(
-			'download-product'   => __( 'Product', 'classic-commerce' ),
-			'download-remaining' => __( 'Downloads remaining', 'classic-commerce' ),
-			'download-expires'   => __( 'Expires', 'classic-commerce' ),
-			'download-file'      => __( 'Download', 'classic-commerce' ),
+			'download-product'   => __( 'Product', 'classic-store'),
+			'download-remaining' => __( 'Downloads remaining', 'classic-store'),
+			'download-expires'   => __( 'Expires', 'classic-store'),
+			'download-file'      => __( 'Download', 'classic-store'),
 			'download-actions'   => '&nbsp;',
 		)
 	);
@@ -258,8 +258,8 @@ function wc_get_account_payment_methods_columns() {
 	return apply_filters(
 		'woocommerce_account_payment_methods_columns',
         array(
-			'method'  => __( 'Method', 'classic-commerce' ),
-			'expires' => __( 'Expires', 'classic-commerce' ),
+			'method'  => __( 'Method', 'classic-store'),
+			'expires' => __( 'Expires', 'classic-store'),
 			'actions' => '&nbsp;',
 		)
 	);
@@ -274,8 +274,8 @@ function wc_get_account_payment_methods_columns() {
 function wc_get_account_payment_methods_types() {
 	return apply_filters(
 		'woocommerce_payment_methods_types', array(
-			'cc'     => __( 'Credit card', 'classic-commerce' ),
-			'echeck' => __( 'eCheck', 'classic-commerce' ),
+			'cc'     => __( 'Credit card', 'classic-store'),
+			'echeck' => __( 'eCheck', 'classic-store'),
 		)
 	);
 }
@@ -296,15 +296,15 @@ function wc_get_account_orders_actions( $order ) {
 	$actions = array(
 		'pay'    => array(
 			'url'  => $order->get_checkout_payment_url(),
-			'name' => __( 'Pay', 'classic-commerce' ),
+			'name' => __( 'Pay', 'classic-store'),
 		),
 		'view'   => array(
 			'url'  => $order->get_view_order_url(),
-			'name' => __( 'View', 'classic-commerce' ),
+			'name' => __( 'View', 'classic-store'),
 		),
 		'cancel' => array(
 			'url'  => $order->get_cancel_order_url( wc_get_page_permalink( 'myaccount' ) ),
-			'name' => __( 'Cancel', 'classic-commerce' ),
+			'name' => __( 'Cancel', 'classic-store'),
 		),
 	);
 
@@ -369,12 +369,12 @@ function wc_get_account_saved_payment_methods_list( $list, $customer_id ) {
 			'method'     => array(
 				'gateway' => $payment_token->get_gateway_id(),
 			),
-			'expires'    => esc_html__( 'N/A', 'classic-commerce' ),
+			'expires'    => esc_html__( 'N/A', 'classic-store'),
 			'is_default' => $payment_token->is_default(),
 			'actions'    => array(
 				'delete' => array(
 					'url'  => $delete_url,
-					'name' => esc_html__( 'Delete', 'classic-commerce' ),
+					'name' => esc_html__( 'Delete', 'classic-store'),
 				),
 			),
 		);
@@ -383,7 +383,7 @@ function wc_get_account_saved_payment_methods_list( $list, $customer_id ) {
 		if ( ! $payment_token->is_default() ) {
 			$list[ $type ][ $key ]['actions']['default'] = array(
 				'url'  => $set_default_url,
-				'name' => esc_html__( 'Make default', 'classic-commerce' ),
+				'name' => esc_html__( 'Make default', 'classic-store'),
 			);
 		}
 
@@ -409,7 +409,7 @@ function wc_get_account_saved_payment_methods_list_item_cc( $item, $payment_toke
 
 	$card_type               = $payment_token->get_card_type();
 	$item['method']['last4'] = $payment_token->get_last4();
-	$item['method']['brand'] = ( ! empty( $card_type ) ? ucfirst( $card_type ) : esc_html__( 'Credit card', 'classic-commerce' ) );
+	$item['method']['brand'] = ( ! empty( $card_type ) ? ucfirst( $card_type ) : esc_html__( 'Credit card', 'classic-store') );
 	$item['expires']         = $payment_token->get_expiry_month() . '/' . substr( $payment_token->get_expiry_year(), -2 );
 
 	return $item;
@@ -431,7 +431,7 @@ function wc_get_account_saved_payment_methods_list_item_echeck( $item, $payment_
 	}
 
 	$item['method']['last4'] = $payment_token->get_last4();
-	$item['method']['brand'] = esc_html__( 'eCheck', 'classic-commerce' );
+	$item['method']['brand'] = esc_html__( 'eCheck', 'classic-store');
 
 	return $item;
 }

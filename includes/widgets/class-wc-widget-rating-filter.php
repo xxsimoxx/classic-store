@@ -18,14 +18,14 @@ class WC_Widget_Rating_Filter extends WC_Widget {
 	 */
 	public function __construct() {
 		$this->widget_cssclass    = 'woocommerce widget_rating_filter';
-		$this->widget_description = __( 'Display a list of star ratings to filter products in your store.', 'classic-commerce' );
+		$this->widget_description = __( 'Display a list of star ratings to filter products in your store.', 'classic-store');
 		$this->widget_id          = 'woocommerce_rating_filter';
-		$this->widget_name        = __( 'Filter Products by Rating', 'classic-commerce' );
+		$this->widget_name        = __( 'Filter Products by Rating', 'classic-store');
 		$this->settings           = array(
 			'title' => array(
 				'type'  => 'text',
-				'std'   => __( 'Average rating', 'classic-commerce' ),
-				'label' => __( 'Title', 'classic-commerce' ),
+				'std'   => __( 'Average rating', 'classic-store'),
+				'label' => __( 'Title', 'classic-store'),
 			),
 		);
 		parent::__construct();

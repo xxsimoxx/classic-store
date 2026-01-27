@@ -29,8 +29,8 @@ if ( ! class_exists( 'WC_Email_Customer_Completed_Order', false ) ) :
 		public function __construct() {
 			$this->id             = 'customer_completed_order';
 			$this->customer_email = true;
-			$this->title          = __( 'Completed order', 'classic-commerce' );
-			$this->description    = __( 'Order complete emails are sent to customers when their orders are marked completed and usually indicate that their orders have been shipped.', 'classic-commerce' );
+			$this->title          = __( 'Completed order', 'classic-store');
+			$this->description    = __( 'Order complete emails are sent to customers when their orders are marked completed and usually indicate that their orders have been shipped.', 'classic-store');
 			$this->template_html  = 'emails/customer-completed-order.php';
 			$this->template_plain = 'emails/plain/customer-completed-order.php';
 			$this->placeholders   = array(
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WC_Email_Customer_Completed_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( 'Your {site_title} order is now complete', 'classic-commerce' );
+			return __( 'Your {site_title} order is now complete', 'classic-store');
 		}
 
 		/**
@@ -89,7 +89,7 @@ if ( ! class_exists( 'WC_Email_Customer_Completed_Order', false ) ) :
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Thanks for shopping with us', 'classic-commerce' );
+			return __( 'Thanks for shopping with us', 'classic-store');
 		}
 
 		/**
@@ -137,7 +137,7 @@ if ( ! class_exists( 'WC_Email_Customer_Completed_Order', false ) ) :
 		 * @return string
 		 */
         public function get_default_additional_content() {
-			return __( 'Thanks for shopping with us.', 'classic-commerce' );
+			return __( 'Thanks for shopping with us.', 'classic-store');
 		}
 	}
 

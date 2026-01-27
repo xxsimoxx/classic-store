@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 /* translators: %s: Quantity. */
-$label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'classic-commerce' ), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'classic-commerce' );
+$label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'classic-store'), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'classic-store');
 ?>
 <div class="quantity">
 	<?php
@@ -33,7 +33,7 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 		class="<?php echo esc_attr( join( ' ', (array) $classes ) ); ?>"
 		name="<?php echo esc_attr( $input_name ); ?>"
 		value="<?php echo esc_attr( $input_value ); ?>"
-		aria-label="<?php esc_attr_e( 'Product quantity', 'classic-commerce' ); ?>"
+		aria-label="<?php esc_attr_e( 'Product quantity', 'classic-store'); ?>"
 		size="4"
 		min="<?php echo esc_attr( $min_value ); ?>"
 		max="<?php echo esc_attr( 0 < $max_value ? $max_value : '' ); ?>"

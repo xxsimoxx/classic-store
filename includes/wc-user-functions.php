@@ -38,11 +38,11 @@ if ( ! function_exists( 'wc_create_new_customer' ) ) {
 	 */
 	function wc_create_new_customer( $email, $username = '', $password = '', $args = array() ) {
 		if ( empty( $email ) || ! is_email( $email ) ) {
-			return new WP_Error( 'registration-error-invalid-email', __( 'Please provide a valid email address.', 'classic-commerce' ) );
+			return new WP_Error( 'registration-error-invalid-email', __( 'Please provide a valid email address.', 'classic-store') );
 		}
 
 		if ( email_exists( $email ) ) {
-			return new WP_Error( 'registration-error-email-exists', apply_filters( 'woocommerce_registration_error_email_exists', __( 'An account is already registered with your email address. <a href="#" class="showlogin">Please log in.</a>', 'classic-commerce' ), $email ) );
+			return new WP_Error( 'registration-error-email-exists', apply_filters( 'woocommerce_registration_error_email_exists', __( 'An account is already registered with your email address. <a href="#" class="showlogin">Please log in.</a>', 'classic-store'), $email ) );
 		}
 
 		if ( 'yes' === get_option( 'woocommerce_registration_generate_username', 'yes' ) && empty( $username ) ) {
@@ -52,11 +52,11 @@ if ( ! function_exists( 'wc_create_new_customer' ) ) {
 			$username = sanitize_user( $username );
 
 			if ( empty( $username ) || ! validate_username( $username ) ) {
-			return new WP_Error( 'registration-error-invalid-username', __( 'Please enter a valid account username.', 'classic-commerce' ) );
+			return new WP_Error( 'registration-error-invalid-username', __( 'Please enter a valid account username.', 'classic-store') );
 		}
 
         if ( username_exists( $username ) ) {
-			return new WP_Error( 'registration-error-username-exists', __( 'An account is already registered with that username. Please choose another.', 'classic-commerce' ) );
+			return new WP_Error( 'registration-error-username-exists', __( 'An account is already registered with that username. Please choose another.', 'classic-store') );
 		}
 
 		// Handle password creation.
@@ -67,7 +67,7 @@ if ( ! function_exists( 'wc_create_new_customer' ) ) {
 		}
 
 		if ( empty( $password ) ) {
-			return new WP_Error( 'registration-error-missing-password', __( 'Please enter an account password.', 'classic-commerce' ) );
+			return new WP_Error( 'registration-error-missing-password', __( 'Please enter an account password.', 'classic-store') );
 		}
 
 		// Use WP_Error to handle registration errors.

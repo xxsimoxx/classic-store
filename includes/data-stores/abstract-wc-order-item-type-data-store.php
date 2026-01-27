@@ -129,7 +129,7 @@ abstract class Abstract_WC_Order_Item_Type_Data_Store extends WC_Data_Store_WP i
 		}
 
 		if ( ! $data ) {
-			throw new Exception( __( 'Invalid order item.', 'classic-commerce' ) );
+			throw new Exception( __( 'Invalid order item.', 'classic-store') );
 		}
 
 		$item->set_props(
