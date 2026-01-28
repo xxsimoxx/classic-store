@@ -539,8 +539,6 @@ final class WooCommerce {
 		}
 	}
 
-
-
 	/**
 	 * Include required frontend files.
 	 */
